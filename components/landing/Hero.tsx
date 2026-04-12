@@ -79,11 +79,21 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-4"
         >
-          <Button variant="primary" size="lg" data-action="start-free-trial">
+          <Button
+            variant="primary"
+            size="lg"
+            data-action="start-free-trial"
+            onClick={() => window.open(brand.calLink, '_blank')}
+          >
             Start Free Trial
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </Button>
-          <Button variant="secondary" size="lg" data-action="watch-demo">
+          <Button
+            variant="secondary"
+            size="lg"
+            data-action="watch-demo"
+            onClick={() => document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' })}
+          >
             <Play className="w-4 h-4" />
             Watch Demo
           </Button>

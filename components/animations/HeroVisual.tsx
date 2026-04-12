@@ -32,6 +32,7 @@ export function HeroVisual({ className }: { className?: string }) {
             height: o.r,
             background: o.color,
             transform: 'translate(-50%,-50%)',
+            willChange: 'transform, opacity',
           }}
           animate={reduce ? undefined : {
             x: [0, 40, -30, 20, 0],

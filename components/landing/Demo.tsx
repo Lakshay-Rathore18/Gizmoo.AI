@@ -40,7 +40,7 @@ const tabs = [
     label: 'Outbound Calls',
     icon: PhoneOutgoing,
     lines: [
-      { role: 'out', text: '→ Dialing +61 412 555 019 · reminder campaign' },
+      { role: 'out', text: '→ Dialing +61 489 072 416 · reminder campaign' },
       { role: 'agent', text: "Hi Sarah, this is Gizmoo from Mitchell Dental with a reminder about your cleaning tomorrow at 10am." },
       { role: 'caller', text: 'Oh, thanks — actually can we push it to Friday?' },
       { role: 'agent', text: 'No problem. Friday at 10am is open — shall I move you to that?' },

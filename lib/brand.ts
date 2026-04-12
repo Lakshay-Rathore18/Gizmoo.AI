@@ -1,16 +1,15 @@
 export const brand = {
   name: 'Gizmoo AI',
+  logo: '/logo.png',
+  logoAlt: 'Gizmoo AI',
   tagline: 'Never Miss a Call. Ever.',
   description:
-    "Gizmoo AI answers calls, books appointments, updates your calendar, and makes outbound calls — all with a voice so natural, callers won't know it's AI.",
-  url: 'https://gizmoo.ai',
-  phone: '+61 XXX XXX XXX',
-  social: {
-    x: 'https://x.com/gizmooai',
-    github: 'https://github.com/gizmooai',
-    linkedin: 'https://linkedin.com/company/gizmooai',
-    discord: 'https://discord.gg/gizmooai',
-  },
+    "Gizmoo AI answers your phone 24/7, qualifies jobs, and books customers directly into your calendar — built for Australian plumbers, electricians, HVAC technicians, and builders.",
+  url: 'https://gizmoo.me',
+  phone: '+61 489 072 416',
+  salesPhone: '+61 0424 700 797',
+  email: 'hellogizmooai@gmail.com',
+  calLink: 'https://cal.com/lakshay-rathore-eaosso/demo-booking',
   spline: {
     hero: 'https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode',
     demo: 'https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode',

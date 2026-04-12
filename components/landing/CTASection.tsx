@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, ShieldCheck, Lock, Clock, Headphones } from 'lucide-react';
+import { ArrowRight, Clock, Headphones } from 'lucide-react';
 import { HeroVisual } from '@/components/animations/HeroVisual';
 import { AIParticles } from '@/components/animations/AIParticles';
 import { Button } from '@/components/ui/Button';
@@ -10,6 +10,7 @@ import { brand } from '@/lib/brand';
 
 export function CTASection() {
   const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
   return (
     <section className="relative py-24 md:py-40 bg-ink overflow-hidden isolate">
@@ -64,49 +65,77 @@ export function CTASection() {
           transition={{ duration: 0.8, delay: 0.25 }}
           className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3"
         >
-          <Button variant="primary" size="lg" data-action="cta-start-trial">
+          <Button
+            variant="primary"
+            size="lg"
+            data-action="cta-start-trial"
+            onClick={() => window.open(brand.calLink, '_blank')}
+          >
             Start Your Free Trial
             <ArrowRight className="w-4 h-4" />
           </Button>
-          <Button variant="secondary" size="lg" data-action="cta-talk-sales">
+          <Button
+            variant="secondary"
+            size="lg"
+            data-action="cta-talk-sales"
+            onClick={() => window.open('tel:+61424700797')}
+          >
             <Headphones className="w-4 h-4" />
             Talk to Sales
           </Button>
         </motion.div>
 
-        <motion.form
+        <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.35 }}
-          onSubmit={(e) => {
-            e.preventDefault();
-            // TODO: wire real signup
-          }}
-          className="mt-10 max-w-md mx-auto"
+          className="mt-10 max-w-md mx-auto text-center"
         >
-          <div className="group relative flex items-center border border-surface-border bg-ink/80 backdrop-blur-sm focus-within:border-cyber-cyan transition-colors">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@yourbusiness.com"
-              aria-label="Work email"
-              required
-              className="flex-1 bg-transparent px-4 py-4 text-paper placeholder:text-paper/40 outline-none font-mono text-sm"
-            />
-            <Button variant="primary" size="md" type="submit" data-action="cta-signup">
-              Get Started
-              <ArrowRight className="w-4 h-4" />
-            </Button>
-          </div>
+          {status === 'success' ? (
+            <div className="text-cyber-lime font-display font-bold text-lg">
+              ✓ You&apos;re on the list! We&apos;ll be in touch.
+            </div>
+          ) : (
+            <form
+              onSubmit={async (e) => {
+                e.preventDefault();
+                setStatus('loading');
+                try {
+                  const res = await fetch('/api/waitlist', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email }),
+                  });
+                  setStatus(res.ok ? 'success' : 'error');
+                } catch { setStatus('error'); }
+              }}
+              className="flex items-center border border-surface-border bg-ink/80 backdrop-blur-sm focus-within:border-cyber-cyan transition-colors max-w-md mx-auto"
+            >
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="you@yourbusiness.com"
+                aria-label="Work email"
+                required
+                className="flex-1 bg-transparent px-4 py-4 text-paper placeholder:text-paper/40 outline-none font-mono text-sm"
+              />
+              <button
+                type="submit"
+                disabled={status === 'loading'}
+                className="group relative inline-flex items-center justify-center gap-2 font-display font-semibold tracking-tight rounded-none transition-all duration-200 overflow-hidden bg-paper text-ink hover:bg-cyber-cyan px-6 py-4 text-sm shrink-0"
+              >
+                {status === 'loading' ? 'Joining...' : 'Join Waitlist'}
+              </button>
+            </form>
+          )}
+          {status === 'error' && (
+            <p className="mt-2 text-sm text-cyber-rose">
+              Something went wrong — email us at hellogizmooai@gmail.com
+            </p>
+          )}
           <div className="mt-6 text-xs text-paper/50 font-mono flex items-center justify-center gap-4 flex-wrap">
-            <span className="flex items-center gap-1.5">
-              <ShieldCheck className="w-3 h-3 text-cyber-lime" /> SOC 2 Type II
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Lock className="w-3 h-3 text-cyber-lime" /> HIPAA Ready
-            </span>
             <span className="flex items-center gap-1.5">
               <Clock className="w-3 h-3 text-cyber-lime" /> 99.99% Uptime
             </span>
@@ -117,7 +146,7 @@ export function CTASection() {
           <div className="mt-3 text-[11px] text-paper/40 font-mono">
             No credit card required · Setup in 15 minutes · Cancel anytime
           </div>
-        </motion.form>
+        </motion.div>
       </div>
     </section>
   );

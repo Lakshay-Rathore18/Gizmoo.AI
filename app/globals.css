@@ -107,6 +107,11 @@ body {
   background: #00e5ff;
 }
 
+/* CSS containment for sections */
+section {
+  contain: layout style;
+}
+
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,

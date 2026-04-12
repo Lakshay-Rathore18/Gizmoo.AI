@@ -37,8 +37,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
     <button
       ref={ref}
       className={cn(base, variants[variant], sizes[size], className)}
-      // TODO: wire real handler
-      onClick={props.onClick ?? (() => {})}
       {...props}
     >
       <span className="relative z-10 flex items-center gap-2">{children}</span>

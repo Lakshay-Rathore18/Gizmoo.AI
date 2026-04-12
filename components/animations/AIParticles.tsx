@@ -82,7 +82,7 @@ export function AIParticles({ density = 60, className }: { density?: number; cla
       if (running) raf = requestAnimationFrame(draw);
     };
 
-    window.addEventListener('resize', onResize);
+    window.addEventListener('resize', onResize, { passive: true });
     document.addEventListener('visibilitychange', onVisibility);
     raf = requestAnimationFrame(draw);
 

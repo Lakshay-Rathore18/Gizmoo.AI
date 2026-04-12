@@ -1,9 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Menu, X, Sparkles } from 'lucide-react';
+import Image from 'next/image';
+import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
+import { brand } from '@/lib/brand';
 
 const links = [
   { href: '#features', label: 'Features' },
@@ -37,14 +39,15 @@ export function Nav() {
         className="max-w-7xl mx-auto px-6 md:px-10 h-16 md:h-20 flex items-center justify-between"
         aria-label="Primary"
       >
-        <a href="#top" className="flex items-center gap-2 group">
-          <span className="relative inline-flex items-center justify-center w-8 h-8 border border-paper/30 group-hover:border-cyber-cyan transition-colors">
-            <Sparkles className="w-4 h-4 text-cyber-cyan" aria-hidden />
-            <span className="absolute inset-0 bg-cyber-cyan/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-          </span>
-          <span className="font-display font-bold tracking-tight text-lg">
-            Gizmoo <span className="text-cyber-cyan">AI</span>
-          </span>
+        <a href="#top" className="flex items-center">
+          <Image
+            src="/logo.png"
+            alt="Gizmoo AI"
+            width={140}
+            height={36}
+            priority
+            className="h-7 md:h-9 w-auto"
+          />
         </a>
 
         <ul className="hidden md:flex items-center gap-8">
@@ -62,10 +65,20 @@ export function Nav() {
         </ul>
 
         <div className="hidden md:flex items-center gap-3">
-          <Button variant="ghost" size="sm" data-action="sign-in">
+          <Button
+            variant="ghost"
+            size="sm"
+            data-action="sign-in"
+            onClick={() => alert('Client portal coming soon — contact us at hellogizmooai@gmail.com')}
+          >
             Sign in
           </Button>
-          <Button variant="primary" size="sm" data-action="get-started">
+          <Button
+            variant="primary"
+            size="sm"
+            data-action="get-started"
+            onClick={() => window.open(brand.calLink, '_blank')}
+          >
             Get Started
           </Button>
         </div>
@@ -95,7 +108,13 @@ export function Nav() {
               </li>
             ))}
             <li className="pt-4">
-              <Button variant="primary" size="md" className="w-full" data-action="get-started">
+              <Button
+                variant="primary"
+                size="md"
+                className="w-full"
+                data-action="get-started"
+                onClick={() => window.open(brand.calLink, '_blank')}
+              >
                 Get Started
               </Button>
             </li>

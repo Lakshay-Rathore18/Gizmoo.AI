@@ -27,7 +27,7 @@ const steps = [
 
 export function Tech() {
   return (
-    <section className="relative py-24 md:py-36 bg-surface overflow-hidden">
+    <section id="how-it-works" className="relative py-24 md:py-36 bg-surface overflow-hidden">
       <div aria-hidden className="absolute inset-0 bg-grid opacity-10" />
 
       <div className="relative max-w-7xl mx-auto px-6 md:px-10">

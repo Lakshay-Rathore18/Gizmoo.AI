@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
 import { Counter } from '@/components/animations/Counter';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
 import { cn } from '@/lib/utils';
@@ -111,14 +110,9 @@ export function UseCases() {
                       {c.title}
                     </h3>
                     <p className="mt-6 text-paper/70 text-lg leading-relaxed">{c.copy}</p>
-                    <a
-                      href="#"
-                      className="mt-8 inline-flex items-center gap-2 font-mono text-sm text-paper hover:text-cyber-cyan transition-colors group"
-                      data-action={`case-${c.label.toLowerCase().replace(/\s+/g, '-')}`}
-                    >
-                      Read the case study
-                      <ArrowUpRight className="w-4 h-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
-                    </a>
+                    <span className="mt-8 inline-block font-mono text-sm text-[#666666]">
+                      Case study coming soon
+                    </span>
                   </div>
                 </div>
               </ScrollReveal>

@@ -1,6 +1,6 @@
 'use client';
 
-import { Component, Suspense, lazy, type ReactNode } from 'react';
+import { Component, Suspense, lazy, useRef, useState, useEffect, type ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
 const Spline = lazy(() => import('@splinetool/react-spline'));
@@ -46,13 +46,37 @@ interface SplineSceneProps {
 }
 
 export function SplineScene({ scene, className }: SplineSceneProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
   const fallback = <SplineFallback className={className} />;
 
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px' },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <SplineErrorBoundary fallback={fallback}>
-      <Suspense fallback={fallback}>
-        <Spline scene={scene} className={className} />
-      </Suspense>
-    </SplineErrorBoundary>
+    <div ref={ref} className={cn('w-full h-full', className)}>
+      {inView ? (
+        <SplineErrorBoundary fallback={fallback}>
+          <Suspense fallback={fallback}>
+            <Spline scene={scene} className={className} />
+          </Suspense>
+        </SplineErrorBoundary>
+      ) : (
+        fallback
+      )}
+    </div>
   );
 }

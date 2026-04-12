@@ -5,62 +5,7 @@ import { Check } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
 import { cn } from '@/lib/utils';
-
-// TODO: Update pricing — currently $0 placeholder across all plans.
-const plans = [
-  {
-    name: 'Starter',
-    priceMonthly: 0,
-    priceAnnual: 0,
-    tagline: 'For small businesses trying out an AI receptionist.',
-    features: [
-      'Up to 100 calls / month',
-      'Real-time appointment booking',
-      'Google Calendar + Outlook sync',
-      'Business hours coverage',
-      'Email support',
-    ],
-    cta: 'Get Started Free',
-    action: 'pricing-starter',
-    featured: false,
-  },
-  {
-    name: 'Professional',
-    priceMonthly: 0,
-    priceAnnual: 0,
-    tagline: 'Everything a growing team needs to never miss a call.',
-    features: [
-      'Unlimited inbound calls',
-      'True 24/7 coverage',
-      'Outbound reminder campaigns',
-      'CRM integration (HubSpot, Salesforce)',
-      'Custom voice training',
-      'SMS follow-ups',
-      'Priority phone + Slack support',
-    ],
-    cta: 'Start Free Trial',
-    action: 'pricing-professional',
-    featured: true,
-  },
-  {
-    name: 'Enterprise',
-    priceMonthly: null,
-    priceAnnual: null,
-    tagline: 'For multi-location teams with auditors on speed dial.',
-    features: [
-      'Everything in Professional',
-      'Multiple locations / phone lines',
-      'Advanced analytics + call scoring',
-      'HIPAA BAA + SOC 2 Type II',
-      'Custom integrations',
-      'Dedicated success manager',
-      '99.99% uptime SLA',
-    ],
-    cta: 'Talk to Sales',
-    action: 'pricing-enterprise',
-    featured: false,
-  },
-];
+import { brand } from '@/lib/brand';
 
 export function Pricing() {
   const [annual, setAnnual] = useState(true);
@@ -99,68 +44,117 @@ export function Pricing() {
                 )}
               >
                 Annual
-                <span className="text-[10px] bg-cyber-lime text-ink px-1.5 py-0.5">−20%</span>
+                <span className="text-[10px] bg-cyber-lime text-ink px-1.5 py-0.5">-30%</span>
               </button>
             </div>
           </div>
         </ScrollReveal>
 
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
-          {plans.map((p, i) => (
-            <ScrollReveal key={p.name} delay={i * 0.08}>
-              <div
-                className={cn(
-                  'relative h-full flex flex-col p-8 border transition-all duration-300',
-                  p.featured
-                    ? 'border-cyber-cyan bg-surface holo-border -translate-y-2 shadow-[0_24px_64px_-16px_rgba(0,229,255,0.3)]'
-                    : 'border-surface-border bg-surface hover:border-paper/30',
-                )}
-              >
-                {p.featured && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-cyber-cyan text-ink font-mono text-[10px] uppercase tracking-widest px-3 py-1">
-                    Most Popular
-                  </div>
-                )}
-                <div className="font-display font-bold text-2xl">{p.name}</div>
-                <div className="mt-1 text-sm text-paper/60 min-h-[2.5rem]">{p.tagline}</div>
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          {/* Starter Plan */}
+          <ScrollReveal delay={0}>
+            <div className="relative h-full flex flex-col p-8 border border-cyber-cyan bg-surface holo-border -translate-y-2 shadow-[0_24px_64px_-16px_rgba(0,229,255,0.3)] transition-all duration-300">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-cyber-cyan text-ink font-mono text-[10px] uppercase tracking-widest px-3 py-1">
+                14-Day Free Trial
+              </div>
+              <div className="font-display font-bold text-2xl">Starter</div>
+              <div className="mt-1 text-sm text-paper/60 min-h-[2.5rem]">
+                For small businesses trying out an AI receptionist.
+              </div>
 
-                <div className="mt-6 flex items-baseline gap-1">
-                  {p.priceMonthly === null ? (
-                    <span className="font-display font-bold text-5xl">Custom</span>
-                  ) : (
-                    <>
-                      <span className="font-display font-bold text-5xl">
-                        ${annual ? p.priceAnnual : p.priceMonthly}
-                      </span>
-                      <span className="text-paper/50 text-sm">/ month</span>
-                    </>
+              <div className="mt-6">
+                <div className="text-sm text-paper/50 mb-2">
+                  One-time setup: $1,200 AUD
+                </div>
+                <div className="flex items-baseline gap-2">
+                  <span className="font-display font-bold text-5xl">
+                    ${annual ? '413' : '589'}
+                  </span>
+                  <span className="text-paper/50 text-sm">/ month AUD</span>
+                  {annual && (
+                    <span className="text-[10px] bg-cyber-lime text-ink px-1.5 py-0.5 font-mono uppercase tracking-wider">
+                      Save 30%
+                    </span>
                   )}
                 </div>
-
-                <ul className="mt-8 space-y-3 flex-1">
-                  {p.features.map((f) => (
-                    <li key={f} className="flex items-start gap-3 text-sm text-paper/80">
-                      <Check className="w-4 h-4 shrink-0 mt-0.5 text-cyber-lime" />
-                      <span>{f}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <Button
-                  variant={p.featured ? 'primary' : 'secondary'}
-                  size="lg"
-                  className="mt-8 w-full"
-                  data-action={p.action}
-                >
-                  {p.cta}
-                </Button>
               </div>
-            </ScrollReveal>
-          ))}
+
+              <ul className="mt-8 space-y-3 flex-1">
+                {[
+                  '24/7 AI voice receptionist',
+                  'Job qualification & lead scoring',
+                  'Calendar booking automation',
+                  'SMS confirmations',
+                  'Monthly performance report',
+                ].map((f) => (
+                  <li key={f} className="flex items-start gap-3 text-sm text-paper/80">
+                    <Check className="w-4 h-4 shrink-0 mt-0.5 text-cyber-lime" />
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <Button
+                variant="primary"
+                size="lg"
+                className="mt-8 w-full"
+                data-action="pricing-starter"
+                onClick={() => window.open(brand.calLink, '_blank')}
+              >
+                Start Free Trial
+              </Button>
+            </div>
+          </ScrollReveal>
+
+          {/* Enterprise Plan */}
+          <ScrollReveal delay={0.08}>
+            <div className="relative h-full flex flex-col p-8 border border-surface-border bg-surface hover:border-paper/30 transition-all duration-300">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-surface border border-surface-border text-paper/70 font-mono text-[10px] uppercase tracking-widest px-3 py-1">
+                Custom
+              </div>
+              <div className="font-display font-bold text-2xl">Enterprise</div>
+              <div className="mt-1 text-sm text-paper/60 min-h-[2.5rem]">
+                Multi-location businesses, high call volumes, or custom integrations.
+              </div>
+
+              <div className="mt-6">
+                <span className="font-display font-bold text-5xl">Let&apos;s talk</span>
+              </div>
+
+              <div className="mt-6 space-y-3">
+                <a
+                  href="tel:+61424700797"
+                  className="flex items-center gap-2 text-sm text-paper/80 hover:text-cyber-cyan transition-colors"
+                >
+                  <span>📞</span>
+                  <span>+61 0424 700 797</span>
+                </a>
+                <a
+                  href="mailto:hellogizmooai@gmail.com"
+                  className="flex items-center gap-2 text-sm text-paper/80 hover:text-cyber-cyan transition-colors"
+                >
+                  <span>✉️</span>
+                  <span>hellogizmooai@gmail.com</span>
+                </a>
+              </div>
+
+              <div className="flex-1" />
+
+              <Button
+                variant="secondary"
+                size="lg"
+                className="mt-8 w-full"
+                data-action="pricing-enterprise"
+                onClick={() => window.open('tel:+61424700797')}
+              >
+                Talk to Enterprise
+              </Button>
+            </div>
+          </ScrollReveal>
         </div>
 
         <p className="mt-10 text-center text-xs text-paper/40 font-mono">
-          All plans include a 14-day free trial. Cancel anytime.
+          All plans include a 14-day free trial. Cancel anytime. No lock-in contracts.
         </p>
       </div>
     </section>

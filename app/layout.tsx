@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google';
 import { brand } from '@/lib/brand';
+import { CookieBanner } from '@/components/CookieBanner';
 import './globals.css';
 
 const inter = Inter({
@@ -28,31 +29,44 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(brand.url),
-  title: {
-    default: `${brand.name} — ${brand.tagline}`,
-    template: `%s · ${brand.name}`,
-  },
-  description: brand.description,
+  metadataBase: new URL('https://gizmoo.me'),
+  title: 'Gizmoo AI — AI Voice Receptionist for Australian Tradies',
+  description:
+    'Never miss a call. Gizmoo AI answers your phone 24/7, qualifies jobs, and books customers directly into your calendar. Built for Australian plumbers, electricians, HVAC, and builders.',
   keywords: [
-    'Gizmoo AI',
-    'AI agents',
-    'autonomous AI',
-    'AI automation',
-    'AI developer tools',
-    'AI platform',
+    'AI voice receptionist Australia',
+    'AI phone answering tradies',
+    'automated call answering plumber Sydney',
+    'AI receptionist electrician HVAC',
+    'missed call solution tradie Australia',
+    'AI booking system trade business',
+    '24/7 phone answering small business Australia',
   ],
+  alternates: { canonical: 'https://gizmoo.me' },
+  icons: { icon: '/favicon-32.png', shortcut: '/favicon-32.png', apple: '/apple-touch-icon.png' },
   openGraph: {
-    title: `${brand.name} — ${brand.tagline}`,
-    description: brand.description,
-    url: brand.url,
-    siteName: brand.name,
+    title: 'Gizmoo AI — AI Voice Receptionist for Australian Tradies',
+    description:
+      'Never miss a call. 24/7 AI phone answering for plumbers, electricians, HVAC and builders.',
+    url: 'https://gizmoo.me',
+    images: [
+      {
+        url: 'https://gizmoo.me/api/og',
+        width: 1200,
+        height: 630,
+        alt: 'Gizmoo AI',
+      },
+    ],
+    siteName: 'Gizmoo AI',
+    locale: 'en_AU',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${brand.name} — ${brand.tagline}`,
-    description: brand.description,
+    title: 'Gizmoo AI — AI Voice Receptionist for Australian Tradies',
+    description:
+      'Never miss a call. 24/7 AI phone answering for plumbers, electricians, HVAC and builders.',
+    images: ['https://gizmoo.me/api/og'],
   },
   robots: { index: true, follow: true },
 };
@@ -63,8 +77,29 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} dark`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'LocalBusiness',
+              name: 'Gizmoo AI',
+              description: 'AI voice receptionist for Australian trade businesses. 24/7 automated call answering, job qualification, and calendar booking.',
+              url: 'https://gizmoo.me',
+              telephone: '+61489072416',
+              email: 'hellogizmooai@gmail.com',
+              address: { '@type': 'PostalAddress', addressRegion: 'NSW', addressCountry: 'AU' },
+              areaServed: { '@type': 'Country', name: 'Australia' },
+              serviceType: 'AI Voice Receptionist',
+              priceRange: '$$',
+            }),
+          }}
+        />
+      </head>
       <body className="font-sans bg-ink text-paper antialiased overflow-x-hidden">
         {children}
+        <CookieBanner />
       </body>
     </html>
   );
