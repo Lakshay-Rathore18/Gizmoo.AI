@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { SignInButton, Show, UserButton } from '@clerk/nextjs';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
@@ -65,22 +66,24 @@ export function Nav() {
         </ul>
 
         <div className="hidden md:flex items-center gap-3">
-          <Button
-            variant="ghost"
-            size="sm"
-            data-action="sign-in"
-            onClick={() => alert('Client portal coming soon — contact us at hellogizmooai@gmail.com')}
-          >
-            Sign in
-          </Button>
-          <Button
-            variant="primary"
-            size="sm"
-            data-action="get-started"
-            onClick={() => window.open(brand.calLink, '_blank')}
-          >
-            Get Started
-          </Button>
+          <Show when="signed-out">
+            <SignInButton mode="modal">
+              <Button variant="ghost" size="sm" data-action="sign-in">
+                Sign in
+              </Button>
+            </SignInButton>
+            <Button
+              variant="primary"
+              size="sm"
+              data-action="get-started"
+              onClick={() => window.open(brand.calLink, '_blank')}
+            >
+              Get Started
+            </Button>
+          </Show>
+          <Show when="signed-in">
+            <UserButton />
+          </Show>
         </div>
 
         <button

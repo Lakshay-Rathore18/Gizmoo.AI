@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google';
+import { ClerkProvider } from '@clerk/nextjs';
 import { brand } from '@/lib/brand';
 import { CookieBanner } from '@/components/CookieBanner';
 import './globals.css';
@@ -98,8 +99,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="font-sans bg-ink text-paper antialiased overflow-x-hidden">
-        {children}
-        <CookieBanner />
+        <ClerkProvider>
+          {children}
+          <CookieBanner />
+        </ClerkProvider>
       </body>
     </html>
   );
