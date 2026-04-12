@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { SignInButton, Show, UserButton } from '@clerk/nextjs';
+import { SignInButton, UserButton, useAuth } from '@clerk/nextjs';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
@@ -17,6 +17,7 @@ const links = [
 ];
 
 export function Nav() {
+  const { isLoaded, isSignedIn } = useAuth();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -66,24 +67,25 @@ export function Nav() {
         </ul>
 
         <div className="hidden md:flex items-center gap-3">
-          <Show when="signed-out">
-            <SignInButton mode="modal">
-              <Button variant="ghost" size="sm" data-action="sign-in">
-                Sign in
-              </Button>
-            </SignInButton>
-            <Button
-              variant="primary"
-              size="sm"
-              data-action="get-started"
-              onClick={() => window.open(brand.calLink, '_blank')}
-            >
-              Get Started
-            </Button>
-          </Show>
-          <Show when="signed-in">
+          {isLoaded && isSignedIn ? (
             <UserButton />
-          </Show>
+          ) : (
+            <>
+              <SignInButton mode="modal">
+                <Button variant="ghost" size="sm" data-action="sign-in">
+                  Sign in
+                </Button>
+              </SignInButton>
+              <Button
+                variant="primary"
+                size="sm"
+                data-action="get-started"
+                onClick={() => window.open(brand.calLink, '_blank')}
+              >
+                Get Started
+              </Button>
+            </>
+          )}
         </div>
 
         <button
