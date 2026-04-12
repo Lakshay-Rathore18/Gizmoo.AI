@@ -26,7 +26,7 @@ export function CTASection() {
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full bg-cyber-violet/20 blur-[120px] pointer-events-none"
       />
 
-      <div className="relative max-w-4xl mx-auto px-6 md:px-10 text-center">
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.span
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

@@ -67,7 +67,7 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
   }, []);
 
   return (
-    <div ref={ref} className={cn('w-full h-full', className)}>
+    <div ref={ref} className={cn('w-full h-full', className)} style={{ width: '100%', height: '100%', touchAction: 'none' }}>
       {inView ? (
         <SplineErrorBoundary fallback={fallback}>
           <Suspense fallback={fallback}>

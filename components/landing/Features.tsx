@@ -56,7 +56,7 @@ export function Features() {
     <section id="features" className="relative py-24 md:py-36 bg-ink">
       <div aria-hidden className="absolute inset-0 bg-grid opacity-20" />
 
-      <div className="relative max-w-7xl mx-auto px-6 md:px-10">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="max-w-3xl">
             <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-cyber-cyan">

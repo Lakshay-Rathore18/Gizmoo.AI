@@ -26,9 +26,10 @@ export function ScrollReveal({ children, className, delay = 0, y = 32 }: ScrollR
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-80px' }}
+      viewport={{ once: true, margin: '-50px' }}
       variants={variants}
       className={className}
+      style={{ willChange: 'transform' }}
     >
       {children}
     </motion.div>

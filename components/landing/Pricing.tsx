@@ -12,7 +12,7 @@ export function Pricing() {
 
   return (
     <section id="pricing" className="relative py-24 md:py-36 bg-ink">
-      <div className="max-w-7xl mx-auto px-6 md:px-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="text-center max-w-3xl mx-auto">
             <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-cyber-cyan">
@@ -29,8 +29,9 @@ export function Pricing() {
             <div className="mt-10 inline-flex items-center gap-1 border border-surface-border p-1 bg-surface">
               <button
                 onClick={() => setAnnual(false)}
+                style={{ touchAction: 'manipulation' }}
                 className={cn(
-                  'px-5 py-2 text-sm font-mono uppercase tracking-wider transition-colors',
+                  'px-5 py-2 text-sm font-mono uppercase tracking-wider transition-colors min-h-[44px]',
                   !annual ? 'bg-paper text-ink' : 'text-paper/60',
                 )}
               >
@@ -38,8 +39,9 @@ export function Pricing() {
               </button>
               <button
                 onClick={() => setAnnual(true)}
+                style={{ touchAction: 'manipulation' }}
                 className={cn(
-                  'px-5 py-2 text-sm font-mono uppercase tracking-wider transition-colors flex items-center gap-2',
+                  'px-5 py-2 text-sm font-mono uppercase tracking-wider transition-colors flex items-center gap-2 min-h-[44px]',
                   annual ? 'bg-paper text-ink' : 'text-paper/60',
                 )}
               >

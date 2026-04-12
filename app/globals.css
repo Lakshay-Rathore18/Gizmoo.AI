@@ -6,11 +6,17 @@
   color-scheme: dark;
 }
 
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 html,
 body {
   background: #000;
   color: #fff;
   -webkit-font-smoothing: antialiased;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
   text-rendering: optimizeLegibility;
 }
 

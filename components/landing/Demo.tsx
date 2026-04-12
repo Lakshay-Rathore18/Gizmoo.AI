@@ -75,7 +75,7 @@ export function Demo() {
         className="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-cyber-violet/20 blur-3xl pointer-events-none"
       />
 
-      <div className="relative max-w-7xl mx-auto px-6 md:px-10">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="max-w-3xl">
             <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-cyber-violet">
@@ -99,8 +99,9 @@ export function Demo() {
                   <button
                     key={t.id}
                     onClick={() => setActive(t.id)}
+                    style={{ touchAction: 'manipulation' }}
                     className={cn(
-                      'flex items-center gap-2 px-4 py-2.5 text-sm font-mono transition-colors whitespace-nowrap',
+                      'flex items-center gap-2 px-4 py-2.5 text-sm font-mono transition-colors whitespace-nowrap min-h-[44px]',
                       active === t.id
                         ? 'text-cyber-cyan border-b-2 border-cyber-cyan -mb-px bg-cyber-cyan/5'
                         : 'text-paper/50 hover:text-paper',

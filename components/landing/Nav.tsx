@@ -2,11 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { SignInButton, UserButton, useAuth } from '@clerk/nextjs';
+import { SignInButton, Show, UserButton } from '@clerk/nextjs';
 import { Menu, X } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
-import { brand } from '@/lib/brand';
 
 const links = [
   { href: '#features', label: 'Features' },
@@ -17,7 +15,6 @@ const links = [
 ];
 
 export function Nav() {
-  const { isLoaded, isSignedIn } = useAuth();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -38,7 +35,7 @@ export function Nav() {
       )}
     >
       <nav
-        className="max-w-7xl mx-auto px-6 md:px-10 h-16 md:h-20 flex items-center justify-between"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex items-center justify-between"
         aria-label="Primary"
       >
         <a href="#top" className="flex items-center">
@@ -47,6 +44,7 @@ export function Nav() {
             alt="Gizmoo AI"
             width={140}
             height={36}
+            loading="eager"
             priority
             className="h-7 md:h-9 w-auto"
           />
@@ -67,32 +65,31 @@ export function Nav() {
         </ul>
 
         <div className="hidden md:flex items-center gap-3">
-          {isLoaded && isSignedIn ? (
+          <Show when="signed-out">
+            <SignInButton mode="modal" forceRedirectUrl="/">
+              <button className="text-sm font-medium text-white/70 hover:text-white transition-colors px-3 py-2 cursor-pointer" style={{ touchAction: 'manipulation' }}>
+                Sign In
+              </button>
+            </SignInButton>
+            <button
+              onClick={() => window.open('https://cal.com/lakshay-rathore-eaosso/demo-booking', '_blank')}
+              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors"
+              style={{ touchAction: 'manipulation' }}
+            >
+              Get Started
+            </button>
+          </Show>
+          <Show when="signed-in">
             <UserButton />
-          ) : (
-            <>
-              <SignInButton mode="modal">
-                <Button variant="ghost" size="sm" data-action="sign-in">
-                  Sign in
-                </Button>
-              </SignInButton>
-              <Button
-                variant="primary"
-                size="sm"
-                data-action="get-started"
-                onClick={() => window.open(brand.calLink, '_blank')}
-              >
-                Get Started
-              </Button>
-            </>
-          )}
+          </Show>
         </div>
 
         <button
-          className="md:hidden p-2 text-paper"
+          className="md:hidden p-2 text-paper min-w-[44px] min-h-[44px] flex items-center justify-center"
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
           aria-expanded={open}
+          style={{ touchAction: 'manipulation' }}
         >
           {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
@@ -100,28 +97,37 @@ export function Nav() {
 
       {open && (
         <div className="md:hidden border-t border-surface-border bg-ink/90 backdrop-blur-xl">
-          <ul className="px-6 py-6 flex flex-col gap-4">
+          <ul className="px-4 sm:px-6 py-6 flex flex-col gap-4">
             {links.map((l) => (
               <li key={l.href}>
                 <a
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="block text-paper/80 hover:text-cyber-cyan py-2"
+                  className="block text-paper/80 hover:text-cyber-cyan py-2 min-h-[44px] flex items-center"
+                  style={{ touchAction: 'manipulation' }}
                 >
                   {l.label}
                 </a>
               </li>
             ))}
             <li className="pt-4">
-              <Button
-                variant="primary"
-                size="md"
-                className="w-full"
-                data-action="get-started"
-                onClick={() => window.open(brand.calLink, '_blank')}
-              >
-                Get Started
-              </Button>
+              <Show when="signed-out">
+                <SignInButton mode="modal" forceRedirectUrl="/">
+                  <button className="w-full text-sm font-medium text-white/70 hover:text-white transition-colors px-3 py-3 border border-surface-border mb-3 min-h-[44px] cursor-pointer" style={{ touchAction: 'manipulation' }}>
+                    Sign In
+                  </button>
+                </SignInButton>
+                <button
+                  onClick={() => window.open('https://cal.com/lakshay-rathore-eaosso/demo-booking', '_blank')}
+                  className="w-full px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors min-h-[44px]"
+                  style={{ touchAction: 'manipulation' }}
+                >
+                  Get Started
+                </button>
+              </Show>
+              <Show when="signed-in">
+                <UserButton />
+              </Show>
             </li>
           </ul>
         </div>

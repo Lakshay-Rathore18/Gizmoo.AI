@@ -50,7 +50,7 @@ export function Footer() {
 
   return (
     <footer className="relative border-t border-surface-border bg-ink">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 pt-20 pb-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12">
         <div className="grid grid-cols-1 lg:grid-cols-6 gap-12 lg:gap-8">
           <div className="lg:col-span-2">
             <a href="#top" className="inline-block w-fit">

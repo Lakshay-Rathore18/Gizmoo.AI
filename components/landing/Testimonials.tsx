@@ -41,7 +41,7 @@ export function Testimonials() {
   return (
     <section id="testimonials" className="relative py-24 md:py-36 bg-ink border-y border-surface-border overflow-hidden">
       <ScrollReveal>
-        <div className="max-w-7xl mx-auto px-6 md:px-10 mb-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
           <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-cyber-violet">
             {'// 05 — What our customers say'}
           </span>

@@ -54,7 +54,7 @@ export function FAQ() {
 
   return (
     <section id="faq" className="relative py-24 md:py-36 bg-surface">
-      <div className="max-w-4xl mx-auto px-6 md:px-10">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div>
             <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-cyber-lime">
@@ -74,7 +74,8 @@ export function FAQ() {
               <div key={item.q} className="border-b border-surface-border">
                 <button
                   onClick={() => setOpenIdx(open ? null : i)}
-                  className="w-full flex items-center justify-between gap-6 py-6 text-left group"
+                  className="w-full flex items-center justify-between gap-6 py-6 text-left group min-h-[44px]"
+                  style={{ touchAction: 'manipulation' }}
                   aria-expanded={open}
                 >
                   <span
