@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { SignInButton } from '@clerk/nextjs';
+import { useClerk } from '@clerk/nextjs';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import GizmooLogo from '@/components/ui/GizmooLogo';
@@ -18,6 +18,16 @@ const links = [
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const clerk = useClerk();
+
+  const handleSignIn = () => {
+    setOpen(false);
+    if (clerk.loaded) {
+      clerk.openSignIn({});
+    } else {
+      window.location.href = '/sign-in';
+    }
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -58,14 +68,13 @@ export function Nav() {
         </ul>
 
         <div className="hidden md:flex items-center gap-3">
-          <SignInButton mode="modal">
-            <button
-              className="text-sm font-medium text-white/70 hover:text-white transition-colors duration-200 px-3 py-2 cursor-pointer"
-              style={{ touchAction: 'manipulation' }}
-            >
-              Sign In
-            </button>
-          </SignInButton>
+          <button
+            onClick={handleSignIn}
+            className="text-sm font-medium text-white/70 hover:text-white transition-colors duration-200 px-3 py-2 cursor-pointer"
+            style={{ touchAction: 'manipulation' }}
+          >
+            Sign In
+          </button>
           <button
             onClick={() => window.open('https://cal.com/lakshay-rathore-eaosso/demo-booking', '_blank')}
             className="px-4 py-2 bg-blue-600 hover:bg-blue-500 active:bg-blue-800 text-white text-sm font-medium rounded-lg transition-colors duration-200 shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.5)]"
@@ -132,16 +141,15 @@ export function Nav() {
                 ))}
               </ul>
               <div className="px-4 pt-4 border-t border-white/10 flex flex-col gap-3">
-                <SignInButton mode="modal">
-                  <button
-                    className="w-full text-sm font-medium text-white/70 hover:text-white transition-colors px-3 py-3 border border-white/20 rounded-lg min-h-[44px] cursor-pointer"
-                    style={{ touchAction: 'manipulation' }}
-                  >
-                    Sign In
-                  </button>
-                </SignInButton>
                 <button
-                  onClick={() => window.open('https://cal.com/lakshay-rathore-eaosso/demo-booking', '_blank')}
+                  onClick={handleSignIn}
+                  className="w-full text-sm font-medium text-white/70 hover:text-white transition-colors px-3 py-3 border border-white/20 rounded-lg min-h-[44px] cursor-pointer"
+                  style={{ touchAction: 'manipulation' }}
+                >
+                  Sign In
+                </button>
+                <button
+                  onClick={() => { setOpen(false); window.open('https://cal.com/lakshay-rathore-eaosso/demo-booking', '_blank'); }}
                   className="w-full px-4 py-3 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium rounded-lg transition-colors min-h-[44px]"
                   style={{ touchAction: 'manipulation' }}
                 >
