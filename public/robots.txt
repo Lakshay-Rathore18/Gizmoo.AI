@@ -1,4 +1,61 @@
+# Gizmoo AI — robots.txt
+# SEO + AEO + GEO optimized
+
+# Allow all standard search engines
 User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /sign-in
+Disallow: /sign-up
+
+# Google Search and AI (Gemini)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Bing Search and AI (Copilot)
+User-agent: Bingbot
+Allow: /
+
+# OpenAI / ChatGPT — allow indexing for GEO
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic / Claude — allow indexing for GEO
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+# Perplexity — allow for answer engine visibility
+User-agent: PerplexityBot
+Allow: /
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+# Apple (Siri, Spotlight)
+User-agent: Applebot
+Allow: /
+
+# Common AI research crawlers
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: CCBot
 Allow: /
 
 Sitemap: https://gizmoo.me/sitemap.xml

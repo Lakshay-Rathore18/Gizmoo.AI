@@ -3,7 +3,17 @@ import type { Metadata } from 'next';
 import { Nav } from '@/components/landing/Nav';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service',
+  title: 'Terms of Service — Gizmoo AI',
+  description: 'Gizmoo AI Terms of Service. Covers free trial, pricing, cancellation policy, acceptable use, and liability for our AI voice receptionist service in Australia.',
+  alternates: { canonical: 'https://gizmoo.me/terms' },
+  openGraph: {
+    title: 'Terms of Service — Gizmoo AI',
+    description: 'Terms of Service for Gizmoo AI voice receptionist. No lock-in contracts, cancel anytime.',
+    url: 'https://gizmoo.me/terms',
+    siteName: 'Gizmoo AI',
+    locale: 'en_AU',
+    type: 'website',
+  },
 };
 
 export default function TermsPage() {

@@ -1,9 +1,27 @@
-import { MetadataRoute } from 'next'
+import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = 'https://gizmoo.me';
+  const now = new Date();
+
   return [
-    { url: 'https://gizmoo.me', lastModified: new Date() },
-    { url: 'https://gizmoo.me/privacy', lastModified: new Date() },
-    { url: 'https://gizmoo.me/terms', lastModified: new Date() },
-  ]
+    {
+      url: baseUrl,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 1.0,
+    },
+    {
+      url: `${baseUrl}/privacy`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/terms`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.3,
+    },
+  ];
 }

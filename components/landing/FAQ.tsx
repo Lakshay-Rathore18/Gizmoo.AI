@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Plus } from 'lucide-react';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
 import { cn } from '@/lib/utils';
@@ -73,6 +72,7 @@ export function FAQ() {
             return (
               <div key={item.q} className="border-b border-surface-border">
                 <button
+                  id={`faq-q-${i}`}
                   onClick={() => setOpenIdx(open ? null : i)}
                   className="w-full flex items-center justify-between gap-6 py-6 text-left group min-h-[44px]"
                   style={{ touchAction: 'manipulation' }}
@@ -95,19 +95,13 @@ export function FAQ() {
                     <Plus className="w-4 h-4" />
                   </span>
                 </button>
-                <AnimatePresence initial={false}>
-                  {open && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                      className="overflow-hidden"
-                    >
-                      <p className="pb-6 pr-14 text-paper/70 leading-relaxed">{item.a}</p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                <div
+                  role="region"
+                  aria-labelledby={`faq-q-${i}`}
+                  className={cn('overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]', open ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0')}
+                >
+                  <p className="pb-6 pr-14 text-paper/70 leading-relaxed">{item.a}</p>
+                </div>
               </div>
             );
           })}

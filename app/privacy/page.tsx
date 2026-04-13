@@ -3,7 +3,17 @@ import type { Metadata } from 'next';
 import { Nav } from '@/components/landing/Nav';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy',
+  title: 'Privacy Policy — Gizmoo AI',
+  description: 'How Gizmoo AI collects, uses, and protects your data. Compliant with the Australian Privacy Act 1988. Learn about call recordings, caller information, and your rights.',
+  alternates: { canonical: 'https://gizmoo.me/privacy' },
+  openGraph: {
+    title: 'Privacy Policy — Gizmoo AI',
+    description: 'How Gizmoo AI collects, uses, and protects your data under Australian privacy law.',
+    url: 'https://gizmoo.me/privacy',
+    siteName: 'Gizmoo AI',
+    locale: 'en_AU',
+    type: 'website',
+  },
 };
 
 export default function PrivacyPage() {
