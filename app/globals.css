@@ -4,10 +4,24 @@
 
 :root {
   color-scheme: dark;
+  --gizmoo-blue: #3B82F6;
+  --gizmoo-blue-glow: rgba(59, 130, 246, 0.15);
+  --gizmoo-bg: #0a0a0a;
+  --gizmoo-surface: #111111;
+  --gizmoo-surface-2: #1a1a1a;
+  --gizmoo-border: rgba(255, 255, 255, 0.08);
+  --gizmoo-text: #ffffff;
+  --gizmoo-text-muted: rgba(255, 255, 255, 0.6);
 }
 
 * {
   -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 html,
@@ -15,9 +29,19 @@ body {
   background: #000;
   color: #fff;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   -webkit-overflow-scrolling: touch;
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
+}
+
+button, a, [role="button"] {
+  touch-action: manipulation;
+  cursor: pointer;
+}
+
+@supports (-webkit-touch-callout: none) {
+  .min-h-screen { min-height: -webkit-fill-available; }
 }
 
 ::selection {

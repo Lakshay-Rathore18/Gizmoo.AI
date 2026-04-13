@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import { ArrowUp } from 'lucide-react';
 import Link from 'next/link';
+import GizmooLogo from '@/components/ui/GizmooLogo';
 import { brand } from '@/lib/brand';
 
 const columns = [
@@ -54,13 +54,7 @@ export function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-6 gap-12 lg:gap-8">
           <div className="lg:col-span-2">
             <a href="#top" className="inline-block w-fit">
-              <Image
-                src="/logo.png"
-                alt="Gizmoo AI"
-                width={120}
-                height={31}
-                className="h-7 w-auto opacity-90"
-              />
+              <GizmooLogo className="h-7 w-auto opacity-80" />
             </a>
             <p className="mt-4 text-sm text-paper/60 max-w-xs leading-relaxed">
               The AI voice receptionist that answers every call, books every appointment, 24/7.
