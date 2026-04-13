@@ -10,7 +10,7 @@ interface ScrollRevealProps {
   y?: number;
 }
 
-export function ScrollReveal({ children, className, delay = 0, y = 32 }: ScrollRevealProps) {
+export function ScrollReveal({ children, className, delay = 0, y = 24 }: ScrollRevealProps) {
   const reduce = useReducedMotion();
 
   const variants: Variants = {
@@ -26,7 +26,7 @@ export function ScrollReveal({ children, className, delay = 0, y = 32 }: ScrollR
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-50px' }}
+      viewport={{ once: true, amount: 0.05 }}
       variants={variants}
       className={className}
       style={{ willChange: 'transform' }}

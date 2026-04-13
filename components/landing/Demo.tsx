@@ -3,9 +3,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PhoneIncoming, CalendarCheck, PhoneOutgoing, Plug, CheckCircle2 } from 'lucide-react';
-import { SplineScene } from '@/components/ui/SplineScene';
+import { AIAgentVisual } from '@/components/ui/AIAgentVisual';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
-import { brand } from '@/lib/brand';
 import { cn } from '@/lib/utils';
 
 const tabs = [
@@ -163,7 +162,7 @@ export function Demo() {
 
           <ScrollReveal className="lg:col-span-2" delay={0.2}>
             <div className="relative h-full min-h-[360px] bg-white/[0.02] border border-white/[0.08] rounded-2xl overflow-hidden">
-              <SplineScene scene={brand.spline.demo} className="w-full h-full" />
+              <AIAgentVisual className="w-full h-full" />
               <div
                 aria-hidden
                 className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent"

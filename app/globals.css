@@ -137,9 +137,9 @@ button, a, [role="button"] {
   background: #00e5ff;
 }
 
-/* CSS containment for sections */
+/* CSS containment for sections — style only, layout breaks IntersectionObserver on mobile */
 section {
-  contain: layout style;
+  contain: style;
 }
 
 /* Respect reduced motion */

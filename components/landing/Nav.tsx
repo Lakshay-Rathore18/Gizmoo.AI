@@ -58,7 +58,7 @@ export function Nav() {
         </ul>
 
         <div className="hidden md:flex items-center gap-3">
-          <Show when="signed-out">
+          <Show when="signed-out" treatPendingAsSignedOut>
             <SignInButton mode="modal" forceRedirectUrl="/">
               <button
                 className="text-sm font-medium text-white/70 hover:text-white transition-colors duration-200 px-3 py-2 cursor-pointer"
@@ -137,7 +137,7 @@ export function Nav() {
                 ))}
               </ul>
               <div className="px-4 pt-4 border-t border-white/10 flex flex-col gap-3">
-                <Show when="signed-out">
+                <Show when="signed-out" treatPendingAsSignedOut>
                   <SignInButton mode="modal" forceRedirectUrl="/">
                     <button
                       className="w-full text-sm font-medium text-white/70 hover:text-white transition-colors px-3 py-3 border border-white/20 min-h-[44px] cursor-pointer"
