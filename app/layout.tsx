@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google';
 import { ClerkProvider } from '@clerk/nextjs';
+import { dark } from '@clerk/themes';
 import { brand } from '@/lib/brand';
 import { CookieBanner } from '@/components/CookieBanner';
 import './globals.css';
@@ -335,6 +336,28 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
           signInForceRedirectUrl="/"
           signUpForceRedirectUrl="/"
+          appearance={{
+            baseTheme: dark,
+            variables: {
+              colorPrimary: '#3B82F6',
+              colorBackground: '#0a0a0a',
+              colorInputBackground: '#111111',
+              colorInputText: '#ffffff',
+              colorText: '#ffffff',
+              colorTextSecondary: 'rgba(255,255,255,0.6)',
+              borderRadius: '0.75rem',
+            },
+            elements: {
+              card: 'bg-[#0a0a0a] border border-white/[0.08] shadow-[0_0_40px_rgba(59,130,246,0.15)]',
+              headerTitle: 'text-white',
+              headerSubtitle: 'text-white/60',
+              socialButtonsBlockButton: 'bg-white/[0.05] border-white/[0.08] hover:bg-white/[0.08] text-white',
+              formFieldInput: 'bg-[#111111] border-white/[0.08] text-white',
+              formButtonPrimary: 'bg-blue-600 hover:bg-blue-500 shadow-[0_0_20px_rgba(59,130,246,0.3)]',
+              footerActionLink: 'text-blue-400 hover:text-blue-300',
+              modalCloseButton: 'text-white/60 hover:text-white',
+            },
+          }}
         >
           {children}
           <CookieBanner />
