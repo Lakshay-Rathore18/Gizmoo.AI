@@ -26,13 +26,13 @@ export function Pricing() {
               No credit card required. No contracts. No surprises. Cancel anytime.
             </p>
 
-            <div className="mt-10 inline-flex items-center gap-1 border border-surface-border p-1 bg-surface">
+            <div className="mt-10 inline-flex items-center gap-1 border border-white/[0.08] p-1 bg-white/[0.03] rounded-full">
               <button
                 onClick={() => setAnnual(false)}
                 style={{ touchAction: 'manipulation' }}
                 className={cn(
-                  'px-5 py-2 text-sm font-mono uppercase tracking-wider transition-colors min-h-[44px]',
-                  !annual ? 'bg-paper text-ink' : 'text-paper/60',
+                  'px-5 py-2 text-sm font-mono uppercase tracking-wider transition-colors min-h-[44px] rounded-full',
+                  !annual ? 'bg-white text-ink' : 'text-paper/60',
                 )}
               >
                 Monthly
@@ -41,8 +41,8 @@ export function Pricing() {
                 onClick={() => setAnnual(true)}
                 style={{ touchAction: 'manipulation' }}
                 className={cn(
-                  'px-5 py-2 text-sm font-mono uppercase tracking-wider transition-colors flex items-center gap-2 min-h-[44px]',
-                  annual ? 'bg-paper text-ink' : 'text-paper/60',
+                  'px-5 py-2 text-sm font-mono uppercase tracking-wider transition-colors flex items-center gap-2 min-h-[44px] rounded-full',
+                  annual ? 'bg-white text-ink' : 'text-paper/60',
                 )}
               >
                 Annual
@@ -55,8 +55,8 @@ export function Pricing() {
         <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {/* Starter Plan */}
           <ScrollReveal delay={0}>
-            <div className="relative h-full flex flex-col p-8 border border-cyber-cyan bg-surface holo-border -translate-y-2 shadow-[0_24px_64px_-16px_rgba(0,229,255,0.3)] transition-all duration-300">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-cyber-cyan text-ink font-mono text-[10px] uppercase tracking-widest px-3 py-1">
+            <div className="relative h-full flex flex-col p-8 border border-blue-500/50 rounded-2xl -translate-y-2 shadow-[0_0_40px_rgba(59,130,246,0.15)] transition-all duration-300" style={{ background: 'linear-gradient(135deg, rgba(59,130,246,0.05) 0%, transparent 100%)' }}>
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-full">
                 14-Day Free Trial
               </div>
               <div className="font-display font-bold text-2xl">Starter</div>
@@ -110,8 +110,8 @@ export function Pricing() {
 
           {/* Enterprise Plan */}
           <ScrollReveal delay={0.08}>
-            <div className="relative h-full flex flex-col p-8 border border-surface-border bg-surface hover:border-paper/30 transition-all duration-300">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-surface border border-surface-border text-paper/70 font-mono text-[10px] uppercase tracking-widest px-3 py-1">
+            <div className="relative h-full flex flex-col p-8 border border-white/[0.08] bg-white/[0.02] rounded-2xl hover:border-white/20 transition-all duration-300">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white/[0.06] border border-white/[0.08] text-paper/70 font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-full">
                 Custom
               </div>
               <div className="font-display font-bold text-2xl">Enterprise</div>

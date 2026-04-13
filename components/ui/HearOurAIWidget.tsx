@@ -22,8 +22,8 @@ export function HearOurAIWidget({ phoneNumber, className }: HearOurAIWidgetProps
       transition={{ duration: 0.8, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
         'group relative block w-full max-w-lg',
-        'bg-ink/60 backdrop-blur-xl border border-surface-border',
-        'p-6 md:p-7 holo-border',
+        'bg-white/[0.03] backdrop-blur-xl border border-white/[0.08]',
+        'p-6 md:p-7 rounded-2xl',
         'hover:-translate-y-1 transition-transform duration-300',
         className,
       )}
@@ -101,7 +101,7 @@ export function HearOurAIWidget({ phoneNumber, className }: HearOurAIWidgetProps
       </div>
 
       {/* Hover CTA strip */}
-      <div className="relative mt-5 pt-5 border-t border-surface-border flex items-center justify-between">
+      <div className="relative mt-5 pt-5 border-t border-white/[0.08] flex items-center justify-between">
         <span className="font-mono text-[10px] uppercase tracking-widest text-paper/50">
           Free · No signup · Live AI
         </span>

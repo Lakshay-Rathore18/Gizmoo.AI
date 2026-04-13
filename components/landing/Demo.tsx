@@ -93,8 +93,8 @@ export function Demo() {
 
         <div className="mt-16 grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-8">
           <ScrollReveal className="lg:col-span-3" delay={0.1}>
-            <div className="holo-border bg-ink">
-              <div className="flex items-center gap-1 border-b border-surface-border px-3 pt-3 overflow-x-auto">
+            <div className="bg-white/[0.02] border border-white/[0.08] rounded-2xl overflow-hidden">
+              <div className="flex items-center gap-1 border-b border-white/[0.06] px-3 pt-3 overflow-x-auto">
                 {tabs.map((t) => (
                   <button
                     key={t.id}
@@ -162,7 +162,7 @@ export function Demo() {
           </ScrollReveal>
 
           <ScrollReveal className="lg:col-span-2" delay={0.2}>
-            <div className="relative h-full min-h-[360px] bg-ink border border-surface-border overflow-hidden">
+            <div className="relative h-full min-h-[360px] bg-white/[0.02] border border-white/[0.08] rounded-2xl overflow-hidden">
               <SplineScene scene={brand.spline.demo} className="w-full h-full" />
               <div
                 aria-hidden

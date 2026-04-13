@@ -51,7 +51,7 @@ export function LiveCallDashboard({ className }: { className?: string }) {
   return (
     <div className={className}>
       {/* Stats bar */}
-      <div className="grid grid-cols-4 gap-px bg-surface-border mb-px">
+      <div className="grid grid-cols-4 gap-px bg-white/[0.06] mb-px">
         {stats.map((s) => (
           <div key={s.label} className="bg-ink px-3 py-2.5 text-center">
             <div className="font-display font-bold text-sm text-paper">{s.value}</div>
@@ -90,7 +90,7 @@ export function LiveCallDashboard({ className }: { className?: string }) {
       </AnimatePresence>
 
       {/* Call feed */}
-      <div className="divide-y divide-surface-border">
+      <div className="divide-y divide-white/[0.06]">
         <AnimatePresence mode="sync" initial={false}>
           {visibleCalls.map((call, i) => (
             <motion.div
@@ -131,7 +131,7 @@ export function LiveCallDashboard({ className }: { className?: string }) {
       </div>
 
       {/* Bottom bar - waveform */}
-      <div className="border-t border-surface-border px-4 py-2.5 flex items-center gap-3">
+      <div className="border-t border-white/[0.06] px-4 py-2.5 flex items-center gap-3">
         <CalendarCheck className="w-3.5 h-3.5 text-cyber-lime" />
         <span className="font-mono text-[9px] uppercase tracking-widest text-paper/40">31 appointments booked today</span>
         <div className="ml-auto flex items-end gap-[2px] h-4">

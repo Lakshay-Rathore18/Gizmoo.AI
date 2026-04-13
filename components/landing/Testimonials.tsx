@@ -39,7 +39,7 @@ const quotes = [
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="relative py-24 md:py-36 bg-ink border-y border-surface-border overflow-hidden">
+    <section id="testimonials" className="relative py-24 md:py-36 bg-ink border-y border-white/[0.06] overflow-hidden">
       <ScrollReveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
           <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-cyber-violet">
@@ -56,7 +56,7 @@ export function Testimonials() {
         {quotes.map((q, i) => (
           <figure
             key={i}
-            className="w-[380px] md:w-[460px] shrink-0 bg-surface border border-surface-border p-7 hover:border-cyber-cyan/40 transition-colors"
+            className="w-[380px] md:w-[460px] shrink-0 bg-white/[0.03] border border-white/[0.08] backdrop-blur-sm rounded-2xl p-7 hover:border-blue-500/30 transition-all duration-300"
           >
             <div className="flex gap-1 mb-4">
               {Array.from({ length: 5 }).map((_, j) => (
@@ -66,7 +66,7 @@ export function Testimonials() {
             <blockquote className="text-paper text-base leading-relaxed">
               &ldquo;{q.text}&rdquo;
             </blockquote>
-            <figcaption className="mt-6 pt-4 border-t border-surface-border">
+            <figcaption className="mt-6 pt-4 border-t border-white/[0.08]">
               <div className="font-display font-bold text-sm">{q.name}</div>
               <div className="font-mono text-[11px] text-paper/50">{q.role}</div>
             </figcaption>

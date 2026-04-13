@@ -20,13 +20,13 @@ const brands = [
 
 export function SocialProof() {
   return (
-    <section className="relative py-16 md:py-24 border-y border-surface-border bg-ink" aria-label="Trusted by">
+    <section className="relative py-16 md:py-24 border-y border-white/[0.06] bg-ink" aria-label="Trusted by">
       <ScrollReveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 flex items-center gap-4">
           <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-paper/50">
             {'// Trusted by 500+ businesses to answer their calls'}
           </span>
-          <span className="flex-1 h-px bg-surface-border" />
+          <span className="flex-1 h-px bg-white/[0.08]" />
           <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-paper/50">
             50,000+ calls / month
           </span>

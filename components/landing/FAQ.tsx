@@ -66,11 +66,11 @@ export function FAQ() {
           </div>
         </ScrollReveal>
 
-        <div className="mt-16 border-t border-surface-border">
+        <div className="mt-16 border-t border-white/[0.06]">
           {faqs.map((item, i) => {
             const open = openIdx === i;
             return (
-              <div key={item.q} className="border-b border-surface-border">
+              <div key={item.q} className="border-b border-white/[0.06]">
                 <button
                   id={`faq-q-${i}`}
                   onClick={() => setOpenIdx(open ? null : i)}
@@ -81,15 +81,15 @@ export function FAQ() {
                   <span
                     className={cn(
                       'font-display text-lg md:text-xl font-bold tracking-tight transition-colors',
-                      open ? 'text-cyber-cyan' : 'text-paper group-hover:text-cyber-cyan',
+                      open ? 'text-blue-400' : 'text-paper group-hover:text-blue-400',
                     )}
                   >
                     {item.q}
                   </span>
                   <span
                     className={cn(
-                      'shrink-0 w-8 h-8 border border-surface-border flex items-center justify-center transition-all',
-                      open ? 'rotate-45 border-cyber-cyan bg-cyber-cyan/10' : 'group-hover:border-paper/50',
+                      'shrink-0 w-8 h-8 border border-white/[0.1] rounded-lg flex items-center justify-center transition-all',
+                      open ? 'rotate-45 border-blue-500/50 bg-blue-500/10' : 'group-hover:border-paper/50',
                     )}
                   >
                     <Plus className="w-4 h-4" />

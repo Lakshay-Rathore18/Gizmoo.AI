@@ -1,8 +1,10 @@
 'use client';
 
 import { PhoneIncoming, CalendarPlus, RefreshCw, PhoneOutgoing, Waves, UserRoundCheck } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/Card';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
+import { staggerContainer, fadeInUp } from '@/lib/animation';
 
 type Accent = 'cyan' | 'violet' | 'lime';
 
@@ -73,12 +75,18 @@ export function Features() {
           </div>
         </ScrollReveal>
 
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-surface-border border border-surface-border">
-          {features.map((f, i) => {
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-100px' }}
+          className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          {features.map((f) => {
             const a = accentClasses[f.accent];
             return (
-              <ScrollReveal key={f.title} delay={i * 0.05}>
-                <Card className="h-full bg-ink border-0 hover:bg-surface">
+              <motion.div key={f.title} variants={fadeInUp}>
+                <Card className="h-full hover:bg-white/[0.05]">
                   <div className="flex items-start gap-4">
                     <div className={`relative shrink-0 w-12 h-12 border ${a.border} flex items-center justify-center`}>
                       <f.icon className={`w-5 h-5 ${a.text}`} aria-hidden />
@@ -90,10 +98,10 @@ export function Features() {
                     </div>
                   </div>
                 </Card>
-              </ScrollReveal>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

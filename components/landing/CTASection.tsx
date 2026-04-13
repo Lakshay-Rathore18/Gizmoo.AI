@@ -110,7 +110,7 @@ export function CTASection() {
                   setStatus(res.ok ? 'success' : 'error');
                 } catch { setStatus('error'); }
               }}
-              className="flex items-center border border-surface-border bg-ink/80 backdrop-blur-sm focus-within:border-cyber-cyan transition-colors max-w-md mx-auto"
+              className="flex items-center border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm rounded-xl focus-within:border-blue-500/50 transition-colors max-w-md mx-auto overflow-hidden"
             >
               <input
                 type="email"

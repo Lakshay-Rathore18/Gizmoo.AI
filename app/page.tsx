@@ -18,7 +18,7 @@ export default function Page() {
       <Hero />
 
       {/* GEO: Entity definition block — crawlable by AI answer engines, visually minimal */}
-      <section aria-label="About Gizmoo AI" className="bg-ink border-b border-surface-border">
+      <section aria-label="About Gizmoo AI" className="bg-ink border-b border-white/[0.06]">
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
           <h2 className="font-display font-bold text-2xl md:text-3xl tracking-tight text-paper mb-6">
             What is Gizmoo AI?
@@ -44,19 +44,19 @@ export default function Page() {
             trial and no lock-in contracts.
           </p>
           <dl className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-            <div className="border border-surface-border p-4">
+            <div className="border border-white/[0.08] rounded-xl p-4">
               <dt className="font-mono text-[10px] uppercase tracking-widest text-paper/50">Calls Answered</dt>
               <dd className="font-display font-bold text-2xl text-paper mt-1">50,000+</dd>
             </div>
-            <div className="border border-surface-border p-4">
+            <div className="border border-white/[0.08] rounded-xl p-4">
               <dt className="font-mono text-[10px] uppercase tracking-widest text-paper/50">Satisfaction</dt>
               <dd className="font-display font-bold text-2xl text-paper mt-1">99.7%</dd>
             </div>
-            <div className="border border-surface-border p-4">
+            <div className="border border-white/[0.08] rounded-xl p-4">
               <dt className="font-mono text-[10px] uppercase tracking-widest text-paper/50">Availability</dt>
               <dd className="font-display font-bold text-2xl text-paper mt-1">24/7/365</dd>
             </div>
-            <div className="border border-surface-border p-4">
+            <div className="border border-white/[0.08] rounded-xl p-4">
               <dt className="font-mono text-[10px] uppercase tracking-widest text-paper/50">Avg Response</dt>
               <dd className="font-display font-bold text-2xl text-paper mt-1">30 seconds</dd>
             </div>
@@ -65,12 +65,18 @@ export default function Page() {
       </section>
 
       <SocialProof />
+      <div aria-hidden className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       <Features />
+      <div aria-hidden className="h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent" />
       <Demo />
+      <div aria-hidden className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       <UseCases />
+      <div aria-hidden className="h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent" />
       <Tech />
       <Testimonials />
+      <div aria-hidden className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       <Pricing />
+      <div aria-hidden className="h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent" />
       <FAQ />
       <CTASection />
       <Footer />

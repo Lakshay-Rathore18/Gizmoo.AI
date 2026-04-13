@@ -49,7 +49,7 @@ export function Footer() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
   return (
-    <footer className="relative border-t border-surface-border bg-ink">
+    <footer className="relative border-t border-white/[0.08] bg-[#080808]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12">
         <div className="grid grid-cols-1 lg:grid-cols-6 gap-12 lg:gap-8">
           <div className="lg:col-span-2">
@@ -82,7 +82,7 @@ export function Footer() {
                       setStatus(res.ok ? 'success' : 'error');
                     } catch { setStatus('error'); }
                   }}
-                  className="flex items-center border border-surface-border focus-within:border-cyber-cyan transition-colors max-w-xs"
+                  className="flex items-center border border-white/[0.08] rounded-lg focus-within:border-blue-500/50 transition-colors max-w-xs overflow-hidden"
                 >
                   <input
                     type="email"
@@ -147,7 +147,7 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-16 pt-8 border-t border-surface-border flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="mt-16 pt-8 border-t border-white/[0.08] flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="text-xs text-paper/40 font-mono flex items-center gap-1 flex-wrap">
             <span>&copy; {new Date().getFullYear()} {brand.name}. All rights reserved.</span>
             <span className="mx-1">·</span>
@@ -161,7 +161,7 @@ export function Footer() {
             <a
               href="#top"
               aria-label="Back to top"
-              className="inline-flex items-center justify-center w-8 h-8 border border-surface-border hover:border-cyber-cyan hover:text-cyber-cyan transition-colors"
+              className="inline-flex items-center justify-center w-8 h-8 border border-white/[0.1] rounded-lg hover:border-blue-500/50 hover:text-blue-400 transition-colors"
             >
               <ArrowUp className="w-3.5 h-3.5" />
             </a>

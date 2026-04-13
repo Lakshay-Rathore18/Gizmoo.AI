@@ -63,7 +63,7 @@ export function UseCases() {
                     !isEven && 'lg:[&>*:first-child]:order-2',
                   )}
                 >
-                  <div className="relative aspect-[4/3] border border-surface-border bg-surface overflow-hidden">
+                  <div className="relative aspect-[4/3] border border-white/[0.08] bg-white/[0.02] rounded-2xl overflow-hidden">
                     <div aria-hidden className="absolute inset-0 bg-grid-dense opacity-30" />
                     <div
                       aria-hidden

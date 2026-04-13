@@ -47,8 +47,8 @@ export function Tech() {
 
             <div className="mt-10 space-y-6">
               {steps.map((s) => (
-                <div key={s.label} className="group flex gap-4 pb-6 border-b border-surface-border last:border-0">
-                  <div className="relative shrink-0 w-10 h-10 border border-surface-border flex items-center justify-center group-hover:border-cyber-cyan transition-colors">
+                <div key={s.label} className="group flex gap-4 pb-6 border-b border-white/[0.06] last:border-0">
+                  <div className="relative shrink-0 w-10 h-10 border border-white/[0.1] rounded-lg flex items-center justify-center group-hover:border-blue-500/50 transition-colors">
                     <s.icon className="w-4 h-4 text-cyber-cyan" aria-hidden />
                   </div>
                   <div>
@@ -68,7 +68,7 @@ export function Tech() {
               </div>
               <div className="flex flex-wrap gap-2">
                 {['Google Calendar', 'Outlook', 'Calendly', 'Acuity', 'Cal.com', 'HubSpot', 'Salesforce', 'Twilio'].map((i) => (
-                  <span key={i} className="px-3 py-1.5 border border-surface-border text-xs text-paper/70 hover:border-cyber-cyan hover:text-cyber-cyan transition-colors">
+                  <span key={i} className="px-3 py-1.5 border border-white/[0.08] rounded-full text-xs text-paper/70 hover:border-blue-500/40 hover:text-blue-400 transition-colors">
                     {i}
                   </span>
                 ))}
@@ -77,8 +77,8 @@ export function Tech() {
           </ScrollReveal>
 
           <ScrollReveal delay={0.15}>
-            <div className="relative holo-border bg-ink overflow-hidden">
-              <div className="flex items-center justify-between px-4 py-3 border-b border-surface-border">
+            <div className="relative bg-white/[0.02] border border-white/[0.08] rounded-2xl overflow-hidden">
+              <div className="flex items-center justify-between px-4 py-3 border-b border-white/[0.06]">
                 <div className="font-mono text-[10px] uppercase tracking-widest text-paper/60">
                   gizmoo-voice.v2.4
                 </div>

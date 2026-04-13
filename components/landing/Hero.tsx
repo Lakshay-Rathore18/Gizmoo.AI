@@ -28,6 +28,11 @@ export function Hero() {
         aria-hidden
         className="absolute inset-0 bg-gradient-to-b from-ink/40 via-transparent to-ink pointer-events-none"
       />
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59,130,246,0.15), transparent)' }}
+      />
 
       {['top-4 left-4', 'top-4 right-4', 'bottom-4 left-4', 'bottom-4 right-4'].map((pos) => (
         <div
@@ -44,7 +49,7 @@ export function Hero() {
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 border border-surface-border bg-ink/80 backdrop-blur-sm px-3 py-1.5 mb-8 font-mono text-xs uppercase tracking-widest text-paper/80"
+          className="inline-flex items-center gap-2 border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm px-3 py-1.5 rounded-full mb-8 font-mono text-xs uppercase tracking-widest text-paper/80"
         >
           <PhoneCall className="w-3 h-3 text-cyber-cyan" />
           AI Voice Receptionist
@@ -54,7 +59,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="font-display font-bold tracking-[-0.03em] text-[clamp(2.5rem,8vw,7rem)] leading-[0.9] max-w-5xl"
+          className="font-display font-bold tracking-[-0.03em] text-[clamp(2.5rem,8vw,7rem)] leading-[0.9] max-w-5xl bg-gradient-to-b from-white to-white/70 bg-clip-text text-transparent"
         >
           Never miss <br className="hidden sm:block" />
           another call.{' '}
@@ -110,7 +115,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.75 }}
-          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-px bg-surface-border border border-surface-border max-w-3xl"
+          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl"
         >
           {[
             { k: '50,000+', v: 'calls answered' },
@@ -118,7 +123,7 @@ export function Hero() {
             { k: '24/7/365', v: 'availability' },
             { k: '30s', v: 'avg response' },
           ].map((m) => (
-            <div key={m.v} className="bg-ink/80 backdrop-blur-sm px-5 py-4">
+            <div key={m.v} className="bg-white/[0.03] border border-white/[0.08] backdrop-blur-sm rounded-xl px-5 py-4">
               <div className="font-display text-xl md:text-2xl font-bold text-paper">{m.k}</div>
               <div className="font-mono text-[10px] uppercase tracking-widest text-paper/50 mt-1">
                 {m.v}
