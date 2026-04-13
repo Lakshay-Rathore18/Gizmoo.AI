@@ -12,8 +12,8 @@ export function Card({ className, children, glow = false, ...props }: CardProps)
   return (
     <div
       className={cn(
-        'group relative bg-surface border border-surface-border p-6 md:p-8 transition-all duration-300',
-        'hover:border-cyber-cyan/40 hover:-translate-y-1',
+        'group relative bg-white/[0.03] border border-white/[0.08] backdrop-blur-sm rounded-2xl p-6 md:p-8 transition-all duration-300',
+        'hover:border-blue-500/30 hover:-translate-y-1',
         glow && 'holo-border',
         className,
       )}
