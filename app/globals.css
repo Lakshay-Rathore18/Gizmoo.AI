@@ -4,14 +4,16 @@
 
 :root {
   color-scheme: dark;
-  --gizmoo-blue: #3B82F6;
-  --gizmoo-blue-glow: rgba(59, 130, 246, 0.15);
-  --gizmoo-bg: #0a0a0a;
-  --gizmoo-surface: #111111;
-  --gizmoo-surface-2: #1a1a1a;
-  --gizmoo-border: rgba(255, 255, 255, 0.08);
-  --gizmoo-text: #ffffff;
-  --gizmoo-text-muted: rgba(255, 255, 255, 0.6);
+  --sarmat-lime: #9fc82c;
+  --sarmat-lime-light: #b5e030;
+  --sarmat-lime-glow: rgba(159, 200, 44, 0.15);
+  --sarmat-bg: #0b0b0b;
+  --sarmat-surface: #111111;
+  --sarmat-surface-2: #161616;
+  --sarmat-border: rgba(255, 255, 255, 0.08);
+  --sarmat-text: #ffffff;
+  --sarmat-text-muted: rgba(255, 255, 255, 0.6);
+  --sarmat-green: #293112;
 }
 
 * {
@@ -26,7 +28,7 @@ html {
 
 html,
 body {
-  background: #000;
+  background: #0b0b0b;
   color: #fff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -45,8 +47,8 @@ button, a, [role="button"] {
 }
 
 ::selection {
-  background: #00e5ff;
-  color: #000;
+  background: #9fc82c;
+  color: #0b0b0b;
 }
 
 /* Brutalist grid backdrop */
@@ -64,9 +66,9 @@ button, a, [role="button"] {
   background-size: 24px 24px;
 }
 
-/* Gradient utilities for brand text */
+/* Gradient utilities for brand text — Sarmat lime */
 .text-gradient-brand {
-  background: linear-gradient(120deg, #00e5ff 0%, #FBBF24 50%, #ffffff 100%);
+  background: linear-gradient(120deg, #9fc82c 0%, #b5e030 50%, #ffffff 100%);
   background-size: 200% 200%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -74,7 +76,7 @@ button, a, [role="button"] {
   animation: gradient 8s linear infinite;
 }
 
-/* Holographic card border glow */
+/* Holographic card border glow — Sarmat monochrome lime */
 .holo-border {
   position: relative;
   isolation: isolate;
@@ -85,7 +87,7 @@ button, a, [role="button"] {
   inset: -1px;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(135deg, rgba(0, 229, 255, 0.6), rgba(251, 191, 36, 0.4) 50%, rgba(163, 255, 18, 0.3));
+  background: linear-gradient(135deg, rgba(159, 200, 44, 0.6), rgba(159, 200, 44, 0.3) 50%, rgba(255, 255, 255, 0.15));
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
@@ -95,7 +97,7 @@ button, a, [role="button"] {
   z-index: -1;
 }
 
-/* Neon scan line for hero */
+/* Scan line for hero */
 .scan-lines {
   background-image: repeating-linear-gradient(
     to bottom,
@@ -121,28 +123,28 @@ button, a, [role="button"] {
   animation: shimmer 2.5s linear infinite;
 }
 
-/* Thin custom scrollbar for webkit */
+/* Custom scrollbar — Sarmat theme */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #000;
+  background: #0b0b0b;
 }
 ::-webkit-scrollbar-thumb {
   background: #1f1f24;
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #00e5ff;
+  background: #9fc82c;
 }
 
-/* CSS containment for sections — style only, layout breaks IntersectionObserver on mobile */
+/* CSS containment for sections */
 section {
   contain: style;
 }
 
-/* Premium glassmorphism card */
+/* Premium glassmorphism card — Sarmat */
 .glass-card {
   background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(20px);
@@ -155,21 +157,19 @@ section {
 
 .glass-card:hover {
   background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(0, 229, 255, 0.15);
+  border-color: rgba(159, 200, 44, 0.15);
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.05) inset,
     0 8px 40px rgba(0, 0, 0, 0.5),
-    0 0 30px rgba(0, 229, 255, 0.06);
+    0 0 30px rgba(159, 200, 44, 0.06);
 }
 
-/* Section mesh gradient dividers */
+/* Section mesh gradient dividers — Sarmat monochrome */
 .mesh-divider {
-  background: radial-gradient(ellipse 80% 50% at 50% 50%, rgba(0, 229, 255, 0.12), transparent 70%),
-              radial-gradient(ellipse 60% 40% at 30% 50%, rgba(251, 191, 36, 0.06), transparent 60%),
-              radial-gradient(ellipse 50% 30% at 70% 50%, rgba(163, 255, 18, 0.04), transparent 60%);
+  background: radial-gradient(ellipse 80% 50% at 50% 50%, rgba(159, 200, 44, 0.12), transparent 70%);
 }
 
-/* Elevated glass card for featured sections */
+/* Elevated glass card */
 .glass-card-elevated {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
   backdrop-filter: blur(24px);
@@ -178,15 +178,15 @@ section {
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.04) inset,
     0 16px 48px rgba(0, 0, 0, 0.5),
-    0 0 40px rgba(0, 229, 255, 0.04);
+    0 0 40px rgba(159, 200, 44, 0.04);
 }
 
 .glass-card-elevated:hover {
-  border-color: rgba(0, 229, 255, 0.2);
+  border-color: rgba(159, 200, 44, 0.2);
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.06) inset,
     0 16px 56px rgba(0, 0, 0, 0.6),
-    0 0 60px rgba(0, 229, 255, 0.08);
+    0 0 60px rgba(159, 200, 44, 0.08);
 }
 
 /* Subtle noise overlay for texture */

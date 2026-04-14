@@ -10,15 +10,15 @@ function SplineFallback({ className }: { className?: string }) {
     <div
       className={cn(
         'w-full h-full flex items-center justify-center',
-        'bg-gradient-to-br from-cyber-cyan/10 via-cyber-gold/10 to-cyber-lime/5',
+        'bg-gradient-to-br from-sarmat-lime/10 via-sarmat-lime/10 to-sarmat-limeLight/5',
         'animate-glow-pulse',
         className,
       )}
       aria-hidden="true"
     >
       <div className="relative">
-        <span className="absolute inset-0 rounded-full bg-cyber-cyan/40 blur-3xl animate-glow-pulse" />
-        <span className="relative block w-16 h-16 border-2 border-cyber-cyan/60 border-t-transparent rounded-full animate-spin" />
+        <span className="absolute inset-0 rounded-full bg-sarmat-lime/40 blur-3xl animate-glow-pulse" />
+        <span className="relative block w-16 h-16 border-2 border-sarmat-lime/60 border-t-transparent rounded-full animate-spin" />
       </div>
     </div>
   );

@@ -81,7 +81,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <head>
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#0a0a0a" />
+        <meta name="theme-color" content="#0b0b0b" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://prod.spline.design" />
@@ -329,7 +329,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="font-sans bg-ink text-paper antialiased overflow-x-hidden">
-        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-cyber-cyan focus:text-ink focus:px-4 focus:py-2 focus:font-semibold">
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-sarmat-lime focus:text-ink focus:px-4 focus:py-2 focus:font-semibold">
           Skip to main content
         </a>
         <ClerkProvider
@@ -341,7 +341,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           appearance={{
             baseTheme: dark,
             variables: {
-              colorPrimary: '#3B82F6',
+              colorPrimary: '#9fc82c',
               colorBackground: '#0a0a0a',
               colorInputBackground: '#111111',
               colorInputText: '#ffffff',
@@ -350,13 +350,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               borderRadius: '0.75rem',
             },
             elements: {
-              card: 'bg-[#0a0a0a] border border-white/[0.08] shadow-[0_0_40px_rgba(0,229,255,0.1)]',
+              card: 'bg-[#0a0a0a] border border-white/[0.08] shadow-[0_0_40px_rgba(159,200,44,0.1)]',
               headerTitle: 'text-white',
               headerSubtitle: 'text-white/60',
               socialButtonsBlockButton: 'bg-white/[0.05] border-white/[0.08] hover:bg-white/[0.08] text-white',
               formFieldInput: 'bg-[#111111] border-white/[0.08] text-white',
-              formButtonPrimary: 'bg-white text-[#0a0a0a] hover:bg-[#00E5FF] shadow-[0_0_20px_rgba(0,229,255,0.2)]',
-              footerActionLink: 'text-[#00E5FF] hover:text-white',
+              formButtonPrimary: 'bg-white text-[#0a0a0a] hover:bg-[#9fc82c] shadow-[0_0_20px_rgba(159,200,44,0.2)]',
+              footerActionLink: 'text-[#9fc82c] hover:text-white',
               modalCloseButton: 'text-white/60 hover:text-white',
             },
           }}

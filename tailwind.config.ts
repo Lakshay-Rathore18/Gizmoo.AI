@@ -10,17 +10,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: '#000000',
+        ink: '#0b0b0b',
         paper: '#ffffff',
-        cyber: {
-          cyan: '#00E5FF',
-          gold: '#FBBF24',
-          lime: '#A3FF12',
-          rose: '#FF2E93',
+        sarmat: {
+          lime: '#9fc82c',
+          limeLight: '#b5e030',
+          limeMuted: 'rgba(159, 200, 44, 0.15)',
+          green: '#293112',
+          gray: '#393939',
         },
         surface: {
-          DEFAULT: '#0A0A0B',
-          raised: '#121214',
+          DEFAULT: '#111111',
+          raised: '#161616',
           border: '#1F1F24',
         },
       },
@@ -70,7 +71,7 @@ const config: Config = {
         },
       },
       backgroundImage: {
-        'grid-fade': "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+        'grid-fade': "radial-gradient(ellipse at center, #0b0b0b 40%, transparent 80%)",
         'noise': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E\")",
       },
     },

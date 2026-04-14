@@ -33,7 +33,7 @@ export function Tech() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <ScrollReveal>
-            <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-cyber-cyan">
+            <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-sarmat-lime">
               {'// 04 — How Gizmoo AI works'}
             </span>
             <h2 className="mt-4 font-display font-bold text-4xl md:text-6xl tracking-tight leading-[0.95]">
@@ -48,8 +48,8 @@ export function Tech() {
             <div className="mt-10 space-y-6">
               {steps.map((s) => (
                 <div key={s.label} className="group flex gap-4 pb-6 border-b border-white/[0.06] last:border-0">
-                  <div className="relative shrink-0 w-10 h-10 border border-white/[0.1] rounded-xl bg-white/[0.03] flex items-center justify-center group-hover:border-cyber-cyan/50 transition-colors">
-                    <s.icon className="w-4 h-4 text-cyber-cyan" aria-hidden />
+                  <div className="relative shrink-0 w-10 h-10 border border-white/[0.1] rounded-xl bg-white/[0.03] flex items-center justify-center group-hover:border-sarmat-lime/50 transition-colors">
+                    <s.icon className="w-4 h-4 text-sarmat-lime" aria-hidden />
                   </div>
                   <div>
                     <div className="font-mono text-[10px] uppercase tracking-widest text-paper/50">
@@ -68,7 +68,7 @@ export function Tech() {
               </div>
               <div className="flex flex-wrap gap-2">
                 {['Google Calendar', 'Outlook', 'Calendly', 'Acuity', 'Cal.com', 'HubSpot', 'Salesforce', 'Twilio'].map((i) => (
-                  <span key={i} className="px-3 py-1.5 border border-white/[0.08] rounded-full text-xs text-paper/70 hover:border-cyber-cyan/40 hover:text-cyber-cyan transition-colors">
+                  <span key={i} className="px-3 py-1.5 border border-white/[0.08] rounded-full text-xs text-paper/70 hover:border-sarmat-lime/40 hover:text-sarmat-lime transition-colors">
                     {i}
                   </span>
                 ))}
@@ -82,8 +82,8 @@ export function Tech() {
                 <div className="font-mono text-[10px] uppercase tracking-widest text-paper/60">
                   gizmoo-voice.v2.4
                 </div>
-                <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-cyber-lime">
-                  <span className="w-1.5 h-1.5 rounded-full bg-cyber-lime animate-pulse" />
+                <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-sarmat-limeLight">
+                  <span className="w-1.5 h-1.5 rounded-full bg-sarmat-limeLight animate-pulse" />
                   On Call
                 </div>
               </div>

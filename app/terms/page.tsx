@@ -23,7 +23,7 @@ export default function TermsPage() {
       <div className="max-w-3xl mx-auto px-6 md:px-10 pt-32 pb-20 md:pt-40 md:pb-32">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-sm text-paper/60 hover:text-cyber-cyan transition-colors mb-12"
+          className="inline-flex items-center gap-2 text-sm text-paper/60 hover:text-sarmat-lime transition-colors mb-12"
         >
           &larr; Back to home
         </Link>
@@ -110,7 +110,7 @@ export default function TermsPage() {
             </h2>
             <p>
               You may cancel your subscription at any time by providing 30 days written notice to{' '}
-              <a href="mailto:hellogizmooai@gmail.com" className="text-cyber-cyan hover:underline">
+              <a href="mailto:hellogizmooai@gmail.com" className="text-sarmat-lime hover:underline">
                 hellogizmooai@gmail.com
               </a>.
             </p>
@@ -178,13 +178,13 @@ export default function TermsPage() {
             <div className="mt-3 space-y-1">
               <p>
                 Email:{' '}
-                <a href="mailto:hellogizmooai@gmail.com" className="text-cyber-cyan hover:underline">
+                <a href="mailto:hellogizmooai@gmail.com" className="text-sarmat-lime hover:underline">
                   hellogizmooai@gmail.com
                 </a>
               </p>
               <p>
                 Phone:{' '}
-                <a href="tel:+61424700797" className="text-cyber-cyan hover:underline">
+                <a href="tel:+61424700797" className="text-sarmat-lime hover:underline">
                   +61 0424 700 797
                 </a>
               </p>

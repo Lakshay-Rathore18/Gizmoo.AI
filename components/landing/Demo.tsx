@@ -71,13 +71,13 @@ export function Demo() {
       <div aria-hidden className="absolute inset-0 bg-grid-dense opacity-20" />
       <div
         aria-hidden
-        className="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-cyber-gold/10 blur-3xl pointer-events-none"
+        className="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-sarmat-lime/10 blur-3xl pointer-events-none"
       />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="max-w-3xl">
-            <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-cyber-gold">
+            <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-sarmat-lime">
               {'// 02 — See Gizmoo in action'}
             </span>
             <h2 className="mt-4 font-display font-bold text-4xl md:text-6xl tracking-tight">
@@ -102,7 +102,7 @@ export function Demo() {
                     className={cn(
                       'flex items-center gap-2 px-4 py-2.5 text-sm font-mono transition-colors whitespace-nowrap min-h-[44px]',
                       active === t.id
-                        ? 'text-cyber-cyan border-b-2 border-cyber-cyan -mb-px bg-cyber-cyan/5'
+                        ? 'text-sarmat-lime border-b-2 border-sarmat-lime -mb-px bg-sarmat-lime/5'
                         : 'text-paper/50 hover:text-paper',
                     )}
                   >
@@ -111,9 +111,9 @@ export function Demo() {
                   </button>
                 ))}
                 <div className="ml-auto hidden md:flex gap-1.5 pr-3">
-                  <span className="w-2.5 h-2.5 rounded-full bg-cyber-rose/60" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-cyber-lime/60" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-cyber-cyan/60" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-sarmat-limeLight/60" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-sarmat-lime/60" />
                 </div>
               </div>
 
@@ -136,9 +136,9 @@ export function Demo() {
                         className={cn(
                           'flex gap-3',
                           line.role === 'caller' && 'text-paper',
-                          line.role === 'agent' && 'text-cyber-cyan',
-                          line.role === 'sys' && 'text-cyber-lime',
-                          line.role === 'out' && 'text-cyber-gold',
+                          line.role === 'agent' && 'text-sarmat-lime',
+                          line.role === 'sys' && 'text-sarmat-limeLight',
+                          line.role === 'out' && 'text-sarmat-lime',
                         )}
                       >
                         <span className="select-none text-paper/30 w-8 shrink-0">{String(i + 1).padStart(2, '0')}</span>
@@ -149,7 +149,7 @@ export function Demo() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: current.lines.length * 0.2 + 0.1 }}
-                      className="flex items-center gap-2 pt-2 text-cyber-lime"
+                      className="flex items-center gap-2 pt-2 text-sarmat-limeLight"
                     >
                       <CheckCircle2 className="w-4 h-4" />
                       <span>Handled in 32s — caller satisfied.</span>
@@ -168,7 +168,7 @@ export function Demo() {
                 className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent"
               />
               <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
-                <div className="font-mono text-[10px] uppercase tracking-widest text-cyber-cyan mb-1">
+                <div className="font-mono text-[10px] uppercase tracking-widest text-sarmat-lime mb-1">
                   Live Agent View
                 </div>
                 <div className="font-display font-bold text-xl tracking-tight">

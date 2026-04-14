@@ -7,7 +7,7 @@ export function AmbientMesh({ className }: { className?: string }) {
       <div
         className="absolute top-[-20%] left-[-10%] w-[700px] h-[700px] rounded-full pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, rgba(0,229,255,0.12) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(159,200,44,0.12) 0%, transparent 70%)',
           animation: 'meshDrift1 20s ease-in-out infinite',
         }}
       />

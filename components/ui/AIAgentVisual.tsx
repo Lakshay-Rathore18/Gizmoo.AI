@@ -25,18 +25,18 @@ export function AIAgentVisual({ className }: { className?: string }) {
         {/* Ambient background glow */}
         <defs>
           <radialGradient id="ag-bg" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.12" />
-            <stop offset="60%" stopColor="#3B82F6" stopOpacity="0.04" />
-            <stop offset="100%" stopColor="#3B82F6" stopOpacity="0" />
+            <stop offset="0%" stopColor="#9fc82c" stopOpacity="0.12" />
+            <stop offset="60%" stopColor="#9fc82c" stopOpacity="0.04" />
+            <stop offset="100%" stopColor="#9fc82c" stopOpacity="0" />
           </radialGradient>
           <radialGradient id="ag-core" cx="50%" cy="50%" r="50%">
             <stop offset="0%" stopColor="#60A5FA" stopOpacity="1" />
-            <stop offset="50%" stopColor="#3B82F6" stopOpacity="0.9" />
+            <stop offset="50%" stopColor="#9fc82c" stopOpacity="0.9" />
             <stop offset="100%" stopColor="#2563EB" stopOpacity="0.6" />
           </radialGradient>
           <radialGradient id="ag-glow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.4" />
-            <stop offset="100%" stopColor="#3B82F6" stopOpacity="0" />
+            <stop offset="0%" stopColor="#9fc82c" stopOpacity="0.4" />
+            <stop offset="100%" stopColor="#9fc82c" stopOpacity="0" />
           </radialGradient>
           <filter id="ag-blur" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur in="SourceGraphic" stdDeviation="8" />
@@ -52,7 +52,7 @@ export function AIAgentVisual({ className }: { className?: string }) {
         {/* Outer pulse ring 3 */}
         <motion.circle
           cx="200" cy="200" r="120"
-          stroke="#3B82F6" strokeWidth="0.5" fill="none" strokeOpacity="0.15"
+          stroke="#9fc82c" strokeWidth="0.5" fill="none" strokeOpacity="0.15"
           animate={reduce ? {} : { r: [120, 150, 120], strokeOpacity: [0.15, 0.05, 0.15] }}
           transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
         />
@@ -60,7 +60,7 @@ export function AIAgentVisual({ className }: { className?: string }) {
         {/* Outer pulse ring 2 */}
         <motion.circle
           cx="200" cy="200" r="100"
-          stroke="#3B82F6" strokeWidth="0.8" fill="none" strokeOpacity="0.2"
+          stroke="#9fc82c" strokeWidth="0.8" fill="none" strokeOpacity="0.2"
           animate={reduce ? {} : { r: [100, 125, 100], strokeOpacity: [0.2, 0.08, 0.2] }}
           transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
         />
@@ -186,7 +186,7 @@ export function AIAgentVisual({ className }: { className?: string }) {
             cx={dot.cx}
             cy={dot.cy}
             r="1.5"
-            fill="#3B82F6"
+            fill="#9fc82c"
             fillOpacity="0.4"
             animate={
               reduce

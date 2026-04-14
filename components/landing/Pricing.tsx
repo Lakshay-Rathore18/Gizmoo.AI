@@ -15,7 +15,7 @@ export function Pricing() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="text-center max-w-3xl mx-auto">
-            <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-cyber-cyan">
+            <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-sarmat-lime">
               {'// 06 — Pricing'}
             </span>
             <h2 className="mt-4 font-display font-bold text-4xl md:text-6xl tracking-tight">
@@ -46,7 +46,7 @@ export function Pricing() {
                 )}
               >
                 Annual
-                <span className="text-[10px] bg-cyber-lime text-ink px-1.5 py-0.5">-30%</span>
+                <span className="text-[10px] bg-sarmat-limeLight text-ink px-1.5 py-0.5">-30%</span>
               </button>
             </div>
           </div>
@@ -55,8 +55,8 @@ export function Pricing() {
         <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {/* Starter Plan */}
           <ScrollReveal delay={0}>
-            <div className="relative h-full flex flex-col p-8 glass-card border-cyber-cyan/30 rounded-2xl -translate-y-2 shadow-[0_0_40px_rgba(0,229,255,0.12)] hover:shadow-[0_0_60px_rgba(0,229,255,0.18)] transition-all duration-300" style={{ background: 'linear-gradient(135deg, rgba(0,229,255,0.04) 0%, rgba(251,191,36,0.02) 100%)' }}>
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-cyber-cyan text-ink font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-full">
+            <div className="relative h-full flex flex-col p-8 glass-card border-sarmat-lime/30 rounded-2xl -translate-y-2 shadow-[0_0_40px_rgba(159,200,44,0.12)] hover:shadow-[0_0_60px_rgba(159,200,44,0.18)] transition-all duration-300" style={{ background: 'linear-gradient(135deg, rgba(159,200,44,0.04) 0%, rgba(159,200,44,0.02) 100%)' }}>
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-sarmat-lime text-ink font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-full">
                 14-Day Free Trial
               </div>
               <div className="font-display font-bold text-2xl">Starter</div>
@@ -74,7 +74,7 @@ export function Pricing() {
                   </span>
                   <span className="text-paper/50 text-sm">/ month AUD</span>
                   {annual && (
-                    <span className="text-[10px] bg-cyber-lime text-ink px-1.5 py-0.5 font-mono uppercase tracking-wider">
+                    <span className="text-[10px] bg-sarmat-limeLight text-ink px-1.5 py-0.5 font-mono uppercase tracking-wider">
                       Save 30%
                     </span>
                   )}
@@ -90,7 +90,7 @@ export function Pricing() {
                   'Monthly performance report',
                 ].map((f) => (
                   <li key={f} className="flex items-start gap-3 text-sm text-paper/80">
-                    <Check className="w-4 h-4 shrink-0 mt-0.5 text-cyber-lime" />
+                    <Check className="w-4 h-4 shrink-0 mt-0.5 text-sarmat-limeLight" />
                     <span>{f}</span>
                   </li>
                 ))}
@@ -126,14 +126,14 @@ export function Pricing() {
               <div className="mt-6 space-y-3">
                 <a
                   href="tel:+61424700797"
-                  className="flex items-center gap-2 text-sm text-paper/80 hover:text-cyber-cyan transition-colors"
+                  className="flex items-center gap-2 text-sm text-paper/80 hover:text-sarmat-lime transition-colors"
                 >
                   <span>📞</span>
                   <span>+61 0424 700 797</span>
                 </a>
                 <a
                   href="mailto:hellogizmooai@gmail.com"
-                  className="flex items-center gap-2 text-sm text-paper/80 hover:text-cyber-cyan transition-colors"
+                  className="flex items-center gap-2 text-sm text-paper/80 hover:text-sarmat-lime transition-colors"
                 >
                   <span>✉️</span>
                   <span>hellogizmooai@gmail.com</span>

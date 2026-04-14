@@ -11,28 +11,28 @@ const cases = [
     title: 'Stop losing thousands to missed calls.',
     copy: 'The average missed call costs a business $200. Gizmoo AI answers every inbound call in under 3 seconds — so every opportunity actually converts into a booking.',
     metric: { value: '35', suffix: '%', label: 'more bookings captured' },
-    accent: 'cyber-cyan',
+    accent: 'sarmat-lime',
   },
   {
     label: '24/7 Availability',
     title: 'Open for business around the clock.',
     copy: 'Emergencies, after-hours leads, and weekend inquiries do not wait for business hours — and neither does your receptionist. Gizmoo works nights, weekends, and holidays without blinking.',
     metric: { value: '24', suffix: '/7', label: 'uninterrupted coverage' },
-    accent: 'cyber-gold',
+    accent: 'sarmat-lime',
   },
   {
     label: 'Focus on customers',
     title: 'Free your team from the phone.',
     copy: 'Your staff should focus on the customer standing in front of them — not the phone ringing in the back. Let Gizmoo handle every call so your team stays in flow.',
     metric: { value: '8', suffix: 'h', label: 'saved per person / week' },
-    accent: 'cyber-lime',
+    accent: 'sarmat-limeLight',
   },
   {
     label: 'Outbound at scale',
     title: 'Reminders that actually get made.',
     copy: 'No-shows quietly kill your margin. Gizmoo AI dials every customer with a friendly reminder, confirms the appointment, and reschedules on the spot if needed.',
     metric: { value: '75', suffix: '%', label: 'fewer no-shows' },
-    accent: 'cyber-cyan',
+    accent: 'sarmat-lime',
   },
 ];
 
@@ -42,7 +42,7 @@ export function UseCases() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="max-w-3xl">
-            <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-cyber-lime">
+            <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-sarmat-limeLight">
               {'// 03 — Transform your business'}
             </span>
             <h2 className="mt-4 font-display font-bold text-4xl md:text-6xl tracking-tight">
@@ -69,9 +69,9 @@ export function UseCases() {
                       aria-hidden
                       className={cn(
                         'absolute -inset-20 opacity-40 blur-3xl',
-                        c.accent === 'cyber-cyan' && 'bg-cyber-cyan/30',
-                        c.accent === 'cyber-gold' && 'bg-cyber-gold/30',
-                        c.accent === 'cyber-lime' && 'bg-cyber-lime/20',
+                        c.accent === 'sarmat-lime' && 'bg-sarmat-lime/30',
+                        c.accent === 'sarmat-lime' && 'bg-sarmat-lime/30',
+                        c.accent === 'sarmat-limeLight' && 'bg-sarmat-limeLight/20',
                       )}
                     />
 
@@ -99,9 +99,9 @@ export function UseCases() {
                     <span
                       className={cn(
                         'font-mono text-[10px] uppercase tracking-[0.24em]',
-                        c.accent === 'cyber-cyan' && 'text-cyber-cyan',
-                        c.accent === 'cyber-gold' && 'text-cyber-gold',
-                        c.accent === 'cyber-lime' && 'text-cyber-lime',
+                        c.accent === 'sarmat-lime' && 'text-sarmat-lime',
+                        c.accent === 'sarmat-lime' && 'text-sarmat-lime',
+                        c.accent === 'sarmat-limeLight' && 'text-sarmat-limeLight',
                       )}
                     >
                       {`// ${c.label}`}

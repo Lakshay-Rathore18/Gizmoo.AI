@@ -13,7 +13,7 @@ export function Card({
   className,
   children,
   glow = false,
-  spotlightColor = 'rgba(0,229,255,0.08)',
+  spotlightColor = 'rgba(159,200,44,0.08)',
   ...props
 }: CardProps) {
   const ref = useRef<HTMLDivElement>(null);

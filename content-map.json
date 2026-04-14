@@ -1,0 +1,241 @@
+{
+  "site": "gizmoo.me",
+  "stack": "Next.js 16, React 19, Tailwind CSS 3, Clerk Auth, Framer Motion, Spline 3D",
+  "pages": {
+    "/": {
+      "title": "Gizmoo AI - AI Voice Receptionist for Australian Tradies",
+      "sections": [
+        {
+          "component": "Nav",
+          "type": "navigation",
+          "content": {
+            "logo": "Gizmoo AI (SVG waveform + text)",
+            "links": ["Features", "Demo", "Use Cases", "Pricing", "FAQ"],
+            "ctas": [
+              { "text": "Sign In", "href": "https://accounts.gizmoo.me/sign-in" },
+              { "text": "Get Started", "href": "https://accounts.gizmoo.me/sign-up" }
+            ],
+            "mobileDrawer": true
+          }
+        },
+        {
+          "component": "Hero",
+          "type": "hero",
+          "content": {
+            "badge": "AI Voice Receptionist",
+            "heading": "Never miss another call.",
+            "typewriterWords": ["answers calls.", "books appointments.", "syncs calendars."],
+            "description": "Gizmoo AI answers your phone 24/7, qualifies jobs, and books customers directly into your calendar - built for Australian plumbers, electricians, HVAC technicians, and builders.",
+            "ctas": [
+              { "text": "Start Free Trial", "action": "open cal.com link" },
+              { "text": "Watch Demo", "action": "scroll to #demo" }
+            ],
+            "note": "No credit card . 15-min setup",
+            "metrics": [
+              { "value": "50,000+", "label": "calls answered" },
+              { "value": "99.7%", "label": "caller satisfaction" },
+              { "value": "24/7/365", "label": "availability" },
+              { "value": "30s", "label": "avg response" }
+            ],
+            "widget": {
+              "type": "HearOurAIWidget",
+              "phoneNumber": "+61 489 072 416",
+              "label": "Hear Our AI in Action",
+              "sublabel": "Call now - experience Gizmoo AI yourself. No signup required."
+            }
+          }
+        },
+        {
+          "component": "EntityBlock (inline)",
+          "type": "seo-content",
+          "content": {
+            "heading": "What is Gizmoo AI?",
+            "paragraphs": 3,
+            "stats": ["50,000+ Calls Answered", "99.7% Satisfaction", "24/7/365 Availability", "30 seconds Avg Response"]
+          }
+        },
+        {
+          "component": "SocialProof",
+          "type": "social-proof",
+          "content": {
+            "label": "Trusted by 500+ businesses to answer their calls",
+            "metric": "50,000+ calls / month",
+            "brands": ["MITCHELL DENTAL", "RODRIGUEZ LAW", "BRADLEY HVAC", "KIM REAL ESTATE", "SERENITY SPA", "NORTHWIND CLINIC", "HALCYON MEDICAL", "BEACON HEALTH", "ORBITAL PLUMBING", "VERVE SALON", "FIGROOT BUILDERS", "HARBOR VETERINARY"]
+          }
+        },
+        {
+          "component": "Features",
+          "type": "features",
+          "content": {
+            "sectionLabel": "// 01 - What Gizmoo AI Does",
+            "heading": "Six things your new receptionist never sleeps on.",
+            "description": "Gizmoo AI is not another phone tree or chatbot. It is a full-time voice receptionist that answers, books, syncs, and follows up - on every call, 24/7.",
+            "features": [
+              { "icon": "PhoneIncoming", "title": "Answers Every Call", "copy": "24/7 instant pickup. No hold music. No voicemail. Every caller gets a friendly, intelligent response within seconds - day or night." },
+              { "icon": "CalendarPlus", "title": "Books Appointments", "copy": "Real-time scheduling that checks your availability, books slots, sends confirmations, and handles reschedules - all without a human lifting a finger." },
+              { "icon": "RefreshCw", "title": "Syncs Your Calendar", "copy": "Seamless integration with Google Calendar, Outlook, Calendly, Acuity, and more. Always accurate, never double-booked, time-zone intelligent." },
+              { "icon": "PhoneOutgoing", "title": "Makes Outbound Calls", "copy": "Appointment reminders, follow-ups, confirmations, and re-engagement campaigns. Your AI makes the calls so your team can focus on customers." },
+              { "icon": "Waves", "title": "Natural Conversations", "copy": "Advanced voice AI with natural pauses, context awareness, and emotional intelligence. Sounds so human your callers forget it is AI." },
+              { "icon": "UserRoundCheck", "title": "Smart Transfers", "copy": "Knows exactly when to escalate to a human. Takes detailed messages with full context. Nothing ever falls through the cracks." }
+            ]
+          }
+        },
+        {
+          "component": "Demo",
+          "type": "demo",
+          "content": {
+            "sectionLabel": "// 02 - See Gizmoo in action",
+            "heading": "One phone line. Zero missed calls.",
+            "description": "Every inbound call answered instantly. Every appointment booked in real time. Every reminder dialed automatically. Here is what it looks like - live.",
+            "tabs": [
+              { "id": "inbound", "label": "Inbound Calls", "lines": 6 },
+              { "id": "booking", "label": "Appointment Booking", "lines": 6 },
+              { "id": "outbound", "label": "Outbound Calls", "lines": 6 },
+              { "id": "integrations", "label": "Integrations", "lines": 6 }
+            ],
+            "sidebar": {
+              "label": "Live Agent View",
+              "heading": "Every call, transcribed.",
+              "copy": "See every conversation, every booking, every outbound dial - with full transcripts and caller sentiment."
+            }
+          }
+        },
+        {
+          "component": "UseCases",
+          "type": "use-cases",
+          "content": {
+            "sectionLabel": "// 03 - Transform your business",
+            "heading": "Built for every business with a phone number.",
+            "cases": [
+              { "label": "Never miss revenue", "title": "Stop losing thousands to missed calls.", "metric": "35% more bookings captured" },
+              { "label": "24/7 Availability", "title": "Open for business around the clock.", "metric": "24/7 uninterrupted coverage" },
+              { "label": "Focus on customers", "title": "Free your team from the phone.", "metric": "8h saved per person / week" },
+              { "label": "Outbound at scale", "title": "Reminders that actually get made.", "metric": "75% fewer no-shows" }
+            ]
+          }
+        },
+        {
+          "component": "Tech",
+          "type": "how-it-works",
+          "content": {
+            "sectionLabel": "// 04 - How Gizmoo AI works",
+            "heading": "Enterprise AI. Simple setup.",
+            "description": "Most businesses are live in under 15 minutes. No IT team required. No new hardware. Just a phone line and a few preferences.",
+            "steps": [
+              { "step": "01", "title": "Connect Your Number", "copy": "Forward your existing business line or get a new AI-powered number. 5-minute setup - no hardware, no code." },
+              { "step": "02", "title": "Train Your AI", "copy": "Tell Gizmoo about your business, services, hours, and booking rules. It learns your tone and brand voice in minutes." },
+              { "step": "03", "title": "Go Live", "copy": "Start answering calls and booking appointments immediately. Monitor every conversation with real-time analytics." }
+            ],
+            "integrations": ["Google Calendar", "Outlook", "Calendly", "Acuity", "Cal.com", "HubSpot", "Salesforce", "Twilio"],
+            "liveDashboard": true
+          }
+        },
+        {
+          "component": "Testimonials",
+          "type": "testimonials",
+          "content": {
+            "sectionLabel": "// 05 - What our customers say",
+            "heading": "500+ businesses never miss a call.",
+            "quotes": [
+              { "name": "Dr. Sarah Mitchell", "role": "Owner . Mitchell Family Dental" },
+              { "name": "Michael Rodriguez", "role": "Partner . Rodriguez Law Firm" },
+              { "name": "Jennifer Walsh", "role": "Founder . Serenity Spa" },
+              { "name": "David Kim", "role": "Broker . Kim Real Estate" },
+              { "name": "Tom Bradley", "role": "Owner . Bradley HVAC" },
+              { "name": "Dr. Lena Chen", "role": "Founder . Northwind Clinic" }
+            ]
+          }
+        },
+        {
+          "component": "Pricing",
+          "type": "pricing",
+          "content": {
+            "sectionLabel": "// 06 - Pricing",
+            "heading": "Start free. Scale when ready.",
+            "description": "No credit card required. No contracts. No surprises. Cancel anytime.",
+            "toggle": ["Monthly", "Annual (-30%)"],
+            "plans": [
+              {
+                "name": "Starter",
+                "badge": "14-Day Free Trial",
+                "description": "For small businesses trying out an AI receptionist.",
+                "setupFee": "$1,200 AUD",
+                "monthlyPrice": "$589",
+                "annualPrice": "$413",
+                "features": ["24/7 AI voice receptionist", "Job qualification & lead scoring", "Calendar booking automation", "SMS confirmations", "Monthly performance report"],
+                "cta": "Start Free Trial"
+              },
+              {
+                "name": "Enterprise",
+                "badge": "Custom",
+                "description": "Multi-location businesses, high call volumes, or custom integrations.",
+                "price": "Let's talk",
+                "contacts": ["+61 0424 700 797", "hellogizmooai@gmail.com"],
+                "cta": "Talk to Enterprise"
+              }
+            ],
+            "disclaimer": "All plans include a 14-day free trial. Cancel anytime. No lock-in contracts."
+          }
+        },
+        {
+          "component": "FAQ",
+          "type": "faq",
+          "content": {
+            "sectionLabel": "// 07 - FAQ",
+            "heading": "Everything you were about to ask.",
+            "questions": 10
+          }
+        },
+        {
+          "component": "CTASection",
+          "type": "cta",
+          "content": {
+            "label": "// Your phone is ringing. Answer it.",
+            "heading": "Ready to never miss a call again?",
+            "description": "Join 500+ businesses using Gizmoo AI to answer calls, book appointments, and grow revenue - without hiring another receptionist.",
+            "ctas": ["Start Your Free Trial", "Talk to Sales"],
+            "waitlistForm": true,
+            "badges": ["99.99% Uptime", "24/7 Support"],
+            "note": "No credit card required . Setup in 15 minutes . Cancel anytime"
+          }
+        },
+        {
+          "component": "Footer",
+          "type": "footer",
+          "content": {
+            "logo": "Gizmoo AI",
+            "description": "The AI voice receptionist that answers every call, books every appointment, 24/7.",
+            "waitlistForm": true,
+            "columns": {
+              "Product": ["Features", "Pricing", "Demo", "How It Works"],
+              "Use Cases": ["Healthcare", "Legal", "Real Estate", "Salons & Spas", "Home Services"],
+              "Resources": ["FAQ", "Testimonials", "Book a Demo"],
+              "Company": ["Contact", "Privacy", "Terms"]
+            },
+            "legal": ["Privacy", "Terms", "Cookies"],
+            "watermark": "GIZMOO AI"
+          }
+        },
+        {
+          "component": "CookieBanner",
+          "type": "cookie-consent",
+          "content": {
+            "text": "We use cookies to improve your experience.",
+            "privacyLink": "/privacy",
+            "buttons": ["Decline", "Accept"]
+          }
+        }
+      ]
+    },
+    "/privacy": {
+      "title": "Privacy Policy - Gizmoo AI",
+      "sections": ["Overview", "Information We Collect", "How We Use Your Information", "Third-Party Service Providers", "Data Retention", "Your Rights under the Australian Privacy Act 1988", "Cookies Policy", "Contact Us"]
+    },
+    "/terms": {
+      "title": "Terms of Service - Gizmoo AI",
+      "sections": ["Acceptance of Terms", "Description of Service", "Free Trial", "Payment Terms", "Cancellation Policy", "Acceptable Use", "Limitation of Liability", "Governing Law", "Contact"]
+    },
+    "/sign-in": { "title": "Sign In", "type": "clerk-auth" },
+    "/sign-up": { "title": "Sign Up", "type": "clerk-auth" }
+  }
+}

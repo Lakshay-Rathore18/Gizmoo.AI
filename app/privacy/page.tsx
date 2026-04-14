@@ -23,7 +23,7 @@ export default function PrivacyPage() {
       <div className="max-w-3xl mx-auto px-6 md:px-10 pt-32 pb-20 md:pt-40 md:pb-32">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-sm text-paper/60 hover:text-cyber-cyan transition-colors mb-12"
+          className="inline-flex items-center gap-2 text-sm text-paper/60 hover:text-sarmat-lime transition-colors mb-12"
         >
           &larr; Back to home
         </Link>
@@ -145,7 +145,7 @@ export default function PrivacyPage() {
             </ul>
             <p className="mt-3">
               To exercise any of these rights, contact us at{' '}
-              <a href="mailto:hellogizmooai@gmail.com" className="text-cyber-cyan hover:underline">
+              <a href="mailto:hellogizmooai@gmail.com" className="text-sarmat-lime hover:underline">
                 hellogizmooai@gmail.com
               </a>.
             </p>
@@ -174,7 +174,7 @@ export default function PrivacyPage() {
               please contact us:
             </p>
             <p className="mt-3">
-              <a href="mailto:hellogizmooai@gmail.com" className="text-cyber-cyan hover:underline">
+              <a href="mailto:hellogizmooai@gmail.com" className="text-sarmat-lime hover:underline">
                 hellogizmooai@gmail.com
               </a>
             </p>

@@ -33,17 +33,17 @@ export function Hero() {
       <div
         aria-hidden
         className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59,130,246,0.15), transparent)' }}
+        style={{ background: 'radial-gradient(ellipse 80% 50% at 50% -20%, rgba(159,200,44,0.12), transparent)' }}
       />
 
       {/* Ambient glow orbs for depth */}
       <div
         aria-hidden
-        className="absolute top-1/4 -left-32 w-[500px] h-[500px] rounded-full bg-cyber-cyan/[0.07] blur-[100px] pointer-events-none"
+        className="absolute top-1/4 -left-32 w-[500px] h-[500px] rounded-full bg-sarmat-lime/[0.07] blur-[100px] pointer-events-none"
       />
       <div
         aria-hidden
-        className="absolute bottom-1/4 -right-32 w-[400px] h-[400px] rounded-full bg-cyber-gold/[0.05] blur-[100px] pointer-events-none"
+        className="absolute bottom-1/4 -right-32 w-[400px] h-[400px] rounded-full bg-sarmat-lime/[0.05] blur-[100px] pointer-events-none"
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 md:py-40 w-full">
@@ -53,7 +53,7 @@ export function Hero() {
           transition={{ duration: 0.6 }}
           className="inline-flex items-center gap-2 border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm px-3 py-1.5 rounded-full mb-8 font-mono text-xs uppercase tracking-widest text-paper/80"
         >
-          <PhoneCall className="w-3 h-3 text-cyber-cyan" />
+          <PhoneCall className="w-3 h-3 text-sarmat-lime" />
           AI Voice Receptionist
         </motion.div>
 
@@ -67,7 +67,7 @@ export function Hero() {
           another call.{' '}
           <span className="relative inline-block">
             <span className="text-gradient-brand">{reduce ? 'Ever.' : <TypewriterCycle words={typewriterWords} />}</span>
-            <span className="absolute -inset-x-2 -inset-y-1 bg-cyber-cyan/10 blur-2xl -z-10" />
+            <span className="absolute -inset-x-2 -inset-y-1 bg-sarmat-lime/10 blur-2xl -z-10" />
           </span>
         </motion.h1>
 
@@ -106,8 +106,8 @@ export function Hero() {
           </Button>
           <div className="hidden lg:flex items-center gap-2 text-sm text-paper/50 ml-2">
             <span className="relative flex w-2 h-2">
-              <span className="absolute inline-flex w-full h-full rounded-full bg-cyber-lime opacity-75 animate-ping" />
-              <span className="relative inline-flex w-2 h-2 rounded-full bg-cyber-lime" />
+              <span className="absolute inline-flex w-full h-full rounded-full bg-sarmat-limeLight opacity-75 animate-ping" />
+              <span className="relative inline-flex w-2 h-2 rounded-full bg-sarmat-limeLight" />
             </span>
             No credit card · 15-min setup
           </div>
@@ -143,13 +143,13 @@ export function Hero() {
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-paper/40">
         <span className="font-mono text-[10px] uppercase tracking-[0.2em]">Scroll</span>
         <span className="relative block w-px h-10 bg-paper/20 overflow-hidden">
-          <span className="absolute inset-x-0 h-4 bg-cyber-cyan animate-scan" />
+          <span className="absolute inset-x-0 h-4 bg-sarmat-lime animate-scan" />
         </span>
       </div>
 
       <Sparkles
         aria-hidden
-        className="absolute top-1/4 right-8 w-4 h-4 text-cyber-lime animate-float hidden md:block"
+        className="absolute top-1/4 right-8 w-4 h-4 text-sarmat-limeLight animate-float hidden md:block"
       />
     </section>
   );
@@ -182,7 +182,7 @@ function TypewriterCycle({ words }: { words: string[] }) {
         ))}
         <span className="invisible">{words[0]}</span>
       </span>
-      <span className="inline-block w-[0.08em] h-[0.9em] bg-cyber-cyan ml-1 animate-blink" aria-hidden />
+      <span className="inline-block w-[0.08em] h-[0.9em] bg-sarmat-lime ml-1 animate-blink" aria-hidden />
     </span>
   );
 }

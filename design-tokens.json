@@ -1,0 +1,173 @@
+{
+  "source": "Sarmat Analytix by Obriy Design Buro",
+  "reference": "https://www.obriy.design/projects/sarmat",
+  "aesthetic": "Futuristic dark theme inspired by science fiction aesthetics and military robotics technology. High-tech, minimalist, dark UI with striking lime green contrast.",
+
+  "colors": {
+    "background": {
+      "primary": "#0b0b0b",
+      "surface": "#111111",
+      "surfaceRaised": "#161616",
+      "surfaceOverlay": "rgba(159, 200, 44, 0.03)"
+    },
+    "accent": {
+      "primary": "#9fc82c",
+      "primaryHover": "#b5e030",
+      "primaryMuted": "rgba(159, 200, 44, 0.15)",
+      "primaryGlow": "rgba(159, 200, 44, 0.25)"
+    },
+    "neutral": {
+      "50": "#fafafa",
+      "100": "#f5f5f5",
+      "200": "#e5e5e5",
+      "300": "#d4d4d4",
+      "400": "#a3a3a3",
+      "500": "#737373",
+      "600": "#525252",
+      "700": "#393939",
+      "800": "#262626",
+      "900": "#171717"
+    },
+    "semantic": {
+      "success": "#9fc82c",
+      "error": "#ef4444",
+      "warning": "#f59e0b",
+      "info": "#9fc82c"
+    },
+    "text": {
+      "primary": "#ffffff",
+      "secondary": "rgba(255, 255, 255, 0.7)",
+      "muted": "rgba(255, 255, 255, 0.5)",
+      "disabled": "rgba(255, 255, 255, 0.3)"
+    },
+    "border": {
+      "default": "rgba(255, 255, 255, 0.08)",
+      "hover": "rgba(159, 200, 44, 0.3)",
+      "active": "rgba(159, 200, 44, 0.5)"
+    },
+    "darkGreen": "#293112"
+  },
+
+  "typography": {
+    "fontFamilies": {
+      "display": "N27, Space Grotesk, system-ui, sans-serif",
+      "body": "Inter, system-ui, sans-serif",
+      "mono": "Skyhook Mono, JetBrains Mono, ui-monospace, monospace"
+    },
+    "fontSizes": {
+      "xs": "0.625rem",
+      "sm": "0.875rem",
+      "base": "1rem",
+      "lg": "1.125rem",
+      "xl": "1.25rem",
+      "2xl": "1.5rem",
+      "3xl": "1.875rem",
+      "4xl": "2.25rem",
+      "5xl": "3rem",
+      "6xl": "3.75rem",
+      "7xl": "4.5rem",
+      "8xl": "6rem",
+      "hero": "clamp(2.5rem, 8vw, 7rem)"
+    },
+    "fontWeights": {
+      "regular": 400,
+      "medium": 500,
+      "semibold": 600,
+      "bold": 700
+    },
+    "letterSpacing": {
+      "tight": "-0.03em",
+      "normal": "0",
+      "wide": "0.05em",
+      "wider": "0.1em",
+      "widest": "0.24em"
+    },
+    "sectionLabel": {
+      "fontFamily": "mono",
+      "fontSize": "0.625rem",
+      "fontWeight": 400,
+      "letterSpacing": "0.24em",
+      "textTransform": "uppercase",
+      "color": "#9fc82c"
+    }
+  },
+
+  "spacing": {
+    "sectionPaddingY": {
+      "mobile": "6rem",
+      "desktop": "9rem"
+    },
+    "containerMaxWidth": "80rem",
+    "containerPaddingX": {
+      "mobile": "1rem",
+      "sm": "1.5rem",
+      "lg": "2rem"
+    }
+  },
+
+  "borderRadius": {
+    "none": "0",
+    "sm": "0.25rem",
+    "md": "0.5rem",
+    "lg": "0.75rem",
+    "xl": "1rem",
+    "2xl": "1.25rem",
+    "full": "9999px"
+  },
+
+  "shadows": {
+    "card": "0 8px 32px rgba(0, 0, 0, 0.4)",
+    "cardHover": "0 8px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(159, 200, 44, 0.06)",
+    "elevated": "0 16px 48px rgba(0, 0, 0, 0.5), 0 0 40px rgba(159, 200, 44, 0.04)",
+    "glowPrimary": "0 0 20px rgba(159, 200, 44, 0.15)",
+    "glowStrong": "0 0 40px rgba(159, 200, 44, 0.25)",
+    "buttonPrimary": "0 0 20px rgba(159, 200, 44, 0.15)",
+    "buttonPrimaryHover": "0 0 30px rgba(159, 200, 44, 0.4)"
+  },
+
+  "effects": {
+    "glassmorphism": {
+      "background": "rgba(255, 255, 255, 0.04)",
+      "backdropBlur": "20px",
+      "border": "1px solid rgba(255, 255, 255, 0.08)"
+    },
+    "gradient": {
+      "brand": "linear-gradient(120deg, #9fc82c 0%, #b5e030 50%, #ffffff 100%)",
+      "meshDivider": "radial-gradient(ellipse 80% 50% at 50% 50%, rgba(159, 200, 44, 0.12), transparent 70%)",
+      "heroOverlay": "radial-gradient(ellipse 80% 50% at 50% -20%, rgba(159, 200, 44, 0.12), transparent)"
+    },
+    "grid": {
+      "color": "rgba(255, 255, 255, 0.04)",
+      "size": "48px"
+    }
+  },
+
+  "buttons": {
+    "primary": {
+      "background": "#9fc82c",
+      "color": "#0b0b0b",
+      "hoverBackground": "#b5e030",
+      "borderRadius": "0.75rem",
+      "shadow": "0 0 20px rgba(159, 200, 44, 0.15)"
+    },
+    "secondary": {
+      "background": "transparent",
+      "color": "#ffffff",
+      "border": "1px solid rgba(255, 255, 255, 0.2)",
+      "hoverBorder": "1px solid rgba(255, 255, 255, 0.4)",
+      "borderRadius": "0.75rem"
+    }
+  },
+
+  "navigation": {
+    "height": {
+      "mobile": "4rem",
+      "desktop": "5rem"
+    },
+    "background": {
+      "transparent": "transparent",
+      "scrolled": "rgba(0, 0, 0, 0.5)"
+    },
+    "blur": "blur(24px)"
+  }
+}

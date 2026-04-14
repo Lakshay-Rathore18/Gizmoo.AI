@@ -42,7 +42,7 @@ export function Testimonials() {
     <section id="testimonials" className="relative py-24 md:py-36 bg-ink border-y border-white/[0.06] overflow-hidden">
       <ScrollReveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-          <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-cyber-gold">
+          <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-sarmat-lime">
             {'// 05 — What our customers say'}
           </span>
           <h2 className="mt-4 font-display font-bold text-4xl md:text-6xl tracking-tight max-w-3xl">
@@ -60,7 +60,7 @@ export function Testimonials() {
           >
             <div className="flex gap-1 mb-4">
               {Array.from({ length: 5 }).map((_, j) => (
-                <Star key={j} className="w-3.5 h-3.5 fill-cyber-lime text-cyber-lime" />
+                <Star key={j} className="w-3.5 h-3.5 fill-sarmat-limeLight text-sarmat-limeLight" />
               ))}
             </div>
             <blockquote className="text-paper text-base leading-relaxed">

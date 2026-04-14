@@ -9,9 +9,9 @@ import { staggerContainer, fadeInUp } from '@/lib/animation';
 type Accent = 'cyan' | 'gold' | 'lime';
 
 const accentClasses: Record<Accent, { border: string; text: string; glow: string }> = {
-  cyan: { border: 'border-cyber-cyan/40', text: 'text-cyber-cyan', glow: 'bg-cyber-cyan/20' },
-  gold: { border: 'border-cyber-gold/40', text: 'text-cyber-gold', glow: 'bg-cyber-gold/20' },
-  lime: { border: 'border-cyber-lime/40', text: 'text-cyber-lime', glow: 'bg-cyber-lime/20' },
+  cyan: { border: 'border-sarmat-lime/40', text: 'text-sarmat-lime', glow: 'bg-sarmat-lime/20' },
+  gold: { border: 'border-sarmat-lime/40', text: 'text-sarmat-lime', glow: 'bg-sarmat-lime/20' },
+  lime: { border: 'border-sarmat-limeLight/40', text: 'text-sarmat-limeLight', glow: 'bg-sarmat-limeLight/20' },
 };
 
 const features: { icon: typeof PhoneIncoming; title: string; copy: string; accent: Accent }[] = [
@@ -61,7 +61,7 @@ export function Features() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="max-w-3xl">
-            <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-cyber-cyan">
+            <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-sarmat-lime">
               {'// 01 — What Gizmoo AI Does'}
             </span>
             <h2 className="mt-4 font-display font-bold text-4xl md:text-6xl tracking-tight">

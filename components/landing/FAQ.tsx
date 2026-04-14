@@ -56,7 +56,7 @@ export function FAQ() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div>
-            <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-cyber-lime">
+            <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-sarmat-limeLight">
               {'// 07 — FAQ'}
             </span>
             <h2 className="mt-4 font-display font-bold text-4xl md:text-6xl tracking-tight">
@@ -81,7 +81,7 @@ export function FAQ() {
                   <span
                     className={cn(
                       'font-display text-lg md:text-xl font-bold tracking-tight transition-colors',
-                      open ? 'text-cyber-cyan' : 'text-paper group-hover:text-cyber-cyan',
+                      open ? 'text-sarmat-lime' : 'text-paper group-hover:text-sarmat-lime',
                     )}
                   >
                     {item.q}
@@ -89,7 +89,7 @@ export function FAQ() {
                   <span
                     className={cn(
                       'shrink-0 w-8 h-8 border border-white/[0.1] rounded-lg flex items-center justify-center transition-all',
-                      open ? 'rotate-45 border-cyber-cyan/50 bg-cyber-cyan/10' : 'group-hover:border-paper/50',
+                      open ? 'rotate-45 border-sarmat-lime/50 bg-sarmat-lime/10' : 'group-hover:border-paper/50',
                     )}
                   >
                     <Plus className="w-4 h-4" />

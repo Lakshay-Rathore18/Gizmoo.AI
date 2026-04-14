@@ -23,7 +23,7 @@ export function CTASection() {
       />
       <div
         aria-hidden
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full bg-cyber-gold/10 blur-[120px] pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full bg-sarmat-lime/10 blur-[120px] pointer-events-none"
       />
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -31,7 +31,7 @@ export function CTASection() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="font-mono text-[10px] uppercase tracking-[0.24em] text-cyber-cyan"
+          className="font-mono text-[10px] uppercase tracking-[0.24em] text-sarmat-lime"
         >
           {'// Your phone is ringing. Answer it.'}
         </motion.span>
@@ -93,7 +93,7 @@ export function CTASection() {
           className="mt-10 max-w-md mx-auto text-center"
         >
           {status === 'success' ? (
-            <div className="text-cyber-lime font-display font-bold text-lg">
+            <div className="text-sarmat-limeLight font-display font-bold text-lg">
               ✓ You&apos;re on the list! We&apos;ll be in touch.
             </div>
           ) : (
@@ -110,7 +110,7 @@ export function CTASection() {
                   setStatus(res.ok ? 'success' : 'error');
                 } catch { setStatus('error'); }
               }}
-              className="flex items-center border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm rounded-xl focus-within:border-cyber-cyan/50 transition-colors max-w-md mx-auto overflow-hidden"
+              className="flex items-center border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm rounded-xl focus-within:border-sarmat-lime/50 transition-colors max-w-md mx-auto overflow-hidden"
             >
               <input
                 type="email"
@@ -124,23 +124,23 @@ export function CTASection() {
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="group relative inline-flex items-center justify-center gap-2 font-display font-semibold tracking-tight rounded-none transition-all duration-200 overflow-hidden bg-paper text-ink hover:bg-cyber-cyan px-6 py-4 text-sm shrink-0"
+                className="group relative inline-flex items-center justify-center gap-2 font-display font-semibold tracking-tight rounded-none transition-all duration-200 overflow-hidden bg-paper text-ink hover:bg-sarmat-lime px-6 py-4 text-sm shrink-0"
               >
                 {status === 'loading' ? 'Joining...' : 'Join Waitlist'}
               </button>
             </form>
           )}
           {status === 'error' && (
-            <p className="mt-2 text-sm text-cyber-rose">
+            <p className="mt-2 text-sm text-red-500">
               Something went wrong — email us at hellogizmooai@gmail.com
             </p>
           )}
           <div className="mt-6 text-xs text-paper/50 font-mono flex items-center justify-center gap-4 flex-wrap">
             <span className="flex items-center gap-1.5">
-              <Clock className="w-3 h-3 text-cyber-lime" /> 99.99% Uptime
+              <Clock className="w-3 h-3 text-sarmat-limeLight" /> 99.99% Uptime
             </span>
             <span className="flex items-center gap-1.5">
-              <Headphones className="w-3 h-3 text-cyber-lime" /> 24/7 Support
+              <Headphones className="w-3 h-3 text-sarmat-limeLight" /> 24/7 Support
             </span>
           </div>
           <div className="mt-3 text-[11px] text-paper/40 font-mono">
