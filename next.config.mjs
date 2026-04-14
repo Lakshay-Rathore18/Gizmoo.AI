@@ -3,7 +3,6 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     remotePatterns: [
-      { protocol: 'https', hostname: 'prod.spline.design' },
       { protocol: 'https', hostname: 'images.unsplash.com' },
     ],
   },
@@ -26,7 +25,7 @@ const nextConfig = {
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' data: blob: https:",
               "font-src 'self' https://fonts.gstatic.com",
-              "connect-src 'self' https://turtclknacgpwnxocubx.supabase.co https://prod.spline.design",
+              "connect-src 'self' https://turtclknacgpwnxocubx.supabase.co",
               "frame-src 'none'",
               "object-src 'none'",
               "base-uri 'self'",

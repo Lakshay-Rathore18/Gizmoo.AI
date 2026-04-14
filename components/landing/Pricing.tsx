@@ -1,163 +1,164 @@
 'use client';
 
 import { useState } from 'react';
-import { Check } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
-import { ScrollReveal } from '@/components/animations/ScrollReveal';
-import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
 import { brand } from '@/lib/brand';
 
 export function Pricing() {
   const [annual, setAnnual] = useState(true);
+  const starterPrice = annual ? '$413' : '$590';
+  const period = annual ? '/mo (billed annually)' : '/mo';
 
   return (
-    <section id="pricing" className="relative py-[120px] md:py-[150px] bg-ink">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ScrollReveal>
-          <div className="text-center max-w-3xl mx-auto">
-            <span className="section-label">
-              06 — Pricing
+    <section id="pricing" className="relative py-section">
+      <div className="max-w-content mx-auto px-6">
+        <motion.span
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="section-label block mb-8"
+        >
+          06 — Pricing
+        </motion.span>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-display-sm font-display font-bold tracking-tight mb-6 max-w-2xl"
+        >
+          Start free. Scale when ready.
+        </motion.h2>
+
+        {/* Toggle */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.4 }}
+          className="flex items-center justify-center gap-4 mb-16"
+        >
+          <span className={`text-sm ${!annual ? 'text-text-primary' : 'text-text-tertiary'}`}>Monthly</span>
+          <button
+            onClick={() => setAnnual(!annual)}
+            className="relative w-14 h-7 rounded-full bg-bg-tertiary border border-border-subtle transition-colors"
+            aria-label="Toggle billing period"
+          >
+            <motion.div
+              animate={{ x: annual ? 26 : 2 }}
+              transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+              className="absolute top-[3px] w-5 h-5 rounded-full bg-accent"
+            />
+          </button>
+          <span className={`text-sm ${annual ? 'text-text-primary' : 'text-text-tertiary'}`}>
+            Annual
+            <span className="ml-2 text-xs px-2 py-0.5 rounded-full bg-accent/10 text-accent border border-accent/20">
+              -30%
             </span>
-            <h2 className="mt-4 font-display uppercase tracking-wide text-[clamp(2.5rem,6vw,5rem)] leading-[0.9] text-white">
-              Start free.<br />
-              Scale when ready.
-            </h2>
-            <p className="mt-6 text-white/55 text-lg font-body">
-              No credit card required. No contracts. No surprises. Cancel anytime.
+          </span>
+        </motion.div>
+
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          {/* Starter */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="nk-card p-8 md:p-10 relative overflow-hidden border-accent/30 md:scale-[1.02]"
+          >
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-accent" />
+            <div className="glow-orb glow-orb-accent w-[300px] h-[300px] -top-[150px] -right-[150px] opacity-10" aria-hidden />
+
+            <p className="text-sm text-accent uppercase tracking-wider mb-2">Recommended</p>
+            <h3 className="text-2xl font-display font-bold mb-1">Starter</h3>
+            <p className="text-text-tertiary text-sm mb-6">Everything you need to never miss a call.</p>
+
+            <div className="mb-2">
+              <span className="text-5xl md:text-6xl font-display font-bold">{starterPrice}</span>
+              <span className="text-text-tertiary text-sm ml-1">{period}</span>
+            </div>
+            <p className="text-text-tertiary text-xs mb-8">
+              One-time setup: $1,200 AUD
             </p>
 
-            <div className="mt-10 inline-flex items-center gap-1 border border-white/[0.08] p-1 bg-white/[0.03] rounded-[2px]">
-              <button
-                onClick={() => setAnnual(false)}
-                style={{ touchAction: 'manipulation' }}
-                className={cn(
-                  'px-5 py-2 text-sm font-mono uppercase tracking-wider transition-colors min-h-[44px] rounded-[2px]',
-                  !annual ? 'bg-white text-ink' : 'text-white/55',
-                )}
-              >
-                Monthly
-              </button>
-              <button
-                onClick={() => setAnnual(true)}
-                style={{ touchAction: 'manipulation' }}
-                className={cn(
-                  'px-5 py-2 text-sm font-mono uppercase tracking-wider transition-colors flex items-center gap-2 min-h-[44px] rounded-[2px]',
-                  annual ? 'bg-white text-ink' : 'text-white/55',
-                )}
-              >
-                Annual
-                <span className="text-[10px] bg-white/20 text-white px-1.5 py-0.5 rounded-[2px]">-30%</span>
-              </button>
+            <a href={brand.signUp} className="btn-primary w-full text-center mb-8 block">
+              Start 14-Day Free Trial
+            </a>
+
+            <ul className="space-y-3">
+              {[
+                '24/7 AI voice receptionist',
+                'Unlimited inbound calls',
+                'Appointment booking & calendar sync',
+                'SMS confirmations',
+                'Call transcripts & recordings',
+                'Lead qualification & scoring',
+                'Outbound reminder calls',
+                'Monthly performance report',
+                'Email & chat support',
+              ].map((f) => (
+                <li key={f} className="flex items-start gap-3 text-sm text-text-secondary">
+                  <span className="text-accent mt-0.5 shrink-0">&#10003;</span>
+                  {f}
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Enterprise */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="nk-card p-8 md:p-10"
+          >
+            <p className="text-sm text-text-tertiary uppercase tracking-wider mb-2">For teams</p>
+            <h3 className="text-2xl font-display font-bold mb-1">Enterprise</h3>
+            <p className="text-text-tertiary text-sm mb-6">Custom solutions for complex needs.</p>
+
+            <div className="mb-8">
+              <span className="text-5xl md:text-6xl font-display font-bold">Let&apos;s talk</span>
             </div>
-          </div>
-        </ScrollReveal>
 
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          {/* Starter Plan */}
-          <ScrollReveal delay={0}>
-            <div className="relative h-full flex flex-col p-8 glass-card border-white/20 rounded-[2px] -translate-y-2 shadow-[0_0_40px_rgba(255,255,255,0.06)] hover:shadow-[0_0_60px_rgba(255,255,255,0.10)] transition-all duration-300" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.02) 100%)' }}>
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 border border-white/40 bg-transparent text-white font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-[2px]">
-                14-Day Free Trial
-              </div>
-              <div className="font-display uppercase tracking-wide text-2xl text-white">Starter</div>
-              <div className="mt-1 text-sm text-white/55 font-body min-h-[2.5rem]">
-                For small businesses trying out an AI receptionist.
-              </div>
+            <a href={brand.calLink} target="_blank" rel="noopener noreferrer" className="btn-ghost w-full text-center mb-8 block">
+              Book a Call
+            </a>
 
-              <div className="mt-6">
-                <div className="text-sm text-paper/50 mb-2">
-                  One-time setup: $1,200 AUD
-                </div>
-                <div className="flex items-baseline gap-2">
-                  <span className="font-display font-bold text-5xl">
-                    ${annual ? '413' : '589'}
-                  </span>
-                  <span className="text-paper/50 text-sm">/ month AUD</span>
-                  {annual && (
-                    <span className="text-[10px] bg-white/20 text-white px-1.5 py-0.5 font-mono uppercase tracking-wider">
-                      Save 30%
-                    </span>
-                  )}
-                </div>
-              </div>
-
-              <ul className="mt-8 space-y-3 flex-1">
-                {[
-                  '24/7 AI voice receptionist',
-                  'Job qualification & lead scoring',
-                  'Calendar booking automation',
-                  'SMS confirmations',
-                  'Monthly performance report',
-                ].map((f) => (
-                  <li key={f} className="flex items-start gap-3 text-sm text-paper/80">
-                    <Check className="w-4 h-4 shrink-0 mt-0.5 text-white/50" />
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <Button
-                variant="primary"
-                size="lg"
-                className="mt-8 w-full"
-                data-action="pricing-starter"
-                onClick={() => window.open(brand.calLink, '_blank')}
-              >
-                Start Free Trial
-              </Button>
-            </div>
-          </ScrollReveal>
-
-          {/* Enterprise Plan */}
-          <ScrollReveal delay={0.08}>
-            <div className="relative h-full flex flex-col p-8 glass-card rounded-[2px] transition-all duration-300">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white/[0.06] border border-white/[0.08] text-white/55 font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-[2px]">
-                Custom
-              </div>
-              <div className="font-display uppercase tracking-wide text-2xl text-white">Enterprise</div>
-              <div className="mt-1 text-sm text-white/55 font-body min-h-[2.5rem]">
-                Multi-location businesses, high call volumes, or custom integrations.
-              </div>
-
-              <div className="mt-6">
-                <span className="font-display font-bold text-5xl">Let&apos;s talk</span>
-              </div>
-
-              <div className="mt-6 space-y-3">
-                <a
-                  href="tel:+61424700797"
-                  className="flex items-center gap-2 text-sm text-paper/80 hover:text-white/55 transition-colors"
-                >
-                  <span>📞</span>
-                  <span>+61 0424 700 797</span>
-                </a>
-                <a
-                  href="mailto:hellogizmooai@gmail.com"
-                  className="flex items-center gap-2 text-sm text-paper/80 hover:text-white/55 transition-colors"
-                >
-                  <span>✉️</span>
-                  <span>hellogizmooai@gmail.com</span>
-                </a>
-              </div>
-
-              <div className="flex-1" />
-
-              <Button
-                variant="secondary"
-                size="lg"
-                className="mt-8 w-full"
-                data-action="pricing-enterprise"
-                onClick={() => window.open('tel:+61424700797')}
-              >
-                Talk to Enterprise
-              </Button>
-            </div>
-          </ScrollReveal>
+            <ul className="space-y-3">
+              {[
+                'Everything in Starter',
+                'Multi-location support',
+                'Custom AI voice & personality',
+                'Advanced integrations (API access)',
+                'Priority onboarding',
+                'Dedicated account manager',
+                'Custom reporting & analytics',
+                'SLA guarantee',
+                'HIPAA BAA available',
+              ].map((f) => (
+                <li key={f} className="flex items-start gap-3 text-sm text-text-secondary">
+                  <span className="text-accent mt-0.5 shrink-0">&#10003;</span>
+                  {f}
+                </li>
+              ))}
+            </ul>
+          </motion.div>
         </div>
 
-        <p className="mt-10 text-center text-xs text-paper/40 font-mono">
-          All plans include a 14-day free trial. Cancel anytime. No lock-in contracts.
-        </p>
+        {/* Trust line */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+          className="text-center text-text-tertiary text-sm mt-10"
+        >
+          No credit card required &middot; 15-minute setup &middot; Cancel anytime
+        </motion.p>
       </div>
     </section>
   );

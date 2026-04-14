@@ -1,183 +1,208 @@
 'use client';
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { PhoneIncoming, CalendarCheck, PhoneOutgoing, Plug, CheckCircle2 } from 'lucide-react';
-import { AIAgentVisual } from '@/components/ui/AIAgentVisual';
-import { ScrollReveal } from '@/components/animations/ScrollReveal';
-import { cn } from '@/lib/utils';
+import { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { brand } from '@/lib/brand';
 
-const tabs = [
-  {
-    id: 'inbound',
-    label: 'Inbound Calls',
-    icon: PhoneIncoming,
-    lines: [
-      { role: 'caller', text: '*ring ring*' },
-      { role: 'agent', text: 'Hi, thanks for calling Mitchell Family Dental — this is Gizmoo. How can I help?' },
-      { role: 'caller', text: 'I need to book a cleaning for next week.' },
-      { role: 'agent', text: 'Absolutely. I see Tuesday at 2pm or Thursday at 10am. Which works better?' },
-      { role: 'caller', text: 'Thursday at 10 works great.' },
-      { role: 'agent', text: "Booked. I'll text you a confirmation right now." },
-    ],
-  },
-  {
-    id: 'booking',
-    label: 'Appointment Booking',
-    icon: CalendarCheck,
-    lines: [
-      { role: 'sys', text: '→ Checking Google Calendar for availability' },
-      { role: 'sys', text: '✓ 3 slots found · Thu 10am · Thu 2pm · Fri 9am' },
-      { role: 'sys', text: '→ Slot held · Thu 10:00 · 45 min · Dr. Mitchell' },
-      { role: 'sys', text: '✓ Calendar event created' },
-      { role: 'sys', text: '✓ SMS confirmation sent to caller' },
-      { role: 'sys', text: '✓ Intake form emailed' },
-    ],
-  },
-  {
-    id: 'outbound',
-    label: 'Outbound Calls',
-    icon: PhoneOutgoing,
-    lines: [
-      { role: 'out', text: '→ Dialing +61 489 072 416 · reminder campaign' },
-      { role: 'agent', text: "Hi Sarah, this is Gizmoo from Mitchell Dental with a reminder about your cleaning tomorrow at 10am." },
-      { role: 'caller', text: 'Oh, thanks — actually can we push it to Friday?' },
-      { role: 'agent', text: 'No problem. Friday at 10am is open — shall I move you to that?' },
-      { role: 'caller', text: 'Yes please.' },
-      { role: 'agent', text: 'Rescheduled. Have a great day!' },
-    ],
-  },
-  {
-    id: 'integrations',
-    label: 'Integrations',
-    icon: Plug,
-    lines: [
-      { role: 'sys', text: '✓ Google Calendar · connected' },
-      { role: 'sys', text: '✓ Outlook · connected' },
-      { role: 'sys', text: '✓ Calendly · connected' },
-      { role: 'sys', text: '✓ HubSpot CRM · synced (2,148 contacts)' },
-      { role: 'sys', text: '✓ Twilio SMS · active' },
-      { role: 'sys', text: '→ 100+ more available in marketplace' },
-    ],
-  },
-];
+const tabs = ['Inbound Calls', 'Appointment Booking', 'Outbound Calls', 'Integrations'];
+
+const conversations: Record<string, Array<{ role: 'caller' | 'ai'; text: string }>> = {
+  'Inbound Calls': [
+    { role: 'caller', text: "Hi, I've got a burst pipe in my kitchen. Can someone come out today?" },
+    { role: 'ai', text: "I'm sorry to hear that! Let me help you right away. Can I get your name and address?" },
+    { role: 'caller', text: "Sure, it's Tom Baker, 42 Marine Parade, Bondi." },
+    { role: 'ai', text: "Thanks Tom. I've booked a plumber for you today between 2-4pm. You'll get an SMS confirmation shortly. Is there anything else?" },
+  ],
+  'Appointment Booking': [
+    { role: 'caller', text: "I need to book a dental checkup for next Tuesday." },
+    { role: 'ai', text: "Of course! I can see availability on Tuesday. Would you prefer morning or afternoon?" },
+    { role: 'caller', text: "Morning would be great, around 10am." },
+    { role: 'ai', text: "Perfect. I've booked you in for Tuesday at 10am with Dr. Patel. A confirmation SMS is on its way!" },
+  ],
+  'Outbound Calls': [
+    { role: 'ai', text: "Hi Sarah, this is a friendly reminder from Northside Medical about your appointment tomorrow at 3pm." },
+    { role: 'caller', text: "Oh thanks for reminding me! Can I actually reschedule to Thursday?" },
+    { role: 'ai', text: "No problem at all. Thursday at 3pm is available. I'll update your booking and send a new confirmation." },
+    { role: 'caller', text: "Perfect, thank you!" },
+  ],
+  'Integrations': [
+    { role: 'caller', text: "Can you check if there's availability this Friday?" },
+    { role: 'ai', text: "Let me check your calendar... I can see Friday 10am, 1pm, and 3:30pm are open. Which works best?" },
+    { role: 'caller', text: "1pm please." },
+    { role: 'ai', text: "Done! Booked for Friday 1pm. I've synced it to your Google Calendar and sent a Calendly confirmation link." },
+  ],
+};
+
+function TypingIndicator() {
+  return (
+    <div className="flex gap-1 px-4 py-3">
+      {[0, 1, 2].map((i) => (
+        <motion.div
+          key={i}
+          className="w-2 h-2 rounded-full bg-accent/40"
+          animate={{ opacity: [0.3, 1, 0.3] }}
+          transition={{ duration: 1, repeat: Infinity, delay: i * 0.2 }}
+        />
+      ))}
+    </div>
+  );
+}
 
 export function Demo() {
-  const [active, setActive] = useState(tabs[0].id);
-  const current = tabs.find((t) => t.id === active) ?? tabs[0];
+  const [activeTab, setActiveTab] = useState(0);
+  const [visibleMessages, setVisibleMessages] = useState(0);
+  const [isTyping, setIsTyping] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(sectionRef, { once: false, margin: '-30%' });
+
+  const currentConvo = conversations[tabs[activeTab]];
+
+  // Auto-play chat animation
+  useEffect(() => {
+    if (!inView) {
+      setVisibleMessages(0);
+      setIsTyping(false);
+      return;
+    }
+
+    setVisibleMessages(0);
+    setIsTyping(false);
+
+    let msgIndex = 0;
+    const showNext = () => {
+      if (msgIndex >= currentConvo.length) return;
+      setIsTyping(true);
+      setTimeout(() => {
+        setIsTyping(false);
+        msgIndex++;
+        setVisibleMessages(msgIndex);
+        if (msgIndex < currentConvo.length) {
+          setTimeout(showNext, 600);
+        }
+      }, 800);
+    };
+
+    const startTimer = setTimeout(showNext, 500);
+    return () => clearTimeout(startTimer);
+  }, [inView, activeTab, currentConvo.length]);
 
   return (
-    <section id="demo" className="relative py-[120px] md:py-[150px] bg-surface overflow-hidden">
-      <div aria-hidden className="absolute inset-0 topo-texture" />
+    <section id="demo" ref={sectionRef} className="relative py-section">
+      {/* Background glow */}
+      <div className="glow-orb glow-orb-accent w-[500px] h-[500px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-5" aria-hidden />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ScrollReveal>
-          <div className="max-w-3xl">
-            <span className="section-label">
-              02 — Demo
-            </span>
-            <h2 className="mt-4 font-display uppercase tracking-wide text-[clamp(2.5rem,6vw,5rem)] leading-[0.9] text-white">
-              One phone line.<br />Zero missed calls.
-            </h2>
-            <p className="mt-6 text-white/55 text-lg max-w-2xl font-body">
-              Every inbound call answered instantly. Every appointment booked in real time. Every
-              reminder dialed automatically. Here is what it looks like — live.
-            </p>
-          </div>
-        </ScrollReveal>
+      <div className="max-w-content mx-auto px-6">
+        <motion.span
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="section-label block mb-8"
+        >
+          02 — Demo
+        </motion.span>
 
-        <div className="mt-16 grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-8">
-          <ScrollReveal className="lg:col-span-3" delay={0.1}>
-            <div className="sarmat-card overflow-hidden">
-              <div className="flex items-center gap-1 border-b border-white/[0.06] px-3 pt-3 overflow-x-auto">
-                {tabs.map((t) => (
-                  <button
-                    key={t.id}
-                    onClick={() => setActive(t.id)}
-                    style={{ touchAction: 'manipulation' }}
-                    className={cn(
-                      'flex items-center gap-2 px-4 py-2.5 text-sm font-mono transition-colors whitespace-nowrap min-h-[44px]',
-                      active === t.id
-                        ? 'text-white border-b-2 border-white/40 -mb-px bg-white/5'
-                        : 'text-white/50 hover:text-white',
-                    )}
-                  >
-                    <t.icon className="w-3.5 h-3.5" />
-                    {t.label}
-                  </button>
-                ))}
-                <div className="ml-auto hidden md:flex gap-1.5 pr-3">
-                  <span className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-white/40" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-white/30" />
-                </div>
-              </div>
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-display-sm font-display font-bold tracking-tight mb-16 max-w-2xl"
+        >
+          One phone line. Zero missed calls.
+        </motion.h2>
 
-              <div className="min-h-[360px] p-5 md:p-6 font-mono text-sm leading-relaxed">
-                <AnimatePresence mode="wait">
+        {/* Demo card */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mx-auto nk-card overflow-hidden"
+        >
+          {/* Tab bar */}
+          <div className="flex overflow-x-auto border-b border-border-subtle">
+            {tabs.map((tab, i) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(i)}
+                className={`relative px-5 py-4 text-sm whitespace-nowrap transition-colors ${
+                  i === activeTab ? 'text-accent' : 'text-text-tertiary hover:text-text-secondary'
+                }`}
+              >
+                {tab}
+                {i === activeTab && (
                   <motion.div
-                    key={active}
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -8 }}
-                    transition={{ duration: 0.25 }}
-                    className="space-y-2"
-                  >
-                    {current.lines.map((line, i) => (
-                      <motion.div
-                        key={i}
-                        initial={{ opacity: 0, x: -8 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: i * 0.2 }}
-                        className={cn(
-                          'flex gap-3',
-                          line.role === 'caller' && 'text-paper',
-                          line.role === 'agent' && 'text-white/55',
-                          line.role === 'sys' && 'text-white/50',
-                          line.role === 'out' && 'text-white/55',
-                        )}
-                      >
-                        <span className="select-none text-white/30 w-8 shrink-0">{String(i + 1).padStart(2, '0')}</span>
-                        <span>{line.text}</span>
-                      </motion.div>
-                    ))}
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: current.lines.length * 0.2 + 0.1 }}
-                      className="flex items-center gap-2 pt-2 text-white/50"
-                    >
-                      <CheckCircle2 className="w-4 h-4" />
-                      <span>Handled in 32s — caller satisfied.</span>
-                    </motion.div>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-            </div>
-          </ScrollReveal>
+                    layoutId="demo-tab"
+                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-accent"
+                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                  />
+                )}
+              </button>
+            ))}
+          </div>
 
-          <ScrollReveal className="lg:col-span-2" delay={0.2}>
-            <div className="relative h-full min-h-[360px] sarmat-card overflow-hidden">
-              <AIAgentVisual className="w-full h-full" />
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent"
-              />
-              <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
-                <div className="font-mono text-[10px] uppercase tracking-widest text-white/55 mb-1">
-                  Live Agent View
-                </div>
-                <div className="font-display uppercase tracking-wide text-xl">
-                  Every call, transcribed.
-                </div>
-                <div className="mt-1 text-sm text-white/55 font-body">
-                  See every conversation, every booking, every outbound dial — with full transcripts
-                  and caller sentiment.
+          {/* Chat area */}
+          <div className="p-6 min-h-[320px] flex flex-col gap-3">
+            <AnimatePresence mode="popLayout">
+              {currentConvo.slice(0, visibleMessages).map((msg, i) => (
+                <motion.div
+                  key={`${activeTab}-${i}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className={`flex ${msg.role === 'ai' ? 'justify-end' : 'justify-start'}`}
+                >
+                  <div
+                    className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${
+                      msg.role === 'ai'
+                        ? 'bg-accent/10 text-accent border border-accent/20 rounded-br-md'
+                        : 'bg-bg-tertiary text-text-primary border border-border-subtle rounded-bl-md'
+                    }`}
+                  >
+                    {msg.text}
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+
+            {isTyping && (
+              <div className={`flex ${
+                currentConvo[visibleMessages]?.role === 'ai' ? 'justify-end' : 'justify-start'
+              }`}>
+                <div className={`rounded-2xl ${
+                  currentConvo[visibleMessages]?.role === 'ai'
+                    ? 'bg-accent/10 border border-accent/20'
+                    : 'bg-bg-tertiary border border-border-subtle'
+                }`}>
+                  <TypingIndicator />
                 </div>
               </div>
-            </div>
-          </ScrollReveal>
-        </div>
+            )}
+          </div>
+
+          {/* Status line */}
+          <div className="px-6 py-3 border-t border-border-subtle flex items-center gap-2 text-sm text-text-tertiary">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            Handled in 32s — caller satisfied
+          </div>
+        </motion.div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3, duration: 0.5 }}
+          className="text-center mt-12"
+        >
+          <p className="text-text-secondary mb-4">Try it yourself — call now</p>
+          <a
+            href={`tel:${brand.phone.replace(/\s/g, '')}`}
+            className="text-2xl md:text-3xl font-display font-bold text-accent hover:text-accent-hover transition-colors"
+          >
+            {brand.phone}
+          </a>
+        </motion.div>
       </div>
     </section>
   );

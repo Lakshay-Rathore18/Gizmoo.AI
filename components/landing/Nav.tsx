@@ -1,166 +1,145 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
-
-const SIGN_IN_URL = 'https://accounts.gizmoo.me/sign-in';
-const SIGN_UP_URL = 'https://accounts.gizmoo.me/sign-up';
-import { Menu, X } from 'lucide-react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import GizmooLogo from '@/components/ui/GizmooLogo';
-import { cn } from '@/lib/utils';
+import { brand } from '@/lib/brand';
 
-const links = [
-  { href: '#features', label: 'Features' },
-  { href: '#demo', label: 'Demo' },
-  { href: '#use-cases', label: 'Use Cases' },
-  { href: '#pricing', label: 'Pricing' },
-  { href: '#faq', label: 'FAQ' },
+const navLinks = [
+  { label: 'Features', href: '#features' },
+  { label: 'Demo', href: '#demo' },
+  { label: 'Use Cases', href: '#use-cases' },
+  { label: 'Pricing', href: '#pricing' },
+  { label: 'FAQ', href: '#faq' },
 ];
 
-export function Nav() {
+export function Nav({ onContactOpen }: { onContactOpen?: () => void }) {
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
+    const onScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileOpen]);
+
   return (
-    <header
-      className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
-        scrolled
-          ? 'bg-[#0a0a0a]/80 backdrop-blur-xl'
-          : 'bg-transparent',
-      )}
-    >
-      {/* Ultra-subtle separator */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-white/[0.06]" />
-
-      <nav
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex items-center"
-        aria-label="Primary"
+    <>
+      <motion.nav
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? 'bg-bg-primary/80 backdrop-blur-xl border-b border-border-subtle'
+            : 'bg-transparent'
+        }`}
       >
-        {/* Logo — LEFT */}
-        <a href="#top" className="flex items-center shrink-0">
-          <GizmooLogo className="h-7 md:h-9 w-auto" />
-        </a>
+        <div className="max-w-content mx-auto px-6 h-16 md:h-20 flex items-center justify-between">
+          {/* Logo */}
+          <a href="#" className="text-xl md:text-2xl font-display font-bold tracking-tight shrink-0">
+            Gizmoo <span className="text-accent">AI</span>
+          </a>
 
-        {/* Nav links — CENTER (absolute centered) */}
-        <ul className="hidden md:flex items-center gap-0 absolute left-1/2 -translate-x-1/2">
-          {links.map((l, i) => (
-            <li key={l.href} className="flex items-center">
+          {/* Desktop nav */}
+          <div className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
               <a
-                href={l.href}
-                className="text-[13px] uppercase tracking-ultrawide text-white/50 hover:text-white transition-colors duration-200 px-4 py-2"
-                style={{ fontVariant: 'small-caps' }}
+                key={link.href}
+                href={link.href}
+                className="text-sm text-text-secondary hover:text-text-primary transition-colors duration-200 link-hover"
               >
-                {l.label}
+                {link.label}
               </a>
-              {i < links.length - 1 && (
-                <span className="text-white/20 text-[8px]" aria-hidden>&#8226;</span>
-              )}
-            </li>
-          ))}
-        </ul>
+            ))}
+          </div>
 
-        {/* CTA — RIGHT */}
-        <div className="hidden md:flex items-center gap-3 ml-auto">
-          <Link
-            href={SIGN_IN_URL}
-            className="text-[13px] uppercase tracking-wide font-medium text-white/50 hover:text-white transition-colors duration-200 px-3 py-2"
-            style={{ touchAction: 'manipulation' }}
-          >
-            Sign In
-          </Link>
-          <Link
-            href={SIGN_UP_URL}
-            className="px-5 py-2 border border-white/30 text-white text-[13px] uppercase tracking-wide font-medium rounded-sarmat transition-all duration-200 hover:border-white hover:bg-white/[0.06]"
-            style={{ touchAction: 'manipulation' }}
-          >
-            Get Started
-          </Link>
-        </div>
-
-        <button
-          className="md:hidden p-2 text-paper min-w-[44px] min-h-[44px] flex items-center justify-center ml-auto"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle menu"
-          aria-expanded={open}
-          style={{ touchAction: 'manipulation' }}
-        >
-          {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
-      </nav>
-
-      {/* Mobile drawer — slides from right, dark overlay */}
-      <AnimatePresence>
-        {open && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/70 z-40 md:hidden"
-              onClick={() => setOpen(false)}
-            />
-            <motion.div
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-              className="fixed top-0 right-0 bottom-0 w-[280px] bg-[#0a0a0a] border-l border-white/[0.1] z-50 md:hidden"
+          {/* Desktop CTA */}
+          <div className="hidden md:flex items-center gap-4">
+            <a
+              href={brand.signIn}
+              className="text-sm text-text-secondary hover:text-text-primary transition-colors"
             >
-              <div className="flex items-center justify-between p-4 border-b border-white/[0.08]">
-                <GizmooLogo className="h-6 w-auto" />
-                <button
-                  onClick={() => setOpen(false)}
-                  className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
-                  style={{ touchAction: 'manipulation' }}
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-              <ul className="px-4 py-6 flex flex-col gap-1">
-                {links.map((l) => (
-                  <li key={l.href}>
-                    <a
-                      href={l.href}
-                      onClick={() => setOpen(false)}
-                      className="block text-white/70 hover:text-white py-3 min-h-[44px] flex items-center text-[13px] uppercase tracking-wide transition-colors"
-                      style={{ touchAction: 'manipulation' }}
-                    >
-                      {l.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <div className="px-4 pt-4 border-t border-white/[0.08] flex flex-col gap-3">
-                <Link
-                  href={SIGN_IN_URL}
-                  onClick={() => setOpen(false)}
-                  className="w-full text-center text-[13px] uppercase tracking-wide font-medium text-white/70 hover:text-white transition-colors px-3 py-3 border border-white/20 rounded-sarmat min-h-[44px] flex items-center justify-center"
-                  style={{ touchAction: 'manipulation' }}
-                >
-                  Sign In
-                </Link>
-                <Link
-                  href={SIGN_UP_URL}
-                  onClick={() => setOpen(false)}
-                  className="w-full text-center px-4 py-3 border border-white/40 text-white hover:bg-white/[0.06] hover:border-white text-[13px] uppercase tracking-wide font-medium rounded-sarmat transition-all min-h-[44px] flex items-center justify-center"
-                  style={{ touchAction: 'manipulation' }}
-                >
-                  Get Started
-                </Link>
-              </div>
+              Sign In
+            </a>
+            <button
+              onClick={onContactOpen}
+              className="px-5 py-2.5 text-sm font-medium rounded-lg bg-accent text-bg-primary hover:bg-accent-hover transition-all duration-200 hover:scale-[1.02] relative group"
+            >
+              <span className="relative z-10">Get Started</span>
+              <div className="absolute inset-0 rounded-lg bg-accent blur-lg opacity-0 group-hover:opacity-30 transition-opacity" />
+            </button>
+          </div>
+
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="md:hidden flex flex-col gap-1.5 p-2 z-50"
+            aria-label="Toggle menu"
+          >
+            <motion.span
+              animate={mobileOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+              className="block w-6 h-[2px] bg-white"
+            />
+            <motion.span
+              animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
+              className="block w-6 h-[2px] bg-white"
+            />
+            <motion.span
+              animate={mobileOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+              className="block w-6 h-[2px] bg-white"
+            />
+          </button>
+        </div>
+      </motion.nav>
+
+      {/* Mobile menu overlay */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-40 bg-bg-primary flex flex-col items-center justify-center gap-6"
+          >
+            {navLinks.map((link, i) => (
+              <motion.a
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ delay: i * 0.05, duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                className="text-3xl font-display font-bold text-text-primary hover:text-accent transition-colors"
+              >
+                {link.label}
+              </motion.a>
+            ))}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: navLinks.length * 0.05, duration: 0.4 }}
+              className="flex flex-col gap-4 mt-8"
+            >
+              <a href={brand.signIn} className="text-text-secondary text-center hover:text-white transition-colors">
+                Sign In
+              </a>
+              <button
+                onClick={() => { setMobileOpen(false); onContactOpen?.(); }}
+                className="btn-primary"
+              >
+                Get Started
+              </button>
             </motion.div>
-          </>
+          </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }

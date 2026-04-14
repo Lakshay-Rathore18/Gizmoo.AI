@@ -1,105 +1,169 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { Counter } from '@/components/animations/Counter';
-import { ScrollReveal } from '@/components/animations/ScrollReveal';
-import { cn } from '@/lib/utils';
+import { useRef, useEffect, useState } from 'react';
+import { motion, useInView } from 'framer-motion';
 
-const cases = [
+const useCases = [
   {
-    label: 'Never miss revenue',
-    title: 'Stop losing thousands to missed calls.',
-    copy: 'The average missed call costs a business $200. Gizmoo AI answers every inbound call in under 3 seconds — so every opportunity actually converts into a booking.',
-    metric: { value: '35', suffix: '%', label: 'more bookings captured' },
+    stat: '+40%',
+    statLabel: 'more bookings',
+    title: 'Never miss revenue',
+    description: 'Every unanswered call is a lost customer. Gizmoo picks up instantly, qualifies the lead, and books the job before your competitor even checks their voicemail.',
+    gradient: 'from-cyan-600/10 to-blue-700/10',
   },
   {
-    label: '24/7 Availability',
-    title: 'Open for business around the clock.',
-    copy: 'Emergencies, after-hours leads, and weekend inquiries do not wait for business hours — and neither does your receptionist. Gizmoo works nights, weekends, and holidays without blinking.',
-    metric: { value: '24', suffix: '/7', label: 'uninterrupted coverage' },
+    stat: '24/7',
+    statLabel: 'uninterrupted coverage',
+    title: '24/7 Availability',
+    description: 'Emergencies don\'t wait for business hours. Whether it\'s a burst pipe at midnight or an urgent legal question on Sunday, Gizmoo is always on.',
+    gradient: 'from-emerald-600/10 to-teal-700/10',
   },
   {
-    label: 'Focus on customers',
-    title: 'Free your team from the phone.',
-    copy: 'Your staff should focus on the customer standing in front of them — not the phone ringing in the back. Let Gizmoo handle every call so your team stays in flow.',
-    metric: { value: '8', suffix: 'h', label: 'saved per person / week' },
+    stat: '12h',
+    statLabel: 'saved per week',
+    title: 'Focus on customers',
+    description: 'Stop interrupting client work to answer the phone. Gizmoo handles intake, scheduling, and follow-ups while you focus on the work that pays.',
+    gradient: 'from-violet-600/10 to-purple-700/10',
   },
   {
-    label: 'Outbound at scale',
-    title: 'Reminders that actually get made.',
-    copy: 'No-shows quietly kill your margin. Gizmoo AI dials every customer with a friendly reminder, confirms the appointment, and reschedules on the spot if needed.',
-    metric: { value: '75', suffix: '%', label: 'fewer no-shows' },
+    stat: '-60%',
+    statLabel: 'fewer no-shows',
+    title: 'Outbound at scale',
+    description: 'Automated appointment reminders, follow-up calls, and re-engagement campaigns. Set the rules, and Gizmoo dials consistently and politely.',
+    gradient: 'from-amber-600/10 to-orange-700/10',
   },
 ];
 
-export function UseCases() {
+function CounterStat({ value, inView }: { value: string; inView: boolean }) {
+  // For stats like "+40%", "24/7", "12h", "-60%"
   return (
-    <section id="use-cases" className="relative py-[120px] md:py-[150px] bg-ink">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ScrollReveal>
-          <div className="max-w-3xl">
-            <span className="section-label">
-              03 — Use Cases
-            </span>
-            <h2 className="mt-4 font-display uppercase tracking-wide text-[clamp(2.5rem,6vw,5rem)] leading-[0.9] text-white">
-              Built for every business<br />
-              with a phone number.
-            </h2>
-          </div>
-        </ScrollReveal>
+    <motion.span
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={inView ? { opacity: 1, scale: 1 } : {}}
+      transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+      className="text-6xl md:text-7xl lg:text-8xl font-display font-bold text-accent"
+    >
+      {value}
+    </motion.span>
+  );
+}
 
-        <div className="mt-20 space-y-24 md:space-y-32">
-          {cases.map((c, i) => {
-            const isEven = i % 2 === 0;
-            return (
-              <ScrollReveal key={c.title} delay={0.05}>
-                <div
-                  className={cn(
-                    'grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center',
-                    !isEven && 'lg:[&>*:first-child]:order-2',
-                  )}
-                >
-                  <div className="relative aspect-[4/3] border border-white/[0.08] bg-white/[0.02] rounded-[2px] overflow-hidden">
-                    <div aria-hidden className="absolute inset-0 topo-texture" />
+export function UseCases() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(sectionRef, { once: true, margin: '-10%' });
+  const [isMobile, setIsMobile] = useState(false);
 
-                    <div className="relative h-full flex flex-col items-center justify-center p-8">
-                      <div className="font-mono text-[10px] uppercase tracking-widest text-white/50">
-                        {c.metric.label}
-                      </div>
-                      <motion.div
-                        initial={{ scale: 0.9, opacity: 0 }}
-                        whileInView={{ scale: 1, opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                        className="mt-4 font-display uppercase text-7xl md:text-9xl tracking-tighter text-white"
-                      >
-                        <Counter value={c.metric.value} suffix={c.metric.suffix} />
-                      </motion.div>
-                    </div>
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
 
-                    {['top-3 left-3', 'top-3 right-3', 'bottom-3 left-3', 'bottom-3 right-3'].map((pos) => (
-                      <span key={pos} className={`absolute ${pos} w-3 h-3 border border-white/40`} />
-                    ))}
-                  </div>
+  // GSAP horizontal scroll for desktop
+  useEffect(() => {
+    if (isMobile) return;
+    const section = sectionRef.current;
+    const track = trackRef.current;
+    if (!section || !track) return;
 
-                  <div>
-                    <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-white/55">
-                      {c.label}
-                    </span>
-                    <h3 className="mt-4 font-display uppercase tracking-wide text-3xl md:text-5xl leading-[0.95] text-white">
-                      {c.title}
-                    </h3>
-                    <p className="mt-6 text-white/55 text-lg leading-relaxed font-body">{c.copy}</p>
-                    <span className="mt-8 inline-block font-mono text-sm text-[#666666]">
-                      Case study coming soon
-                    </span>
-                  </div>
-                </div>
-              </ScrollReveal>
-            );
-          })}
-        </div>
+    let gsapInstance: any;
+
+    const initGSAP = async () => {
+      const { gsap } = await import('gsap');
+      const { ScrollTrigger } = await import('gsap/ScrollTrigger');
+      gsap.registerPlugin(ScrollTrigger);
+
+      const totalScroll = track.scrollWidth - window.innerWidth;
+
+      gsapInstance = gsap.to(track, {
+        x: -totalScroll,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: section,
+          pin: true,
+          scrub: 1,
+          start: 'top top',
+          end: () => `+=${totalScroll}`,
+          invalidateOnRefresh: true,
+        },
+      });
+    };
+
+    initGSAP();
+
+    return () => {
+      if (gsapInstance?.scrollTrigger) {
+        gsapInstance.scrollTrigger.kill();
+      }
+    };
+  }, [isMobile]);
+
+  return (
+    <section id="use-cases" ref={sectionRef} className="relative py-section overflow-hidden">
+      <div className="max-w-content mx-auto px-6 mb-12">
+        <motion.span
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="section-label block mb-8"
+        >
+          03 — Use Cases
+        </motion.span>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-display-sm font-display font-bold tracking-tight max-w-3xl"
+        >
+          Built for every business with a phone number.
+        </motion.h2>
       </div>
+
+      {/* Desktop: Horizontal scroll track */}
+      {!isMobile && (
+        <div ref={trackRef} className="flex gap-8 pl-6 pr-[20vw]" style={{ width: 'max-content' }}>
+          {useCases.map((uc, i) => (
+            <div
+              key={i}
+              className={`w-[80vw] max-w-[900px] shrink-0 nk-card p-10 md:p-14 bg-gradient-to-br ${uc.gradient}`}
+            >
+              <CounterStat value={uc.stat} inView={inView} />
+              <p className="text-sm text-text-tertiary uppercase tracking-wider mt-2 mb-6">
+                {uc.statLabel}
+              </p>
+              <h3 className="text-2xl md:text-3xl font-display font-bold mb-4">{uc.title}</h3>
+              <p className="text-text-secondary text-base md:text-lg leading-relaxed max-w-lg">
+                {uc.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Mobile: Vertical stacked cards */}
+      {isMobile && (
+        <div className="px-6 flex flex-col gap-6">
+          {useCases.map((uc, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              className={`nk-card p-8 bg-gradient-to-br ${uc.gradient}`}
+            >
+              <div className="text-5xl font-display font-bold text-accent mb-1">{uc.stat}</div>
+              <p className="text-xs text-text-tertiary uppercase tracking-wider mb-4">{uc.statLabel}</p>
+              <h3 className="text-xl font-display font-bold mb-3">{uc.title}</h3>
+              <p className="text-text-secondary text-sm leading-relaxed">{uc.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      )}
     </section>
   );
 }

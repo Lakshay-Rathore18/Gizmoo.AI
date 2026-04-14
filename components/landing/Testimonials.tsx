@@ -1,78 +1,73 @@
 'use client';
 
-import { Star } from 'lucide-react';
-import { Marquee } from '@/components/ui/Marquee';
-import { ScrollReveal } from '@/components/animations/ScrollReveal';
+import { motion } from 'framer-motion';
+import { testimonials } from '@/lib/brand';
 
-const quotes = [
-  {
-    text: 'We went from missing 30% of calls to missing zero. Our bookings increased 40% in the first month. Best investment we have ever made.',
-    name: 'Dr. Sarah Mitchell',
-    role: 'Owner · Mitchell Family Dental',
-  },
-  {
-    text: 'I was skeptical about AI, but Gizmoo sounds so natural. Clients often do not realize they are talking to AI until I tell them afterwards.',
-    name: 'Michael Rodriguez',
-    role: 'Partner · Rodriguez Law Firm',
-  },
-  {
-    text: 'The outbound reminder calls alone saved us thousands in no-shows. Gizmoo paid for itself in the first week we had it running.',
-    name: 'Jennifer Walsh',
-    role: 'Founder · Serenity Spa',
-  },
-  {
-    text: 'As a solo real estate agent, I cannot answer every call. Now I do not have to — and I never miss a lead, even at 9pm on a Sunday.',
-    name: 'David Kim',
-    role: 'Broker · Kim Real Estate',
-  },
-  {
-    text: 'Setup took 10 minutes. That night, Gizmoo booked 3 emergency HVAC calls while I slept. Game changer for my business.',
-    name: 'Tom Bradley',
-    role: 'Owner · Bradley HVAC',
-  },
-  {
-    text: 'Our patients love how easy booking is now. And my front desk finally has time to actually look patients in the eye instead of the phone.',
-    name: 'Dr. Lena Chen',
-    role: 'Founder · Northwind Clinic',
-  },
-];
+function TestimonialCard({ t }: { t: typeof testimonials[number] }) {
+  return (
+    <div className="shrink-0 w-[350px] md:w-[400px] nk-card p-8 mx-3 hover:border-accent/30 transition-colors duration-300 group">
+      <p className="text-text-secondary text-sm md:text-base leading-relaxed mb-6 line-clamp-3">
+        &ldquo;{t.quote}&rdquo;
+      </p>
+      <div>
+        <p className="font-display font-bold text-text-primary">{t.name}</p>
+        <p className="text-sm text-text-tertiary">
+          {t.role}, {t.company}
+        </p>
+      </div>
+    </div>
+  );
+}
 
 export function Testimonials() {
-  return (
-    <section id="testimonials" className="relative py-[120px] md:py-[150px] bg-ink border-y border-white/[0.06] overflow-hidden">
-      <ScrollReveal>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-          <span className="section-label">
-            05 — Testimonials
-          </span>
-          <h2 className="mt-4 font-display uppercase tracking-wide text-[clamp(2.5rem,6vw,5rem)] leading-[0.9] text-white max-w-3xl">
-            500+ businesses<br />
-            never miss a call.
-          </h2>
-        </div>
-      </ScrollReveal>
+  // Double the items for infinite scroll
+  const row1 = [...testimonials.slice(0, 3), ...testimonials.slice(0, 3)];
+  const row2 = [...testimonials.slice(3), ...testimonials.slice(3)];
 
-      <Marquee className="[mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]" slow>
-        {quotes.map((q, i) => (
-          <figure
-            key={i}
-            className="w-[380px] md:w-[460px] shrink-0 sarmat-card p-7 transition-all duration-300"
-          >
-            <div className="flex gap-1 mb-4">
-              {Array.from({ length: 5 }).map((_, j) => (
-                <Star key={j} className="w-3.5 h-3.5 fill-white/70 text-white/70" />
-              ))}
-            </div>
-            <blockquote className="text-paper text-base leading-relaxed font-body">
-              &ldquo;{q.text}&rdquo;
-            </blockquote>
-            <figcaption className="mt-6 pt-4 border-t border-white/[0.08]">
-              <div className="font-display uppercase tracking-wide text-sm">{q.name}</div>
-              <div className="font-mono text-[11px] text-white/50">{q.role}</div>
-            </figcaption>
-          </figure>
-        ))}
-      </Marquee>
+  return (
+    <section className="relative py-section overflow-hidden">
+      <div className="max-w-content mx-auto px-6 mb-12">
+        <motion.span
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="section-label block mb-8"
+        >
+          05 — Testimonials
+        </motion.span>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-display-sm font-display font-bold tracking-tight max-w-2xl"
+        >
+          500+ businesses never miss a call.
+        </motion.h2>
+      </div>
+
+      {/* Row 1 — scrolls left */}
+      <div className="relative mb-6">
+        <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-bg-primary to-transparent z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-bg-primary to-transparent z-10" />
+        <div className="flex animate-marquee hover:[animation-play-state:paused]">
+          {row1.map((t, i) => (
+            <TestimonialCard key={`r1-${i}`} t={t} />
+          ))}
+        </div>
+      </div>
+
+      {/* Row 2 — scrolls right */}
+      <div className="relative">
+        <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-bg-primary to-transparent z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-bg-primary to-transparent z-10" />
+        <div className="flex animate-marquee-reverse hover:[animation-play-state:paused]">
+          {row2.map((t, i) => (
+            <TestimonialCard key={`r2-${i}`} t={t} />
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

@@ -1,9 +1,11 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Space_Grotesk, JetBrains_Mono, Bebas_Neue } from 'next/font/google';
+import { Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google';
 import { ClerkProvider } from '@clerk/nextjs';
 import { dark } from '@clerk/themes';
-import { brand } from '@/lib/brand';
-import { CookieBanner } from '@/components/CookieBanner';
+import { SmoothScroll } from '@/components/SmoothScroll';
+import { CustomCursor } from '@/components/CustomCursor';
+import { ScrollProgress } from '@/components/ScrollProgress';
+import { LoadingScreen } from '@/components/LoadingScreen';
 import './globals.css';
 
 const inter = Inter({
@@ -22,13 +24,6 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-jetbrains-mono',
-});
-
-const bebasNeue = Bebas_Neue({
-  weight: '400',
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-bebas-neue',
 });
 
 export const viewport: Viewport = {
@@ -58,14 +53,7 @@ export const metadata: Metadata = {
     description:
       'Never miss a call. 24/7 AI phone answering for plumbers, electricians, HVAC and builders.',
     url: 'https://gizmoo.me',
-    images: [
-      {
-        url: 'https://gizmoo.me/api/og',
-        width: 1200,
-        height: 630,
-        alt: 'Gizmoo AI',
-      },
-    ],
+    images: [{ url: 'https://gizmoo.me/api/og', width: 1200, height: 630, alt: 'Gizmoo AI' }],
     siteName: 'Gizmoo AI',
     locale: 'en_AU',
     type: 'website',
@@ -73,18 +61,59 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Gizmoo AI — AI Voice Receptionist for Australian Tradies',
-    description:
-      'Never miss a call. 24/7 AI phone answering for plumbers, electricians, HVAC and builders.',
+    description: 'Never miss a call. 24/7 AI phone answering for plumbers, electricians, HVAC and builders.',
     images: ['https://gizmoo.me/api/og'],
   },
   robots: { index: true, follow: true },
 };
 
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': 'https://gizmoo.me/#organization',
+    name: 'Gizmoo AI',
+    legalName: 'Gizmoo AI Pty Ltd',
+    url: 'https://gizmoo.me',
+    logo: 'https://gizmoo.me/icon-512.png',
+    image: 'https://gizmoo.me/api/og',
+    description: 'Gizmoo AI is an Australian AI voice receptionist platform that answers business phone calls 24/7, qualifies leads, books appointments, and sends confirmations.',
+    telephone: '+61489072416',
+    email: 'hi@gizmoo.me',
+    foundingDate: '2025',
+    address: { '@type': 'PostalAddress', addressRegion: 'NSW', addressCountry: 'AU' },
+    areaServed: { '@type': 'Country', name: 'Australia' },
+    contactPoint: [
+      { '@type': 'ContactPoint', telephone: '+61489072416', contactType: 'customer service', availableLanguage: 'English', areaServed: 'AU' },
+      { '@type': 'ContactPoint', telephone: '+61424700797', contactType: 'sales', availableLanguage: 'English', areaServed: 'AU' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': 'https://gizmoo.me/#website',
+    url: 'https://gizmoo.me',
+    name: 'Gizmoo AI',
+    publisher: { '@id': 'https://gizmoo.me/#organization' },
+    inLanguage: 'en-AU',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Gizmoo AI',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
+    offers: { '@type': 'Offer', price: '413', priceCurrency: 'AUD' },
+    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', bestRating: '5', ratingCount: '500', reviewCount: '127' },
+    featureList: 'AI voice receptionist, 24/7 call answering, appointment booking, calendar sync, outbound calls, smart transfers',
+  },
+];
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} ${bebasNeue.variable} dark`}
+      className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} dark`}
     >
       <head>
         <link rel="manifest" href="/manifest.json" />
@@ -93,261 +122,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="geo.placename" content="New South Wales, Australia" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://prod.spline.design" />
-        <link rel="dns-prefetch" href="https://turtclknacgpwnxocubx.supabase.co" />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify([
-              {
-                '@context': 'https://schema.org',
-                '@type': 'Organization',
-                '@id': 'https://gizmoo.me/#organization',
-                name: 'Gizmoo AI',
-                legalName: 'Gizmoo AI Pty Ltd',
-                url: 'https://gizmoo.me',
-                logo: 'https://gizmoo.me/icon-512.png',
-                image: 'https://gizmoo.me/api/og',
-                description: 'Gizmoo AI is an Australian AI voice receptionist platform that answers business phone calls 24/7, qualifies leads, books appointments, and sends confirmations — purpose-built for plumbers, electricians, HVAC technicians, builders, medical practices, law firms, salons, and real estate agencies.',
-                telephone: '+61489072416',
-                email: 'hellogizmooai@gmail.com',
-                foundingDate: '2025',
-                address: {
-                  '@type': 'PostalAddress',
-                  addressRegion: 'NSW',
-                  addressCountry: 'AU',
-                },
-                areaServed: {
-                  '@type': 'Country',
-                  name: 'Australia',
-                },
-                sameAs: [],
-                contactPoint: [
-                  {
-                    '@type': 'ContactPoint',
-                    telephone: '+61489072416',
-                    contactType: 'customer service',
-                    availableLanguage: 'English',
-                    areaServed: 'AU',
-                  },
-                  {
-                    '@type': 'ContactPoint',
-                    telephone: '+61424700797',
-                    contactType: 'sales',
-                    availableLanguage: 'English',
-                    areaServed: 'AU',
-                  },
-                ],
-              },
-              {
-                '@context': 'https://schema.org',
-                '@type': 'WebSite',
-                '@id': 'https://gizmoo.me/#website',
-                url: 'https://gizmoo.me',
-                name: 'Gizmoo AI',
-                publisher: { '@id': 'https://gizmoo.me/#organization' },
-                inLanguage: 'en-AU',
-              },
-              {
-                '@context': 'https://schema.org',
-                '@type': 'WebPage',
-                '@id': 'https://gizmoo.me/#webpage',
-                url: 'https://gizmoo.me',
-                name: 'Gizmoo AI — AI Voice Receptionist for Australian Tradies',
-                description: 'Never miss a call. Gizmoo AI answers your phone 24/7, qualifies jobs, and books customers directly into your calendar. Built for Australian plumbers, electricians, HVAC, and builders.',
-                isPartOf: { '@id': 'https://gizmoo.me/#website' },
-                about: { '@id': 'https://gizmoo.me/#organization' },
-                inLanguage: 'en-AU',
-                speakable: {
-                  '@type': 'SpeakableSpecification',
-                  cssSelector: [
-                    '#top h1',
-                    '#top p',
-                    '[aria-label="About Gizmoo AI"] h2',
-                    '[aria-label="About Gizmoo AI"] p',
-                  ],
-                },
-              },
-              {
-                '@context': 'https://schema.org',
-                '@type': 'Service',
-                '@id': 'https://gizmoo.me/#service',
-                name: 'Gizmoo AI Voice Receptionist',
-                serviceType: 'AI Voice Receptionist',
-                provider: { '@id': 'https://gizmoo.me/#organization' },
-                description: 'AI-powered phone answering service that picks up every call within seconds, qualifies leads, books appointments into your calendar, sends SMS confirmations, makes outbound reminder calls, and transfers complex queries to humans — available 24 hours a day, 7 days a week, 365 days a year.',
-                areaServed: { '@type': 'Country', name: 'Australia' },
-                audience: {
-                  '@type': 'Audience',
-                  audienceType: 'Small and medium trade businesses, medical practices, law firms, salons, real estate agencies',
-                },
-                hasOfferCatalog: {
-                  '@type': 'OfferCatalog',
-                  name: 'Gizmoo AI Plans',
-                  itemListElement: [
-                    {
-                      '@type': 'Offer',
-                      name: 'Starter Plan',
-                      description: '24/7 AI voice receptionist, job qualification & lead scoring, calendar booking automation, SMS confirmations, monthly performance report.',
-                      price: '413',
-                      priceCurrency: 'AUD',
-                      priceSpecification: {
-                        '@type': 'UnitPriceSpecification',
-                        price: '413',
-                        priceCurrency: 'AUD',
-                        unitText: 'month',
-                        billingDuration: { '@type': 'QuantitativeValue', value: 1, unitCode: 'ANN' },
-                      },
-                      availability: 'https://schema.org/InStock',
-                    },
-                    {
-                      '@type': 'Offer',
-                      name: 'Enterprise Plan',
-                      description: 'Custom pricing for multi-location businesses, high call volumes, or custom integrations.',
-                      availability: 'https://schema.org/InStock',
-                    },
-                  ],
-                },
-              },
-              {
-                '@context': 'https://schema.org',
-                '@type': 'SoftwareApplication',
-                name: 'Gizmoo AI',
-                applicationCategory: 'BusinessApplication',
-                operatingSystem: 'Web',
-                offers: {
-                  '@type': 'Offer',
-                  price: '413',
-                  priceCurrency: 'AUD',
-                },
-                aggregateRating: {
-                  '@type': 'AggregateRating',
-                  ratingValue: '4.9',
-                  bestRating: '5',
-                  ratingCount: '500',
-                  reviewCount: '127',
-                },
-                featureList: 'AI voice receptionist, 24/7 call answering, appointment booking, calendar sync, outbound calls, smart transfers, SMS confirmations, lead qualification',
-              },
-              {
-                '@context': 'https://schema.org',
-                '@type': 'FAQPage',
-                mainEntity: [
-                  {
-                    '@type': 'Question',
-                    name: 'How natural does Gizmoo AI actually sound?',
-                    acceptedAnswer: {
-                      '@type': 'Answer',
-                      text: 'Extremely natural. Gizmoo uses advanced voice AI with natural pauses, filler words, and emotional understanding. Most callers do not realize they are speaking with AI.',
-                    },
-                  },
-                  {
-                    '@type': 'Question',
-                    name: 'Can Gizmoo handle complex requests?',
-                    acceptedAnswer: {
-                      '@type': 'Answer',
-                      text: 'Yes. Gizmoo understands context, remembers details within a conversation, handles multi-step requests (book, reschedule, take a message, answer a question), and knows exactly when to transfer to a human for complex situations.',
-                    },
-                  },
-                  {
-                    '@type': 'Question',
-                    name: 'What happens if Gizmoo cannot help a caller?',
-                    acceptedAnswer: {
-                      '@type': 'Answer',
-                      text: 'Gizmoo seamlessly transfers to your team when it hits something it cannot handle, or takes a detailed message with full context and caller sentiment. Nothing ever falls through the cracks.',
-                    },
-                  },
-                  {
-                    '@type': 'Question',
-                    name: 'How long does setup take?',
-                    acceptedAnswer: {
-                      '@type': 'Answer',
-                      text: 'Most businesses are live within 15 minutes. Forward your existing number or spin up a new AI-powered line, customize your greeting, booking rules, and business info — and you are ready to answer calls.',
-                    },
-                  },
-                  {
-                    '@type': 'Question',
-                    name: 'Which calendars does Gizmoo integrate with?',
-                    acceptedAnswer: {
-                      '@type': 'Answer',
-                      text: 'Google Calendar, Outlook, Calendly, Acuity Scheduling, Cal.com, and 100+ more through our integration marketplace. Your calendar stays perfectly synced, time-zone aware, and never double-booked.',
-                    },
-                  },
-                  {
-                    '@type': 'Question',
-                    name: 'Can Gizmoo make outbound calls?',
-                    acceptedAnswer: {
-                      '@type': 'Answer',
-                      text: 'Absolutely. Appointment reminders, follow-up calls, confirmation calls, and re-engagement campaigns. Set the rules and the schedule, and Gizmoo dials — politely, consistently, and at scale.',
-                    },
-                  },
-                  {
-                    '@type': 'Question',
-                    name: 'Is my data and caller information secure?',
-                    acceptedAnswer: {
-                      '@type': 'Answer',
-                      text: 'Yes. Gizmoo is SOC 2 Type II compliant, uses end-to-end encryption, and follows strict data handling protocols. Healthcare customers can sign a HIPAA BAA. Your business data and caller PII are always protected.',
-                    },
-                  },
-                  {
-                    '@type': 'Question',
-                    name: 'What industries use Gizmoo?',
-                    acceptedAnswer: {
-                      '@type': 'Answer',
-                      text: 'Medical and dental practices, law firms, real estate, salons and spas, home services (HVAC, plumbing, electrical), restaurants, and any business that receives phone calls.',
-                    },
-                  },
-                  {
-                    '@type': 'Question',
-                    name: 'Can I customize what Gizmoo says?',
-                    acceptedAnswer: {
-                      '@type': 'Answer',
-                      text: 'Completely. Customize greetings, responses, booking rules, after-hours behavior, business information, and even the personality of the AI to match your brand voice exactly.',
-                    },
-                  },
-                  {
-                    '@type': 'Question',
-                    name: 'What happens if I go over my call limit?',
-                    acceptedAnswer: {
-                      '@type': 'Answer',
-                      text: 'We will never cut a caller off mid-conversation. You will get a notification as you approach your limit with a one-click upgrade option, so service stays uninterrupted.',
-                    },
-                  },
-                ],
-              },
-              {
-                '@context': 'https://schema.org',
-                '@type': 'HowTo',
-                name: 'How to set up Gizmoo AI Voice Receptionist',
-                description: 'Get your AI voice receptionist answering calls in under 15 minutes with three simple steps.',
-                totalTime: 'PT15M',
-                step: [
-                  {
-                    '@type': 'HowToStep',
-                    position: 1,
-                    name: 'Connect Your Number',
-                    text: 'Forward your existing business line or get a new AI-powered number. 5-minute setup — no hardware, no code.',
-                  },
-                  {
-                    '@type': 'HowToStep',
-                    position: 2,
-                    name: 'Train Your AI',
-                    text: 'Tell Gizmoo about your business, services, hours, and booking rules. It learns your tone and brand voice in minutes.',
-                  },
-                  {
-                    '@type': 'HowToStep',
-                    position: 3,
-                    name: 'Go Live',
-                    text: 'Start answering calls and booking appointments immediately. Monitor every conversation with real-time analytics.',
-                  },
-                ],
-              },
-            ]),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body className="font-sans bg-ink text-paper antialiased overflow-x-hidden">
-        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-ink focus:px-4 focus:py-2 focus:font-semibold">
+      <body className="font-sans bg-bg-primary text-text-primary antialiased overflow-x-hidden">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-black focus:px-4 focus:py-2 focus:font-semibold"
+        >
           Skip to main content
         </a>
         <ClerkProvider
@@ -359,28 +143,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           appearance={{
             baseTheme: dark,
             variables: {
-              colorPrimary: '#ffffff',
+              colorPrimary: '#22d3ee',
               colorBackground: '#0a0a0a',
               colorInputBackground: '#111111',
               colorInputText: '#ffffff',
               colorText: '#ffffff',
               colorTextSecondary: 'rgba(255,255,255,0.55)',
-              borderRadius: '2px',
-            },
-            elements: {
-              card: 'bg-[#0a0a0a] border border-white/[0.12] shadow-[0_4px_24px_rgba(0,0,0,0.4)]',
-              headerTitle: 'text-white',
-              headerSubtitle: 'text-white/55',
-              socialButtonsBlockButton: 'bg-white/[0.03] border-white/[0.1] hover:bg-white/[0.06] text-white',
-              formFieldInput: 'bg-[#111111] border-white/[0.1] text-white',
-              formButtonPrimary: 'bg-white text-[#0a0a0a] hover:bg-white/90',
-              footerActionLink: 'text-white/70 hover:text-white',
-              modalCloseButton: 'text-white/55 hover:text-white',
+              borderRadius: '8px',
             },
           }}
         >
-          {children}
-          <CookieBanner />
+          <SmoothScroll>
+            <LoadingScreen />
+            <ScrollProgress />
+            <CustomCursor />
+            <div className="noise-overlay" />
+            {children}
+          </SmoothScroll>
         </ClerkProvider>
       </body>
     </html>
