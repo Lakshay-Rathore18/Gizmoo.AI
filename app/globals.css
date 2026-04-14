@@ -51,16 +51,17 @@ button, a, [role="button"] {
   color: #ffffff;
 }
 
-/* Topographic contour line texture — Sarmat Analytix signature */
+/* Topographic contour line texture — Sarmat Analytix signature
+   BOOSTED: 0.08–0.12 opacity so contour lines are actually visible */
 .topo-texture {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='0.8'%3E%3Cellipse cx='300' cy='300' rx='280' ry='180' opacity='0.06'/%3E%3Cellipse cx='300' cy='300' rx='240' ry='150' opacity='0.05'/%3E%3Cellipse cx='300' cy='300' rx='200' ry='120' opacity='0.04'/%3E%3Cellipse cx='300' cy='300' rx='160' ry='95' opacity='0.05'/%3E%3Cellipse cx='300' cy='300' rx='120' ry='70' opacity='0.04'/%3E%3Cellipse cx='300' cy='300' rx='80' ry='45' opacity='0.03'/%3E%3Cellipse cx='300' cy='300' rx='40' ry='22' opacity='0.04'/%3E%3Cellipse cx='150' cy='450' rx='180' ry='120' opacity='0.04'/%3E%3Cellipse cx='150' cy='450' rx='140' ry='90' opacity='0.03'/%3E%3Cellipse cx='150' cy='450' rx='100' ry='60' opacity='0.04'/%3E%3Cellipse cx='480' cy='150' rx='150' ry='100' opacity='0.04'/%3E%3Cellipse cx='480' cy='150' rx='110' ry='70' opacity='0.03'/%3E%3Cellipse cx='480' cy='150' rx='70' ry='40' opacity='0.04'/%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='0.8'%3E%3Cellipse cx='300' cy='300' rx='280' ry='180' opacity='0.12'/%3E%3Cellipse cx='300' cy='300' rx='240' ry='150' opacity='0.10'/%3E%3Cellipse cx='300' cy='300' rx='200' ry='120' opacity='0.09'/%3E%3Cellipse cx='300' cy='300' rx='160' ry='95' opacity='0.10'/%3E%3Cellipse cx='300' cy='300' rx='120' ry='70' opacity='0.09'/%3E%3Cellipse cx='300' cy='300' rx='80' ry='45' opacity='0.08'/%3E%3Cellipse cx='300' cy='300' rx='40' ry='22' opacity='0.09'/%3E%3Cellipse cx='150' cy='450' rx='180' ry='120' opacity='0.09'/%3E%3Cellipse cx='150' cy='450' rx='140' ry='90' opacity='0.08'/%3E%3Cellipse cx='150' cy='450' rx='100' ry='60' opacity='0.09'/%3E%3Cellipse cx='480' cy='150' rx='150' ry='100' opacity='0.09'/%3E%3Cellipse cx='480' cy='150' rx='110' ry='70' opacity='0.08'/%3E%3Cellipse cx='480' cy='150' rx='70' ry='40' opacity='0.09'/%3E%3C/g%3E%3C/svg%3E");
   background-size: 600px 600px;
   background-repeat: repeat;
 }
 
 @media (max-width: 768px) {
   .topo-texture {
-    opacity: 0.7;
+    opacity: 0.6;
   }
 }
 
@@ -120,35 +121,43 @@ section {
   contain: style;
 }
 
-/* Sarmat military card — sharp corners, dark, subtle */
+/* ==========================================================================
+   SARMAT MILITARY CARDS — flat panels, NO glassmorphism
+   ========================================================================== */
+
+/* Legacy glass-card — KILLED blur, now flat military panel */
 .glass-card {
-  background: var(--sarmat-card-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--sarmat-card-border);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 2px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
 }
 
 .glass-card:hover {
   background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.18);
 }
 
-/* Elevated card */
+/* New sarmat-card — the canonical flat military panel */
+.sarmat-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  transition: border-color 0.2s ease;
+}
+
+.sarmat-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Elevated card — NO blur */
 .glass-card-elevated {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 2px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
 }
 
 .glass-card-elevated:hover {
   border-color: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
 }
 
 /* Holographic border — monochrome */
@@ -172,9 +181,24 @@ section {
   z-index: -1;
 }
 
-/* Section divider — monochrome */
-.mesh-divider {
-  background: radial-gradient(ellipse 80% 50% at 50% 50%, rgba(255, 255, 255, 0.06), transparent 70%);
+/* Horizontal rule — Sarmat: 1px line between all sections */
+.sarmat-hr {
+  border: none;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 0;
+}
+
+/* Nav bullet separator */
+.nav-bullet::after {
+  content: '\2022';
+  margin-left: 1.25rem;
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 8px;
+  vertical-align: middle;
+}
+.nav-bullet:last-child::after {
+  display: none;
 }
 
 /* Subtle noise overlay */
@@ -198,24 +222,23 @@ body::after {
   opacity: 0.4;
 }
 
-/* Horizontal rule — Sarmat */
-.sarmat-hr {
+/* ==========================================================================
+   FAQ — full-width accordion bars
+   ========================================================================== */
+
+.faq-bar {
+  background: rgba(255, 255, 255, 0.03);
   border: none;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.08);
-  margin: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background 0.2s ease;
 }
 
-/* Nav bullet separator */
-.nav-bullet::after {
-  content: '\2022';
-  margin-left: 1.25rem;
-  color: rgba(255, 255, 255, 0.25);
-  font-size: 8px;
-  vertical-align: middle;
+.faq-bar:hover {
+  background: rgba(255, 255, 255, 0.05);
 }
-.nav-bullet:last-child::after {
-  display: none;
+
+.faq-bar[data-open="true"] {
+  background: rgba(255, 255, 255, 0.04);
 }
 
 /* Respect reduced motion */

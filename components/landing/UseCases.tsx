@@ -11,43 +11,39 @@ const cases = [
     title: 'Stop losing thousands to missed calls.',
     copy: 'The average missed call costs a business $200. Gizmoo AI answers every inbound call in under 3 seconds — so every opportunity actually converts into a booking.',
     metric: { value: '35', suffix: '%', label: 'more bookings captured' },
-    accent: 'white',
   },
   {
     label: '24/7 Availability',
     title: 'Open for business around the clock.',
     copy: 'Emergencies, after-hours leads, and weekend inquiries do not wait for business hours — and neither does your receptionist. Gizmoo works nights, weekends, and holidays without blinking.',
     metric: { value: '24', suffix: '/7', label: 'uninterrupted coverage' },
-    accent: 'white',
   },
   {
     label: 'Focus on customers',
     title: 'Free your team from the phone.',
     copy: 'Your staff should focus on the customer standing in front of them — not the phone ringing in the back. Let Gizmoo handle every call so your team stays in flow.',
     metric: { value: '8', suffix: 'h', label: 'saved per person / week' },
-    accent: 'white-dim',
   },
   {
     label: 'Outbound at scale',
     title: 'Reminders that actually get made.',
     copy: 'No-shows quietly kill your margin. Gizmoo AI dials every customer with a friendly reminder, confirms the appointment, and reschedules on the spot if needed.',
     metric: { value: '75', suffix: '%', label: 'fewer no-shows' },
-    accent: 'white',
   },
 ];
 
 export function UseCases() {
   return (
-    <section id="use-cases" className="relative py-24 md:py-36 bg-ink">
+    <section id="use-cases" className="relative py-[120px] md:py-[150px] bg-ink">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="max-w-3xl">
             <span className="section-label">
-              {'// 03 — Transform your business'}
+              03 — Use Cases
             </span>
-            <h2 className="mt-4 font-display font-bold text-4xl md:text-6xl tracking-tight">
-              Built for every business <br />
-              <span className="text-white">with a phone number.</span>
+            <h2 className="mt-4 font-display uppercase tracking-wide text-[clamp(2.5rem,6vw,5rem)] leading-[0.9] text-white">
+              Built for every business<br />
+              with a phone number.
             </h2>
           </div>
         </ScrollReveal>
@@ -65,18 +61,9 @@ export function UseCases() {
                 >
                   <div className="relative aspect-[4/3] border border-white/[0.08] bg-white/[0.02] rounded-[2px] overflow-hidden">
                     <div aria-hidden className="absolute inset-0 topo-texture" />
-                    <div
-                      aria-hidden
-                      className={cn(
-                        'absolute -inset-20 opacity-40 blur-3xl',
-                        c.accent === 'white' && 'bg-white/10',
-                        c.accent === 'white' && 'bg-white/10',
-                        c.accent === 'white-dim' && 'bg-white/8',
-                      )}
-                    />
 
                     <div className="relative h-full flex flex-col items-center justify-center p-8">
-                      <div className="font-mono text-[10px] uppercase tracking-widest text-paper/50">
+                      <div className="font-mono text-[10px] uppercase tracking-widest text-white/50">
                         {c.metric.label}
                       </div>
                       <motion.div
@@ -84,32 +71,25 @@ export function UseCases() {
                         whileInView={{ scale: 1, opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                        className="mt-4 font-display font-bold text-7xl md:text-9xl tracking-tighter text-white"
+                        className="mt-4 font-display uppercase text-7xl md:text-9xl tracking-tighter text-white"
                       >
                         <Counter value={c.metric.value} suffix={c.metric.suffix} />
                       </motion.div>
                     </div>
 
                     {['top-3 left-3', 'top-3 right-3', 'bottom-3 left-3', 'bottom-3 right-3'].map((pos) => (
-                      <span key={pos} className={`absolute ${pos} w-3 h-3 border border-paper/40`} />
+                      <span key={pos} className={`absolute ${pos} w-3 h-3 border border-white/40`} />
                     ))}
                   </div>
 
                   <div>
-                    <span
-                      className={cn(
-                        'font-mono text-[10px] uppercase tracking-[0.24em]',
-                        c.accent === 'white' && 'text-white/55',
-                        c.accent === 'white' && 'text-white/55',
-                        c.accent === 'white-dim' && 'text-white/50',
-                      )}
-                    >
-                      {`// ${c.label}`}
+                    <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-white/55">
+                      {c.label}
                     </span>
-                    <h3 className="mt-4 font-display font-bold text-3xl md:text-5xl tracking-tight leading-[1.05]">
+                    <h3 className="mt-4 font-display uppercase tracking-wide text-3xl md:text-5xl leading-[0.95] text-white">
                       {c.title}
                     </h3>
-                    <p className="mt-6 text-paper/70 text-lg leading-relaxed">{c.copy}</p>
+                    <p className="mt-6 text-white/55 text-lg leading-relaxed font-body">{c.copy}</p>
                     <span className="mt-8 inline-block font-mono text-sm text-[#666666]">
                       Case study coming soon
                     </span>

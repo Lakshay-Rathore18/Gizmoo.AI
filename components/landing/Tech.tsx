@@ -27,20 +27,20 @@ const steps = [
 
 export function Tech() {
   return (
-    <section id="how-it-works" className="relative py-24 md:py-36 bg-surface overflow-hidden">
+    <section id="how-it-works" className="relative py-[120px] md:py-[150px] bg-surface overflow-hidden">
       <div aria-hidden className="absolute inset-0 topo-texture" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <ScrollReveal>
             <span className="section-label">
-              {'// 04 — How Gizmoo AI works'}
+              04 — How It Works
             </span>
-            <h2 className="mt-4 font-display font-bold text-4xl md:text-6xl tracking-tight leading-[0.95]">
-              Enterprise AI. <br />
-              <span className="text-white">Simple setup.</span>
+            <h2 className="mt-4 font-display uppercase tracking-wide text-[clamp(2.5rem,6vw,5rem)] leading-[0.9] text-white">
+              Enterprise AI.<br />
+              Simple setup.
             </h2>
-            <p className="mt-6 text-paper/70 text-lg max-w-xl">
+            <p className="mt-6 text-white/55 text-lg max-w-xl font-body">
               Most businesses are live in under 15 minutes. No IT team required. No new hardware.
               Just a phone line and a few preferences.
             </p>
@@ -52,23 +52,23 @@ export function Tech() {
                     <s.icon className="w-4 h-4 text-white/55" aria-hidden />
                   </div>
                   <div>
-                    <div className="font-mono text-[10px] uppercase tracking-widest text-paper/50">
+                    <div className="font-mono text-[10px] uppercase tracking-widest text-white/50">
                       {s.step}
                     </div>
-                    <div className="font-display font-bold text-lg mt-0.5">{s.label}</div>
-                    <div className="mt-1 text-paper/60 text-sm leading-relaxed">{s.copy}</div>
+                    <div className="font-display uppercase tracking-wide text-lg mt-0.5 text-white">{s.label}</div>
+                    <div className="mt-1 text-white/55 text-sm leading-relaxed font-body">{s.copy}</div>
                   </div>
                 </div>
               ))}
             </div>
 
             <div className="mt-10">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-paper/50 mb-3">
+              <div className="font-mono text-[10px] uppercase tracking-widest text-white/50 mb-3">
                 100+ integrations
               </div>
               <div className="flex flex-wrap gap-2">
                 {['Google Calendar', 'Outlook', 'Calendly', 'Acuity', 'Cal.com', 'HubSpot', 'Salesforce', 'Twilio'].map((i) => (
-                  <span key={i} className="px-3 py-1.5 border border-white/[0.08] rounded-full text-xs text-paper/70 hover:border-white/20 hover:text-white/55 transition-colors">
+                  <span key={i} className="px-3 py-1.5 border border-white/[0.08] rounded-[2px] text-xs text-white/55 hover:border-white/20 hover:text-white/70 transition-colors font-mono">
                     {i}
                   </span>
                 ))}
@@ -77,9 +77,9 @@ export function Tech() {
           </ScrollReveal>
 
           <ScrollReveal delay={0.15}>
-            <div className="relative glass-card rounded-[2px] overflow-hidden">
+            <div className="relative sarmat-card overflow-hidden">
               <div className="flex items-center justify-between px-4 py-3 border-b border-white/[0.06]">
-                <div className="font-mono text-[10px] uppercase tracking-widest text-paper/60">
+                <div className="font-mono text-[10px] uppercase tracking-widest text-white/55">
                   gizmoo-voice.v2.4
                 </div>
                 <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-white/50">

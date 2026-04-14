@@ -67,23 +67,19 @@ export function Demo() {
   const current = tabs.find((t) => t.id === active) ?? tabs[0];
 
   return (
-    <section id="demo" className="relative py-24 md:py-36 bg-surface overflow-hidden">
+    <section id="demo" className="relative py-[120px] md:py-[150px] bg-surface overflow-hidden">
       <div aria-hidden className="absolute inset-0 topo-texture" />
-      <div
-        aria-hidden
-        className="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-white/5 blur-3xl pointer-events-none"
-      />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="max-w-3xl">
             <span className="section-label">
-              {'// 02 — See Gizmoo in action'}
+              02 — Demo
             </span>
-            <h2 className="mt-4 font-display font-bold text-4xl md:text-6xl tracking-tight">
-              One phone line. <span className="text-white">Zero missed calls.</span>
+            <h2 className="mt-4 font-display uppercase tracking-wide text-[clamp(2.5rem,6vw,5rem)] leading-[0.9] text-white">
+              One phone line.<br />Zero missed calls.
             </h2>
-            <p className="mt-6 text-paper/70 text-lg max-w-2xl">
+            <p className="mt-6 text-white/55 text-lg max-w-2xl font-body">
               Every inbound call answered instantly. Every appointment booked in real time. Every
               reminder dialed automatically. Here is what it looks like — live.
             </p>
@@ -92,7 +88,7 @@ export function Demo() {
 
         <div className="mt-16 grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-8">
           <ScrollReveal className="lg:col-span-3" delay={0.1}>
-            <div className="glass-card rounded-[2px] overflow-hidden">
+            <div className="sarmat-card overflow-hidden">
               <div className="flex items-center gap-1 border-b border-white/[0.06] px-3 pt-3 overflow-x-auto">
                 {tabs.map((t) => (
                   <button
@@ -103,7 +99,7 @@ export function Demo() {
                       'flex items-center gap-2 px-4 py-2.5 text-sm font-mono transition-colors whitespace-nowrap min-h-[44px]',
                       active === t.id
                         ? 'text-white border-b-2 border-white/40 -mb-px bg-white/5'
-                        : 'text-paper/50 hover:text-paper',
+                        : 'text-white/50 hover:text-white',
                     )}
                   >
                     <t.icon className="w-3.5 h-3.5" />
@@ -141,7 +137,7 @@ export function Demo() {
                           line.role === 'out' && 'text-white/55',
                         )}
                       >
-                        <span className="select-none text-paper/30 w-8 shrink-0">{String(i + 1).padStart(2, '0')}</span>
+                        <span className="select-none text-white/30 w-8 shrink-0">{String(i + 1).padStart(2, '0')}</span>
                         <span>{line.text}</span>
                       </motion.div>
                     ))}
@@ -161,7 +157,7 @@ export function Demo() {
           </ScrollReveal>
 
           <ScrollReveal className="lg:col-span-2" delay={0.2}>
-            <div className="relative h-full min-h-[360px] glass-card rounded-[2px] overflow-hidden">
+            <div className="relative h-full min-h-[360px] sarmat-card overflow-hidden">
               <AIAgentVisual className="w-full h-full" />
               <div
                 aria-hidden
@@ -171,10 +167,10 @@ export function Demo() {
                 <div className="font-mono text-[10px] uppercase tracking-widest text-white/55 mb-1">
                   Live Agent View
                 </div>
-                <div className="font-display font-bold text-xl tracking-tight">
+                <div className="font-display uppercase tracking-wide text-xl">
                   Every call, transcribed.
                 </div>
-                <div className="mt-1 text-sm text-paper/60">
+                <div className="mt-1 text-sm text-white/55 font-body">
                   See every conversation, every booking, every outbound dial — with full transcripts
                   and caller sentiment.
                 </div>

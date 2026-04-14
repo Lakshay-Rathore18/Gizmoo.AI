@@ -13,7 +13,7 @@ export function Card({
   className,
   children,
   glow = false,
-  spotlightColor = 'rgba(255,255,255,0.08)',
+  spotlightColor = 'rgba(255,255,255,0.06)',
   ...props
 }: CardProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -33,8 +33,9 @@ export function Card({
       onMouseEnter={() => setOpacity(1)}
       onMouseLeave={() => setOpacity(0)}
       className={cn(
-        'group relative glass-card rounded-[2px] p-6 md:p-8 transition-all duration-300',
-        'hover:-translate-y-1',
+        'group relative rounded-[2px] p-6 md:p-8 transition-all duration-200',
+        'bg-white/[0.03] border border-white/[0.1]',
+        'hover:border-white/[0.18]',
         glow && 'holo-border',
         className,
       )}
@@ -45,7 +46,7 @@ export function Card({
         className="pointer-events-none absolute -inset-px rounded-[2px] transition-opacity duration-500"
         style={{
           opacity,
-          background: `radial-gradient(500px circle at ${pos.x}px ${pos.y}px, ${spotlightColor}, transparent 40%)`,
+          background: `radial-gradient(400px circle at ${pos.x}px ${pos.y}px, ${spotlightColor}, transparent 40%)`,
         }}
       />
       <div className="relative">{children}</div>

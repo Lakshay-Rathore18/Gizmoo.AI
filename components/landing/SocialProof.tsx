@@ -24,7 +24,7 @@ export function SocialProof() {
       <ScrollReveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 flex items-center gap-4">
           <span className="section-label">
-            {'// Trusted by 500+ businesses to answer their calls'}
+            Trusted by 500+ businesses
           </span>
           <span className="flex-1 h-px bg-white/[0.08]" />
           <span className="section-label">
@@ -37,7 +37,7 @@ export function SocialProof() {
         {brands.map((b) => (
           <div
             key={b}
-            className="font-display uppercase tracking-ultrawide text-xl md:text-2xl text-white/25 hover:text-white/60 transition-colors duration-300 whitespace-nowrap"
+            className="font-display uppercase tracking-ultrawide text-xl md:text-2xl text-white/20 hover:text-white/50 transition-colors duration-300 whitespace-nowrap"
           >
             {b}
           </div>

@@ -4,8 +4,8 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, Play, PhoneCall } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { HearOurAIWidget } from '@/components/ui/HearOurAIWidget';
-import { AIParticles } from '@/components/animations/AIParticles';
 import { brand } from '@/lib/brand';
+import Image from 'next/image';
 
 const typewriterWords = ['answers calls.', 'books appointments.', 'syncs calendars.', 'answers calls.'];
 
@@ -17,66 +17,104 @@ export function Hero() {
       id="top"
       className="relative min-h-[100svh] w-full overflow-hidden bg-ink isolate flex items-center"
     >
-      {/* Dark cinematic background — gradient layers for depth */}
+      {/* Dark cinematic background — local asset */}
       <div
         aria-hidden
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80&auto=format')`,
-          filter: 'brightness(0.15) saturate(0)',
+          backgroundImage: `url('/hero-bg.jpg')`,
+          filter: 'brightness(0.12) saturate(0)',
         }}
       />
 
-      {/* Topo texture overlay */}
+      {/* Topo texture overlay — boosted visibility */}
       <div aria-hidden className="absolute inset-0 topo-texture pointer-events-none" />
 
-      {/* Gradient overlays for depth */}
+      {/* Dark vignette edges */}
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/60 via-transparent to-[#0a0a0a] pointer-events-none"
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse at center, transparent 30%, #0a0a0a 80%)',
+        }}
       />
+
+      {/* Top/bottom gradient overlays */}
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/50 via-transparent to-[#0a0a0a]/50 pointer-events-none"
+        className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/70 via-transparent to-[#0a0a0a] pointer-events-none"
       />
 
-      <AIParticles density={25} className="absolute inset-0 w-full h-full pointer-events-none mix-blend-screen opacity-30" />
-
-      {/* Subtle ambient glow — monochrome */}
-      <div
-        aria-hidden
-        className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-white/[0.03] blur-[120px] pointer-events-none"
-      />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 md:py-40 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-32 md:py-40">
+        {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 border border-white/[0.12] bg-white/[0.03] backdrop-blur-sm px-3 py-1.5 rounded-sarmat mb-8 font-mono text-xs uppercase tracking-widest text-paper/60"
+          className="inline-flex items-center gap-2 border border-white/[0.12] bg-white/[0.03] px-3 py-1.5 rounded-sarmat mb-8 font-mono text-xs uppercase tracking-widest text-paper/60"
         >
           <PhoneCall className="w-3 h-3 text-white/60" />
           AI Voice Receptionist
         </motion.div>
 
-        {/* Hero headline — ALL CAPS, ultra-wide tracking, Bebas Neue */}
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="font-display uppercase tracking-wide text-[clamp(3rem,10vw,8rem)] leading-[0.9] max-w-5xl text-white"
-        >
-          Never miss <br className="hidden sm:block" />
-          another call.{' '}
-          <span className="relative inline-block">
-            <span className="text-white/70">{reduce ? 'Ever.' : <TypewriterCycle words={typewriterWords} />}</span>
-          </span>
-        </motion.h1>
+        {/* SPLIT HEADLINE + FIGURE — movie poster layout */}
+        <div className="relative">
+          {/* Centered soldier figure — overlaps headline */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute left-1/2 -translate-x-1/2 bottom-0 z-10 w-[200px] h-[400px] md:w-[280px] md:h-[560px] lg:w-[320px] lg:h-[640px] pointer-events-none hidden md:block"
+            style={{ top: '-40px' }}
+          >
+            <Image
+              src="/hero-figure.svg"
+              alt=""
+              fill
+              className="object-contain object-bottom drop-shadow-[0_0_60px_rgba(255,255,255,0.08)]"
+              priority
+              aria-hidden="true"
+            />
+          </motion.div>
+
+          {/* Split headline: LEFT / RIGHT around figure */}
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="font-display uppercase leading-[0.85] text-white relative"
+            style={{ letterSpacing: '0.08em' }}
+          >
+            {/* Desktop: split layout */}
+            <span className="hidden md:flex items-end justify-between">
+              <span className="text-[clamp(3.5rem,12vw,11rem)] block">
+                Never<br />miss
+              </span>
+              <span className="text-[clamp(3.5rem,12vw,11rem)] text-right block">
+                Another<br />call
+              </span>
+            </span>
+            {/* Mobile: stacked */}
+            <span className="md:hidden text-[clamp(3.5rem,15vw,8rem)] block">
+              Never miss<br />another call.
+            </span>
+          </motion.h1>
+
+          {/* Typewriter cycle below headline */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="mt-4 md:mt-6 font-display uppercase text-[clamp(1.5rem,4vw,3rem)] text-white/50 tracking-wide"
+          >
+            {reduce ? 'Ever.' : <TypewriterCycle words={typewriterWords} />}
+          </motion.div>
+        </div>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.35 }}
+          transition={{ duration: 0.8, delay: 0.45 }}
           className="mt-8 max-w-2xl text-lg md:text-xl text-white/55 leading-relaxed font-body"
         >
           {brand.description}
@@ -85,7 +123,7 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
           className="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-4"
         >
           <Button
@@ -115,6 +153,7 @@ export function Hero() {
           </div>
         </motion.div>
 
+        {/* Stats grid */}
         <motion.div
           initial={{ opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
@@ -127,7 +166,7 @@ export function Hero() {
             { k: '24/7/365', v: 'availability' },
             { k: '30s', v: 'avg response' },
           ].map((m) => (
-            <div key={m.v} className="glass-card px-5 py-4 hover:scale-[1.02] transition-transform duration-300">
+            <div key={m.v} className="sarmat-card px-5 py-4">
               <div className="font-display uppercase tracking-wide text-xl md:text-2xl text-paper">{m.k}</div>
               <div className="font-mono text-[10px] uppercase tracking-widest text-paper/40 mt-1">
                 {m.v}

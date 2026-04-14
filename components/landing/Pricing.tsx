@@ -11,28 +11,28 @@ export function Pricing() {
   const [annual, setAnnual] = useState(true);
 
   return (
-    <section id="pricing" className="relative py-24 md:py-36 bg-ink">
+    <section id="pricing" className="relative py-[120px] md:py-[150px] bg-ink">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="text-center max-w-3xl mx-auto">
             <span className="section-label">
-              {'// 06 — Pricing'}
+              06 — Pricing
             </span>
-            <h2 className="mt-4 font-display font-bold text-4xl md:text-6xl tracking-tight">
-              Start free. <br />
-              <span className="text-white">Scale when ready.</span>
+            <h2 className="mt-4 font-display uppercase tracking-wide text-[clamp(2.5rem,6vw,5rem)] leading-[0.9] text-white">
+              Start free.<br />
+              Scale when ready.
             </h2>
-            <p className="mt-6 text-paper/70 text-lg">
+            <p className="mt-6 text-white/55 text-lg font-body">
               No credit card required. No contracts. No surprises. Cancel anytime.
             </p>
 
-            <div className="mt-10 inline-flex items-center gap-1 border border-white/[0.08] p-1 bg-white/[0.03] rounded-full">
+            <div className="mt-10 inline-flex items-center gap-1 border border-white/[0.08] p-1 bg-white/[0.03] rounded-[2px]">
               <button
                 onClick={() => setAnnual(false)}
                 style={{ touchAction: 'manipulation' }}
                 className={cn(
-                  'px-5 py-2 text-sm font-mono uppercase tracking-wider transition-colors min-h-[44px] rounded-full',
-                  !annual ? 'bg-white text-ink' : 'text-paper/60',
+                  'px-5 py-2 text-sm font-mono uppercase tracking-wider transition-colors min-h-[44px] rounded-[2px]',
+                  !annual ? 'bg-white text-ink' : 'text-white/55',
                 )}
               >
                 Monthly
@@ -41,12 +41,12 @@ export function Pricing() {
                 onClick={() => setAnnual(true)}
                 style={{ touchAction: 'manipulation' }}
                 className={cn(
-                  'px-5 py-2 text-sm font-mono uppercase tracking-wider transition-colors flex items-center gap-2 min-h-[44px] rounded-full',
-                  annual ? 'bg-white text-ink' : 'text-paper/60',
+                  'px-5 py-2 text-sm font-mono uppercase tracking-wider transition-colors flex items-center gap-2 min-h-[44px] rounded-[2px]',
+                  annual ? 'bg-white text-ink' : 'text-white/55',
                 )}
               >
                 Annual
-                <span className="text-[10px] bg-white/20 text-white px-1.5 py-0.5">-30%</span>
+                <span className="text-[10px] bg-white/20 text-white px-1.5 py-0.5 rounded-[2px]">-30%</span>
               </button>
             </div>
           </div>
@@ -56,11 +56,11 @@ export function Pricing() {
           {/* Starter Plan */}
           <ScrollReveal delay={0}>
             <div className="relative h-full flex flex-col p-8 glass-card border-white/20 rounded-[2px] -translate-y-2 shadow-[0_0_40px_rgba(255,255,255,0.06)] hover:shadow-[0_0_60px_rgba(255,255,255,0.10)] transition-all duration-300" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.02) 100%)' }}>
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 border border-white/40 bg-transparent text-white font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-full">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 border border-white/40 bg-transparent text-white font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-[2px]">
                 14-Day Free Trial
               </div>
-              <div className="font-display font-bold text-2xl">Starter</div>
-              <div className="mt-1 text-sm text-paper/60 min-h-[2.5rem]">
+              <div className="font-display uppercase tracking-wide text-2xl text-white">Starter</div>
+              <div className="mt-1 text-sm text-white/55 font-body min-h-[2.5rem]">
                 For small businesses trying out an AI receptionist.
               </div>
 
@@ -111,11 +111,11 @@ export function Pricing() {
           {/* Enterprise Plan */}
           <ScrollReveal delay={0.08}>
             <div className="relative h-full flex flex-col p-8 glass-card rounded-[2px] transition-all duration-300">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white/[0.06] border border-white/[0.08] text-paper/70 font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-full">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white/[0.06] border border-white/[0.08] text-white/55 font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-[2px]">
                 Custom
               </div>
-              <div className="font-display font-bold text-2xl">Enterprise</div>
-              <div className="mt-1 text-sm text-paper/60 min-h-[2.5rem]">
+              <div className="font-display uppercase tracking-wide text-2xl text-white">Enterprise</div>
+              <div className="mt-1 text-sm text-white/55 font-body min-h-[2.5rem]">
                 Multi-location businesses, high call volumes, or custom integrations.
               </div>
 

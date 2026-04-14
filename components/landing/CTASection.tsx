@@ -3,8 +3,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Clock, Headphones } from 'lucide-react';
-import { HeroVisual } from '@/components/animations/HeroVisual';
-import { AIParticles } from '@/components/animations/AIParticles';
 import { Button } from '@/components/ui/Button';
 import { brand } from '@/lib/brand';
 
@@ -13,17 +11,14 @@ export function CTASection() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
   return (
-    <section className="relative py-24 md:py-40 bg-ink overflow-hidden isolate">
-      <HeroVisual className="absolute inset-0 w-full h-full opacity-60" />
-      <AIParticles density={30} className="absolute inset-0 w-full h-full pointer-events-none opacity-40 mix-blend-screen" />
+    <section className="relative py-[120px] md:py-[160px] bg-ink overflow-hidden isolate">
+      {/* Topo texture instead of Spline/particles */}
+      <div aria-hidden className="absolute inset-0 topo-texture pointer-events-none" />
 
+      {/* Subtle ambient glow */}
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-b from-ink via-transparent to-ink pointer-events-none"
-      />
-      <div
-        aria-hidden
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full bg-white/8 blur-[120px] pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full bg-white/[0.04] blur-[120px] pointer-events-none"
       />
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -31,9 +26,9 @@ export function CTASection() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="font-mono text-[10px] uppercase tracking-[0.24em] text-white/55"
+          className="section-label"
         >
-          {'// Your phone is ringing. Answer it.'}
+          08 — Get Started
         </motion.span>
 
         <motion.h2
@@ -41,10 +36,10 @@ export function CTASection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-4 font-display font-bold text-5xl md:text-7xl lg:text-8xl tracking-[-0.03em] leading-[0.9]"
+          className="mt-4 font-display uppercase tracking-wide text-[clamp(3rem,8vw,7rem)] leading-[0.85] text-white"
         >
-          Ready to never <br />
-          <span className="text-white">miss a call again?</span>
+          Ready to never<br />
+          miss a call again?
         </motion.h2>
 
         <motion.p
@@ -52,7 +47,7 @@ export function CTASection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.15 }}
-          className="mt-8 text-lg md:text-xl text-paper/70 max-w-xl mx-auto"
+          className="mt-8 text-lg md:text-xl text-white/55 max-w-xl mx-auto font-body"
         >
           Join 500+ businesses using {brand.name} to answer calls, book appointments, and grow
           revenue — without hiring another receptionist.
@@ -93,8 +88,8 @@ export function CTASection() {
           className="mt-10 max-w-md mx-auto text-center"
         >
           {status === 'success' ? (
-            <div className="text-white/50 font-display font-bold text-lg">
-              ✓ You&apos;re on the list! We&apos;ll be in touch.
+            <div className="text-white/50 font-display uppercase tracking-wide text-lg">
+              You&apos;re on the list. We&apos;ll be in touch.
             </div>
           ) : (
             <form
@@ -110,7 +105,7 @@ export function CTASection() {
                   setStatus(res.ok ? 'success' : 'error');
                 } catch { setStatus('error'); }
               }}
-              className="flex items-center border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm rounded-xl focus-within:border-white/30 transition-colors max-w-md mx-auto overflow-hidden"
+              className="flex items-center border border-white/[0.08] bg-white/[0.03] rounded-[2px] focus-within:border-white/30 transition-colors max-w-md mx-auto overflow-hidden"
             >
               <input
                 type="email"
@@ -119,12 +114,12 @@ export function CTASection() {
                 placeholder="you@yourbusiness.com"
                 aria-label="Work email"
                 required
-                className="flex-1 bg-transparent px-4 py-4 text-paper placeholder:text-paper/40 outline-none font-mono text-sm"
+                className="flex-1 bg-transparent px-4 py-4 text-paper placeholder:text-white/40 outline-none font-mono text-sm"
               />
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="group relative inline-flex items-center justify-center gap-2 font-display font-semibold tracking-tight rounded-none transition-all duration-200 overflow-hidden bg-paper text-ink hover:bg-white px-6 py-4 text-sm shrink-0"
+                className="group relative inline-flex items-center justify-center gap-2 font-display uppercase tracking-wide transition-all duration-200 overflow-hidden bg-paper text-ink hover:bg-white px-6 py-4 text-sm shrink-0"
               >
                 {status === 'loading' ? 'Joining...' : 'Join Waitlist'}
               </button>
@@ -135,7 +130,7 @@ export function CTASection() {
               Something went wrong — email us at hellogizmooai@gmail.com
             </p>
           )}
-          <div className="mt-6 text-xs text-paper/50 font-mono flex items-center justify-center gap-4 flex-wrap">
+          <div className="mt-6 text-xs text-white/50 font-mono flex items-center justify-center gap-4 flex-wrap">
             <span className="flex items-center gap-1.5">
               <Clock className="w-3 h-3 text-white/50" /> 99.99% Uptime
             </span>
@@ -143,7 +138,7 @@ export function CTASection() {
               <Headphones className="w-3 h-3 text-white/50" /> 24/7 Support
             </span>
           </div>
-          <div className="mt-3 text-[11px] text-paper/40 font-mono">
+          <div className="mt-3 text-[11px] text-white/40 font-mono">
             No credit card required · Setup in 15 minutes · Cancel anytime
           </div>
         </motion.div>

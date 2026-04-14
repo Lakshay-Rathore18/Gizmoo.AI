@@ -38,24 +38,26 @@ export function Nav() {
           : 'bg-transparent',
       )}
     >
-      {/* Ultra-subtle separator — no visible border */}
+      {/* Ultra-subtle separator */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-white/[0.06]" />
 
       <nav
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex items-center justify-between"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex items-center"
         aria-label="Primary"
       >
-        <a href="#top" className="flex items-center">
+        {/* Logo — LEFT */}
+        <a href="#top" className="flex items-center shrink-0">
           <GizmooLogo className="h-7 md:h-9 w-auto" />
         </a>
 
-        {/* Desktop nav — bullet-separated, small caps, wide tracking */}
-        <ul className="hidden md:flex items-center gap-0">
+        {/* Nav links — CENTER (absolute centered) */}
+        <ul className="hidden md:flex items-center gap-0 absolute left-1/2 -translate-x-1/2">
           {links.map((l, i) => (
             <li key={l.href} className="flex items-center">
               <a
                 href={l.href}
                 className="text-[13px] uppercase tracking-ultrawide text-white/50 hover:text-white transition-colors duration-200 px-4 py-2"
+                style={{ fontVariant: 'small-caps' }}
               >
                 {l.label}
               </a>
@@ -66,7 +68,8 @@ export function Nav() {
           ))}
         </ul>
 
-        <div className="hidden md:flex items-center gap-3">
+        {/* CTA — RIGHT */}
+        <div className="hidden md:flex items-center gap-3 ml-auto">
           <Link
             href={SIGN_IN_URL}
             className="text-[13px] uppercase tracking-wide font-medium text-white/50 hover:text-white transition-colors duration-200 px-3 py-2"
@@ -84,7 +87,7 @@ export function Nav() {
         </div>
 
         <button
-          className="md:hidden p-2 text-paper min-w-[44px] min-h-[44px] flex items-center justify-center"
+          className="md:hidden p-2 text-paper min-w-[44px] min-h-[44px] flex items-center justify-center ml-auto"
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
           aria-expanded={open}
@@ -102,7 +105,7 @@ export function Nav() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/70 backdrop-blur-sm z-40 md:hidden"
+              className="fixed inset-0 bg-black/70 z-40 md:hidden"
               onClick={() => setOpen(false)}
             />
             <motion.div

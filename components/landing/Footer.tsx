@@ -82,7 +82,7 @@ export function Footer() {
                       setStatus(res.ok ? 'success' : 'error');
                     } catch { setStatus('error'); }
                   }}
-                  className="flex items-center border border-white/[0.08] rounded-lg focus-within:border-white/30 transition-colors max-w-xs overflow-hidden"
+                  className="flex items-center border border-white/[0.08] rounded-[2px] focus-within:border-white/30 transition-colors max-w-xs overflow-hidden"
                 >
                   <input
                     type="email"
@@ -161,7 +161,7 @@ export function Footer() {
             <a
               href="#top"
               aria-label="Back to top"
-              className="inline-flex items-center justify-center w-8 h-8 border border-white/[0.1] rounded-lg hover:border-white/30 hover:text-white transition-colors"
+              className="inline-flex items-center justify-center w-8 h-8 border border-white/[0.1] rounded-[2px] hover:border-white/30 hover:text-white transition-colors"
             >
               <ArrowUp className="w-3.5 h-3.5" />
             </a>

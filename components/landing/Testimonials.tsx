@@ -39,15 +39,15 @@ const quotes = [
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="relative py-24 md:py-36 bg-ink border-y border-white/[0.06] overflow-hidden">
+    <section id="testimonials" className="relative py-[120px] md:py-[150px] bg-ink border-y border-white/[0.06] overflow-hidden">
       <ScrollReveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
           <span className="section-label">
-            {'// 05 — What our customers say'}
+            05 — Testimonials
           </span>
-          <h2 className="mt-4 font-display font-bold text-4xl md:text-6xl tracking-tight max-w-3xl">
-            500+ businesses <br />
-            <span className="text-white">never miss a call.</span>
+          <h2 className="mt-4 font-display uppercase tracking-wide text-[clamp(2.5rem,6vw,5rem)] leading-[0.9] text-white max-w-3xl">
+            500+ businesses<br />
+            never miss a call.
           </h2>
         </div>
       </ScrollReveal>
@@ -56,19 +56,19 @@ export function Testimonials() {
         {quotes.map((q, i) => (
           <figure
             key={i}
-            className="w-[380px] md:w-[460px] shrink-0 glass-card rounded-[2px] p-7 transition-all duration-300"
+            className="w-[380px] md:w-[460px] shrink-0 sarmat-card p-7 transition-all duration-300"
           >
             <div className="flex gap-1 mb-4">
               {Array.from({ length: 5 }).map((_, j) => (
                 <Star key={j} className="w-3.5 h-3.5 fill-white/70 text-white/70" />
               ))}
             </div>
-            <blockquote className="text-paper text-base leading-relaxed">
+            <blockquote className="text-paper text-base leading-relaxed font-body">
               &ldquo;{q.text}&rdquo;
             </blockquote>
             <figcaption className="mt-6 pt-4 border-t border-white/[0.08]">
-              <div className="font-display font-bold text-sm">{q.name}</div>
-              <div className="font-mono text-[11px] text-paper/50">{q.role}</div>
+              <div className="font-display uppercase tracking-wide text-sm">{q.name}</div>
+              <div className="font-mono text-[11px] text-white/50">{q.role}</div>
             </figcaption>
           </figure>
         ))}
