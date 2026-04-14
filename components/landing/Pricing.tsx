@@ -55,7 +55,7 @@ export function Pricing() {
         <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {/* Starter Plan */}
           <ScrollReveal delay={0}>
-            <div className="relative h-full flex flex-col p-8 border border-blue-500/50 rounded-2xl -translate-y-2 shadow-[0_0_40px_rgba(59,130,246,0.15)] transition-all duration-300" style={{ background: 'linear-gradient(135deg, rgba(59,130,246,0.05) 0%, transparent 100%)' }}>
+            <div className="relative h-full flex flex-col p-8 glass-card border-cyber-cyan/30 rounded-2xl -translate-y-2 shadow-[0_0_40px_rgba(0,229,255,0.12)] hover:shadow-[0_0_60px_rgba(0,229,255,0.18)] transition-all duration-300" style={{ background: 'linear-gradient(135deg, rgba(0,229,255,0.04) 0%, rgba(251,191,36,0.02) 100%)' }}>
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-full">
                 14-Day Free Trial
               </div>
@@ -110,7 +110,7 @@ export function Pricing() {
 
           {/* Enterprise Plan */}
           <ScrollReveal delay={0.08}>
-            <div className="relative h-full flex flex-col p-8 border border-white/[0.08] bg-white/[0.02] rounded-2xl hover:border-white/20 transition-all duration-300">
+            <div className="relative h-full flex flex-col p-8 glass-card rounded-2xl transition-all duration-300">
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white/[0.06] border border-white/[0.08] text-paper/70 font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-full">
                 Custom
               </div>

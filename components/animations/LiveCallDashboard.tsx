@@ -102,10 +102,10 @@ export function LiveCallDashboard({ className }: { className?: string }) {
               className="flex items-center gap-3 px-4 py-2.5 hover:bg-paper/[0.02] transition-colors"
             >
               <div className={`shrink-0 w-7 h-7 rounded-full flex items-center justify-center ${
-                call.type === 'Outbound' ? 'bg-cyber-violet/20' : 'bg-cyber-cyan/20'
+                call.type === 'Outbound' ? 'bg-cyber-gold/20' : 'bg-cyber-cyan/20'
               }`}>
                 {call.type === 'Outbound' ? (
-                  <ArrowUpRight className="w-3 h-3 text-cyber-violet" />
+                  <ArrowUpRight className="w-3 h-3 text-cyber-gold" />
                 ) : (
                   <Phone className="w-3 h-3 text-cyber-cyan" />
                 )}
@@ -114,7 +114,7 @@ export function LiveCallDashboard({ className }: { className?: string }) {
                 <div className="flex items-center gap-2">
                   <span className="font-display text-xs font-bold text-paper truncate">{call.biz}</span>
                   <span className={`font-mono text-[8px] uppercase tracking-wider px-1.5 py-0.5 ${
-                    call.type === 'Outbound' ? 'text-cyber-violet bg-cyber-violet/10' : 'text-cyber-cyan bg-cyber-cyan/10'
+                    call.type === 'Outbound' ? 'text-cyber-gold bg-cyber-gold/10' : 'text-cyber-cyan bg-cyber-cyan/10'
                   }`}>
                     {call.type}
                   </span>
@@ -138,7 +138,7 @@ export function LiveCallDashboard({ className }: { className?: string }) {
           {[0.3, 0.7, 0.5, 0.9, 0.4, 0.8, 0.6, 0.3, 0.7, 0.5, 0.8, 0.4].map((h, i) => (
             <motion.span
               key={i}
-              className="w-[2px] bg-gradient-to-t from-cyber-cyan/60 to-cyber-violet/60 rounded-full origin-bottom"
+              className="w-[2px] bg-gradient-to-t from-cyber-cyan/60 to-cyber-gold/60 rounded-full origin-bottom"
               style={{ height: '100%' }}
               animate={reduce ? { scaleY: h } : {
                 scaleY: [h, h * 0.3, h * 1.2, h * 0.5, h],

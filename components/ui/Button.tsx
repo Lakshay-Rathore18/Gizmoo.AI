@@ -43,7 +43,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
       {variant === 'primary' && (
         <span
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-r from-cyber-cyan via-cyber-violet to-cyber-lime opacity-0 group-hover:opacity-100 transition-opacity duration-300 mix-blend-overlay"
+          className="absolute inset-0 bg-gradient-to-r from-cyber-cyan via-cyber-gold to-cyber-lime opacity-0 group-hover:opacity-100 transition-opacity duration-300 mix-blend-overlay"
         />
       )}
     </button>

@@ -42,7 +42,7 @@ export function Testimonials() {
     <section id="testimonials" className="relative py-24 md:py-36 bg-ink border-y border-white/[0.06] overflow-hidden">
       <ScrollReveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-          <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-cyber-violet">
+          <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-cyber-gold">
             {'// 05 — What our customers say'}
           </span>
           <h2 className="mt-4 font-display font-bold text-4xl md:text-6xl tracking-tight max-w-3xl">
@@ -56,7 +56,7 @@ export function Testimonials() {
         {quotes.map((q, i) => (
           <figure
             key={i}
-            className="w-[380px] md:w-[460px] shrink-0 bg-white/[0.03] border border-white/[0.08] backdrop-blur-sm rounded-2xl p-7 hover:border-blue-500/30 transition-all duration-300"
+            className="w-[380px] md:w-[460px] shrink-0 glass-card rounded-2xl p-7 transition-all duration-300"
           >
             <div className="flex gap-1 mb-4">
               {Array.from({ length: 5 }).map((_, j) => (

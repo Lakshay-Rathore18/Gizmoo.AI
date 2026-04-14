@@ -14,7 +14,7 @@ const config: Config = {
         paper: '#ffffff',
         cyber: {
           cyan: '#00E5FF',
-          violet: '#8B5CF6',
+          gold: '#FBBF24',
           lime: '#A3FF12',
           rose: '#FF2E93',
         },

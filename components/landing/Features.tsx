@@ -6,11 +6,11 @@ import { Card } from '@/components/ui/Card';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
 import { staggerContainer, fadeInUp } from '@/lib/animation';
 
-type Accent = 'cyan' | 'violet' | 'lime';
+type Accent = 'cyan' | 'gold' | 'lime';
 
 const accentClasses: Record<Accent, { border: string; text: string; glow: string }> = {
   cyan: { border: 'border-cyber-cyan/40', text: 'text-cyber-cyan', glow: 'bg-cyber-cyan/20' },
-  violet: { border: 'border-cyber-violet/40', text: 'text-cyber-violet', glow: 'bg-cyber-violet/20' },
+  gold: { border: 'border-cyber-gold/40', text: 'text-cyber-gold', glow: 'bg-cyber-gold/20' },
   lime: { border: 'border-cyber-lime/40', text: 'text-cyber-lime', glow: 'bg-cyber-lime/20' },
 };
 
@@ -25,7 +25,7 @@ const features: { icon: typeof PhoneIncoming; title: string; copy: string; accen
     icon: CalendarPlus,
     title: 'Books Appointments',
     copy: 'Real-time scheduling that checks your availability, books slots, sends confirmations, and handles reschedules — all without a human lifting a finger.',
-    accent: 'violet',
+    accent: 'gold',
   },
   {
     icon: RefreshCw,
@@ -43,7 +43,7 @@ const features: { icon: typeof PhoneIncoming; title: string; copy: string; accen
     icon: Waves,
     title: 'Natural Conversations',
     copy: 'Advanced voice AI with natural pauses, context awareness, and emotional intelligence. Sounds so human your callers forget it is AI.',
-    accent: 'violet',
+    accent: 'gold',
   },
   {
     icon: UserRoundCheck,

@@ -34,15 +34,15 @@ export function Hero() {
         style={{ background: 'radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59,130,246,0.15), transparent)' }}
       />
 
-      {['top-4 left-4', 'top-4 right-4', 'bottom-4 left-4', 'bottom-4 right-4'].map((pos) => (
-        <div
-          key={pos}
-          aria-hidden
-          className={`absolute ${pos} w-6 h-6 border border-cyber-cyan/60`}
-        >
-          <div className="absolute inset-1 bg-cyber-cyan animate-blink" />
-        </div>
-      ))}
+      {/* Ambient glow orbs for depth */}
+      <div
+        aria-hidden
+        className="absolute top-1/4 -left-32 w-[500px] h-[500px] rounded-full bg-cyber-cyan/[0.07] blur-[100px] pointer-events-none"
+      />
+      <div
+        aria-hidden
+        className="absolute bottom-1/4 -right-32 w-[400px] h-[400px] rounded-full bg-cyber-gold/[0.05] blur-[100px] pointer-events-none"
+      />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 md:py-40 w-full">
         <motion.div
@@ -123,7 +123,7 @@ export function Hero() {
             { k: '24/7/365', v: 'availability' },
             { k: '30s', v: 'avg response' },
           ].map((m) => (
-            <div key={m.v} className="bg-white/[0.03] border border-white/[0.08] backdrop-blur-sm rounded-xl px-5 py-4">
+            <div key={m.v} className="glass-card rounded-xl px-5 py-4 hover:scale-[1.02] transition-transform duration-300">
               <div className="font-display text-xl md:text-2xl font-bold text-paper">{m.k}</div>
               <div className="font-mono text-[10px] uppercase tracking-widest text-paper/50 mt-1">
                 {m.v}

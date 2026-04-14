@@ -18,7 +18,7 @@ const cases = [
     title: 'Open for business around the clock.',
     copy: 'Emergencies, after-hours leads, and weekend inquiries do not wait for business hours — and neither does your receptionist. Gizmoo works nights, weekends, and holidays without blinking.',
     metric: { value: '24', suffix: '/7', label: 'uninterrupted coverage' },
-    accent: 'cyber-violet',
+    accent: 'cyber-gold',
   },
   {
     label: 'Focus on customers',
@@ -70,7 +70,7 @@ export function UseCases() {
                       className={cn(
                         'absolute -inset-20 opacity-40 blur-3xl',
                         c.accent === 'cyber-cyan' && 'bg-cyber-cyan/30',
-                        c.accent === 'cyber-violet' && 'bg-cyber-violet/30',
+                        c.accent === 'cyber-gold' && 'bg-cyber-gold/30',
                         c.accent === 'cyber-lime' && 'bg-cyber-lime/20',
                       )}
                     />
@@ -100,7 +100,7 @@ export function UseCases() {
                       className={cn(
                         'font-mono text-[10px] uppercase tracking-[0.24em]',
                         c.accent === 'cyber-cyan' && 'text-cyber-cyan',
-                        c.accent === 'cyber-violet' && 'text-cyber-violet',
+                        c.accent === 'cyber-gold' && 'text-cyber-gold',
                         c.accent === 'cyber-lime' && 'text-cyber-lime',
                       )}
                     >

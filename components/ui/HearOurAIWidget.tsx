@@ -50,7 +50,7 @@ export function HearOurAIWidget({ phoneNumber, className }: HearOurAIWidgetProps
             aria-hidden
             className="absolute -inset-4 rounded-full border border-cyber-cyan/20 animate-ping [animation-delay:0.6s]"
           />
-          <div className="relative w-14 h-14 rounded-full bg-gradient-to-br from-cyber-cyan to-cyber-violet flex items-center justify-center shadow-[0_0_30px_rgba(0,229,255,0.5)]">
+          <div className="relative w-14 h-14 rounded-full bg-gradient-to-br from-cyber-cyan to-cyber-gold flex items-center justify-center shadow-[0_0_30px_rgba(0,229,255,0.5)]">
             <PhoneCall className="w-6 h-6 text-ink" aria-hidden />
           </div>
         </div>
@@ -85,7 +85,7 @@ export function HearOurAIWidget({ phoneNumber, className }: HearOurAIWidgetProps
           {[0.3, 0.6, 0.9, 0.5, 0.7].map((h, i) => (
             <motion.span
               key={i}
-              className="w-[3px] bg-gradient-to-t from-cyber-cyan to-cyber-violet rounded-full origin-bottom"
+              className="w-[3px] bg-gradient-to-t from-cyber-cyan to-cyber-gold rounded-full origin-bottom"
               initial={{ scaleY: h }}
               animate={reduce ? undefined : { scaleY: [h, h * 0.3, h * 1.1, h * 0.5, h] }}
               transition={{

@@ -71,13 +71,13 @@ export function Demo() {
       <div aria-hidden className="absolute inset-0 bg-grid-dense opacity-20" />
       <div
         aria-hidden
-        className="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-cyber-violet/20 blur-3xl pointer-events-none"
+        className="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-cyber-gold/10 blur-3xl pointer-events-none"
       />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="max-w-3xl">
-            <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-cyber-violet">
+            <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-cyber-gold">
               {'// 02 — See Gizmoo in action'}
             </span>
             <h2 className="mt-4 font-display font-bold text-4xl md:text-6xl tracking-tight">
@@ -92,7 +92,7 @@ export function Demo() {
 
         <div className="mt-16 grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-8">
           <ScrollReveal className="lg:col-span-3" delay={0.1}>
-            <div className="bg-white/[0.02] border border-white/[0.08] rounded-2xl overflow-hidden">
+            <div className="glass-card rounded-2xl overflow-hidden">
               <div className="flex items-center gap-1 border-b border-white/[0.06] px-3 pt-3 overflow-x-auto">
                 {tabs.map((t) => (
                   <button
@@ -138,7 +138,7 @@ export function Demo() {
                           line.role === 'caller' && 'text-paper',
                           line.role === 'agent' && 'text-cyber-cyan',
                           line.role === 'sys' && 'text-cyber-lime',
-                          line.role === 'out' && 'text-cyber-violet',
+                          line.role === 'out' && 'text-cyber-gold',
                         )}
                       >
                         <span className="select-none text-paper/30 w-8 shrink-0">{String(i + 1).padStart(2, '0')}</span>
@@ -161,7 +161,7 @@ export function Demo() {
           </ScrollReveal>
 
           <ScrollReveal className="lg:col-span-2" delay={0.2}>
-            <div className="relative h-full min-h-[360px] bg-white/[0.02] border border-white/[0.08] rounded-2xl overflow-hidden">
+            <div className="relative h-full min-h-[360px] glass-card rounded-2xl overflow-hidden">
               <AIAgentVisual className="w-full h-full" />
               <div
                 aria-hidden
