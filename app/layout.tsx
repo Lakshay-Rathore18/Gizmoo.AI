@@ -6,6 +6,7 @@ import { SmoothScroll } from '@/components/SmoothScroll';
 import { CustomCursor } from '@/components/CustomCursor';
 import { ScrollProgress } from '@/components/ScrollProgress';
 import { LoadingScreen } from '@/components/LoadingScreen';
+import { ScrollBackground } from '@/components/ScrollBackground';
 import './globals.css';
 
 const inter = Inter({
@@ -157,8 +158,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <LoadingScreen />
             <ScrollProgress />
             <CustomCursor />
+            <ScrollBackground />
             <div className="noise-overlay" />
-            {children}
+            <div className="relative z-10">
+              {children}
+            </div>
           </SmoothScroll>
         </ClerkProvider>
       </body>

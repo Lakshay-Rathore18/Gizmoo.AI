@@ -14,6 +14,7 @@ import { FAQ } from '@/components/landing/FAQ';
 import { CTASection } from '@/components/landing/CTASection';
 import { Footer } from '@/components/landing/Footer';
 import { ContactOverlay } from '@/components/landing/ContactOverlay';
+import { GlowDivider } from '@/components/GlowDivider';
 
 export default function Page() {
   const [contactOpen, setContactOpen] = useState(false);
@@ -23,14 +24,23 @@ export default function Page() {
       <main id="main-content" className="relative">
         <Nav onContactOpen={() => setContactOpen(true)} />
         <Hero onContactOpen={() => setContactOpen(true)} />
+        <GlowDivider />
         <About />
+        <GlowDivider />
         <Features />
+        <GlowDivider />
         <Demo />
+        <GlowDivider />
         <UseCases />
+        <GlowDivider />
         <HowItWorks />
+        <GlowDivider />
         <Testimonials />
+        <GlowDivider />
         <Pricing />
+        <GlowDivider />
         <FAQ />
+        <GlowDivider />
         <CTASection onContactOpen={() => setContactOpen(true)} />
         <Footer />
       </main>

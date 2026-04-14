@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { brand } from '@/lib/brand';
+import { ParticleField } from '@/components/ParticleField';
 
 const headlineWords = [
   { text: 'Never', weight: 'font-light' },
@@ -22,16 +23,8 @@ export function Hero({ onContactOpen }: { onContactOpen?: () => void }) {
       id="top"
       className="relative min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden"
     >
-      {/* Glow orb */}
-      <div
-        className="glow-orb glow-orb-accent w-[600px] h-[600px] top-[-10%] right-[-10%] animate-glow-drift opacity-10"
-        aria-hidden
-      />
-      <div
-        className="glow-orb glow-orb-strong w-[300px] h-[300px] bottom-[10%] left-[-5%] animate-glow-drift opacity-5"
-        style={{ animationDelay: '5s' }}
-        aria-hidden
-      />
+      {/* Particle field */}
+      <ParticleField />
 
       {/* Content */}
       <div className="relative z-10 max-w-content mx-auto px-6 text-center pt-20">
