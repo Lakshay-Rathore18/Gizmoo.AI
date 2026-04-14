@@ -350,13 +350,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               borderRadius: '0.75rem',
             },
             elements: {
-              card: 'bg-[#0a0a0a] border border-white/[0.08] shadow-[0_0_40px_rgba(59,130,246,0.15)]',
+              card: 'bg-[#0a0a0a] border border-white/[0.08] shadow-[0_0_40px_rgba(0,229,255,0.1)]',
               headerTitle: 'text-white',
               headerSubtitle: 'text-white/60',
               socialButtonsBlockButton: 'bg-white/[0.05] border-white/[0.08] hover:bg-white/[0.08] text-white',
               formFieldInput: 'bg-[#111111] border-white/[0.08] text-white',
-              formButtonPrimary: 'bg-blue-600 hover:bg-blue-500 shadow-[0_0_20px_rgba(59,130,246,0.3)]',
-              footerActionLink: 'text-blue-400 hover:text-blue-300',
+              formButtonPrimary: 'bg-white text-[#0a0a0a] hover:bg-[#00E5FF] shadow-[0_0_20px_rgba(0,229,255,0.2)]',
+              footerActionLink: 'text-[#00E5FF] hover:text-white',
               modalCloseButton: 'text-white/60 hover:text-white',
             },
           }}

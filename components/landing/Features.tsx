@@ -88,9 +88,9 @@ export function Features() {
               <motion.div key={f.title} variants={fadeInUp}>
                 <Card className="h-full hover:bg-white/[0.05]">
                   <div className="flex items-start gap-4">
-                    <div className={`relative shrink-0 w-12 h-12 border ${a.border} flex items-center justify-center`}>
+                    <div className={`relative shrink-0 w-12 h-12 rounded-xl border ${a.border} flex items-center justify-center bg-white/[0.03]`}>
                       <f.icon className={`w-5 h-5 ${a.text}`} aria-hidden />
-                      <span className={`absolute inset-0 ${a.glow} blur-xl opacity-0 group-hover:opacity-100 transition-opacity`} />
+                      <span className={`absolute inset-0 rounded-xl ${a.glow} blur-xl opacity-0 group-hover:opacity-100 transition-opacity`} />
                     </div>
                     <div>
                       <h3 className="font-display font-bold text-xl tracking-tight">{f.title}</h3>

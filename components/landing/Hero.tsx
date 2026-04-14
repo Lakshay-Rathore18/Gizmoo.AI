@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/Button';
 import { HearOurAIWidget } from '@/components/ui/HearOurAIWidget';
 import { AIParticles } from '@/components/animations/AIParticles';
 import { HeroVisual } from '@/components/animations/HeroVisual';
+import { AmbientMesh } from '@/components/animations/AmbientMesh';
 import { brand } from '@/lib/brand';
 
 const typewriterWords = ['answers calls.', 'books appointments.', 'syncs calendars.', 'answers calls.'];
@@ -19,6 +20,7 @@ export function Hero() {
       className="relative min-h-[100svh] w-full overflow-hidden bg-ink isolate flex items-center"
     >
       <HeroVisual className="absolute inset-0 w-full h-full" />
+      <AmbientMesh className="absolute inset-0 w-full h-full overflow-hidden" />
 
       <AIParticles density={40} className="absolute inset-0 w-full h-full pointer-events-none mix-blend-screen opacity-50" />
 

@@ -34,7 +34,7 @@ export function Nav() {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         scrolled
-          ? 'bg-black/60 backdrop-blur-xl border-b border-white/5'
+          ? 'bg-black/50 backdrop-blur-2xl border-b border-white/[0.06] shadow-[0_4px_30px_rgba(0,0,0,0.3)]'
           : 'bg-transparent',
       )}
     >
@@ -51,10 +51,10 @@ export function Nav() {
             <li key={l.href}>
               <a
                 href={l.href}
-                className="text-sm text-white/60 hover:text-blue-400 transition-colors duration-200 relative group"
+                className="text-sm text-white/60 hover:text-cyber-cyan transition-colors duration-200 relative group"
               >
                 {l.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-blue-400 group-hover:w-full transition-all duration-300" />
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-cyber-cyan group-hover:w-full transition-all duration-300" />
               </a>
             </li>
           ))}
@@ -70,7 +70,7 @@ export function Nav() {
           </Link>
           <Link
             href={SIGN_UP_URL}
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-500 active:bg-blue-800 text-white text-sm font-medium rounded-lg transition-colors duration-200 shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.5)]"
+            className="px-4 py-2 bg-white text-ink text-sm font-medium rounded-lg transition-all duration-200 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(0,229,255,0.3)] hover:bg-cyber-cyan"
             style={{ touchAction: 'manipulation' }}
           >
             Get Started
@@ -89,7 +89,7 @@ export function Nav() {
       </nav>
 
       {/* Glow line */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyber-cyan/30 to-transparent" />
 
       {/* Mobile drawer */}
       <AnimatePresence>
@@ -125,7 +125,7 @@ export function Nav() {
                     <a
                       href={l.href}
                       onClick={() => setOpen(false)}
-                      className="block text-white/80 hover:text-blue-400 py-3 min-h-[44px] flex items-center text-base transition-colors"
+                      className="block text-white/80 hover:text-cyber-cyan py-3 min-h-[44px] flex items-center text-base transition-colors"
                       style={{ touchAction: 'manipulation' }}
                     >
                       {l.label}
@@ -145,7 +145,7 @@ export function Nav() {
                 <Link
                   href={SIGN_UP_URL}
                   onClick={() => setOpen(false)}
-                  className="w-full text-center px-4 py-3 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium rounded-lg transition-colors min-h-[44px] flex items-center justify-center"
+                  className="w-full text-center px-4 py-3 bg-white text-ink hover:bg-cyber-cyan text-sm font-medium rounded-lg transition-colors min-h-[44px] flex items-center justify-center"
                   style={{ touchAction: 'manipulation' }}
                 >
                   Get Started

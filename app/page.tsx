@@ -44,19 +44,19 @@ export default function Page() {
             trial and no lock-in contracts.
           </p>
           <dl className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-            <div className="border border-white/[0.08] rounded-xl p-4">
+            <div className="glass-card rounded-xl p-4">
               <dt className="font-mono text-[10px] uppercase tracking-widest text-paper/50">Calls Answered</dt>
               <dd className="font-display font-bold text-2xl text-paper mt-1">50,000+</dd>
             </div>
-            <div className="border border-white/[0.08] rounded-xl p-4">
+            <div className="glass-card rounded-xl p-4">
               <dt className="font-mono text-[10px] uppercase tracking-widest text-paper/50">Satisfaction</dt>
               <dd className="font-display font-bold text-2xl text-paper mt-1">99.7%</dd>
             </div>
-            <div className="border border-white/[0.08] rounded-xl p-4">
+            <div className="glass-card rounded-xl p-4">
               <dt className="font-mono text-[10px] uppercase tracking-widest text-paper/50">Availability</dt>
               <dd className="font-display font-bold text-2xl text-paper mt-1">24/7/365</dd>
             </div>
-            <div className="border border-white/[0.08] rounded-xl p-4">
+            <div className="glass-card rounded-xl p-4">
               <dt className="font-mono text-[10px] uppercase tracking-widest text-paper/50">Avg Response</dt>
               <dd className="font-display font-bold text-2xl text-paper mt-1">30 seconds</dd>
             </div>
@@ -65,18 +65,18 @@ export default function Page() {
       </section>
 
       <SocialProof />
-      <div aria-hidden className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      <div aria-hidden className="h-px mesh-divider" />
       <Features />
-      <div aria-hidden className="h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent" />
+      <div aria-hidden className="h-[2px] mesh-divider" />
       <Demo />
-      <div aria-hidden className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      <div aria-hidden className="h-px mesh-divider" />
       <UseCases />
-      <div aria-hidden className="h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent" />
+      <div aria-hidden className="h-[2px] mesh-divider" />
       <Tech />
       <Testimonials />
-      <div aria-hidden className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      <div aria-hidden className="h-px mesh-divider" />
       <Pricing />
-      <div aria-hidden className="h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent" />
+      <div aria-hidden className="h-[2px] mesh-divider" />
       <FAQ />
       <CTASection />
       <Footer />

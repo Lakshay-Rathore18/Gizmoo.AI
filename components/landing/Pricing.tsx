@@ -56,7 +56,7 @@ export function Pricing() {
           {/* Starter Plan */}
           <ScrollReveal delay={0}>
             <div className="relative h-full flex flex-col p-8 glass-card border-cyber-cyan/30 rounded-2xl -translate-y-2 shadow-[0_0_40px_rgba(0,229,255,0.12)] hover:shadow-[0_0_60px_rgba(0,229,255,0.18)] transition-all duration-300" style={{ background: 'linear-gradient(135deg, rgba(0,229,255,0.04) 0%, rgba(251,191,36,0.02) 100%)' }}>
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-full">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-cyber-cyan text-ink font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-full">
                 14-Day Free Trial
               </div>
               <div className="font-display font-bold text-2xl">Starter</div>

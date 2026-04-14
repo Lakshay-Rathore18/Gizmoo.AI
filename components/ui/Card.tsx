@@ -1,16 +1,37 @@
 'use client';
 
-import type { HTMLAttributes, ReactNode } from 'react';
+import { useRef, useState, type HTMLAttributes, type ReactNode, type MouseEvent } from 'react';
 import { cn } from '@/lib/utils';
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   glow?: boolean;
+  spotlightColor?: string;
 }
 
-export function Card({ className, children, glow = false, ...props }: CardProps) {
+export function Card({
+  className,
+  children,
+  glow = false,
+  spotlightColor = 'rgba(0,229,255,0.08)',
+  ...props
+}: CardProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+  const [opacity, setOpacity] = useState(0);
+
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    setPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
+
   return (
     <div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setOpacity(1)}
+      onMouseLeave={() => setOpacity(0)}
       className={cn(
         'group relative glass-card rounded-2xl p-6 md:p-8 transition-all duration-300',
         'hover:-translate-y-1',
@@ -21,10 +42,10 @@ export function Card({ className, children, glow = false, ...props }: CardProps)
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        className="pointer-events-none absolute -inset-px rounded-2xl transition-opacity duration-500"
         style={{
-          background:
-            'radial-gradient(400px circle at var(--x, 50%) var(--y, 50%), rgba(0,229,255,0.08), transparent 40%)',
+          opacity,
+          background: `radial-gradient(500px circle at ${pos.x}px ${pos.y}px, ${spotlightColor}, transparent 40%)`,
         }}
       />
       <div className="relative">{children}</div>
