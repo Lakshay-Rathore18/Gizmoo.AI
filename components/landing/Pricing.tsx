@@ -15,12 +15,12 @@ export function Pricing() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="text-center max-w-3xl mx-auto">
-            <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-sarmat-lime">
+            <span className="section-label">
               {'// 06 — Pricing'}
             </span>
             <h2 className="mt-4 font-display font-bold text-4xl md:text-6xl tracking-tight">
               Start free. <br />
-              <span className="text-gradient-brand">Scale when ready.</span>
+              <span className="text-white">Scale when ready.</span>
             </h2>
             <p className="mt-6 text-paper/70 text-lg">
               No credit card required. No contracts. No surprises. Cancel anytime.
@@ -46,7 +46,7 @@ export function Pricing() {
                 )}
               >
                 Annual
-                <span className="text-[10px] bg-sarmat-limeLight text-ink px-1.5 py-0.5">-30%</span>
+                <span className="text-[10px] bg-white/20 text-white px-1.5 py-0.5">-30%</span>
               </button>
             </div>
           </div>
@@ -55,8 +55,8 @@ export function Pricing() {
         <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {/* Starter Plan */}
           <ScrollReveal delay={0}>
-            <div className="relative h-full flex flex-col p-8 glass-card border-sarmat-lime/30 rounded-2xl -translate-y-2 shadow-[0_0_40px_rgba(159,200,44,0.12)] hover:shadow-[0_0_60px_rgba(159,200,44,0.18)] transition-all duration-300" style={{ background: 'linear-gradient(135deg, rgba(159,200,44,0.04) 0%, rgba(159,200,44,0.02) 100%)' }}>
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-sarmat-lime text-ink font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-full">
+            <div className="relative h-full flex flex-col p-8 glass-card border-white/20 rounded-[2px] -translate-y-2 shadow-[0_0_40px_rgba(255,255,255,0.06)] hover:shadow-[0_0_60px_rgba(255,255,255,0.10)] transition-all duration-300" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.02) 100%)' }}>
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 border border-white/40 bg-transparent text-white font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-full">
                 14-Day Free Trial
               </div>
               <div className="font-display font-bold text-2xl">Starter</div>
@@ -74,7 +74,7 @@ export function Pricing() {
                   </span>
                   <span className="text-paper/50 text-sm">/ month AUD</span>
                   {annual && (
-                    <span className="text-[10px] bg-sarmat-limeLight text-ink px-1.5 py-0.5 font-mono uppercase tracking-wider">
+                    <span className="text-[10px] bg-white/20 text-white px-1.5 py-0.5 font-mono uppercase tracking-wider">
                       Save 30%
                     </span>
                   )}
@@ -90,7 +90,7 @@ export function Pricing() {
                   'Monthly performance report',
                 ].map((f) => (
                   <li key={f} className="flex items-start gap-3 text-sm text-paper/80">
-                    <Check className="w-4 h-4 shrink-0 mt-0.5 text-sarmat-limeLight" />
+                    <Check className="w-4 h-4 shrink-0 mt-0.5 text-white/50" />
                     <span>{f}</span>
                   </li>
                 ))}
@@ -110,7 +110,7 @@ export function Pricing() {
 
           {/* Enterprise Plan */}
           <ScrollReveal delay={0.08}>
-            <div className="relative h-full flex flex-col p-8 glass-card rounded-2xl transition-all duration-300">
+            <div className="relative h-full flex flex-col p-8 glass-card rounded-[2px] transition-all duration-300">
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white/[0.06] border border-white/[0.08] text-paper/70 font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-full">
                 Custom
               </div>
@@ -126,14 +126,14 @@ export function Pricing() {
               <div className="mt-6 space-y-3">
                 <a
                   href="tel:+61424700797"
-                  className="flex items-center gap-2 text-sm text-paper/80 hover:text-sarmat-lime transition-colors"
+                  className="flex items-center gap-2 text-sm text-paper/80 hover:text-white/55 transition-colors"
                 >
                   <span>📞</span>
                   <span>+61 0424 700 797</span>
                 </a>
                 <a
                   href="mailto:hellogizmooai@gmail.com"
-                  className="flex items-center gap-2 text-sm text-paper/80 hover:text-sarmat-lime transition-colors"
+                  className="flex items-center gap-2 text-sm text-paper/80 hover:text-white/55 transition-colors"
                 >
                   <span>✉️</span>
                   <span>hellogizmooai@gmail.com</span>

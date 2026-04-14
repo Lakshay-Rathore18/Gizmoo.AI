@@ -70,15 +70,15 @@ export function LiveCallDashboard({ className }: { className?: string }) {
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <div className="bg-sarmat-lime/10 border-b border-sarmat-lime/30 px-4 py-2.5 flex items-center gap-3">
+            <div className="bg-white/8 border-b border-white/15 px-4 py-2.5 flex items-center gap-3">
               <span className="relative flex w-2 h-2">
-                <span className="absolute inline-flex w-full h-full rounded-full bg-sarmat-lime opacity-75 animate-ping" />
-                <span className="relative inline-flex w-2 h-2 rounded-full bg-sarmat-lime" />
+                <span className="absolute inline-flex w-full h-full rounded-full bg-white opacity-75 animate-ping" />
+                <span className="relative inline-flex w-2 h-2 rounded-full bg-white" />
               </span>
-              <span className="font-mono text-[10px] uppercase tracking-widest text-sarmat-lime">Live Call</span>
+              <span className="font-mono text-[10px] uppercase tracking-widest text-white/55">Live Call</span>
               <span className="text-xs text-paper/80 flex-1 truncate">Bradley HVAC — booking emergency service</span>
               <motion.span
-                className="font-mono text-[10px] text-sarmat-limeLight tabular-nums"
+                className="font-mono text-[10px] text-white/50 tabular-nums"
                 animate={{ opacity: [1, 0.4, 1] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
               >
@@ -102,19 +102,19 @@ export function LiveCallDashboard({ className }: { className?: string }) {
               className="flex items-center gap-3 px-4 py-2.5 hover:bg-paper/[0.02] transition-colors"
             >
               <div className={`shrink-0 w-7 h-7 rounded-full flex items-center justify-center ${
-                call.type === 'Outbound' ? 'bg-sarmat-lime/20' : 'bg-sarmat-lime/20'
+                call.type === 'Outbound' ? 'bg-white/10' : 'bg-white/10'
               }`}>
                 {call.type === 'Outbound' ? (
-                  <ArrowUpRight className="w-3 h-3 text-sarmat-lime" />
+                  <ArrowUpRight className="w-3 h-3 text-white/60" />
                 ) : (
-                  <Phone className="w-3 h-3 text-sarmat-lime" />
+                  <Phone className="w-3 h-3 text-white/60" />
                 )}
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2">
                   <span className="font-display text-xs font-bold text-paper truncate">{call.biz}</span>
                   <span className={`font-mono text-[8px] uppercase tracking-wider px-1.5 py-0.5 ${
-                    call.type === 'Outbound' ? 'text-sarmat-lime bg-sarmat-lime/10' : 'text-sarmat-lime bg-sarmat-lime/10'
+                    call.type === 'Outbound' ? 'text-white/55 bg-white/10' : 'text-white/55 bg-white/10'
                   }`}>
                     {call.type}
                   </span>
@@ -123,7 +123,7 @@ export function LiveCallDashboard({ className }: { className?: string }) {
               </div>
               <div className="shrink-0 flex items-center gap-2">
                 <span className="font-mono text-[10px] text-paper/40 tabular-nums">{call.duration}</span>
-                <CheckCircle2 className="w-3 h-3 text-sarmat-limeLight" />
+                <CheckCircle2 className="w-3 h-3 text-white/50" />
               </div>
             </motion.div>
           ))}
@@ -132,13 +132,13 @@ export function LiveCallDashboard({ className }: { className?: string }) {
 
       {/* Bottom bar - waveform */}
       <div className="border-t border-white/[0.06] px-4 py-2.5 flex items-center gap-3">
-        <CalendarCheck className="w-3.5 h-3.5 text-sarmat-limeLight" />
+        <CalendarCheck className="w-3.5 h-3.5 text-white/50" />
         <span className="font-mono text-[9px] uppercase tracking-widest text-paper/40">31 appointments booked today</span>
         <div className="ml-auto flex items-end gap-[2px] h-4">
           {[0.3, 0.7, 0.5, 0.9, 0.4, 0.8, 0.6, 0.3, 0.7, 0.5, 0.8, 0.4].map((h, i) => (
             <motion.span
               key={i}
-              className="w-[2px] bg-gradient-to-t from-sarmat-lime/60 to-sarmat-lime/60 rounded-full origin-bottom"
+              className="w-[2px] bg-gradient-to-t from-white/30 to-white/30 rounded-full origin-bottom"
               style={{ height: '100%' }}
               animate={reduce ? { scaleY: h } : {
                 scaleY: [h, h * 0.3, h * 1.2, h * 0.5, h],

@@ -68,20 +68,20 @@ export function Demo() {
 
   return (
     <section id="demo" className="relative py-24 md:py-36 bg-surface overflow-hidden">
-      <div aria-hidden className="absolute inset-0 bg-grid-dense opacity-20" />
+      <div aria-hidden className="absolute inset-0 topo-texture" />
       <div
         aria-hidden
-        className="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-sarmat-lime/10 blur-3xl pointer-events-none"
+        className="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-white/5 blur-3xl pointer-events-none"
       />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="max-w-3xl">
-            <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-sarmat-lime">
+            <span className="section-label">
               {'// 02 — See Gizmoo in action'}
             </span>
             <h2 className="mt-4 font-display font-bold text-4xl md:text-6xl tracking-tight">
-              One phone line. <span className="text-gradient-brand">Zero missed calls.</span>
+              One phone line. <span className="text-white">Zero missed calls.</span>
             </h2>
             <p className="mt-6 text-paper/70 text-lg max-w-2xl">
               Every inbound call answered instantly. Every appointment booked in real time. Every
@@ -92,7 +92,7 @@ export function Demo() {
 
         <div className="mt-16 grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-8">
           <ScrollReveal className="lg:col-span-3" delay={0.1}>
-            <div className="glass-card rounded-2xl overflow-hidden">
+            <div className="glass-card rounded-[2px] overflow-hidden">
               <div className="flex items-center gap-1 border-b border-white/[0.06] px-3 pt-3 overflow-x-auto">
                 {tabs.map((t) => (
                   <button
@@ -102,7 +102,7 @@ export function Demo() {
                     className={cn(
                       'flex items-center gap-2 px-4 py-2.5 text-sm font-mono transition-colors whitespace-nowrap min-h-[44px]',
                       active === t.id
-                        ? 'text-sarmat-lime border-b-2 border-sarmat-lime -mb-px bg-sarmat-lime/5'
+                        ? 'text-white border-b-2 border-white/40 -mb-px bg-white/5'
                         : 'text-paper/50 hover:text-paper',
                     )}
                   >
@@ -112,8 +112,8 @@ export function Demo() {
                 ))}
                 <div className="ml-auto hidden md:flex gap-1.5 pr-3">
                   <span className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-sarmat-limeLight/60" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-sarmat-lime/60" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-white/40" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-white/30" />
                 </div>
               </div>
 
@@ -136,9 +136,9 @@ export function Demo() {
                         className={cn(
                           'flex gap-3',
                           line.role === 'caller' && 'text-paper',
-                          line.role === 'agent' && 'text-sarmat-lime',
-                          line.role === 'sys' && 'text-sarmat-limeLight',
-                          line.role === 'out' && 'text-sarmat-lime',
+                          line.role === 'agent' && 'text-white/55',
+                          line.role === 'sys' && 'text-white/50',
+                          line.role === 'out' && 'text-white/55',
                         )}
                       >
                         <span className="select-none text-paper/30 w-8 shrink-0">{String(i + 1).padStart(2, '0')}</span>
@@ -149,7 +149,7 @@ export function Demo() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: current.lines.length * 0.2 + 0.1 }}
-                      className="flex items-center gap-2 pt-2 text-sarmat-limeLight"
+                      className="flex items-center gap-2 pt-2 text-white/50"
                     >
                       <CheckCircle2 className="w-4 h-4" />
                       <span>Handled in 32s — caller satisfied.</span>
@@ -161,14 +161,14 @@ export function Demo() {
           </ScrollReveal>
 
           <ScrollReveal className="lg:col-span-2" delay={0.2}>
-            <div className="relative h-full min-h-[360px] glass-card rounded-2xl overflow-hidden">
+            <div className="relative h-full min-h-[360px] glass-card rounded-[2px] overflow-hidden">
               <AIAgentVisual className="w-full h-full" />
               <div
                 aria-hidden
                 className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent"
               />
               <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
-                <div className="font-mono text-[10px] uppercase tracking-widest text-sarmat-lime mb-1">
+                <div className="font-mono text-[10px] uppercase tracking-widest text-white/55 mb-1">
                   Live Agent View
                 </div>
                 <div className="font-display font-bold text-xl tracking-tight">

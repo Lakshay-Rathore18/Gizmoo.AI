@@ -11,8 +11,8 @@
       "surfaceOverlay": "rgba(159, 200, 44, 0.03)"
     },
     "accent": {
-      "primary": "#9fc82c",
-      "primaryHover": "#b5e030",
+      "primary": "#ffffff",
+      "primaryHover": "rgba(255,255,255,0.7)",
       "primaryMuted": "rgba(159, 200, 44, 0.15)",
       "primaryGlow": "rgba(159, 200, 44, 0.25)"
     },
@@ -29,10 +29,10 @@
       "900": "#171717"
     },
     "semantic": {
-      "success": "#9fc82c",
+      "success": "#ffffff",
       "error": "#ef4444",
       "warning": "#f59e0b",
-      "info": "#9fc82c"
+      "info": "#ffffff"
     },
     "text": {
       "primary": "#ffffff",
@@ -88,7 +88,7 @@
       "fontWeight": 400,
       "letterSpacing": "0.24em",
       "textTransform": "uppercase",
-      "color": "#9fc82c"
+      "color": "#ffffff"
     }
   },
 
@@ -132,7 +132,7 @@
       "border": "1px solid rgba(255, 255, 255, 0.08)"
     },
     "gradient": {
-      "brand": "linear-gradient(120deg, #9fc82c 0%, #b5e030 50%, #ffffff 100%)",
+      "brand": "linear-gradient(120deg, #ffffff 0%, rgba(255,255,255,0.7) 50%, #ffffff 100%)",
       "meshDivider": "radial-gradient(ellipse 80% 50% at 50% 50%, rgba(159, 200, 44, 0.12), transparent 70%)",
       "heroOverlay": "radial-gradient(ellipse 80% 50% at 50% -20%, rgba(159, 200, 44, 0.12), transparent)"
     },
@@ -144,9 +144,9 @@
 
   "buttons": {
     "primary": {
-      "background": "#9fc82c",
+      "background": "#ffffff",
       "color": "#0b0b0b",
-      "hoverBackground": "#b5e030",
+      "hoverBackground": "rgba(255,255,255,0.7)",
       "borderRadius": "0.75rem",
       "shadow": "0 0 20px rgba(159, 200, 44, 0.15)"
     },

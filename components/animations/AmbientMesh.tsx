@@ -7,7 +7,7 @@ export function AmbientMesh({ className }: { className?: string }) {
       <div
         className="absolute top-[-20%] left-[-10%] w-[700px] h-[700px] rounded-full pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, rgba(159,200,44,0.12) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%)',
           animation: 'meshDrift1 20s ease-in-out infinite',
         }}
       />
@@ -15,7 +15,7 @@ export function AmbientMesh({ className }: { className?: string }) {
       <div
         className="absolute top-[20%] right-[-15%] w-[600px] h-[600px] rounded-full pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, rgba(251,191,36,0.08) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%)',
           animation: 'meshDrift2 25s ease-in-out infinite',
         }}
       />
@@ -23,7 +23,7 @@ export function AmbientMesh({ className }: { className?: string }) {
       <div
         className="absolute bottom-[-10%] left-[30%] w-[500px] h-[500px] rounded-full pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, rgba(163,255,18,0.06) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%)',
           animation: 'meshDrift3 22s ease-in-out infinite',
         }}
       />

@@ -24,7 +24,7 @@ export function CookieBanner() {
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="text-sm text-paper/80">
           We use cookies to improve your experience. By continuing, you agree to our{' '}
-          <Link href="/privacy" className="text-sarmat-lime hover:underline">
+          <Link href="/privacy" className="text-white/55 hover:underline">
             Privacy Policy
           </Link>
           .
@@ -38,7 +38,7 @@ export function CookieBanner() {
           </button>
           <button
             onClick={() => respond('accepted')}
-            className="px-4 py-2 text-sm bg-sarmat-lime text-ink font-semibold hover:bg-sarmat-lime/80 transition-colors"
+            className="px-4 py-2 text-sm bg-white text-ink font-semibold hover:bg-white/80 transition-colors"
           >
             Accept
           </button>

@@ -46,7 +46,7 @@ export function AIParticles({ density = 60, className }: { density?: number; cla
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < 110) {
             const alpha = (1 - dist / 110) * 0.35;
-            ctx.strokeStyle = `rgba(0, 229, 255, ${alpha})`;
+            ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
             ctx.lineWidth = 0.6;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);

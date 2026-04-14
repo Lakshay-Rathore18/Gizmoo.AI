@@ -11,28 +11,28 @@ const cases = [
     title: 'Stop losing thousands to missed calls.',
     copy: 'The average missed call costs a business $200. Gizmoo AI answers every inbound call in under 3 seconds — so every opportunity actually converts into a booking.',
     metric: { value: '35', suffix: '%', label: 'more bookings captured' },
-    accent: 'sarmat-lime',
+    accent: 'white',
   },
   {
     label: '24/7 Availability',
     title: 'Open for business around the clock.',
     copy: 'Emergencies, after-hours leads, and weekend inquiries do not wait for business hours — and neither does your receptionist. Gizmoo works nights, weekends, and holidays without blinking.',
     metric: { value: '24', suffix: '/7', label: 'uninterrupted coverage' },
-    accent: 'sarmat-lime',
+    accent: 'white',
   },
   {
     label: 'Focus on customers',
     title: 'Free your team from the phone.',
     copy: 'Your staff should focus on the customer standing in front of them — not the phone ringing in the back. Let Gizmoo handle every call so your team stays in flow.',
     metric: { value: '8', suffix: 'h', label: 'saved per person / week' },
-    accent: 'sarmat-limeLight',
+    accent: 'white-dim',
   },
   {
     label: 'Outbound at scale',
     title: 'Reminders that actually get made.',
     copy: 'No-shows quietly kill your margin. Gizmoo AI dials every customer with a friendly reminder, confirms the appointment, and reschedules on the spot if needed.',
     metric: { value: '75', suffix: '%', label: 'fewer no-shows' },
-    accent: 'sarmat-lime',
+    accent: 'white',
   },
 ];
 
@@ -42,12 +42,12 @@ export function UseCases() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="max-w-3xl">
-            <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-sarmat-limeLight">
+            <span className="section-label">
               {'// 03 — Transform your business'}
             </span>
             <h2 className="mt-4 font-display font-bold text-4xl md:text-6xl tracking-tight">
               Built for every business <br />
-              <span className="text-gradient-brand">with a phone number.</span>
+              <span className="text-white">with a phone number.</span>
             </h2>
           </div>
         </ScrollReveal>
@@ -63,15 +63,15 @@ export function UseCases() {
                     !isEven && 'lg:[&>*:first-child]:order-2',
                   )}
                 >
-                  <div className="relative aspect-[4/3] border border-white/[0.08] bg-white/[0.02] rounded-2xl overflow-hidden">
-                    <div aria-hidden className="absolute inset-0 bg-grid-dense opacity-30" />
+                  <div className="relative aspect-[4/3] border border-white/[0.08] bg-white/[0.02] rounded-[2px] overflow-hidden">
+                    <div aria-hidden className="absolute inset-0 topo-texture" />
                     <div
                       aria-hidden
                       className={cn(
                         'absolute -inset-20 opacity-40 blur-3xl',
-                        c.accent === 'sarmat-lime' && 'bg-sarmat-lime/30',
-                        c.accent === 'sarmat-lime' && 'bg-sarmat-lime/30',
-                        c.accent === 'sarmat-limeLight' && 'bg-sarmat-limeLight/20',
+                        c.accent === 'white' && 'bg-white/10',
+                        c.accent === 'white' && 'bg-white/10',
+                        c.accent === 'white-dim' && 'bg-white/8',
                       )}
                     />
 
@@ -84,7 +84,7 @@ export function UseCases() {
                         whileInView={{ scale: 1, opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                        className="mt-4 font-display font-bold text-7xl md:text-9xl tracking-tighter text-gradient-brand"
+                        className="mt-4 font-display font-bold text-7xl md:text-9xl tracking-tighter text-white"
                       >
                         <Counter value={c.metric.value} suffix={c.metric.suffix} />
                       </motion.div>
@@ -99,9 +99,9 @@ export function UseCases() {
                     <span
                       className={cn(
                         'font-mono text-[10px] uppercase tracking-[0.24em]',
-                        c.accent === 'sarmat-lime' && 'text-sarmat-lime',
-                        c.accent === 'sarmat-lime' && 'text-sarmat-lime',
-                        c.accent === 'sarmat-limeLight' && 'text-sarmat-limeLight',
+                        c.accent === 'white' && 'text-white/55',
+                        c.accent === 'white' && 'text-white/55',
+                        c.accent === 'white-dim' && 'text-white/50',
                       )}
                     >
                       {`// ${c.label}`}

@@ -65,7 +65,7 @@ export function Footer() {
                 Join the waitlist
               </div>
               {status === 'success' ? (
-                <div className="text-sarmat-limeLight text-sm font-display font-bold">
+                <div className="text-white/50 text-sm font-display font-bold">
                   ✓ You&apos;re on the list!
                 </div>
               ) : (
@@ -82,7 +82,7 @@ export function Footer() {
                       setStatus(res.ok ? 'success' : 'error');
                     } catch { setStatus('error'); }
                   }}
-                  className="flex items-center border border-white/[0.08] rounded-lg focus-within:border-sarmat-lime/50 transition-colors max-w-xs overflow-hidden"
+                  className="flex items-center border border-white/[0.08] rounded-lg focus-within:border-white/30 transition-colors max-w-xs overflow-hidden"
                 >
                   <input
                     type="email"
@@ -96,7 +96,7 @@ export function Footer() {
                   <button
                     type="submit"
                     disabled={status === 'loading'}
-                    className="bg-paper text-ink hover:bg-sarmat-lime px-3 py-2.5 text-xs font-display font-semibold transition-colors shrink-0"
+                    className="bg-paper text-ink hover:bg-white px-3 py-2.5 text-xs font-display font-semibold transition-colors shrink-0"
                   >
                     {status === 'loading' ? '...' : 'Join'}
                   </button>
@@ -121,21 +121,21 @@ export function Footer() {
                         href={l.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm text-paper/80 hover:text-sarmat-lime transition-colors"
+                        className="text-sm text-paper/80 hover:text-white/55 transition-colors"
                       >
                         {l.label}
                       </a>
                     ) : l.href.startsWith('/') ? (
                       <Link
                         href={l.href}
-                        className="text-sm text-paper/80 hover:text-sarmat-lime transition-colors"
+                        className="text-sm text-paper/80 hover:text-white/55 transition-colors"
                       >
                         {l.label}
                       </Link>
                     ) : (
                       <a
                         href={l.href}
-                        className="text-sm text-paper/80 hover:text-sarmat-lime transition-colors"
+                        className="text-sm text-paper/80 hover:text-white/55 transition-colors"
                       >
                         {l.label}
                       </a>
@@ -161,7 +161,7 @@ export function Footer() {
             <a
               href="#top"
               aria-label="Back to top"
-              className="inline-flex items-center justify-center w-8 h-8 border border-white/[0.1] rounded-lg hover:border-sarmat-lime/50 hover:text-sarmat-lime transition-colors"
+              className="inline-flex items-center justify-center w-8 h-8 border border-white/[0.1] rounded-lg hover:border-white/30 hover:text-white transition-colors"
             >
               <ArrowUp className="w-3.5 h-3.5" />
             </a>

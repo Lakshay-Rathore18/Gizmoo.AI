@@ -23,7 +23,7 @@ export async function GET() {
           height={82}
           style={{ objectFit: 'contain', marginBottom: '32px' }}
         />
-        <div style={{ color: '#9fc82c', fontSize: '34px', textAlign: 'center', padding: '0 80px' }}>
+        <div style={{ color: '#ffffff', fontSize: '34px', textAlign: 'center', padding: '0 80px' }}>
           Every call answered. Every job booked. 24/7.
         </div>
         <div style={{ color: '#666666', fontSize: '22px', marginTop: '48px' }}>

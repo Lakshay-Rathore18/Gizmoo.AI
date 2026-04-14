@@ -13,7 +13,7 @@ export function Card({
   className,
   children,
   glow = false,
-  spotlightColor = 'rgba(159,200,44,0.08)',
+  spotlightColor = 'rgba(255,255,255,0.08)',
   ...props
 }: CardProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -33,7 +33,7 @@ export function Card({
       onMouseEnter={() => setOpacity(1)}
       onMouseLeave={() => setOpacity(0)}
       className={cn(
-        'group relative glass-card rounded-2xl p-6 md:p-8 transition-all duration-300',
+        'group relative glass-card rounded-[2px] p-6 md:p-8 transition-all duration-300',
         'hover:-translate-y-1',
         glow && 'holo-border',
         className,
@@ -42,7 +42,7 @@ export function Card({
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute -inset-px rounded-2xl transition-opacity duration-500"
+        className="pointer-events-none absolute -inset-px rounded-[2px] transition-opacity duration-500"
         style={{
           opacity,
           background: `radial-gradient(500px circle at ${pos.x}px ${pos.y}px, ${spotlightColor}, transparent 40%)`,

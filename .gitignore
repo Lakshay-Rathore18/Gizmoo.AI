@@ -11,3 +11,7 @@ dist
 *.tsbuildinfo
 next-env.d.ts
 graphify-out/
+screenshots/
+
+# clerk configuration (can include secrets)
+/.clerk/

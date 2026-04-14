@@ -10,14 +10,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: '#0b0b0b',
+        ink: '#0a0a0a',
         paper: '#ffffff',
         sarmat: {
-          lime: '#9fc82c',
-          limeLight: '#b5e030',
-          limeMuted: 'rgba(159, 200, 44, 0.15)',
-          green: '#293112',
-          gray: '#393939',
+          light: 'rgba(255, 255, 255, 0.55)',
+          border: 'rgba(255, 255, 255, 0.12)',
+          borderHover: 'rgba(255, 255, 255, 0.4)',
+          card: 'rgba(255, 255, 255, 0.04)',
+          cardHover: 'rgba(255, 255, 255, 0.08)',
+          divider: 'rgba(255, 255, 255, 0.08)',
         },
         surface: {
           DEFAULT: '#111111',
@@ -26,28 +27,31 @@ const config: Config = {
         },
       },
       fontFamily: {
-        display: ['var(--font-space-grotesk)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-bebas-neue)', 'var(--font-space-grotesk)', 'system-ui', 'sans-serif'],
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
         mono: ['var(--font-jetbrains-mono)', 'ui-monospace', 'monospace'],
+        body: ['var(--font-space-grotesk)', 'system-ui', 'sans-serif'],
+      },
+      letterSpacing: {
+        ultrawide: '0.12em',
+        wide: '0.08em',
+      },
+      borderRadius: {
+        sarmat: '2px',
       },
       animation: {
         'marquee': 'marquee 40s linear infinite',
         'marquee-slow': 'marquee 60s linear infinite',
-        'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
         'float': 'float 6s ease-in-out infinite',
         'gradient': 'gradient 8s linear infinite',
-        'scan': 'scan 2.5s ease-in-out infinite',
         'blink': 'blink 1s step-end infinite',
         'shimmer': 'shimmer 2.5s linear infinite',
+        'fade-in-up': 'fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
       },
       keyframes: {
         marquee: {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(-50%)' },
-        },
-        'glow-pulse': {
-          '0%, 100%': { opacity: '0.6', filter: 'blur(40px)' },
-          '50%': { opacity: '1', filter: 'blur(60px)' },
         },
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
@@ -57,10 +61,6 @@ const config: Config = {
           '0%, 100%': { 'background-position': '0% 50%' },
           '50%': { 'background-position': '100% 50%' },
         },
-        scan: {
-          '0%': { transform: 'translateY(-100%)' },
-          '100%': { transform: 'translateY(100%)' },
-        },
         blink: {
           '0%, 100%': { opacity: '1' },
           '50%': { opacity: '0' },
@@ -69,10 +69,13 @@ const config: Config = {
           '0%': { 'background-position': '-200% 0' },
           '100%': { 'background-position': '200% 0' },
         },
+        fadeInUp: {
+          '0%': { opacity: '0', transform: 'translateY(24px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
       },
       backgroundImage: {
-        'grid-fade': "radial-gradient(ellipse at center, #0b0b0b 40%, transparent 80%)",
-        'noise': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E\")",
+        'grid-fade': "radial-gradient(ellipse at center, #0a0a0a 40%, transparent 80%)",
       },
     },
   },

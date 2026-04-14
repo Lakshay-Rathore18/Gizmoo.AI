@@ -9,9 +9,9 @@ import { staggerContainer, fadeInUp } from '@/lib/animation';
 type Accent = 'cyan' | 'gold' | 'lime';
 
 const accentClasses: Record<Accent, { border: string; text: string; glow: string }> = {
-  cyan: { border: 'border-sarmat-lime/40', text: 'text-sarmat-lime', glow: 'bg-sarmat-lime/20' },
-  gold: { border: 'border-sarmat-lime/40', text: 'text-sarmat-lime', glow: 'bg-sarmat-lime/20' },
-  lime: { border: 'border-sarmat-limeLight/40', text: 'text-sarmat-limeLight', glow: 'bg-sarmat-limeLight/20' },
+  cyan: { border: 'border-white/20', text: 'text-white/55', glow: 'bg-white/10' },
+  gold: { border: 'border-white/20', text: 'text-white/55', glow: 'bg-white/10' },
+  lime: { border: 'border-white/20', text: 'text-white/50', glow: 'bg-white/8' },
 };
 
 const features: { icon: typeof PhoneIncoming; title: string; copy: string; accent: Accent }[] = [
@@ -56,17 +56,17 @@ const features: { icon: typeof PhoneIncoming; title: string; copy: string; accen
 export function Features() {
   return (
     <section id="features" className="relative py-24 md:py-36 bg-ink">
-      <div aria-hidden className="absolute inset-0 bg-grid opacity-20" />
+      <div aria-hidden className="absolute inset-0 topo-texture" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="max-w-3xl">
-            <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-sarmat-lime">
+            <span className="section-label">
               {'// 01 — What Gizmoo AI Does'}
             </span>
             <h2 className="mt-4 font-display font-bold text-4xl md:text-6xl tracking-tight">
               Six things your new <br />
-              <span className="text-gradient-brand">receptionist never sleeps on.</span>
+              <span className="text-white">receptionist never sleeps on.</span>
             </h2>
             <p className="mt-6 text-paper/70 text-lg max-w-2xl">
               Gizmoo AI is not another phone tree or chatbot. It is a full-time voice receptionist
@@ -88,9 +88,9 @@ export function Features() {
               <motion.div key={f.title} variants={fadeInUp}>
                 <Card className="h-full hover:bg-white/[0.05]">
                   <div className="flex items-start gap-4">
-                    <div className={`relative shrink-0 w-12 h-12 rounded-xl border ${a.border} flex items-center justify-center bg-white/[0.03]`}>
+                    <div className={`relative shrink-0 w-12 h-12 rounded-[2px] border ${a.border} flex items-center justify-center bg-white/[0.03]`}>
                       <f.icon className={`w-5 h-5 ${a.text}`} aria-hidden />
-                      <span className={`absolute inset-0 rounded-xl ${a.glow} blur-xl opacity-0 group-hover:opacity-100 transition-opacity`} />
+                      <span className={`absolute inset-0 rounded-[2px] ${a.glow} blur-xl opacity-0 group-hover:opacity-100 transition-opacity`} />
                     </div>
                     <div>
                       <h3 className="font-display font-bold text-xl tracking-tight">{f.title}</h3>

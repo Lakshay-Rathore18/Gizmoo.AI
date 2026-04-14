@@ -4,16 +4,16 @@
 
 :root {
   color-scheme: dark;
-  --sarmat-lime: #9fc82c;
-  --sarmat-lime-light: #b5e030;
-  --sarmat-lime-glow: rgba(159, 200, 44, 0.15);
-  --sarmat-bg: #0b0b0b;
+  --sarmat-bg: #0a0a0a;
   --sarmat-surface: #111111;
   --sarmat-surface-2: #161616;
-  --sarmat-border: rgba(255, 255, 255, 0.08);
+  --sarmat-border: rgba(255, 255, 255, 0.12);
+  --sarmat-border-subtle: rgba(255, 255, 255, 0.08);
   --sarmat-text: #ffffff;
-  --sarmat-text-muted: rgba(255, 255, 255, 0.6);
-  --sarmat-green: #293112;
+  --sarmat-text-muted: rgba(255, 255, 255, 0.55);
+  --sarmat-text-dim: rgba(255, 255, 255, 0.35);
+  --sarmat-card-bg: rgba(255, 255, 255, 0.03);
+  --sarmat-card-border: rgba(255, 255, 255, 0.1);
 }
 
 * {
@@ -28,7 +28,7 @@ html {
 
 html,
 body {
-  background: #0b0b0b;
+  background: #0a0a0a;
   color: #fff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -47,68 +47,34 @@ button, a, [role="button"] {
 }
 
 ::selection {
-  background: #9fc82c;
-  color: #0b0b0b;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
 }
 
-/* Brutalist grid backdrop */
-.bg-grid {
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: 48px 48px;
+/* Topographic contour line texture — Sarmat Analytix signature */
+.topo-texture {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='0.8'%3E%3Cellipse cx='300' cy='300' rx='280' ry='180' opacity='0.06'/%3E%3Cellipse cx='300' cy='300' rx='240' ry='150' opacity='0.05'/%3E%3Cellipse cx='300' cy='300' rx='200' ry='120' opacity='0.04'/%3E%3Cellipse cx='300' cy='300' rx='160' ry='95' opacity='0.05'/%3E%3Cellipse cx='300' cy='300' rx='120' ry='70' opacity='0.04'/%3E%3Cellipse cx='300' cy='300' rx='80' ry='45' opacity='0.03'/%3E%3Cellipse cx='300' cy='300' rx='40' ry='22' opacity='0.04'/%3E%3Cellipse cx='150' cy='450' rx='180' ry='120' opacity='0.04'/%3E%3Cellipse cx='150' cy='450' rx='140' ry='90' opacity='0.03'/%3E%3Cellipse cx='150' cy='450' rx='100' ry='60' opacity='0.04'/%3E%3Cellipse cx='480' cy='150' rx='150' ry='100' opacity='0.04'/%3E%3Cellipse cx='480' cy='150' rx='110' ry='70' opacity='0.03'/%3E%3Cellipse cx='480' cy='150' rx='70' ry='40' opacity='0.04'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 600px 600px;
+  background-repeat: repeat;
 }
 
-.bg-grid-dense {
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-  background-size: 24px 24px;
+@media (max-width: 768px) {
+  .topo-texture {
+    opacity: 0.7;
+  }
 }
 
-/* Gradient utilities for brand text — Sarmat lime */
-.text-gradient-brand {
-  background: linear-gradient(120deg, #9fc82c 0%, #b5e030 50%, #ffffff 100%);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: gradient 8s linear infinite;
+/* Section label — "01 — ABOUT" style */
+.section-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
 }
 
-/* Holographic card border glow — Sarmat monochrome lime */
-.holo-border {
-  position: relative;
-  isolation: isolate;
-}
-.holo-border::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(159, 200, 44, 0.6), rgba(159, 200, 44, 0.3) 50%, rgba(255, 255, 255, 0.15));
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
-  pointer-events: none;
-  z-index: -1;
-}
-
-/* Scan line for hero */
-.scan-lines {
-  background-image: repeating-linear-gradient(
-    to bottom,
-    transparent 0,
-    transparent 3px,
-    rgba(255, 255, 255, 0.02) 3px,
-    rgba(255, 255, 255, 0.02) 4px
-  );
-}
-
-/* Shimmer text */
+/* Shimmer text — monochrome */
 .shimmer-text {
   background: linear-gradient(
     90deg,
@@ -123,20 +89,30 @@ button, a, [role="button"] {
   animation: shimmer 2.5s linear infinite;
 }
 
-/* Custom scrollbar — Sarmat theme */
+/* Text gradient — monochrome white */
+.text-gradient-brand {
+  background: linear-gradient(120deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,1) 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient 8s linear infinite;
+}
+
+/* Custom scrollbar — monochrome */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0b0b0b;
+  background: #0a0a0a;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1f1f24;
-  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 0;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #9fc82c;
+  background: rgba(255, 255, 255, 0.3);
 }
 
 /* CSS containment for sections */
@@ -144,52 +120,64 @@ section {
   contain: style;
 }
 
-/* Premium glassmorphism card — Sarmat */
+/* Sarmat military card — sharp corners, dark, subtle */
 .glass-card {
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.03) inset,
-    0 8px 32px rgba(0, 0, 0, 0.4);
+  background: var(--sarmat-card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--sarmat-card-border);
+  border-radius: 2px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
 }
 
 .glass-card:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(159, 200, 44, 0.15);
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.05) inset,
-    0 8px 40px rgba(0, 0, 0, 0.5),
-    0 0 30px rgba(159, 200, 44, 0.06);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
-/* Section mesh gradient dividers — Sarmat monochrome */
-.mesh-divider {
-  background: radial-gradient(ellipse 80% 50% at 50% 50%, rgba(159, 200, 44, 0.12), transparent 70%);
-}
-
-/* Elevated glass card */
+/* Elevated card */
 .glass-card-elevated {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
-    0 16px 48px rgba(0, 0, 0, 0.5),
-    0 0 40px rgba(159, 200, 44, 0.04);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 2px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
 }
 
 .glass-card-elevated:hover {
-  border-color: rgba(159, 200, 44, 0.2);
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.06) inset,
-    0 16px 56px rgba(0, 0, 0, 0.6),
-    0 0 60px rgba(159, 200, 44, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
 }
 
-/* Subtle noise overlay for texture */
+/* Holographic border — monochrome */
+.holo-border {
+  position: relative;
+  isolation: isolate;
+}
+.holo-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0.15));
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Section divider — monochrome */
+.mesh-divider {
+  background: radial-gradient(ellipse 80% 50% at 50% 50%, rgba(255, 255, 255, 0.06), transparent 70%);
+}
+
+/* Subtle noise overlay */
 .noise-overlay::after {
   content: '';
   position: absolute;
@@ -199,7 +187,7 @@ section {
   z-index: 0;
 }
 
-/* Global subtle grain texture */
+/* Global grain */
 body::after {
   content: '';
   position: fixed;
@@ -208,6 +196,26 @@ body::after {
   pointer-events: none;
   z-index: 9999;
   opacity: 0.4;
+}
+
+/* Horizontal rule — Sarmat */
+.sarmat-hr {
+  border: none;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 0;
+}
+
+/* Nav bullet separator */
+.nav-bullet::after {
+  content: '\2022';
+  margin-left: 1.25rem;
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 8px;
+  vertical-align: middle;
+}
+.nav-bullet:last-child::after {
+  display: none;
 }
 
 /* Respect reduced motion */

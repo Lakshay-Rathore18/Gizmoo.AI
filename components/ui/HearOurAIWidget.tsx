@@ -32,7 +32,7 @@ export function HearOurAIWidget({ phoneNumber, className }: HearOurAIWidgetProps
       {/* Ambient glow */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -inset-6 bg-sarmat-lime/20 blur-3xl opacity-40 group-hover:opacity-80 transition-opacity duration-500"
+        className="pointer-events-none absolute -inset-6 bg-white/8 blur-3xl opacity-40 group-hover:opacity-80 transition-opacity duration-500"
       />
 
       <div className="relative flex items-center gap-5">
@@ -40,17 +40,17 @@ export function HearOurAIWidget({ phoneNumber, className }: HearOurAIWidgetProps
         <div className="relative shrink-0">
           <span
             aria-hidden
-            className="absolute inset-0 rounded-full bg-sarmat-lime/30 blur-xl animate-glow-pulse"
+            className="absolute inset-0 rounded-full bg-white/15 blur-xl animate-glow-pulse"
           />
           <span
             aria-hidden
-            className="absolute -inset-2 rounded-full border border-sarmat-lime/40 animate-ping"
+            className="absolute -inset-2 rounded-full border border-white/20 animate-ping"
           />
           <span
             aria-hidden
-            className="absolute -inset-4 rounded-full border border-sarmat-lime/20 animate-ping [animation-delay:0.6s]"
+            className="absolute -inset-4 rounded-full border border-white/10 animate-ping [animation-delay:0.6s]"
           />
-          <div className="relative w-14 h-14 rounded-full bg-gradient-to-br from-sarmat-lime to-sarmat-lime flex items-center justify-center shadow-[0_0_30px_rgba(159,200,44,0.5)]">
+          <div className="relative w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.3)]">
             <PhoneCall className="w-6 h-6 text-ink" aria-hidden />
           </div>
         </div>
@@ -58,10 +58,10 @@ export function HearOurAIWidget({ phoneNumber, className }: HearOurAIWidgetProps
         {/* Copy */}
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1">
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-sarmat-limeLight flex items-center gap-1.5">
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50 flex items-center gap-1.5">
               <span className="relative flex w-1.5 h-1.5">
-                <span className="absolute inline-flex w-full h-full rounded-full bg-sarmat-limeLight opacity-75 animate-ping" />
-                <span className="relative inline-flex w-1.5 h-1.5 rounded-full bg-sarmat-limeLight" />
+                <span className="absolute inline-flex w-full h-full rounded-full bg-white/50 opacity-75 animate-ping" />
+                <span className="relative inline-flex w-1.5 h-1.5 rounded-full bg-white/50" />
               </span>
               Available 24/7
             </span>
@@ -85,7 +85,7 @@ export function HearOurAIWidget({ phoneNumber, className }: HearOurAIWidgetProps
           {[0.3, 0.6, 0.9, 0.5, 0.7].map((h, i) => (
             <motion.span
               key={i}
-              className="w-[3px] bg-gradient-to-t from-sarmat-lime to-sarmat-lime rounded-full origin-bottom"
+              className="w-[3px] bg-gradient-to-t from-white/60 to-white/60 rounded-full origin-bottom"
               initial={{ scaleY: h }}
               animate={reduce ? undefined : { scaleY: [h, h * 0.3, h * 1.1, h * 0.5, h] }}
               transition={{
@@ -105,7 +105,7 @@ export function HearOurAIWidget({ phoneNumber, className }: HearOurAIWidgetProps
         <span className="font-mono text-[10px] uppercase tracking-widest text-paper/50">
           Free · No signup · Live AI
         </span>
-        <span className="inline-flex items-center gap-2 font-display font-bold text-sm text-sarmat-lime group-hover:text-paper transition-colors">
+        <span className="inline-flex items-center gap-2 font-display font-bold text-sm text-white/55 group-hover:text-paper transition-colors">
           <Phone className="w-3.5 h-3.5" />
           Call Now — It&apos;s Free
         </span>

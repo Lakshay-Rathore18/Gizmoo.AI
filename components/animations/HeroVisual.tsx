@@ -3,10 +3,10 @@
 import { motion, useReducedMotion } from 'framer-motion';
 
 const orbs = [
-  { cx: '20%', cy: '30%', r: 220, color: 'rgba(159,200,44,0.15)', dur: 18 },
-  { cx: '70%', cy: '60%', r: 280, color: 'rgba(159,200,44,0.12)', dur: 22 },
-  { cx: '50%', cy: '20%', r: 180, color: 'rgba(181,224,48,0.08)', dur: 26 },
-  { cx: '80%', cy: '25%', r: 150, color: 'rgba(159,200,44,0.10)', dur: 20 },
+  { cx: '20%', cy: '30%', r: 220, color: 'rgba(255,255,255,0.08)', dur: 18 },
+  { cx: '70%', cy: '60%', r: 280, color: 'rgba(255,255,255,0.06)', dur: 22 },
+  { cx: '50%', cy: '20%', r: 180, color: 'rgba(255,255,255,0.05)', dur: 26 },
+  { cx: '80%', cy: '25%', r: 150, color: 'rgba(255,255,255,0.06)', dur: 20 },
 ];
 
 const rings = [
@@ -47,7 +47,7 @@ export function HeroVisual({ className }: { className?: string }) {
       {rings.map((r, i) => (
         <motion.div
           key={`ring-${i}`}
-          className="absolute rounded-full border border-sarmat-lime/20 pointer-events-none"
+          className="absolute rounded-full border border-white/10 pointer-events-none"
           style={{
             left: r.cx,
             top: r.cy,
@@ -69,7 +69,7 @@ export function HeroVisual({ className }: { className?: string }) {
       <div
         className="absolute left-1/2 top-[40%] -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, rgba(159,200,44,0.12) 0%, rgba(159,200,44,0.06) 40%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.03) 40%, transparent 70%)',
         }}
       />
 
@@ -77,9 +77,9 @@ export function HeroVisual({ className }: { className?: string }) {
       <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1000 800" preserveAspectRatio="xMidYMid slice">
         <defs>
           <linearGradient id="line-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="rgba(159,200,44,0)" />
-            <stop offset="50%" stopColor="rgba(159,200,44,0.3)" />
-            <stop offset="100%" stopColor="rgba(159,200,44,0)" />
+            <stop offset="0%" stopColor="rgba(255,255,255,0)" />
+            <stop offset="50%" stopColor="rgba(255,255,255,0.15)" />
+            <stop offset="100%" stopColor="rgba(255,255,255,0)" />
           </linearGradient>
         </defs>
         {[
