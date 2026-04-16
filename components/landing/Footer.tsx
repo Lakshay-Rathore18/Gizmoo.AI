@@ -100,7 +100,7 @@ export function Footer() {
         {/* Bottom */}
         <div className="border-t border-border-subtle pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-text-tertiary">
-            &copy; {new Date().getFullYear()} Gizmoo AI Pty Ltd. All rights reserved.
+            &copy; {new Date().getFullYear()} Gizmoo AI Pty Ltd. ABN {brand.abn}. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <a href="/privacy" className="text-xs text-text-tertiary hover:text-text-secondary transition-colors">

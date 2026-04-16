@@ -47,9 +47,7 @@ export function CTASection({ onContactOpen }: { onContactOpen?: () => void }) {
             Start Free Trial
           </a>
           <a
-            href={brand.calLink}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={`tel:${brand.salesPhone.replace(/\s/g, '')}`}
             className="btn-ghost text-base px-8 py-4"
           >
             Talk to Sales
