@@ -33,15 +33,15 @@ export default function Page() {
         <GlowDivider />
         <UseCases />
         <GlowDivider />
-        <HowItWorks />
+        <div id="how-it-works"><HowItWorks /></div>
         <GlowDivider />
-        <Testimonials />
+        <div id="testimonials"><Testimonials /></div>
         <GlowDivider />
         <Pricing />
         <GlowDivider />
         <FAQ />
         <GlowDivider />
-        <CTASection onContactOpen={() => setContactOpen(true)} />
+        <div id="cta-footer"><CTASection onContactOpen={() => setContactOpen(true)} /></div>
         <Footer />
       </main>
       <ContactOverlay isOpen={contactOpen} onClose={() => setContactOpen(false)} />

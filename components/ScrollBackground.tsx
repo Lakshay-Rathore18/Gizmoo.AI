@@ -1,103 +1,28 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { useScroll, useMotionValueEvent } from 'framer-motion';
+import { gsap, ScrollTrigger } from '@/lib/gsap';
 
-/*
- * SCROLL-REACTIVE BACKGROUND ORB SYSTEM
- * 3 gradient orbs that continuously morph (position, color, scale, opacity)
- * based on scroll progress. Canvas-rendered at 60fps.
- */
-
-interface OrbKeyframe {
-  scrollProgress: number;
-  x: number; // percentage of viewport width
-  y: number; // percentage of viewport height
-  scale: number;
-  opacity: number;
-  r: number; g: number; b: number;
-  blur: number;
+interface OrbState {
+  x: number; y: number; scale: number; opacity: number;
+  r: number; g: number; b: number; blur: number;
 }
 
-// ORB 1: PRIMARY ACCENT (largest, most visible)
-const orb1: OrbKeyframe[] = [
-  { scrollProgress: 0.00, x: 70, y: 20, scale: 1.0, opacity: 0.15, r: 34, g: 211, b: 238, blur: 120 },
-  { scrollProgress: 0.12, x: 60, y: 30, scale: 1.3, opacity: 0.20, r: 34, g: 211, b: 238, blur: 100 },
-  { scrollProgress: 0.25, x: 30, y: 40, scale: 1.5, opacity: 0.18, r: 74, g: 222, b: 128, blur: 140 },
-  { scrollProgress: 0.40, x: 20, y: 50, scale: 1.2, opacity: 0.12, r: 129, g: 140, b: 248, blur: 160 },
-  { scrollProgress: 0.55, x: 50, y: 45, scale: 1.8, opacity: 0.15, r: 34, g: 211, b: 238, blur: 130 },
-  { scrollProgress: 0.70, x: 75, y: 35, scale: 1.0, opacity: 0.10, r: 244, g: 114, b: 182, blur: 150 },
-  { scrollProgress: 0.85, x: 40, y: 50, scale: 1.4, opacity: 0.20, r: 34, g: 211, b: 238, blur: 120 },
-  { scrollProgress: 1.00, x: 50, y: 40, scale: 2.0, opacity: 0.25, r: 34, g: 211, b: 238, blur: 100 },
+const SECTIONS = [
+  { id: '#top',           orb1: { x:0.65, y:0.25, scale:1.2, opacity:0.18, r:34,  g:211, b:238, blur:120 }, orb2: { x:0.25, y:0.65, scale:0.9, opacity:0.10, r:129, g:140, b:248, blur:150 }, orb3: { x:0.50, y:0.45, scale:2.2, opacity:0.05, r:34,  g:211, b:238, blur:200 } },
+  { id: '[aria-label="About Gizmoo AI"]', orb1: { x:0.55, y:0.35, scale:1.4, opacity:0.20, r:34,  g:211, b:238, blur:100 }, orb2: { x:0.40, y:0.55, scale:1.0, opacity:0.12, r:74,  g:222, b:128, blur:130 }, orb3: { x:0.45, y:0.40, scale:2.5, opacity:0.06, r:74,  g:222, b:128, blur:220 } },
+  { id: '#features',      orb1: { x:0.30, y:0.40, scale:1.6, opacity:0.18, r:74,  g:222, b:128, blur:140 }, orb2: { x:0.70, y:0.30, scale:1.2, opacity:0.14, r:34,  g:211, b:238, blur:120 }, orb3: { x:0.40, y:0.50, scale:2.2, opacity:0.06, r:129, g:140, b:248, blur:200 } },
+  { id: '#demo',          orb1: { x:0.20, y:0.50, scale:1.3, opacity:0.12, r:129, g:140, b:248, blur:160 }, orb2: { x:0.80, y:0.60, scale:0.9, opacity:0.08, r:244, g:114, b:182, blur:160 }, orb3: { x:0.55, y:0.50, scale:2.0, opacity:0.05, r:129, g:140, b:248, blur:200 } },
+  { id: '#use-cases',     orb1: { x:0.50, y:0.45, scale:1.8, opacity:0.16, r:34,  g:211, b:238, blur:130 }, orb2: { x:0.15, y:0.40, scale:1.1, opacity:0.12, r:129, g:140, b:248, blur:140 }, orb3: { x:0.60, y:0.50, scale:2.5, opacity:0.07, r:34,  g:211, b:238, blur:200 } },
+  { id: '#how-it-works',  orb1: { x:0.75, y:0.35, scale:1.0, opacity:0.10, r:244, g:114, b:182, blur:150 }, orb2: { x:0.20, y:0.45, scale:1.1, opacity:0.10, r:129, g:140, b:248, blur:140 }, orb3: { x:0.50, y:0.55, scale:2.8, opacity:0.06, r:244, g:114, b:182, blur:180 } },
+  { id: '#testimonials',  orb1: { x:0.40, y:0.50, scale:1.4, opacity:0.18, r:34,  g:211, b:238, blur:120 }, orb2: { x:0.60, y:0.25, scale:1.3, opacity:0.10, r:74,  g:222, b:128, blur:130 }, orb3: { x:0.45, y:0.50, scale:2.3, opacity:0.07, r:34,  g:211, b:238, blur:200 } },
+  { id: '#pricing',       orb1: { x:0.55, y:0.40, scale:1.5, opacity:0.20, r:34,  g:211, b:238, blur:120 }, orb2: { x:0.35, y:0.60, scale:1.0, opacity:0.12, r:129, g:140, b:248, blur:120 }, orb3: { x:0.50, y:0.45, scale:2.5, opacity:0.07, r:34,  g:211, b:238, blur:200 } },
+  { id: '#faq',           orb1: { x:0.60, y:0.45, scale:1.2, opacity:0.14, r:129, g:140, b:248, blur:140 }, orb2: { x:0.30, y:0.55, scale:1.1, opacity:0.10, r:74,  g:222, b:128, blur:130 }, orb3: { x:0.55, y:0.50, scale:2.0, opacity:0.05, r:129, g:140, b:248, blur:200 } },
+  { id: '#cta-footer',    orb1: { x:0.50, y:0.40, scale:2.0, opacity:0.25, r:34,  g:211, b:238, blur:100 }, orb2: { x:0.35, y:0.55, scale:1.2, opacity:0.15, r:129, g:140, b:248, blur:120 }, orb3: { x:0.50, y:0.45, scale:3.0, opacity:0.08, r:34,  g:211, b:238, blur:200 } },
 ];
-
-// ORB 2: SECONDARY (counter-movement)
-const orb2: OrbKeyframe[] = [
-  { scrollProgress: 0.00, x: 20, y: 70, scale: 0.8, opacity: 0.08, r: 129, g: 140, b: 248, blur: 150 },
-  { scrollProgress: 0.15, x: 40, y: 60, scale: 1.0, opacity: 0.12, r: 74, g: 222, b: 128, blur: 130 },
-  { scrollProgress: 0.30, x: 70, y: 30, scale: 1.2, opacity: 0.15, r: 34, g: 211, b: 238, blur: 120 },
-  { scrollProgress: 0.50, x: 80, y: 60, scale: 0.9, opacity: 0.08, r: 244, g: 114, b: 182, blur: 160 },
-  { scrollProgress: 0.70, x: 15, y: 40, scale: 1.1, opacity: 0.12, r: 129, g: 140, b: 248, blur: 140 },
-  { scrollProgress: 0.85, x: 60, y: 25, scale: 1.3, opacity: 0.10, r: 74, g: 222, b: 128, blur: 130 },
-  { scrollProgress: 1.00, x: 30, y: 60, scale: 1.0, opacity: 0.15, r: 129, g: 140, b: 248, blur: 120 },
-];
-
-// ORB 3: AMBIENT WASH (very large, very blurred, desktop only)
-const orb3: OrbKeyframe[] = [
-  { scrollProgress: 0.00, x: 50, y: 50, scale: 2.0, opacity: 0.04, r: 34, g: 211, b: 238, blur: 200 },
-  { scrollProgress: 0.25, x: 40, y: 40, scale: 2.5, opacity: 0.06, r: 74, g: 222, b: 128, blur: 220 },
-  { scrollProgress: 0.50, x: 60, y: 50, scale: 2.0, opacity: 0.05, r: 129, g: 140, b: 248, blur: 200 },
-  { scrollProgress: 0.75, x: 45, y: 55, scale: 2.8, opacity: 0.07, r: 244, g: 114, b: 182, blur: 180 },
-  { scrollProgress: 1.00, x: 50, y: 45, scale: 3.0, opacity: 0.08, r: 34, g: 211, b: 238, blur: 200 },
-];
-
-function interpolateOrb(progress: number, keyframes: OrbKeyframe[], vw: number, vh: number, mobileBlurReduction: number) {
-  // Clamp progress
-  progress = Math.max(0, Math.min(1, progress));
-
-  // Find surrounding keyframes
-  let k1 = keyframes[0];
-  let k2 = keyframes[keyframes.length - 1];
-
-  for (let i = 0; i < keyframes.length - 1; i++) {
-    if (progress >= keyframes[i].scrollProgress && progress <= keyframes[i + 1].scrollProgress) {
-      k1 = keyframes[i];
-      k2 = keyframes[i + 1];
-      break;
-    }
-  }
-
-  const range = k2.scrollProgress - k1.scrollProgress;
-  const local = range === 0 ? 1 : (progress - k1.scrollProgress) / range;
-
-  // Cubic ease-in-out
-  const t = local < 0.5
-    ? 4 * local * local * local
-    : 1 - Math.pow(-2 * local + 2, 3) / 2;
-
-  const lerp = (a: number, b: number) => a + (b - a) * t;
-
-  return {
-    x: lerp(k1.x, k2.x) / 100 * vw,
-    y: lerp(k1.y, k2.y) / 100 * vh,
-    scale: lerp(k1.scale, k2.scale),
-    opacity: lerp(k1.opacity, k2.opacity),
-    r: Math.round(lerp(k1.r, k2.r)),
-    g: Math.round(lerp(k1.g, k2.g)),
-    b: Math.round(lerp(k1.b, k2.b)),
-    blur: lerp(k1.blur, k2.blur) * mobileBlurReduction,
-  };
-}
 
 export function ScrollBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animFrameRef = useRef(0);
-  const scrollRef = useRef(0);
-  const { scrollYProgress } = useScroll();
-
-  useMotionValueEvent(scrollYProgress, 'change', (v) => {
-    scrollRef.current = v;
-  });
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -106,6 +31,7 @@ export function ScrollBackground() {
     if (!ctx) return;
 
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
 
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio, 2);
@@ -119,81 +45,66 @@ export function ScrollBackground() {
     window.addEventListener('resize', resize);
 
     const isMobile = window.innerWidth < 768;
-    const mobileBlurReduction = isMobile ? 0.6 : 1;
+    const blurMul = isMobile ? 0.6 : 1;
 
-    // Static fallback for reduced motion
-    if (prefersReduced) {
-      const vw = window.innerWidth;
-      const vh = window.innerHeight;
-      const gradient = ctx.createRadialGradient(vw * 0.5, vh * 0.4, 0, vw * 0.5, vh * 0.4, vw * 0.6);
-      gradient.addColorStop(0, 'rgba(34, 211, 238, 0.08)');
-      gradient.addColorStop(1, 'rgba(34, 211, 238, 0)');
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, vw, vh);
-      return () => window.removeEventListener('resize', resize);
+    // Mutable orb state — GSAP tweens these directly
+    const orb1: OrbState = { x:0.70, y:0.20, scale:1.0, opacity:0.15, r:34, g:211, b:238, blur:120 };
+    const orb2: OrbState = { x:0.20, y:0.70, scale:0.8, opacity:0.08, r:129, g:140, b:248, blur:150 };
+    const orb3: OrbState = { x:0.50, y:0.50, scale:2.0, opacity:0.04, r:34, g:211, b:238, blur:200 };
+
+    // Create per-section ScrollTrigger timelines
+    const triggers: ScrollTrigger[] = [];
+    SECTIONS.forEach(({ id, orb1: o1, orb2: o2, orb3: o3 }) => {
+      const el = document.querySelector(id);
+      if (!el) return;
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: el,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1.5,
+        },
+      });
+      tl.to(orb1, { ...o1, duration: 1, ease: 'none' }, 0);
+      tl.to(orb2, { ...o2, duration: 1, ease: 'none' }, 0);
+      if (!isMobile) tl.to(orb3, { ...o3, duration: 1, ease: 'none' }, 0);
+
+      if (tl.scrollTrigger) triggers.push(tl.scrollTrigger);
+    });
+
+    // Render loop
+    function drawOrb(c: CanvasRenderingContext2D, o: OrbState, baseSize: number, w: number, h: number) {
+      const x = o.x * w, y = o.y * h, size = baseSize * o.scale;
+      c.save();
+      c.filter = `blur(${Math.round(o.blur * blurMul)}px)`;
+      const g = c.createRadialGradient(x, y, 0, x, y, size);
+      g.addColorStop(0, `rgba(${Math.round(o.r)},${Math.round(o.g)},${Math.round(o.b)},${o.opacity})`);
+      g.addColorStop(0.4, `rgba(${Math.round(o.r)},${Math.round(o.g)},${Math.round(o.b)},${o.opacity * 0.6})`);
+      g.addColorStop(1, `rgba(${Math.round(o.r)},${Math.round(o.g)},${Math.round(o.b)},0)`);
+      c.fillStyle = g;
+      c.beginPath();
+      c.arc(x, y, size, 0, Math.PI * 2);
+      c.fill();
+      c.restore();
     }
 
-    const orbConfigs = isMobile
-      ? [
-          { keyframes: orb1, baseSize: 350 },
-          { keyframes: orb2, baseSize: 250 },
-        ]
-      : [
-          { keyframes: orb3, baseSize: 600 },
-          { keyframes: orb2, baseSize: 400 },
-          { keyframes: orb1, baseSize: 500 },
-        ];
-
-    let lastTime = 0;
-
-    function render(time: number) {
+    let rafId: number;
+    function render() {
       if (!ctx || !canvas) return;
-
-      // Throttle to ~60fps
-      if (time - lastTime < 16) {
-        animFrameRef.current = requestAnimationFrame(render);
-        return;
-      }
-      lastTime = time;
-
-      const vw = window.innerWidth;
-      const vh = window.innerHeight;
-      const progress = scrollRef.current;
-
-      ctx.clearRect(0, 0, vw, vh);
-
-      for (const { keyframes, baseSize } of orbConfigs) {
-        const state = interpolateOrb(progress, keyframes, vw, vh, mobileBlurReduction);
-        const size = baseSize * state.scale;
-
-        // Save context for blur
-        ctx.save();
-        ctx.filter = `blur(${Math.round(state.blur)}px)`;
-
-        const gradient = ctx.createRadialGradient(
-          state.x, state.y, 0,
-          state.x, state.y, size
-        );
-        gradient.addColorStop(0, `rgba(${state.r}, ${state.g}, ${state.b}, ${state.opacity})`);
-        gradient.addColorStop(0.4, `rgba(${state.r}, ${state.g}, ${state.b}, ${state.opacity * 0.6})`);
-        gradient.addColorStop(1, `rgba(${state.r}, ${state.g}, ${state.b}, 0)`);
-
-        ctx.fillStyle = gradient;
-        ctx.beginPath();
-        ctx.arc(state.x, state.y, size, 0, Math.PI * 2);
-        ctx.fill();
-
-        ctx.restore();
-      }
-
-      animFrameRef.current = requestAnimationFrame(render);
+      const w = window.innerWidth, h = window.innerHeight;
+      ctx.clearRect(0, 0, w, h);
+      if (!isMobile) drawOrb(ctx, orb3, 600, w, h);
+      drawOrb(ctx, orb2, isMobile ? 250 : 400, w, h);
+      drawOrb(ctx, orb1, isMobile ? 350 : 500, w, h);
+      rafId = requestAnimationFrame(render);
     }
-
-    animFrameRef.current = requestAnimationFrame(render);
+    render();
 
     return () => {
+      cancelAnimationFrame(rafId);
       window.removeEventListener('resize', resize);
-      cancelAnimationFrame(animFrameRef.current);
+      triggers.forEach(t => t.kill());
     };
   }, []);
 
@@ -201,12 +112,7 @@ export function ScrollBackground() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none"
-      style={{
-        zIndex: 0,
-        width: '100vw',
-        height: '100vh',
-        mixBlendMode: 'screen',
-      }}
+      style={{ zIndex: 0, width: '100vw', height: '100vh', mixBlendMode: 'screen' }}
       aria-hidden="true"
     />
   );

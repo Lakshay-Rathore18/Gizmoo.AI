@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { gsap } from '@/lib/gsap';
 
 export function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
@@ -8,44 +9,28 @@ export function CustomCursor() {
   useEffect(() => {
     const cursor = cursorRef.current;
     if (!cursor) return;
-
-    // Hide on touch devices
     if (window.matchMedia('(pointer: coarse)').matches) return;
 
-    let mouseX = 0;
-    let mouseY = 0;
-    let cursorX = 0;
-    let cursorY = 0;
+    // gsap.quickTo for smooth 60fps cursor tracking (per gsap-performance skill)
+    const xTo = gsap.quickTo(cursor, 'x', { duration: 0.15, ease: 'power2.out' });
+    const yTo = gsap.quickTo(cursor, 'y', { duration: 0.15, ease: 'power2.out' });
 
     const onMouseMove = (e: MouseEvent) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
+      xTo(e.clientX);
+      yTo(e.clientY);
     };
 
-    const onMouseEnterInteractive = () => cursor.classList.add('hover');
-    const onMouseLeaveInteractive = () => cursor.classList.remove('hover');
-
-    function animate() {
-      if (!cursor) return;
-      cursorX += (mouseX - cursorX) * 0.15;
-      cursorY += (mouseY - cursorY) * 0.15;
-      cursor.style.left = `${cursorX}px`;
-      cursor.style.top = `${cursorY}px`;
-      requestAnimationFrame(animate);
-    }
+    const grow = () => gsap.to(cursor, { scale: 5, opacity: 0.4, duration: 0.3 });
+    const shrink = () => gsap.to(cursor, { scale: 1, opacity: 1, duration: 0.3 });
 
     document.addEventListener('mousemove', onMouseMove);
-    requestAnimationFrame(animate);
 
-    // Add hover listeners to all interactive elements
     const addListeners = () => {
-      const interactives = document.querySelectorAll('a, button, [role="button"], input, textarea, select');
-      interactives.forEach((el) => {
-        el.addEventListener('mouseenter', onMouseEnterInteractive);
-        el.addEventListener('mouseleave', onMouseLeaveInteractive);
+      document.querySelectorAll('a, button, [role="button"], input, textarea, select').forEach((el) => {
+        el.addEventListener('mouseenter', grow);
+        el.addEventListener('mouseleave', shrink);
       });
     };
-
     addListeners();
     const observer = new MutationObserver(addListeners);
     observer.observe(document.body, { childList: true, subtree: true });
