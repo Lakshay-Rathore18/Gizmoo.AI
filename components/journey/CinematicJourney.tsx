@@ -437,15 +437,25 @@ export function CinematicJourney({ onContactOpen }: { onContactOpen?: () => void
         );
         tl.to('.copy-s3', { opacity: 0, duration: 0.3 }, 's4+=0.2');
 
-        // Camera pullback — beam shrinks to a node, feels like zoom-out
+        // Camera pullback — beam MORPHS from a tall rectangle into a circular node
         tl.to(
-          '#beam',
-          { scale: 0.15, opacity: 0.8, duration: 0.7, ease: 'expoInOut' },
+          '#beam-core',
+          { morphSVG: '#beam-state-2', duration: 0.75, ease: 'expoInOut' },
           's4'
         );
         tl.to(
-          '#beam-filter-wrap',
-          { scale: 1, duration: 0.7 },
+          '#beam-glow',
+          { scaleY: 0.3, scaleX: 1.2, duration: 0.75, ease: 'expoInOut' },
+          's4'
+        );
+        tl.to(
+          '#beam',
+          { scale: 0.25, opacity: 0.85, duration: 0.75, ease: 'expoInOut' },
+          's4'
+        );
+        tl.to(
+          ['#beam-cap-top', '#beam-cap-bot'],
+          { opacity: 0, duration: 0.4, ease: 'expoIn' },
           's4'
         );
 
