@@ -8,6 +8,7 @@ import { ScrollProgress } from '@/components/ScrollProgress';
 import { LoadingScreen } from '@/components/LoadingScreen';
 import { ScrollBackground } from '@/components/ScrollBackground';
 import { AuroraPillar } from '@/components/AuroraPillar';
+import { GlobalFilm } from '@/components/journey/GlobalFilm';
 import './globals.css';
 
 const dmSans = DM_Sans({
@@ -168,6 +169,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <CustomCursor />
             <AuroraPillar />
             <ScrollBackground />
+            <GlobalFilm />
             <div className="noise-overlay" />
             <div className="relative z-10">
               {children}

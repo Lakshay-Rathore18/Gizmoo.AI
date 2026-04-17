@@ -7,15 +7,14 @@ export function JourneyCopy({ onPrimaryCTA }: { onPrimaryCTA?: () => void }) {
     <div className="journey-copy absolute inset-0 flex items-center justify-center pointer-events-none">
       {/* ======== SCENE 1 — The Signal ======== */}
       <div className="copy-s1 absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-        <h1 className="text-[clamp(3rem,10vw,8rem)] font-display font-normal leading-[0.92] tracking-tight">
-          <span className="block overflow-hidden">
-            <span className="line inline-block">Never miss</span>
-          </span>
-          <span className="block overflow-hidden">
-            <span className="line inline-block italic text-accent">another call.</span>
-          </span>
+        <h1
+          className="split-target text-[clamp(3rem,10vw,8rem)] font-display font-normal leading-[0.92] tracking-tight"
+          style={{ perspective: '800px', fontVariationSettings: '"wght" 400, "opsz" 32' }}
+        >
+          <span className="block">Never miss</span>
+          <span className="block italic text-accent">another call.</span>
         </h1>
-        <p className="line mt-8 text-lg md:text-xl text-text-secondary max-w-xl">
+        <p className="line line-sub mt-8 text-lg md:text-xl text-text-secondary max-w-xl">
           The AI voice receptionist that picks up 24/7 — so you never lose revenue to voicemail.
         </p>
       </div>
@@ -28,10 +27,12 @@ export function JourneyCopy({ onPrimaryCTA }: { onPrimaryCTA?: () => void }) {
           </span>
           <span className="text-4xl md:text-6xl font-display font-normal text-accent">+</span>
         </div>
-        <p className="line mt-4 text-xl md:text-2xl font-display">
-          calls answered.<span className="text-text-tertiary"> · </span>
-          <span className="italic">Zero voicemails.</span>
-        </p>
+        <h2
+          className="split-target mt-4 text-xl md:text-3xl font-display font-normal"
+          style={{ perspective: '800px' }}
+        >
+          calls answered. <span className="italic text-accent">Zero voicemails.</span>
+        </h2>
         <p className="line mt-2 text-sm md:text-base text-text-secondary font-mono uppercase tracking-widest">
           99.7% satisfaction · every call, every time
         </p>
@@ -66,15 +67,13 @@ export function JourneyCopy({ onPrimaryCTA }: { onPrimaryCTA?: () => void }) {
 
       {/* ======== SCENE 4 — The Network ======== */}
       <div className="copy-s4 absolute inset-0 flex flex-col items-center justify-center px-6 text-center opacity-0">
-        <h2 className="text-display-sm font-display font-normal tracking-tight max-w-3xl leading-[0.95]">
-          <span className="block overflow-hidden">
-            <span className="line inline-block">Built for every business</span>
-          </span>
-          <span className="block overflow-hidden">
-            <span className="line inline-block italic text-accent">with a phone number.</span>
-          </span>
+        <h2
+          className="split-target text-display-sm font-display font-normal tracking-tight max-w-3xl leading-[0.95]"
+          style={{ perspective: '800px' }}
+        >
+          <span className="block">Built for every business</span>
+          <span className="block italic text-accent">with a phone number.</span>
         </h2>
-        {/* Node labels positioned to match network nodes */}
         <span className="network-node-label absolute top-[22%] left-[14%] text-xs md:text-sm font-mono uppercase tracking-widest text-text-secondary">
           Healthcare
         </span>
@@ -89,16 +88,15 @@ export function JourneyCopy({ onPrimaryCTA }: { onPrimaryCTA?: () => void }) {
         </span>
       </div>
 
-      {/* ======== SCENE 5 — Dashboard (headline; card itself is in Graphic) ======== */}
+      {/* ======== SCENE 5 — Dashboard ======== */}
       <div className="copy-s5 absolute inset-x-0 top-[10%] flex flex-col items-center justify-center px-6 text-center opacity-0">
         <span className="line section-label block mb-4">05 — In action</span>
-        <h2 className="text-display-sm font-display font-normal tracking-tight max-w-3xl">
-          <span className="block overflow-hidden">
-            <span className="line inline-block">One phone line.</span>
-          </span>
-          <span className="block overflow-hidden">
-            <span className="line inline-block italic text-accent">Zero missed calls.</span>
-          </span>
+        <h2
+          className="split-target text-display-sm font-display font-normal tracking-tight max-w-3xl"
+          style={{ perspective: '800px' }}
+        >
+          <span className="block">One phone line.</span>
+          <span className="block italic text-accent">Zero missed calls.</span>
         </h2>
       </div>
 
@@ -124,7 +122,10 @@ export function JourneyCopy({ onPrimaryCTA }: { onPrimaryCTA?: () => void }) {
 
       {/* ======== SCENE 7 — Convergence ======== */}
       <div className="copy-s7 absolute inset-0 flex flex-col items-center justify-center px-6 text-center opacity-0">
-        <h2 className="final-headline text-[clamp(2.5rem,9vw,7rem)] font-display font-normal tracking-tight leading-[0.95]">
+        <h2
+          className="split-target final-headline text-[clamp(2.5rem,9vw,7rem)] font-display font-normal tracking-tight leading-[0.95]"
+          style={{ perspective: '800px' }}
+        >
           <span className="block">Ready to never miss</span>
           <span className="block italic text-accent">a call again?</span>
         </h2>
