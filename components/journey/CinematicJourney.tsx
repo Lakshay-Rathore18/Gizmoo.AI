@@ -78,6 +78,66 @@ export function CinematicJourney({ onContactOpen }: { onContactOpen?: () => void
         });
       });
 
+      // ─── Starfield twinkle — subtle opacity + micro-drift per depth layer ───
+      const stars = gsap.utils.toArray<SVGCircleElement>('.star');
+      stars.forEach((star, i) => {
+        const depth = Number(star.getAttribute('data-depth') || 0);
+        // Shallower depth = faster twinkle
+        gsap.to(star, {
+          opacity: `+=${gsap.utils.random(-0.25, 0.25)}`,
+          duration: 1.8 + depth * 1.2 + gsap.utils.random(0, 1.5),
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+          delay: i * 0.04,
+        });
+        // Parallax drift — farther depth drifts slower/less
+        gsap.to(star, {
+          y: `+=${gsap.utils.random(-6, 6) / (depth + 1)}`,
+          x: `+=${gsap.utils.random(-4, 4) / (depth + 1)}`,
+          duration: 8 + depth * 3,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+          delay: i * 0.08,
+        });
+      });
+
+      // ─── Portal interior — dense packed dots twinkle + micro-drift ───
+      const portalDots = gsap.utils.toArray<SVGCircleElement>('.portal-dot');
+      portalDots.forEach((dot, i) => {
+        gsap.to(dot, {
+          opacity: `+=${gsap.utils.random(-0.35, 0.35)}`,
+          duration: gsap.utils.random(1.2, 3.5),
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+          delay: i * 0.02,
+        });
+        gsap.to(dot, {
+          y: `+=${gsap.utils.random(-6, 6)}`,
+          duration: gsap.utils.random(3, 6),
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+          delay: i * 0.03,
+        });
+      });
+
+      // ─── Grass streaks shimmer (foreground wind effect) ───
+      const grass = gsap.utils.toArray<SVGLineElement>('.grass-line');
+      grass.forEach((line, i) => {
+        gsap.to(line, {
+          x: `+=${gsap.utils.random(-30, 30)}`,
+          opacity: `+=${gsap.utils.random(-0.08, 0.08)}`,
+          duration: gsap.utils.random(2.5, 5),
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+          delay: i * 0.12,
+        });
+      });
+
       if (prefersReduced) {
         gsap.set('.copy-s1 .split-char', { yPercent: 0, opacity: 1, rotateX: 0 });
         gsap.set('.copy-s1 .line', { yPercent: 0, opacity: 1 });
@@ -124,15 +184,28 @@ export function CinematicJourney({ onContactOpen }: { onContactOpen?: () => void
           defaults: { ease: 'expoOut' },
         });
 
-        // ═══ SCENE 1 — The Signal (0.00 → 0.95) ═══
+        // ═══ SCENE 1 — The Portal (0.00 → 0.95) ═══
         tl.addLabel('s1', 0);
 
-        // Beam ignites — DrawSVG-style scale reveal
+        // Portal ignites — scale up + slight over-rotation that settles
         tl.fromTo(
           '#beam',
-          { scaleY: 0, scaleX: 0.3, opacity: 0 },
-          { scaleY: 1, scaleX: 1, opacity: 1, duration: 0.75, ease: 'expoOut' },
+          { scaleY: 0, scaleX: 0.3, opacity: 0, rotate: -28 },
+          { scaleY: 1, scaleX: 1, opacity: 1, rotate: 0, duration: 0.85, ease: 'expoOut' },
           's1'
+        );
+        // Portal interior dots fade in dense
+        tl.fromTo(
+          '.portal-dot',
+          { opacity: 0, scale: 0 },
+          { opacity: (i, t) => Number((t as SVGCircleElement).getAttribute('opacity') || 0.5), scale: 1, duration: 0.7, stagger: 0.003, ease: 'expoOut' },
+          's1+=0.12'
+        );
+        // Corner brackets draw in
+        tl.from(
+          '#portal-corners',
+          { opacity: 0, scale: 1.3, duration: 0.5, transformOrigin: '50% 50%', ease: 'snappy' },
+          's1+=0.28'
         );
 
         // Bloom breath — ignites with beam
@@ -387,7 +460,41 @@ export function CinematicJourney({ onContactOpen }: { onContactOpen?: () => void
           's3+=0.42'
         );
 
-        // Particle burst — Physics2D velocity + gravity + friction
+        // PORTAL EXPLOSION — interior dots fly outward, frame shatter-scales
+        tl.to(
+          '.portal-dot',
+          {
+            opacity: 1,
+            physics2D: {
+              velocity: 'random(380, 1100)',
+              angle: 'random(0, 360)',
+              gravity: 40,
+              friction: 0.1,
+            },
+            duration: 1.4,
+            stagger: 0.003,
+            ease: 'none',
+          },
+          's3+=0.05'
+        );
+        tl.to(
+          '.portal-dot',
+          { opacity: 0, duration: 0.55, stagger: 0.003, ease: 'expoIn' },
+          's3+=0.9'
+        );
+        // Portal frame flash + scale punch
+        tl.to(
+          ['#portal-frame-outer', '#portal-frame-inner'],
+          { opacity: 0.3, duration: 0.2, yoyo: true, repeat: 1, ease: 'expoOut' },
+          's3+=0.1'
+        );
+        tl.to(
+          '#portal',
+          { scale: 1.08, duration: 0.2, yoyo: true, repeat: 1, ease: 'snappy' },
+          's3+=0.08'
+        );
+
+        // Scatter particles ALSO burst (layered for density)
         tl.to(
           '.particle',
           {
@@ -774,27 +881,42 @@ export function CinematicJourney({ onContactOpen }: { onContactOpen?: () => void
       });
 
       // ====================================================================
-      // MOBILE: no pin, scrub a simpler timeline
+      // MOBILE: pinned journey with compressed timing — same narrative arc
       // ====================================================================
       mm.add('(max-width: 767px)', () => {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: root,
             start: 'top top',
-            end: 'bottom top',
-            scrub: 1,
+            end: '+=4200',
+            pin: true,
+            pinSpacing: true,
+            scrub: 1.2,
+            anticipatePin: 1,
             invalidateOnRefresh: true,
           },
-          defaults: { ease: 'expoInOut' },
+          defaults: { ease: 'expoOut' },
         });
 
-        tl.fromTo('#beam', { scaleY: 0.3, opacity: 0 }, { scaleY: 1, opacity: 1, duration: 0.5 }, 0);
+        // Portal reveal
+        tl.fromTo(
+          '#beam',
+          { scaleY: 0, scaleX: 0.3, opacity: 0, rotate: -24 },
+          { scaleY: 1, scaleX: 1, opacity: 1, rotate: 0, duration: 0.55, ease: 'expoOut' },
+          0
+        );
+        tl.fromTo(
+          '.portal-dot',
+          { opacity: 0, scale: 0 },
+          { opacity: 0.6, scale: 1, duration: 0.45, stagger: 0.003, ease: 'expoOut' },
+          0.1
+        );
         tl.from(
           '.copy-s1 .split-target .split-char',
-          { yPercent: 120, opacity: 0, rotateX: -60, duration: 0.35, stagger: { amount: 0.2, from: 'random' } },
-          0.05
+          { yPercent: 120, opacity: 0, rotateX: -60, duration: 0.4, stagger: { amount: 0.25, from: 'random' } },
+          0.18
         );
-        tl.to('.copy-s1', { opacity: 0, duration: 0.3 }, 0.8);
+        tl.to('.copy-s1', { opacity: 0, duration: 0.3 }, 0.85);
 
         tl.to('.copy-s2', { opacity: 1, duration: 0.3 }, 0.85);
         tl.fromTo(
@@ -821,8 +943,33 @@ export function CinematicJourney({ onContactOpen }: { onContactOpen?: () => void
           1.8
         );
 
+        // Portal burst — mobile scene 3 too
+        tl.to(
+          '.portal-dot',
+          {
+            opacity: 1,
+            physics2D: {
+              velocity: 'random(300, 800)',
+              angle: 'random(0, 360)',
+              gravity: 60,
+              friction: 0.1,
+            },
+            duration: 0.9,
+            stagger: 0.003,
+            ease: 'none',
+          },
+          1.7
+        );
+        tl.to(
+          '.portal-dot',
+          { opacity: 0, duration: 0.35, stagger: 0.003, ease: 'expoIn' },
+          2.2
+        );
+        tl.to(['#portal-frame-outer', '#portal-frame-inner'], { opacity: 0.2, duration: 0.15, yoyo: true, repeat: 1, ease: 'expoOut' }, 1.72);
+
         tl.to('.copy-s3, .copy-s3 .feature-label', { opacity: 0, duration: 0.3 }, 2.6);
         tl.to('.copy-s4', { opacity: 1, duration: 0.3 }, 2.65);
+        tl.to('#beam', { scale: 0.2, opacity: 0.7, duration: 0.4, ease: 'expoInOut' }, 2.6);
 
         tl.to('.copy-s4', { opacity: 0, duration: 0.3 }, 3.5);
         tl.to('.copy-s5', { opacity: 1, duration: 0.3 }, 3.55);
