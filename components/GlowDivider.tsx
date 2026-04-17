@@ -37,8 +37,8 @@ export function GlowDivider() {
       <div
         className="glow-line absolute inset-0 origin-left"
         style={{
-          background: 'linear-gradient(90deg, transparent, rgba(34,211,238,0.4), transparent)',
-          boxShadow: '0 0 20px rgba(34,211,238,0.3), 0 0 60px rgba(34,211,238,0.1)',
+          background: 'linear-gradient(90deg, transparent, rgba(32,231,183,0.4), transparent)',
+          boxShadow: '0 0 20px rgba(32,231,183,0.3), 0 0 60px rgba(32,231,183,0.1)',
         }}
       />
     </div>

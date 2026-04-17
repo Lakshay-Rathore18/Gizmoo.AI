@@ -9,16 +9,16 @@ interface OrbState {
 }
 
 const SECTIONS = [
-  { id: '#top',           orb1: { x:0.65, y:0.25, scale:1.2, opacity:0.18, r:34,  g:211, b:238, blur:120 }, orb2: { x:0.25, y:0.65, scale:0.9, opacity:0.10, r:129, g:140, b:248, blur:150 }, orb3: { x:0.50, y:0.45, scale:2.2, opacity:0.05, r:34,  g:211, b:238, blur:200 } },
-  { id: '[aria-label="About Gizmoo AI"]', orb1: { x:0.55, y:0.35, scale:1.4, opacity:0.20, r:34,  g:211, b:238, blur:100 }, orb2: { x:0.40, y:0.55, scale:1.0, opacity:0.12, r:74,  g:222, b:128, blur:130 }, orb3: { x:0.45, y:0.40, scale:2.5, opacity:0.06, r:74,  g:222, b:128, blur:220 } },
-  { id: '#features',      orb1: { x:0.30, y:0.40, scale:1.6, opacity:0.18, r:74,  g:222, b:128, blur:140 }, orb2: { x:0.70, y:0.30, scale:1.2, opacity:0.14, r:34,  g:211, b:238, blur:120 }, orb3: { x:0.40, y:0.50, scale:2.2, opacity:0.06, r:129, g:140, b:248, blur:200 } },
-  { id: '#demo',          orb1: { x:0.20, y:0.50, scale:1.3, opacity:0.12, r:129, g:140, b:248, blur:160 }, orb2: { x:0.80, y:0.60, scale:0.9, opacity:0.08, r:244, g:114, b:182, blur:160 }, orb3: { x:0.55, y:0.50, scale:2.0, opacity:0.05, r:129, g:140, b:248, blur:200 } },
-  { id: '#use-cases',     orb1: { x:0.50, y:0.45, scale:1.8, opacity:0.16, r:34,  g:211, b:238, blur:130 }, orb2: { x:0.15, y:0.40, scale:1.1, opacity:0.12, r:129, g:140, b:248, blur:140 }, orb3: { x:0.60, y:0.50, scale:2.5, opacity:0.07, r:34,  g:211, b:238, blur:200 } },
-  { id: '#how-it-works',  orb1: { x:0.75, y:0.35, scale:1.0, opacity:0.10, r:244, g:114, b:182, blur:150 }, orb2: { x:0.20, y:0.45, scale:1.1, opacity:0.10, r:129, g:140, b:248, blur:140 }, orb3: { x:0.50, y:0.55, scale:2.8, opacity:0.06, r:244, g:114, b:182, blur:180 } },
-  { id: '#testimonials',  orb1: { x:0.40, y:0.50, scale:1.4, opacity:0.18, r:34,  g:211, b:238, blur:120 }, orb2: { x:0.60, y:0.25, scale:1.3, opacity:0.10, r:74,  g:222, b:128, blur:130 }, orb3: { x:0.45, y:0.50, scale:2.3, opacity:0.07, r:34,  g:211, b:238, blur:200 } },
-  { id: '#pricing',       orb1: { x:0.55, y:0.40, scale:1.5, opacity:0.20, r:34,  g:211, b:238, blur:120 }, orb2: { x:0.35, y:0.60, scale:1.0, opacity:0.12, r:129, g:140, b:248, blur:120 }, orb3: { x:0.50, y:0.45, scale:2.5, opacity:0.07, r:34,  g:211, b:238, blur:200 } },
-  { id: '#faq',           orb1: { x:0.60, y:0.45, scale:1.2, opacity:0.14, r:129, g:140, b:248, blur:140 }, orb2: { x:0.30, y:0.55, scale:1.1, opacity:0.10, r:74,  g:222, b:128, blur:130 }, orb3: { x:0.55, y:0.50, scale:2.0, opacity:0.05, r:129, g:140, b:248, blur:200 } },
-  { id: '#cta-footer',    orb1: { x:0.50, y:0.40, scale:2.0, opacity:0.25, r:34,  g:211, b:238, blur:100 }, orb2: { x:0.35, y:0.55, scale:1.2, opacity:0.15, r:129, g:140, b:248, blur:120 }, orb3: { x:0.50, y:0.45, scale:3.0, opacity:0.08, r:34,  g:211, b:238, blur:200 } },
+  { id: '#top',           orb1: { x:0.65, y:0.25, scale:1.2, opacity:0.18, r:32,  g:231, b:183, blur:120 }, orb2: { x:0.25, y:0.65, scale:0.9, opacity:0.10, r:32,  g:231, b:183, blur:150 }, orb3: { x:0.50, y:0.45, scale:2.2, opacity:0.05, r:32,  g:231, b:183, blur:200 } },
+  { id: '[aria-label="About Gizmoo AI"]', orb1: { x:0.55, y:0.35, scale:1.4, opacity:0.20, r:32,  g:231, b:183, blur:100 }, orb2: { x:0.40, y:0.55, scale:1.0, opacity:0.12, r:32,  g:231, b:183, blur:130 }, orb3: { x:0.45, y:0.40, scale:2.5, opacity:0.06, r:32,  g:231, b:183, blur:220 } },
+  { id: '#features',      orb1: { x:0.30, y:0.40, scale:1.6, opacity:0.18, r:32,  g:231, b:183, blur:140 }, orb2: { x:0.70, y:0.30, scale:1.2, opacity:0.14, r:32,  g:231, b:183, blur:120 }, orb3: { x:0.40, y:0.50, scale:2.2, opacity:0.06, r:32,  g:231, b:183, blur:200 } },
+  { id: '#demo',          orb1: { x:0.20, y:0.50, scale:1.3, opacity:0.12, r:32,  g:231, b:183, blur:160 }, orb2: { x:0.80, y:0.60, scale:0.9, opacity:0.08, r:32,  g:231, b:183, blur:160 }, orb3: { x:0.55, y:0.50, scale:2.0, opacity:0.05, r:32,  g:231, b:183, blur:200 } },
+  { id: '#use-cases',     orb1: { x:0.50, y:0.45, scale:1.8, opacity:0.16, r:32,  g:231, b:183, blur:130 }, orb2: { x:0.15, y:0.40, scale:1.1, opacity:0.12, r:32,  g:231, b:183, blur:140 }, orb3: { x:0.60, y:0.50, scale:2.5, opacity:0.07, r:32,  g:231, b:183, blur:200 } },
+  { id: '#how-it-works',  orb1: { x:0.75, y:0.35, scale:1.0, opacity:0.10, r:32,  g:231, b:183, blur:150 }, orb2: { x:0.20, y:0.45, scale:1.1, opacity:0.10, r:32,  g:231, b:183, blur:140 }, orb3: { x:0.50, y:0.55, scale:2.8, opacity:0.06, r:32,  g:231, b:183, blur:180 } },
+  { id: '#testimonials',  orb1: { x:0.40, y:0.50, scale:1.4, opacity:0.18, r:32,  g:231, b:183, blur:120 }, orb2: { x:0.60, y:0.25, scale:1.3, opacity:0.10, r:32,  g:231, b:183, blur:130 }, orb3: { x:0.45, y:0.50, scale:2.3, opacity:0.07, r:32,  g:231, b:183, blur:200 } },
+  { id: '#pricing',       orb1: { x:0.55, y:0.40, scale:1.5, opacity:0.20, r:32,  g:231, b:183, blur:120 }, orb2: { x:0.35, y:0.60, scale:1.0, opacity:0.12, r:32,  g:231, b:183, blur:120 }, orb3: { x:0.50, y:0.45, scale:2.5, opacity:0.07, r:32,  g:231, b:183, blur:200 } },
+  { id: '#faq',           orb1: { x:0.60, y:0.45, scale:1.2, opacity:0.14, r:32,  g:231, b:183, blur:140 }, orb2: { x:0.30, y:0.55, scale:1.1, opacity:0.10, r:32,  g:231, b:183, blur:130 }, orb3: { x:0.55, y:0.50, scale:2.0, opacity:0.05, r:32,  g:231, b:183, blur:200 } },
+  { id: '#cta-footer',    orb1: { x:0.50, y:0.40, scale:2.0, opacity:0.25, r:32,  g:231, b:183, blur:100 }, orb2: { x:0.35, y:0.55, scale:1.2, opacity:0.15, r:32,  g:231, b:183, blur:120 }, orb3: { x:0.50, y:0.45, scale:3.0, opacity:0.08, r:32,  g:231, b:183, blur:200 } },
 ];
 
 export function ScrollBackground() {
@@ -48,9 +48,9 @@ export function ScrollBackground() {
     const blurMul = isMobile ? 0.6 : 1;
 
     // Mutable orb state — GSAP tweens these directly
-    const orb1: OrbState = { x:0.70, y:0.20, scale:1.0, opacity:0.15, r:34, g:211, b:238, blur:120 };
-    const orb2: OrbState = { x:0.20, y:0.70, scale:0.8, opacity:0.08, r:129, g:140, b:248, blur:150 };
-    const orb3: OrbState = { x:0.50, y:0.50, scale:2.0, opacity:0.04, r:34, g:211, b:238, blur:200 };
+    const orb1: OrbState = { x:0.70, y:0.20, scale:1.0, opacity:0.15, r:32, g:231, b:183, blur:120 };
+    const orb2: OrbState = { x:0.20, y:0.70, scale:0.8, opacity:0.08, r:32, g:231, b:183, blur:150 };
+    const orb3: OrbState = { x:0.50, y:0.50, scale:2.0, opacity:0.04, r:32, g:231, b:183, blur:200 };
 
     // Create per-section ScrollTrigger timelines
     const triggers: ScrollTrigger[] = [];

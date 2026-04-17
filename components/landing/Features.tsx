@@ -9,7 +9,7 @@ const features = [
     description: '24/7 instant pickup. Zero voicemail. Every call is answered within seconds, day or night, weekday or holiday. Your callers never hear a busy tone again.',
     stat: '99.7%',
     statLabel: 'pickup rate',
-    gradient: 'from-cyan-500/20 to-blue-600/20',
+    gradient: 'from-emerald-500/20 to-teal-600/20',
     icon: (
       <svg viewBox="0 0 48 48" fill="none" className="w-12 h-12">
         <circle cx="24" cy="24" r="20" stroke="currentColor" strokeWidth="1.5" opacity="0.3" />

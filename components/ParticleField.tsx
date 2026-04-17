@@ -67,12 +67,12 @@ export function ParticleField() {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(34, 211, 238, ${alpha})`;
+        ctx.fillStyle = `rgba(32, 231, 183, ${alpha})`;
         ctx.fill();
       }
 
       // Draw subtle connection lines between close particles
-      ctx.strokeStyle = 'rgba(34, 211, 238, 0.03)';
+      ctx.strokeStyle = 'rgba(32, 231, 183, 0.03)';
       ctx.lineWidth = 0.5;
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
@@ -81,7 +81,7 @@ export function ParticleField() {
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < 120) {
             const lineAlpha = 0.03 * (1 - dist / 120);
-            ctx.strokeStyle = `rgba(34, 211, 238, ${lineAlpha})`;
+            ctx.strokeStyle = `rgba(32, 231, 183, ${lineAlpha})`;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);

@@ -9,7 +9,7 @@ const useCases = [
     statLabel: 'more bookings',
     title: 'Never miss revenue',
     description: 'Every unanswered call is a lost customer. Gizmoo picks up instantly, qualifies the lead, and books the job before your competitor even checks their voicemail.',
-    gradient: 'from-cyan-600/10 to-blue-700/10',
+    gradient: 'from-emerald-600/10 to-teal-700/10',
   },
   {
     stat: '24/7',
