@@ -6,10 +6,10 @@ import { brand } from '@/lib/brand';
 import { ParticleField } from '@/components/ParticleField';
 
 const headlineWords = [
-  { text: 'Never', weight: 'font-light' },
-  { text: 'miss', weight: 'font-light' },
-  { text: 'another', weight: 'font-bold' },
-  { text: 'call.', weight: 'font-bold text-accent' },
+  { text: 'Never', weight: 'font-normal' },
+  { text: 'miss', weight: 'font-normal' },
+  { text: 'another', weight: 'font-normal' },
+  { text: 'call.', weight: 'font-normal text-accent italic' },
 ];
 
 const statBadges = [
