@@ -96,6 +96,10 @@ export function JourneyGraphic() {
           <rect x="-3" y="-360" width="6" height="720" fill="#2affd1" opacity="0.55" filter="url(#bloomSmall)" rx="3" />
         </g>
 
+        {/* Shockwave rings — scene 2 impact, scene 7 ignition */}
+        <circle id="shockwave-1" cx="0" cy="0" r="20" fill="none" stroke="#fdfdf9" strokeWidth="2" opacity="0" />
+        <circle id="shockwave-2" cx="0" cy="0" r="20" fill="none" stroke="#20e7b7" strokeWidth="1.5" opacity="0" />
+
         {/* ─── CALL ORB ─── */}
         <g id="call-orb" opacity="0">
           <circle cx="0" cy="0" r="52" fill="url(#orbGrad)" filter="url(#bloom)" />

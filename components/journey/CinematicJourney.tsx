@@ -267,6 +267,12 @@ export function CinematicJourney({ onContactOpen }: { onContactOpen?: () => void
         );
 
         // IMPACT — orb meets beam
+        // Shockwave rings expand from impact point
+        tl.set('#shockwave-1', { attr: { r: 10 }, opacity: 0.9, transformOrigin: '50% 50%' }, 's2+=1.1');
+        tl.to('#shockwave-1', { attr: { r: 520 }, opacity: 0, duration: 0.75, ease: 'expoOut' }, 's2+=1.1');
+        tl.set('#shockwave-2', { attr: { r: 10 }, opacity: 0.8 }, 's2+=1.18');
+        tl.to('#shockwave-2', { attr: { r: 700 }, opacity: 0, duration: 0.95, ease: 'expoOut' }, 's2+=1.18');
+
         // Chromatic aberration spike
         if (absRed && absBlue) {
           tl.to([absRed, absBlue], {
@@ -707,6 +713,12 @@ export function CinematicJourney({ onContactOpen }: { onContactOpen?: () => void
         );
 
         tl.to('#core', { scale: 3.8, duration: 0.95, ease: 'expoInOut' }, 's7+=0.35');
+
+        // Scene 7 shockwave — bigger than scene 2 (the convergence moment)
+        tl.set('#shockwave-1', { attr: { r: 30 }, opacity: 1 }, 's7+=0.18');
+        tl.to('#shockwave-1', { attr: { r: 900 }, opacity: 0, duration: 1.1, ease: 'expoOut' }, 's7+=0.18');
+        tl.set('#shockwave-2', { attr: { r: 30 }, opacity: 0.85 }, 's7+=0.28');
+        tl.to('#shockwave-2', { attr: { r: 1100 }, opacity: 0, duration: 1.3, ease: 'expoOut' }, 's7+=0.28');
 
         // Secondary particle flare on core ignition — radial burst outward
         tl.set('.particle', { x: 0, y: 0, opacity: 0, scale: 0 }, 's7+=0.2');
