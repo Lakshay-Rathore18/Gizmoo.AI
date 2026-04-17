@@ -11,28 +11,28 @@ const config: Config = {
     extend: {
       colors: {
         bg: {
-          primary: '#0a0a0a',
-          secondary: '#111111',
-          tertiary: '#1a1a1a',
+          primary: '#070b0a',
+          secondary: '#041819',
+          tertiary: '#0c1c1b',
         },
         text: {
-          primary: '#ffffff',
-          secondary: '#999999',
-          tertiary: '#666666',
+          primary: '#fdfdf9',
+          secondary: 'rgba(253,253,249,0.6)',
+          tertiary: 'rgba(253,253,249,0.38)',
         },
         accent: {
-          DEFAULT: '#22d3ee',
-          hover: '#06b6d4',
-          glow: 'rgba(34,211,238,0.15)',
-          strong: 'rgba(34,211,238,0.4)',
+          DEFAULT: '#20e7b7',
+          hover: '#00ffc2',
+          glow: 'rgba(32,231,183,0.15)',
+          strong: 'rgba(32,231,183,0.4)',
         },
         border: {
-          subtle: 'rgba(255,255,255,0.08)',
+          subtle: 'rgba(253,253,249,0.08)',
         },
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
-        display: ['var(--font-space-grotesk)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-dm-sans)', 'var(--font-inter)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-dm-sans)', 'var(--font-space-grotesk)', 'system-ui', 'sans-serif'],
         mono: ['var(--font-jetbrains-mono)', 'ui-monospace', 'monospace'],
       },
       fontSize: {

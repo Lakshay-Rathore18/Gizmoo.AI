@@ -6,17 +6,17 @@
    CSS VARIABLES
    ═══════════════════════════════════════ */
 :root {
-  --bg-primary: #0a0a0a;
-  --bg-secondary: #111111;
-  --bg-tertiary: #1a1a1a;
-  --text-primary: #ffffff;
-  --text-secondary: #999999;
-  --text-tertiary: #666666;
-  --accent: #22d3ee;
-  --accent-hover: #06b6d4;
-  --accent-glow: rgba(34, 211, 238, 0.15);
-  --accent-strong: rgba(34, 211, 238, 0.4);
-  --border-subtle: rgba(255, 255, 255, 0.08);
+  --bg-primary: #070b0a;
+  --bg-secondary: #041819;
+  --bg-tertiary: #0c1c1b;
+  --text-primary: #fdfdf9;
+  --text-secondary: rgba(253, 253, 249, 0.6);
+  --text-tertiary: rgba(253, 253, 249, 0.38);
+  --accent: #20e7b7;
+  --accent-hover: #00ffc2;
+  --accent-glow: rgba(32, 231, 183, 0.15);
+  --accent-strong: rgba(32, 231, 183, 0.4);
+  --border-subtle: rgba(253, 253, 249, 0.08);
   color-scheme: dark;
 }
 
@@ -100,7 +100,7 @@ body {
 .custom-cursor.hover {
   width: 40px;
   height: 40px;
-  background-color: rgba(34, 211, 238, 0.3);
+  background-color: rgba(32, 231, 183, 0.3);
   border: 1px solid var(--accent);
 }
 
@@ -121,6 +121,68 @@ body {
   opacity: 0.03;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-repeat: repeat;
+}
+
+/* ═══════════════════════════════════════
+   AURORA PILLAR — scroll-reactive mint column
+   ═══════════════════════════════════════ */
+.aurora-pillar-root {
+  --aurora-hue: 162;
+  --aurora-opacity: 0.35;
+  --aurora-x: 0%;
+  overflow: hidden;
+}
+
+.aurora-pillar {
+  position: absolute;
+  top: -10%;
+  left: calc(50% + var(--aurora-x, 0%));
+  transform: translateX(-50%);
+  width: clamp(380px, 42vw, 820px);
+  height: 120%;
+  background: radial-gradient(
+    ellipse 38% 60% at 50% 50%,
+    hsla(var(--aurora-hue, 162), 82%, 55%, calc(var(--aurora-opacity, 0.35) * 1)) 0%,
+    hsla(var(--aurora-hue, 162), 82%, 55%, calc(var(--aurora-opacity, 0.35) * 0.6)) 20%,
+    hsla(var(--aurora-hue, 162), 82%, 55%, 0) 65%
+  );
+  filter: blur(80px);
+  mix-blend-mode: screen;
+  will-change: transform, opacity, left;
+}
+
+.aurora-pillar--secondary {
+  width: clamp(220px, 26vw, 500px);
+  opacity: 0.7;
+  left: calc(50% + var(--aurora-x, 0%) * -1.4);
+  filter: blur(110px);
+}
+
+.aurora-pillar-base {
+  position: absolute;
+  bottom: -30vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140vw;
+  height: 60vh;
+  background: radial-gradient(
+    ellipse 50% 100% at 50% 100%,
+    hsla(168, 80%, 40%, 0.22) 0%,
+    hsla(168, 80%, 40%, 0.08) 40%,
+    transparent 75%
+  );
+  filter: blur(60px);
+  mix-blend-mode: screen;
+}
+
+@media (max-width: 768px) {
+  .aurora-pillar { filter: blur(60px); width: clamp(280px, 80vw, 420px); }
+  .aurora-pillar--secondary { display: none; }
+  .aurora-pillar-base { height: 40vh; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora-pillar, .aurora-pillar--secondary { transition: none; }
 }
 
 /* ═══════════════════════════════════════
