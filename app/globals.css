@@ -124,6 +124,47 @@ body {
 }
 
 /* ═══════════════════════════════════════
+   JOURNEY PERFORMANCE HINTS
+   ═══════════════════════════════════════ */
+.journey-section {
+  contain: layout paint;
+}
+.journey-section #beam,
+.journey-section #core,
+.journey-section #dashboard-card,
+.journey-section .particle,
+.journey-section .far-dot,
+.journey-section .testimonial-card {
+  will-change: transform, opacity;
+}
+.journey-section .split-char {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+.journey-section .copy-s1 .split-target,
+.journey-section .copy-s2 .split-target,
+.journey-section .copy-s4 .split-target,
+.journey-section .copy-s5 .split-target,
+.journey-section .copy-s7 .split-target {
+  text-shadow: 0 0 80px rgba(32, 231, 183, 0.15);
+}
+.journey-section .final-headline {
+  text-shadow: 0 0 120px rgba(32, 231, 183, 0.35), 0 0 40px rgba(253, 253, 249, 0.1);
+}
+
+/* Scan-line layer breathes — prevent static feel */
+.global-film .scan-lines {
+  animation: scan-drift 12s linear infinite;
+}
+@keyframes scan-drift {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 6px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .global-film .scan-lines { animation: none; }
+}
+
+/* ═══════════════════════════════════════
    AURORA PILLAR — scroll-reactive mint column
    ═══════════════════════════════════════ */
 .aurora-pillar-root {

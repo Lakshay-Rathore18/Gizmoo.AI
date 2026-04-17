@@ -150,7 +150,7 @@ export function CinematicJourney({ onContactOpen }: { onContactOpen?: () => void
           );
         }
 
-        // Variable-font weight morph on the headline container
+        // Variable-font weight morph on the headline container (axis #12)
         tl.fromTo(
           '.copy-s1 .split-target',
           { fontVariationSettings: '"wght" 200, "opsz" 14' },
@@ -505,6 +505,12 @@ export function CinematicJourney({ onContactOpen }: { onContactOpen?: () => void
         );
 
         tl.to('.copy-s4', { opacity: 1, duration: 0.3 }, 's4+=0.35');
+        tl.fromTo(
+          '.copy-s4 .split-target',
+          { fontVariationSettings: '"wght" 250, "opsz" 16' },
+          { fontVariationSettings: '"wght" 500, "opsz" 36', duration: 0.9, ease: 'expoOut' },
+          's4+=0.52'
+        );
         tl.from(
           '.copy-s4 .split-target .split-char',
           {
@@ -718,6 +724,12 @@ export function CinematicJourney({ onContactOpen }: { onContactOpen?: () => void
         );
 
         tl.to('.copy-s7', { opacity: 1, duration: 0.3 }, 's7+=0.38');
+        tl.fromTo(
+          '.copy-s7 .split-target',
+          { fontVariationSettings: '"wght" 200, "opsz" 14' },
+          { fontVariationSettings: '"wght" 600, "opsz" 48', duration: 1.0, ease: 'expoOut' },
+          's7+=0.42'
+        );
         tl.from(
           '.copy-s7 .split-target .split-char',
           {
