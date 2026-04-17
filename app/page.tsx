@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Nav } from '@/components/landing/Nav';
-import { Hero } from '@/components/landing/Hero';
+import { CinematicJourney } from '@/components/journey/CinematicJourney';
 import { About } from '@/components/landing/About';
 import { Features } from '@/components/landing/Features';
 import { Demo } from '@/components/landing/Demo';
@@ -23,7 +23,7 @@ export default function Page() {
     <>
       <main id="main-content" className="relative">
         <Nav onContactOpen={() => setContactOpen(true)} />
-        <Hero onContactOpen={() => setContactOpen(true)} />
+        <CinematicJourney onContactOpen={() => setContactOpen(true)} />
         <GlowDivider />
         <About />
         <GlowDivider />
