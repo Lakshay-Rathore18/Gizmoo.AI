@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google';
+import { DM_Sans, Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google';
 import { ClerkProvider } from '@clerk/nextjs';
 import { dark } from '@clerk/themes';
 import { SmoothScroll } from '@/components/SmoothScroll';
@@ -7,7 +7,15 @@ import { CustomCursor } from '@/components/CustomCursor';
 import { ScrollProgress } from '@/components/ScrollProgress';
 import { LoadingScreen } from '@/components/LoadingScreen';
 import { ScrollBackground } from '@/components/ScrollBackground';
+import { AuroraPillar } from '@/components/AuroraPillar';
 import './globals.css';
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-dm-sans',
+  weight: ['300', '400', '500', '700'],
+});
 
 const inter = Inter({
   subsets: ['latin'],
@@ -114,11 +122,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} dark`}
+      className={`${dmSans.variable} ${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} dark`}
     >
       <head>
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#0a0a0a" />
+        <meta name="theme-color" content="#070b0a" />
         <meta name="geo.region" content="AU-NSW" />
         <meta name="geo.placename" content="New South Wales, Australia" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -144,12 +152,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           appearance={{
             baseTheme: dark,
             variables: {
-              colorPrimary: '#22d3ee',
-              colorBackground: '#0a0a0a',
-              colorInputBackground: '#111111',
-              colorInputText: '#ffffff',
-              colorText: '#ffffff',
-              colorTextSecondary: 'rgba(255,255,255,0.55)',
+              colorPrimary: '#20e7b7',
+              colorBackground: '#070b0a',
+              colorInputBackground: '#041819',
+              colorInputText: '#fdfdf9',
+              colorText: '#fdfdf9',
+              colorTextSecondary: 'rgba(253,253,249,0.6)',
               borderRadius: '8px',
             },
           }}
@@ -158,6 +166,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <LoadingScreen />
             <ScrollProgress />
             <CustomCursor />
+            <AuroraPillar />
             <ScrollBackground />
             <div className="noise-overlay" />
             <div className="relative z-10">
