@@ -54,6 +54,29 @@ export function CinematicJourney({ onContactOpen }: { onContactOpen?: () => void
       gsap.set('#dashboard-card', { opacity: 0 });
       gsap.set('.orb-trail', { opacity: 0 });
       gsap.set('#beam-split', { opacity: 0 });
+      gsap.set('#network-echo', { opacity: 0 });
+
+      // ─── Always-on ambient drift on far dots (establishes depth) ───
+      const farDots = gsap.utils.toArray<SVGCircleElement>('.far-dot');
+      farDots.forEach((dot, i) => {
+        gsap.to(dot, {
+          y: `+=${gsap.utils.random(-18, 18)}`,
+          x: `+=${gsap.utils.random(-12, 12)}`,
+          duration: gsap.utils.random(4, 9),
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+          delay: i * 0.15,
+        });
+        gsap.to(dot, {
+          opacity: `+=${gsap.utils.random(-0.15, 0.15)}`,
+          duration: gsap.utils.random(3, 6),
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+          delay: i * 0.2,
+        });
+      });
 
       if (prefersReduced) {
         gsap.set('.copy-s1 .split-char', { yPercent: 0, opacity: 1, rotateX: 0 });
@@ -126,6 +149,14 @@ export function CinematicJourney({ onContactOpen }: { onContactOpen?: () => void
             's1+=0.55'
           );
         }
+
+        // Variable-font weight morph on the headline container
+        tl.fromTo(
+          '.copy-s1 .split-target',
+          { fontVariationSettings: '"wght" 200, "opsz" 14' },
+          { fontVariationSettings: '"wght" 500, "opsz" 36', duration: 0.9, ease: 'expoOut' },
+          's1+=0.18'
+        );
 
         // Headline chars — SplitText with 3D rotateX + random stagger
         tl.from(
@@ -459,6 +490,20 @@ export function CinematicJourney({ onContactOpen }: { onContactOpen?: () => void
           's4+=0.42'
         );
 
+        // Depth echo — mid-plane echo dots fade in behind primary network
+        tl.fromTo(
+          '#network-echo',
+          { opacity: 0, scale: 0.85 },
+          { opacity: 0.6, scale: 1, duration: 0.9, ease: 'expoOut' },
+          's4+=0.5'
+        );
+        // And drift slightly while visible
+        tl.to(
+          '#network-echo',
+          { y: 8, duration: 1.5, yoyo: true, repeat: 1, ease: 'sine.inOut' },
+          's4+=0.6'
+        );
+
         tl.to('.copy-s4', { opacity: 1, duration: 0.3 }, 's4+=0.35');
         tl.from(
           '.copy-s4 .split-target .split-char',
@@ -578,6 +623,20 @@ export function CinematicJourney({ onContactOpen }: { onContactOpen?: () => void
           's6+=0.2'
         );
 
+        // Testimonial micro-drift while on screen — staggered sine bobs
+        tl.to(
+          '.copy-s6 .testimonial-card',
+          {
+            y: (i) => (i === 1 ? -6 : i === 0 ? 4 : -4),
+            duration: 0.6,
+            stagger: 0.08,
+            yoyo: true,
+            repeat: 1,
+            ease: 'sine.inOut',
+          },
+          's6+=0.9'
+        );
+
         // ═══ SCENE 7 — Convergence (6.75 → 8.00) ═══
         tl.addLabel('s7', 6.75);
 
@@ -632,6 +691,31 @@ export function CinematicJourney({ onContactOpen }: { onContactOpen?: () => void
         );
 
         tl.to('#core', { scale: 3.8, duration: 0.95, ease: 'expoInOut' }, 's7+=0.35');
+
+        // Secondary particle flare on core ignition — radial burst outward
+        tl.set('.particle', { x: 0, y: 0, opacity: 0, scale: 0 }, 's7+=0.2');
+        tl.to(
+          '.particle',
+          {
+            opacity: 1,
+            scale: () => gsap.utils.random(0.8, 2),
+            physics2D: {
+              velocity: 'random(600, 1400)',
+              angle: 'random(0, 360)',
+              gravity: 0,
+              friction: 0.12,
+            },
+            duration: 1.4,
+            stagger: 0.003,
+            ease: 'none',
+          },
+          's7+=0.22'
+        );
+        tl.to(
+          '.particle',
+          { opacity: 0, duration: 0.6, stagger: 0.003, ease: 'expoIn' },
+          's7+=1.0'
+        );
 
         tl.to('.copy-s7', { opacity: 1, duration: 0.3 }, 's7+=0.38');
         tl.from(

@@ -170,12 +170,45 @@ export function JourneyGraphic() {
           <circle cx="0" cy="0" r="420" fill="none" stroke="#20e7b7" strokeWidth="1" strokeDasharray="1 14" opacity="0.25" />
         </g>
 
-        {/* Convergence core */}
-        <g id="core" opacity="0">
-          <circle cx="0" cy="0" r="130" fill="url(#beamGlowGrad)" filter="url(#bloomMega)" />
-          <circle cx="0" cy="0" r="60" fill="url(#orbGrad)" filter="url(#bloom)" />
-          <circle cx="0" cy="0" r="22" fill="#fdfdf9" filter="url(#bloomSmall)" />
-          <circle cx="0" cy="0" r="8" fill="#fdfdf9" />
+        {/* Convergence core — wrapped in aberration for scene 7 impact */}
+        <g id="core-filter-wrap" filter="url(#aberration)">
+          <g id="core" opacity="0">
+            <circle cx="0" cy="0" r="130" fill="url(#beamGlowGrad)" filter="url(#bloomMega)" />
+            <circle cx="0" cy="0" r="60" fill="url(#orbGrad)" filter="url(#bloom)" />
+            <circle cx="0" cy="0" r="22" fill="#fdfdf9" filter="url(#bloomSmall)" />
+            <circle cx="0" cy="0" r="8" fill="#fdfdf9" />
+          </g>
+        </g>
+
+        {/* FAR-PLANE DEPTH DOTS — parallax drift, always visible */}
+        <g id="far-dots">
+          <circle className="far-dot" cx="-760" cy="-380" r="1.5" fill="#fdfdf9" opacity="0.35" />
+          <circle className="far-dot" cx="-620" cy="-140" r="1" fill="#20e7b7" opacity="0.5" />
+          <circle className="far-dot" cx="-320" cy="-460" r="2" fill="#fdfdf9" opacity="0.25" />
+          <circle className="far-dot" cx="160" cy="-420" r="1.5" fill="#20e7b7" opacity="0.4" />
+          <circle className="far-dot" cx="540" cy="-380" r="1" fill="#fdfdf9" opacity="0.3" />
+          <circle className="far-dot" cx="720" cy="-120" r="2" fill="#20e7b7" opacity="0.5" />
+          <circle className="far-dot" cx="820" cy="180" r="1.5" fill="#fdfdf9" opacity="0.35" />
+          <circle className="far-dot" cx="-780" cy="220" r="1" fill="#20e7b7" opacity="0.45" />
+          <circle className="far-dot" cx="-440" cy="420" r="2" fill="#fdfdf9" opacity="0.3" />
+          <circle className="far-dot" cx="240" cy="460" r="1.5" fill="#20e7b7" opacity="0.4" />
+          <circle className="far-dot" cx="620" cy="440" r="1" fill="#fdfdf9" opacity="0.35" />
+          <circle className="far-dot" cx="-180" cy="-300" r="1" fill="#20e7b7" opacity="0.5" />
+          <circle className="far-dot" cx="380" cy="-80" r="1.5" fill="#fdfdf9" opacity="0.3" />
+          <circle className="far-dot" cx="-680" cy="40" r="1" fill="#20e7b7" opacity="0.4" />
+          <circle className="far-dot" cx="80" cy="380" r="2" fill="#fdfdf9" opacity="0.25" />
+        </g>
+
+        {/* MID-PLANE network echo — behind the primary network, blurred for depth */}
+        <g id="network-echo" opacity="0" filter="url(#bloomSmall)">
+          <circle cx="-380" cy="-190" r="4" fill="#20e7b7" opacity="0.4" />
+          <circle cx="380" cy="-190" r="4" fill="#20e7b7" opacity="0.4" />
+          <circle cx="-380" cy="190" r="4" fill="#20e7b7" opacity="0.4" />
+          <circle cx="380" cy="190" r="4" fill="#20e7b7" opacity="0.4" />
+          <circle cx="-200" cy="-100" r="3" fill="#20e7b7" opacity="0.3" />
+          <circle cx="200" cy="-100" r="3" fill="#20e7b7" opacity="0.3" />
+          <circle cx="-200" cy="100" r="3" fill="#20e7b7" opacity="0.3" />
+          <circle cx="200" cy="100" r="3" fill="#20e7b7" opacity="0.3" />
         </g>
       </svg>
 
