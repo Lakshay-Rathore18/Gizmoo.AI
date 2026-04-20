@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { brand } from '@/lib/brand';
+import { MagneticCTA } from '@/components/primitives/MagneticCTA';
 
 export function CTASection({ onContactOpen }: { onContactOpen?: () => void }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -43,9 +44,14 @@ export function CTASection({ onContactOpen }: { onContactOpen?: () => void }) {
           transition={{ delay: 0.6, duration: 0.5 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <a href={brand.signUp} className="btn-primary text-base px-8 py-4">
-            Start Free Trial
-          </a>
+          <MagneticCTA radius={120} strength={0.4}>
+            <a
+              href={brand.signUp}
+              className="btn-primary text-base px-8 py-4 inline-block"
+            >
+              Start Free Trial
+            </a>
+          </MagneticCTA>
           <a
             href={`tel:${brand.salesPhone.replace(/\s/g, '')}`}
             className="btn-ghost text-base px-8 py-4"

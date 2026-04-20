@@ -14,12 +14,34 @@ const navLinks = [
 
 export function Nav({ onContactOpen }: { onContactOpen?: () => void }) {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  // Reveal-on-scroll-up: nav hides when scrolling down past 120px,
+  // re-appears when scrolling up — removes the fixed-header "wall"
+  // during cinematic scrolling without losing access.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
+    let lastY = window.scrollY;
+    let raf = 0;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const y = window.scrollY;
+        setScrolled(y > 50);
+        const delta = y - lastY;
+        if (Math.abs(delta) > 4) {
+          if (y > 160 && delta > 0) setHidden(true);
+          else setHidden(false);
+          lastY = y;
+        }
+      });
+    };
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => {
+      if (raf) cancelAnimationFrame(raf);
+      window.removeEventListener('scroll', onScroll);
+    };
   }, []);
 
   useEffect(() => {
@@ -31,9 +53,12 @@ export function Nav({ onContactOpen }: { onContactOpen?: () => void }) {
     <>
       <motion.nav
         initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        animate={{
+          opacity: mobileOpen ? 1 : hidden ? 0 : 1,
+          y: mobileOpen ? 0 : hidden ? -80 : 0,
+        }}
+        transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-[background,border-color] duration-300 ${
           scrolled
             ? 'bg-bg-primary/80 backdrop-blur-xl border-b border-border-subtle'
             : 'bg-transparent'
