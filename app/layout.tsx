@@ -245,8 +245,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="theme-color" content="#070b0a" />
         <meta name="geo.region" content="AU-NSW" />
         <meta name="geo.placename" content="New South Wales, Australia" />
+        {/* Preconnect to critical third parties — start TCP+TLS handshake early */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://clerk.gizmoo.me" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://accounts.gizmoo.me" crossOrigin="anonymous" />
+        {/* DNS prefetch as fallback for older clients / additional Clerk hosts */}
+        <link rel="dns-prefetch" href="https://clerk.gizmoo.me" />
+        <link rel="dns-prefetch" href="https://accounts.gizmoo.me" />
+        <link rel="dns-prefetch" href="https://turtclknacgpwnxocubx.supabase.co" />
+        <link rel="dns-prefetch" href="https://clerk-telemetry.com" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
