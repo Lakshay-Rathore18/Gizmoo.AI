@@ -39,7 +39,7 @@ export function HowItWorks() {
           viewport={{ once: true }}
           className="section-label block mb-8"
         >
-          04 — How It Works
+          06 — How It Works
         </motion.span>
 
         <motion.h2

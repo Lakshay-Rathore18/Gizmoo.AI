@@ -18,7 +18,7 @@ export function Pricing() {
           viewport={{ once: true }}
           className="section-label block mb-8"
         >
-          06 — Pricing
+          08 — Pricing
         </motion.span>
 
         <motion.h2

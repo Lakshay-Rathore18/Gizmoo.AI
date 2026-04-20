@@ -80,7 +80,7 @@ export function About() {
   return (
     <section ref={sectionRef} aria-label="About Gizmoo AI" className="relative py-section">
       <div className="max-w-content mx-auto px-6">
-        <span className="about-label section-label block mb-8">00 — About</span>
+        <span className="about-label section-label block mb-8">01 — About</span>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-20">
           <div className="about-heading">

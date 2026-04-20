@@ -33,7 +33,7 @@ export function Testimonials() {
           viewport={{ once: true }}
           className="section-label block mb-8"
         >
-          05 — Testimonials
+          07 — Testimonials
         </motion.span>
 
         <motion.h2

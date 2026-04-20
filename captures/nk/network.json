@@ -1,0 +1,1002 @@
+[
+  {
+    "url": "https://www.nk.studio/_next/static/media/13971731025ec697-s.p.woff2",
+    "method": "GET",
+    "resourceType": "font"
+  },
+  {
+    "url": "https://www.nk.studio/images/clients-map.svg",
+    "method": "GET",
+    "resourceType": "image"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/particles/1.png",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/particles/3.png",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/particles/9.png",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/particles/8.png",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/particles/4.png",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/particles/6.png",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/particles/smoke.png",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/alphas/grid1.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/alphas/grid2.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/alphas/grid1i.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/alphas/grid2i.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/alphas/lines2.png",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/rocks/color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/alphas/pcl2.png",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/rocks/normal.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/rocks/roughness.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/forest/amanita.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/planets/moon_texture.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/planets/moon_texture2.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/planets/moon_bump2.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/planets/moon_bump.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/planets/planet1.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/planets/planet2.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/trees/ivy_branch_alpha.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/alphas/zoom_alpha.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/trees/ivy_branch.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/planets/rings_circular.png",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/water/normals.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/alphas/s1.png",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/alphas/w1.png",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/studio/sky.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/home/zoom_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/home/zoom_normal.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/home/zoom_specular.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/home/zoom_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/home/terrain_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/home/terrain_normal.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/home/mountains_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/home/mountains_normal.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/home/mountains_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/home/mountains_metalness.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/home/big_mountains_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/home/big_mountains_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/home/terrain_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/studio/zoom_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/studio/zoom_normal.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/studio/zoom_specular.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/studio/zoom_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/studio/terrain_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/studio/terrain_normal.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/studio/mountains_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/studio/mountains_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/studio/mountains_normal.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/studio/mountains_metalness.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/studio/big_mountains_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/studio/big_mountains_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/studio_wireframe/grid_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/studio_wireframe/grid_alpha.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/work/zoom_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/work/zoom_normal.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/work/zoom_specular.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/work/zoom_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/work/terrain_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/work/terrain_normal.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/work/mountains_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/work/mountains_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/work/mountains_normal.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/work/mountains_metalness.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/work/big_mountains_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/work/big_mountains_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/services/zoom_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/services/zoom_normal.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/services/zoom_specular.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/services/zoom_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/services/terrain_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/services/terrain_normal.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/services/mountains_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/services/mountains_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/services/mountains_normal.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/services/mountains_metalness.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/services/big_mountains_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/services/big_mountains_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/culture/zoom_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/culture/zoom_normal.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/culture/zoom_specular.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/culture/zoom_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/culture/terrain_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/culture/terrain_normal.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/culture/mountains_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/culture/mountains_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/culture/mountains_normal.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/culture/mountains_metalness.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/culture/big_mountains_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/culture/big_mountains_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/contact/zoom_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/contact/zoom_normal.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/contact/zoom_specular.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/contact/zoom_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/contact/terrain_normal.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/contact/terrain_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/contact/mountains_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/contact/mountains_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/contact/mountains_normal.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/contact/mountains_metalness.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/contact/big_mountains_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/contact/big_mountains_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/studio/terrain_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/work/terrain_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/services/terrain_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/culture/terrain_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/contact/terrain_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/_next/static/media/check.7cd69a07.svg",
+    "method": "GET",
+    "resourceType": "image"
+  },
+  {
+    "url": "https://www.nk.studio/images/glow.svg",
+    "method": "GET",
+    "resourceType": "image"
+  },
+  {
+    "url": "https://images.prismic.io/estudio-nk/aUl_FnNYClf9olW4_Vista14.jpg?auto=format%2Ccompress&fit=max&w=1200",
+    "method": "GET",
+    "resourceType": "image"
+  },
+  {
+    "url": "https://images.prismic.io/estudio-nk/aUl_CXNYClf9olWq_Vista2.jpg?auto=format%2Ccompress&fit=max&w=1200",
+    "method": "GET",
+    "resourceType": "image"
+  },
+  {
+    "url": "https://images.prismic.io/estudio-nk/aUFuuXNYClf9oRM-_untold9.jpg?auto=format%2Ccompress&fit=max&w=1200",
+    "method": "GET",
+    "resourceType": "image"
+  },
+  {
+    "url": "https://images.prismic.io/estudio-nk/aUFuwXNYClf9oRNG_untold16.jpg?auto=format%2Ccompress&fit=max&w=1200",
+    "method": "GET",
+    "resourceType": "image"
+  },
+  {
+    "url": "https://images.prismic.io/estudio-nk/aDCQDCdWJ-7kSgGm_EFL-1.png?auto=format%2Ccompress&rect=31%2C0%2C1209%2C952&w=1200&fit=max",
+    "method": "GET",
+    "resourceType": "image"
+  },
+  {
+    "url": "https://images.prismic.io/estudio-nk/aDCQFydWJ-7kSgGo_EFL-2.jpg?auto=format%2Ccompress&rect=17%2C0%2C907%2C714&w=1200&fit=max",
+    "method": "GET",
+    "resourceType": "image"
+  },
+  {
+    "url": "https://www.nk.studio/_next/image/?url=%2F_next%2Fstatic%2Fmedia%2Fteam.3035e2d3.png&w=384&q=75&dpl=dpl_DnJJ4jYuNXRAQk2nX1NyPZ2jy3m2",
+    "method": "GET",
+    "resourceType": "image"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/particles/1.png",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/particles/3.png",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/particles/9.png",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/particles/8.png",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/particles/4.png",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/particles/6.png",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/particles/smoke.png",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/alphas/grid1.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/alphas/grid2.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/alphas/grid1i.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/alphas/grid2i.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/alphas/lines2.png",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/rocks/color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/alphas/pcl2.png",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/rocks/normal.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/rocks/roughness.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/forest/amanita.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/planets/moon_texture.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/planets/moon_texture2.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/planets/moon_bump2.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/planets/moon_bump.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/planets/planet1.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/planets/planet2.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/trees/ivy_branch_alpha.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/alphas/zoom_alpha.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/trees/ivy_branch.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/planets/rings_circular.png",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/water/normals.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/alphas/s1.png",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/textures/alphas/w1.png",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/studio/sky.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/home/zoom_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/home/zoom_normal.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/home/zoom_specular.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/home/zoom_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/home/terrain_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/home/terrain_normal.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/home/mountains_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/home/mountains_normal.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/home/mountains_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/home/mountains_metalness.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/home/big_mountains_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/home/big_mountains_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/home/terrain_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/studio/zoom_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/studio/zoom_normal.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/studio/zoom_specular.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/studio/zoom_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/studio/terrain_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/studio/terrain_normal.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/studio/mountains_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/studio/mountains_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/studio/mountains_normal.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/studio/mountains_metalness.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/studio/big_mountains_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/studio/big_mountains_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/studio_wireframe/grid_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/studio_wireframe/grid_alpha.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/work/zoom_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/work/zoom_normal.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/work/zoom_specular.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/work/zoom_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/work/terrain_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/work/terrain_normal.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/work/mountains_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/work/mountains_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/work/mountains_normal.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/work/mountains_metalness.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/work/big_mountains_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/work/big_mountains_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/services/zoom_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/services/zoom_normal.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/services/zoom_specular.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/services/zoom_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/services/terrain_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/services/terrain_normal.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/services/mountains_height.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  },
+  {
+    "url": "https://www.nk.studio/assets/terrains/services/mountains_color.jpg",
+    "method": "GET",
+    "resourceType": "other"
+  }
+]

@@ -98,7 +98,7 @@ export function Demo() {
           viewport={{ once: true }}
           className="section-label block mb-8"
         >
-          02 — Demo
+          05 — Demo
         </motion.span>
 
         <motion.h2

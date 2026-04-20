@@ -16,7 +16,7 @@ export function FAQ() {
           viewport={{ once: true }}
           className="section-label block mb-8"
         >
-          07 — FAQ
+          09 — FAQ
         </motion.span>
 
         <motion.h2

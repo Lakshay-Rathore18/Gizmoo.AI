@@ -153,7 +153,7 @@ export function Features() {
           viewport={{ once: true }}
           className="section-label block mb-8"
         >
-          01 — Features
+          03 — Features
         </motion.span>
 
         <motion.h2

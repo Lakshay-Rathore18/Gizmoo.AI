@@ -44,8 +44,10 @@ export function CinematicJourney({ onContactOpen }: { onContactOpen?: () => void
       gsap.set('.split-word', { overflow: 'hidden', display: 'inline-block' });
       gsap.set('.split-char', { display: 'inline-block', willChange: 'transform, opacity' });
 
-      // Initial states
-      gsap.set('#beam', { scale: 1, x: 0, y: 0, rotate: 0, transformOrigin: '50% 50%' });
+      // Initial states — scene 1 is populated at rest so the first paint
+      // is never blank. Portal + copy visible at scroll 0; scrubbed timeline
+      // transitions AWAY from this state into scene 2 onward.
+      gsap.set('#beam', { scale: 1, x: 0, y: 0, rotate: 0, opacity: 1, transformOrigin: '50% 50%' });
       gsap.set('.copy-s2, .copy-s3, .copy-s4, .copy-s5, .copy-s6, .copy-s7', { opacity: 0 });
       gsap.set('.stat-counter', { innerText: 0 });
       gsap.set('#halo-root', { opacity: 0, scale: 0.6 });
@@ -55,6 +57,45 @@ export function CinematicJourney({ onContactOpen }: { onContactOpen?: () => void
       gsap.set('.orb-trail', { opacity: 0 });
       gsap.set('#beam-split', { opacity: 0 });
       gsap.set('#network-echo', { opacity: 0 });
+
+      // Non-scrub intro — plays once on mount to reveal the portal + copy.
+      // This replaces the scene-1 fromTo's which previously lived inside the
+      // scrubbed timeline and left the first paint blank at scroll=0.
+      if (!prefersReduced) {
+        const intro = gsap.timeline({ delay: 0.12 });
+        intro.fromTo(
+          '#beam',
+          { scaleY: 0, scaleX: 0.3, opacity: 0, rotate: -24 },
+          { scaleY: 1, scaleX: 1, opacity: 1, rotate: 0, duration: 0.9, ease: 'expoOut' },
+          0,
+        );
+        intro.from(
+          '.portal-dot',
+          { opacity: 0, scale: 0, duration: 0.7, stagger: 0.003, ease: 'expoOut' },
+          0.12,
+        );
+        intro.from(
+          '#portal-corners',
+          { opacity: 0, scale: 1.2, transformOrigin: '50% 50%', duration: 0.5, ease: 'snappy' },
+          0.3,
+        );
+        intro.from(
+          '.copy-s1 .split-target .split-char',
+          {
+            yPercent: 120,
+            opacity: 0,
+            duration: 0.55,
+            stagger: { amount: 0.35, from: 'start' },
+            ease: 'expoOut',
+          },
+          0.22,
+        );
+        intro.from(
+          '.copy-s1 .line-sub',
+          { y: 20, opacity: 0, duration: 0.5, ease: 'expoOut' },
+          0.65,
+        );
+      }
 
       // ─── Always-on ambient drift on far dots (establishes depth) ───
       const farDots = gsap.utils.toArray<SVGCircleElement>('.far-dot');
@@ -185,77 +226,17 @@ export function CinematicJourney({ onContactOpen }: { onContactOpen?: () => void
         });
 
         // ═══ SCENE 1 — The Portal (0.00 → 0.95) ═══
+        // First-paint must be populated — the scrubbed timeline starts at
+        // scene 1 in its visible final state. A separate non-scrubbed intro
+        // timeline plays once on mount below to animate the portal + chars IN.
         tl.addLabel('s1', 0);
 
-        // Portal ignites — scale up + slight over-rotation that settles
-        tl.fromTo(
-          '#beam',
-          { scaleY: 0, scaleX: 0.3, opacity: 0, rotate: -28 },
-          { scaleY: 1, scaleX: 1, opacity: 1, rotate: 0, duration: 0.85, ease: 'expoOut' },
-          's1'
-        );
-        // Portal interior dots fade in dense
-        tl.fromTo(
-          '.portal-dot',
-          { opacity: 0, scale: 0 },
-          { opacity: (i, t) => Number((t as SVGCircleElement).getAttribute('opacity') || 0.5), scale: 1, duration: 0.7, stagger: 0.003, ease: 'expoOut' },
-          's1+=0.12'
-        );
-        // Corner brackets draw in
-        tl.from(
-          '#portal-corners',
-          { opacity: 0, scale: 1.3, duration: 0.5, transformOrigin: '50% 50%', ease: 'snappy' },
-          's1+=0.28'
-        );
-
-        // Bloom breath — ignites with beam
-        if (bloomBlur) {
-          tl.fromTo(
-            bloomBlur,
-            { attr: { stdDeviation: 0 } },
-            { attr: { stdDeviation: 22 }, duration: 0.3, ease: 'expoOut' },
-            's1+=0.25'
-          );
-          tl.to(
-            bloomBlur,
-            { attr: { stdDeviation: 14 }, duration: 0.45, ease: 'expoInOut' },
-            's1+=0.55'
-          );
-        }
-
-        // Variable-font weight morph on the headline container (axis #12)
-        tl.fromTo(
-          '.copy-s1 .split-target',
-          { fontVariationSettings: '"wght" 200, "opsz" 14' },
-          { fontVariationSettings: '"wght" 500, "opsz" 36', duration: 0.9, ease: 'expoOut' },
-          's1+=0.18'
-        );
-
-        // Headline chars — SplitText with 3D rotateX + random stagger
-        tl.from(
-          '.copy-s1 .split-target .split-char',
-          {
-            yPercent: 120,
-            opacity: 0,
-            rotateX: -80,
-            transformOrigin: '50% 100% -30',
-            duration: 0.85,
-            stagger: { amount: 0.5, from: 'random' },
-            ease: 'expoOut',
-          },
-          's1+=0.18'
-        );
-        tl.from(
-          '.copy-s1 .line-sub',
-          { y: 24, opacity: 0, duration: 0.55, ease: 'expoOut' },
-          's1+=0.52'
-        );
-
-        // Secondary motion — subtle continuous beam breathing
+        // Scene 1 stays visible across scrub 0→s2. A tiny optional pulse is
+        // fine but must not set opacity to 0.
         tl.to(
           '#beam',
-          { scale: 1.04, duration: 0.5, yoyo: true, repeat: 1, ease: 'sine.inOut' },
-          's1+=0.6'
+          { scale: 1.02, duration: 0.5, yoyo: true, repeat: 1, ease: 'sine.inOut' },
+          's1+=0.2'
         );
 
         // ═══ SCENE 2 — Call Arrives (0.95 → 2.05) ═══
@@ -550,12 +531,8 @@ export function CinematicJourney({ onContactOpen }: { onContactOpen?: () => void
         );
         tl.to('.copy-s3', { opacity: 0, duration: 0.3 }, 's4+=0.2');
 
-        // Camera pullback — beam MORPHS from a tall rectangle into a circular node
-        tl.to(
-          '#beam-core',
-          { morphSVG: '#beam-state-2', duration: 0.75, ease: 'expoInOut' },
-          's4'
-        );
+        // Camera pullback — portal shrinks/dims toward the network node
+        // (no MorphSVG — portal shape stays, just compresses)
         tl.to(
           '#beam-glow',
           { scaleY: 0.3, scaleX: 1.2, duration: 0.75, ease: 'expoInOut' },
@@ -875,12 +852,10 @@ export function CinematicJourney({ onContactOpen }: { onContactOpen?: () => void
           },
           's7+=0.42'
         );
-        tl.fromTo(
-          '.copy-s7 .final-cta',
-          { scale: 0.5, opacity: 0, y: 30 },
-          { scale: 1, opacity: 1, y: 0, duration: 0.55, stagger: 0.14, ease: 'snappy' },
-          's7+=0.62'
-        );
+        // Final fade so pin release lands on a clean dark section, not on
+        // scene-7 content overlapping the About section below.
+        tl.to('.copy-s7', { opacity: 0, duration: 0.5, ease: 'expoIn' }, 's7+=1.4');
+        tl.to('#core', { opacity: 0, scale: 5, duration: 0.6, ease: 'expoIn' }, 's7+=1.4');
       });
 
       // ====================================================================

@@ -153,7 +153,7 @@ export function FourAgents() {
     >
       {/* Section label sits above the horizontal track */}
       <div className="max-w-content mx-auto px-6 pt-section pb-12">
-        <span className="section-label block mb-6">03 — The crew</span>
+        <span className="section-label block mb-6">04 — The crew</span>
         <h2 className="text-display-sm font-display font-normal tracking-tight max-w-3xl leading-[0.95]">
           Four agents.{' '}
           <span className="italic text-accent">One phone line.</span>
