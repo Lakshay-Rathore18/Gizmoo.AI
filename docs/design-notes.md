@@ -15,7 +15,7 @@ Dark theme stays. The existing mint `#20e7b7` + cream `#fdfdf9` + deep green-bla
 | `text-tertiary` | `rgba(253,253,249,0.38)` | Section labels + mono |
 | `accent` (mint) | `#20e7b7` | Primary accent — kept earning its place through motion |
 | `accent-hover` | `#00ffc2` | Hover intensify |
-| `accent-secondary` (cobalt) | `#3d7aff` | One-off electric-blue for the FourAgents horizontal pan (pairs with mint only in the hero scene-7 convergence) |
+| `accent-secondary` (cobalt) | _dropped_ | Originally planned as a one-off cobalt accent in RevenueLeak, but in context it fought the mint brand and read as mismatched. Reverted to mint italic; keeping a single-accent discipline is stronger than a chromatic break. |
 | `cream` | `#F5F1EA` | Reserved — not used in this pass; flagged as available if a light section is ever justified |
 
 ## Typography (locked)

@@ -859,15 +859,18 @@ export function CinematicJourney({ onContactOpen }: { onContactOpen?: () => void
           { fontVariationSettings: '"wght" 600, "opsz" 48', duration: 1.0, ease: 'expoOut' },
           's7+=0.42'
         );
-        tl.from(
+        // Headline reveal: compact uniform stagger so under scrub the
+        // user never lands on a broken mid-state. Char yPercent only
+        // (dropped rotateX/scale/random-stagger — those looked scattered
+        // when scroll paused mid-scene-7).
+        tl.fromTo(
           '.copy-s7 .split-target .split-char',
+          { yPercent: 110, opacity: 0 },
           {
-            yPercent: 120,
-            opacity: 0,
-            rotateX: -70,
-            scale: 0.7,
-            duration: 0.85,
-            stagger: { amount: 0.45, from: 'random' },
+            yPercent: 0,
+            opacity: 1,
+            duration: 0.35,
+            stagger: { amount: 0.18, from: 'start' },
             ease: 'expoOut',
           },
           's7+=0.42'

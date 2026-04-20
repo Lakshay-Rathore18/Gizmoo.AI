@@ -68,24 +68,19 @@ export function RevenueLeak() {
           },
         });
 
-        // Intro — headline chars cascade in
-        tl.from(
+        // Intro — headline chars cascade in, compact L→R so mid-scrub
+        // never shows a scatter mid-state
+        tl.fromTo(
           '.leak-char',
+          { yPercent: 110, opacity: 0 },
           {
-            yPercent: 120,
-            opacity: 0,
-            rotateX: -60,
-            duration: 0.9,
-            stagger: { amount: 0.6, from: 'random' },
+            yPercent: 0,
+            opacity: 1,
+            duration: 0.5,
+            stagger: { amount: 0.28, from: 'start' },
             ease: 'expoOut',
           },
           0,
-        );
-        tl.fromTo(
-          '.leak-accent',
-          { fontVariationSettings: '"wght" 200, "opsz" 14' },
-          { fontVariationSettings: '"wght" 700, "opsz" 48', duration: 0.8, ease: 'expoOut' },
-          0.3,
         );
 
         // Counter 1
@@ -196,11 +191,11 @@ export function RevenueLeak() {
         </ClipReveal>
 
         <h2
-          className="leak-headline text-[clamp(2.5rem,9vw,8rem)] font-display font-normal leading-[0.9] tracking-tight max-w-5xl"
+          className="leak-headline text-[clamp(2.5rem,8vw,6.5rem)] font-display font-normal leading-[0.95] tracking-tight max-w-5xl"
           style={{ perspective: '900px' }}
         >
           Every unanswered ring is a{' '}
-          <span className="leak-accent italic" style={{ color: '#3d7aff' }}>
+          <span className="leak-accent italic text-accent">
             door opening for your competitor.
           </span>
         </h2>

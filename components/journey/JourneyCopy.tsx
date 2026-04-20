@@ -11,8 +11,8 @@ export function JourneyCopy({ onPrimaryCTA }: { onPrimaryCTA?: () => void }) {
           className="split-target text-[clamp(3rem,10vw,8rem)] font-display font-normal leading-[0.92] tracking-tight"
           style={{ perspective: '800px', fontVariationSettings: '"wght" 400, "opsz" 32' }}
         >
-          <span className="block">Never miss</span>
-          <span className="block italic text-accent">another call.</span>
+          <span className="block overflow-hidden pb-[0.12em]">Never miss</span>
+          <span className="block overflow-hidden italic text-accent pb-[0.12em]">another call.</span>
         </h1>
         <p className="line line-sub mt-8 text-lg md:text-xl text-text-secondary max-w-xl">
           The AI voice receptionist that picks up 24/7 — so you never lose revenue to voicemail.
@@ -71,8 +71,8 @@ export function JourneyCopy({ onPrimaryCTA }: { onPrimaryCTA?: () => void }) {
           className="split-target text-display-sm font-display font-normal tracking-tight max-w-3xl leading-[0.95]"
           style={{ perspective: '800px' }}
         >
-          <span className="block">Built for every business</span>
-          <span className="block italic text-accent">with a phone number.</span>
+          <span className="block overflow-hidden pb-[0.12em]">Built for every business</span>
+          <span className="block overflow-hidden italic text-accent pb-[0.12em]">with a phone number.</span>
         </h2>
         <span className="network-node-label absolute top-[22%] left-[14%] text-xs md:text-sm font-mono uppercase tracking-widest text-text-secondary">
           Healthcare
@@ -95,8 +95,8 @@ export function JourneyCopy({ onPrimaryCTA }: { onPrimaryCTA?: () => void }) {
           className="split-target text-display-sm font-display font-normal tracking-tight max-w-3xl"
           style={{ perspective: '800px' }}
         >
-          <span className="block">One phone line.</span>
-          <span className="block italic text-accent">Zero missed calls.</span>
+          <span className="block overflow-hidden pb-[0.12em]">One phone line.</span>
+          <span className="block overflow-hidden italic text-accent pb-[0.12em]">Zero missed calls.</span>
         </h2>
       </div>
 
@@ -126,8 +126,8 @@ export function JourneyCopy({ onPrimaryCTA }: { onPrimaryCTA?: () => void }) {
           className="split-target final-headline text-[clamp(2.5rem,9vw,7rem)] font-display font-normal tracking-tight leading-[0.95]"
           style={{ perspective: '800px' }}
         >
-          <span className="block">Ready to never miss</span>
-          <span className="block italic text-accent">a call again?</span>
+          <span className="block overflow-hidden pb-[0.12em]">Ready to never miss</span>
+          <span className="block overflow-hidden italic text-accent pb-[0.12em]">a call again?</span>
         </h2>
         <div className="final-ctas mt-10 flex flex-col sm:flex-row items-center gap-4 pointer-events-auto">
           <a
