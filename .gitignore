@@ -15,3 +15,8 @@ screenshots/
 
 # clerk configuration (can include secrets)
 /.clerk/
+
+# Diagnostic artifacts (local only — not for the repo)
+captures/
+scripts/lighthouse-audit.mjs
+.claude/
