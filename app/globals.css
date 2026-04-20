@@ -60,6 +60,34 @@ body {
   overflow-x: hidden;
 }
 
+/* Guard any stray wide element from producing a horizontal scrollbar from
+   transforms / SVG slice that extends past viewport width. */
+#main-content, main, section {
+  overflow-x: clip;
+}
+
+/* Mobile perf gating — below 768px, hide the extra particles/stars/dots
+   marked data-m="0" so we don't pay SVG filter cost for them.
+   Desktop renders the full set. */
+@media (max-width: 767px) {
+  [data-m="0"] { display: none !important; }
+  /* Reduce filter intensity on mobile — gaussian blurs are GPU-heavy */
+  .journey-section .star[filter] { filter: none; }
+  /* Below-fold long sections skip paint until ~near viewport */
+  #how-it-works, #testimonials, #pricing, #faq {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 800px;
+  }
+}
+
+/* Tap target guarantee on links + buttons */
+@media (pointer: coarse) {
+  a, button, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
 ::selection {
   background-color: var(--accent);
   color: var(--bg-primary);

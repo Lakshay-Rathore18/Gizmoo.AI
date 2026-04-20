@@ -1,8 +1,13 @@
 'use client';
 
-const PARTICLE_COUNT = 180;     // dense portal interior
-const INNER_DOT_COUNT = 90;     // dots inside portal (distinct from scatter particles)
-const STAR_COUNT = 70;          // background starfield
+const PARTICLE_COUNT = 180;     // desktop — scatter particles for scenes 3/7 bursts
+const INNER_DOT_COUNT = 90;     // desktop — dots inside portal
+const STAR_COUNT = 70;          // desktop — background starfield
+
+// Mobile caps — anything at an index >= cap gets data-m="0" and CSS hides it
+const MOBILE_PARTICLE_CAP = 60;
+const MOBILE_INNER_DOT_CAP = 36;
+const MOBILE_STAR_CAP = 28;
 
 // Deterministic pseudo-random so SSR and client render identically
 function seededRand(seed: number) {
@@ -130,13 +135,14 @@ export function JourneyGraphic() {
         {/* Horizon atmospheric glow band */}
         <ellipse id="horizon-glow" cx="0" cy="540" rx="1600" ry="520" fill="url(#horizonGlow)" opacity="0.7" />
 
-        {/* ─── STARFIELD — 70 deterministic stars with parallax ─── */}
+        {/* ─── STARFIELD — deterministic stars with parallax ─── */}
         <g id="starfield">
           {stars.map((s, i) => (
             <circle
               key={i}
               className="star"
               data-depth={i % 3}
+              data-m={i < MOBILE_STAR_CAP ? '1' : '0'}
               cx={s.x}
               cy={s.y}
               r={s.r}
@@ -234,6 +240,7 @@ export function JourneyGraphic() {
                   <circle
                     key={i}
                     className="portal-dot"
+                    data-m={i < MOBILE_INNER_DOT_CAP ? '1' : '0'}
                     cx={d.x}
                     cy={d.y}
                     r={d.r}
@@ -320,6 +327,7 @@ export function JourneyGraphic() {
               <circle
                 key={i}
                 className="particle"
+                data-m={i < MOBILE_PARTICLE_CAP ? '1' : '0'}
                 cx="0"
                 cy="0"
                 r={r}

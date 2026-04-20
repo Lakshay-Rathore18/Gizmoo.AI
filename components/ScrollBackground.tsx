@@ -33,6 +33,12 @@ export function ScrollBackground() {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReduced) return;
 
+    // Mobile: ScrollBackground is a continuously-running rAF canvas with
+    // mix-blend-mode screen + 200px gaussian blur. On mid-tier Android that's
+    // ~12-18ms/frame and holds the main thread. Skip it entirely <768px —
+    // AuroraPillar (CSS-only) still provides ambient color.
+    if (window.innerWidth < 768) return;
+
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio, 2);
       canvas.width = window.innerWidth * dpr;

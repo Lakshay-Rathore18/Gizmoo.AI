@@ -13,28 +13,44 @@ export function GlobalFilm() {
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
+    const isMobile = window.innerWidth < 768;
+    // Mobile: paint grain ONCE, don't animate it. Saves the continuous
+    // rAF + ImageData allocation (~8ms/frame on mid-tier Android).
+    // Desktop: animate every 3rd frame as before.
+    const mobileGrainOnce = isMobile;
+
     const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio, 1.5);
+      const dpr = Math.min(window.devicePixelRatio, isMobile ? 1 : 1.5);
       canvas.width = Math.floor(window.innerWidth * dpr);
       canvas.height = Math.floor(window.innerHeight * dpr);
     };
     resize();
     window.addEventListener('resize', resize);
 
+    const paintOnce = () => {
+      const w = canvas.width, h = canvas.height;
+      const img = ctx.createImageData(w, h);
+      const d = img.data;
+      for (let i = 0; i < d.length; i += 4) {
+        const v = 200 + Math.floor(Math.random() * 55);
+        d[i] = v; d[i + 1] = v; d[i + 2] = v; d[i + 3] = 28;
+      }
+      ctx.putImageData(img, 0, 0);
+    };
+
     let frame = 0;
     let raf = 0;
+
+    if (mobileGrainOnce) {
+      paintOnce();
+      return () => {
+        window.removeEventListener('resize', resize);
+      };
+    }
+
     const draw = () => {
       frame++;
-      if (frame % 3 === 0) {
-        const w = canvas.width, h = canvas.height;
-        const img = ctx.createImageData(w, h);
-        const d = img.data;
-        for (let i = 0; i < d.length; i += 4) {
-          const v = 200 + Math.floor(Math.random() * 55);
-          d[i] = v; d[i + 1] = v; d[i + 2] = v; d[i + 3] = 28;
-        }
-        ctx.putImageData(img, 0, 0);
-      }
+      if (frame % 3 === 0) paintOnce();
       raf = requestAnimationFrame(draw);
     };
     draw();
