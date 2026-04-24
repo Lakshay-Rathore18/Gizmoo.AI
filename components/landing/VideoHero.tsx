@@ -21,7 +21,7 @@ export function VideoHero({ onContactOpen }: { onContactOpen?: () => void }) {
 
       <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-4xl">
         <span className="mb-6 inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent/40 bg-bg-secondary/60 backdrop-blur-sm text-[11px] font-mono uppercase tracking-widest text-accent">
-          <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" aria-hidden="true" />
+          <span className="w-1.5 h-1.5 rounded-full bg-accent motion-safe:animate-pulse" aria-hidden="true" />
           Live in Australia
         </span>
 
