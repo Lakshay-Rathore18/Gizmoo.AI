@@ -28,12 +28,13 @@ export function VideoHero({ onContactOpen }: { onContactOpen?: () => void }) {
         <h1
           id="hero-heading"
           className="fluid-display font-display font-normal tracking-tight"
+          style={{ textShadow: '0 2px 24px rgba(7,11,10,0.9), 0 1px 2px rgba(7,11,10,0.6)' }}
         >
           <span className="block">Never miss</span>
           <span className="block italic text-accent">another call.</span>
         </h1>
 
-        <p className="fluid-body mt-8 text-text-secondary max-w-xl">
+        <p className="fluid-body mt-8 text-text-secondary max-w-xl" style={{ textShadow: '0 1px 12px rgba(7,11,10,0.85)' }}>
           The AI voice receptionist that picks up 24/7 — so you never lose revenue to voicemail.
         </p>
 
