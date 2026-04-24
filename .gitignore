@@ -20,3 +20,9 @@ screenshots/
 captures/
 scripts/lighthouse-audit.mjs
 .claude/
+
+# Local verification artifacts
+shot-*.png
+verify-*.png
+verify-*.js
+public/videos/src/
