@@ -2,13 +2,8 @@ import type { Metadata, Viewport } from 'next';
 import { DM_Sans, Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google';
 import { ClerkProvider } from '@clerk/nextjs';
 import { dark } from '@clerk/themes';
-import { SmoothScroll } from '@/components/SmoothScroll';
-import { CustomCursor } from '@/components/CustomCursor';
 import { ScrollProgress } from '@/components/ScrollProgress';
-import { LoadingScreen } from '@/components/LoadingScreen';
-import { ScrollBackground } from '@/components/ScrollBackground';
-import { AuroraPillar } from '@/components/AuroraPillar';
-import { GlobalFilm } from '@/components/journey/GlobalFilm';
+import { NetworkGuard } from '@/components/NetworkGuard';
 import './globals.css';
 
 const dmSans = DM_Sans({
@@ -286,18 +281,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             },
           }}
         >
-          <SmoothScroll>
-            <LoadingScreen />
-            <ScrollProgress />
-            <CustomCursor />
-            <AuroraPillar />
-            <ScrollBackground />
-            <GlobalFilm />
-            <div className="noise-overlay" />
-            <div className="relative z-10">
-              {children}
-            </div>
-          </SmoothScroll>
+          <NetworkGuard />
+          <ScrollProgress />
+          <div className="relative z-10">
+            {children}
+          </div>
         </ClerkProvider>
       </body>
     </html>

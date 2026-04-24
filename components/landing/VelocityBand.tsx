@@ -17,7 +17,7 @@ export function VelocityBand() {
       aria-label="promise band"
       className="relative w-full overflow-hidden py-12 md:py-20 border-y border-border-subtle bg-bg-primary"
     >
-      <VelocityMarquee baseDuration={38} velocityBoost={1.4} direction={-1}>
+      <VelocityMarquee baseDuration={38} direction={-1} pauseLabel="Pause promise band marquee">
         {phrases.map((p, i) => (
           <div key={i} className="flex items-center gap-10 px-10">
             <span className="text-[clamp(2.5rem,7vw,6rem)] font-display font-normal tracking-tight leading-none text-text-primary">

@@ -41,9 +41,12 @@ export function Pricing() {
         >
           <span className={`text-sm ${!annual ? 'text-text-primary' : 'text-text-tertiary'}`}>Monthly</span>
           <button
+            type="button"
+            role="switch"
             onClick={() => setAnnual(!annual)}
-            className="relative w-14 h-7 rounded-full bg-bg-tertiary border border-border-subtle transition-colors"
-            aria-label="Toggle billing period"
+            className="relative w-14 h-7 rounded-full bg-bg-tertiary border border-border-subtle transition-colors min-h-[28px]"
+            aria-label="Billing period: annual"
+            aria-checked={annual}
           >
             <motion.div
               animate={{ x: annual ? 26 : 2 }}

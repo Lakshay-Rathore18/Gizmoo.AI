@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useId, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { brand } from '@/lib/brand';
 
@@ -16,6 +16,9 @@ export function Nav({ onContactOpen }: { onContactOpen?: () => void }) {
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const menuId = useId();
+  const firstLinkRef = useRef<HTMLAnchorElement>(null);
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
 
   // Reveal-on-scroll-up: nav hides when scrolling down past 120px,
   // re-appears when scrolling up — removes the fixed-header "wall"
@@ -48,6 +51,29 @@ export function Nav({ onContactOpen }: { onContactOpen?: () => void }) {
     document.body.style.overflow = mobileOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
+
+  // Mobile menu: Escape closes, focus moves to first link on open, returns to
+  // hamburger on close. Prevents focus leaking to hidden page content.
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const raf = requestAnimationFrame(() => firstLinkRef.current?.focus());
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.stopPropagation();
+        setMobileOpen(false);
+      }
+    };
+    document.addEventListener('keydown', onKey);
+    return () => {
+      cancelAnimationFrame(raf);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [mobileOpen]);
+
+  const closeMobile = () => {
+    setMobileOpen(false);
+    requestAnimationFrame(() => hamburgerRef.current?.focus());
+  };
 
   return (
     <>
@@ -102,9 +128,12 @@ export function Nav({ onContactOpen }: { onContactOpen?: () => void }) {
 
           {/* Mobile hamburger */}
           <button
+            ref={hamburgerRef}
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden flex flex-col gap-1.5 p-2 z-50"
-            aria-label="Toggle menu"
+            className="md:hidden flex flex-col gap-1.5 p-2 z-50 min-h-[44px] min-w-[44px] items-center justify-center"
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileOpen}
+            aria-controls={menuId}
           >
             <motion.span
               animate={mobileOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
@@ -126,22 +155,27 @@ export function Nav({ onContactOpen }: { onContactOpen?: () => void }) {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
+            id={menuId}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Main menu"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-bg-primary flex flex-col items-center justify-center gap-6"
+            className="fixed inset-0 z-40 bg-bg-primary min-h-dvh flex flex-col items-center justify-center gap-6 px-6"
           >
             {navLinks.map((link, i) => (
               <motion.a
                 key={link.href}
+                ref={i === 0 ? firstLinkRef : undefined}
                 href={link.href}
-                onClick={() => setMobileOpen(false)}
+                onClick={closeMobile}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
                 transition={{ delay: i * 0.05, duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-                className="text-3xl font-display font-bold text-text-primary hover:text-accent transition-colors"
+                className="text-3xl font-display font-bold text-text-primary hover:text-accent transition-colors min-h-[44px] flex items-center"
               >
                 {link.label}
               </motion.a>
@@ -150,13 +184,18 @@ export function Nav({ onContactOpen }: { onContactOpen?: () => void }) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: navLinks.length * 0.05, duration: 0.4 }}
-              className="flex flex-col gap-4 mt-8"
+              className="flex flex-col gap-4 mt-8 w-full max-w-xs"
             >
-              <a href={brand.signIn} className="text-text-secondary text-center hover:text-white transition-colors">
+              <a
+                href={brand.signIn}
+                onClick={closeMobile}
+                className="text-text-secondary text-center hover:text-white transition-colors min-h-[44px] flex items-center justify-center"
+              >
                 Sign In
               </a>
               <button
-                onClick={() => { setMobileOpen(false); onContactOpen?.(); }}
+                type="button"
+                onClick={() => { closeMobile(); onContactOpen?.(); }}
                 className="btn-primary"
               >
                 Get Started

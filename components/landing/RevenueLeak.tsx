@@ -1,8 +1,6 @@
 'use client';
 
-import { useLayoutEffect, useRef } from 'react';
-import { gsap, ScrollTrigger, SplitText } from '@/lib/gsap';
-import { ClipReveal } from '@/components/primitives/ClipReveal';
+import { useEffect, useRef, useState } from 'react';
 
 const stats = [
   {
@@ -17,7 +15,7 @@ const stats = [
     prefix: '',
     suffix: '%',
     label: 'of calls go unanswered',
-    detail: 'during jobs, after hours, on weekends — every missed ring is a competitor\'s win',
+    detail: "during jobs, after hours, on weekends — every missed ring is a competitor's win",
   },
   {
     value: 12,
@@ -28,196 +26,84 @@ const stats = [
   },
 ];
 
-export function RevenueLeak() {
-  const sectionRef = useRef<HTMLElement>(null);
+function Counter({ target, delay = 0 }: { target: number; delay?: number }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const [display, setDisplay] = useState('0');
 
-  useLayoutEffect(() => {
-    const el = sectionRef.current;
+  useEffect(() => {
+    const el = ref.current;
     if (!el) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setDisplay(target.toLocaleString('en-AU'));
+      return;
+    }
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) return;
+        const startAt = performance.now() + delay;
+        const duration = 1400;
+        let raf = 0;
+        const tick = (now: number) => {
+          if (now < startAt) {
+            raf = requestAnimationFrame(tick);
+            return;
+          }
+          const p = Math.min(1, (now - startAt) / duration);
+          const eased = 1 - Math.pow(1 - p, 4);
+          const v = Math.round(target * eased);
+          setDisplay(v.toLocaleString('en-AU'));
+          if (p < 1) raf = requestAnimationFrame(tick);
+        };
+        raf = requestAnimationFrame(tick);
+        io.disconnect();
+        return () => cancelAnimationFrame(raf);
+      },
+      { threshold: 0.4 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [target, delay]);
 
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  return (
+    <span
+      ref={ref}
+      className="text-5xl md:text-7xl lg:text-8xl font-display font-normal text-accent tabular-nums"
+    >
+      {display}
+    </span>
+  );
+}
 
-    const ctx = gsap.context(() => {
-      // SplitText on the giant headline so we can char-stagger on reveal
-      const split = new SplitText('.leak-headline', {
-        type: 'words,chars',
-        wordsClass: 'leak-word',
-        charsClass: 'leak-char',
-      });
-
-      if (prefersReduced) {
-        gsap.set('.leak-char', { yPercent: 0, opacity: 1 });
-        gsap.set('.leak-counter', { innerText: (i: number) => stats[i].value });
-        gsap.set('.leak-row-0, .leak-row-1, .leak-row-2', { opacity: 1, y: 0 });
-        return;
-      }
-
-      const mm = gsap.matchMedia();
-
-      mm.add('(min-width: 768px)', () => {
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: el,
-            start: 'top top',
-            end: '+=2400',
-            pin: true,
-            pinSpacing: true,
-            scrub: 1.2,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-          },
-        });
-
-        // Intro — headline chars cascade in, compact L→R so mid-scrub
-        // never shows a scatter mid-state
-        tl.fromTo(
-          '.leak-char',
-          { yPercent: 110, opacity: 0 },
-          {
-            yPercent: 0,
-            opacity: 1,
-            duration: 0.5,
-            stagger: { amount: 0.28, from: 'start' },
-            ease: 'expoOut',
-          },
-          0,
-        );
-
-        // Counter 1
-        tl.addLabel('c1', 1.2);
-        tl.to('.leak-row-0', { opacity: 1, y: 0, duration: 0.5, ease: 'expoOut' }, 'c1');
-        tl.fromTo(
-          '.leak-counter[data-i="0"]',
-          { innerText: 0 },
-          {
-            innerText: stats[0].value,
-            duration: 0.9,
-            ease: 'expoOut',
-            snap: { innerText: 1 },
-            onUpdate() {
-              const t = this.targets()[0] as HTMLElement;
-              const v = Number(t.innerText.replace(/[^\d]/g, '')) || 0;
-              t.innerText = v.toLocaleString('en-AU');
-            },
-          },
-          'c1',
-        );
-
-        // Counter 2
-        tl.addLabel('c2', 2.1);
-        tl.to('.leak-row-1', { opacity: 1, y: 0, duration: 0.5, ease: 'expoOut' }, 'c2');
-        tl.fromTo(
-          '.leak-counter[data-i="1"]',
-          { innerText: 0 },
-          {
-            innerText: stats[1].value,
-            duration: 0.8,
-            ease: 'expoOut',
-            snap: { innerText: 1 },
-          },
-          'c2',
-        );
-
-        // Counter 3
-        tl.addLabel('c3', 3.0);
-        tl.to('.leak-row-2', { opacity: 1, y: 0, duration: 0.5, ease: 'expoOut' }, 'c3');
-        tl.fromTo(
-          '.leak-counter[data-i="2"]',
-          { innerText: 0 },
-          {
-            innerText: stats[2].value,
-            duration: 0.7,
-            ease: 'expoOut',
-            snap: { innerText: 1 },
-          },
-          'c3',
-        );
-      });
-
-      // Mobile — no pin, quick IntersectionObserver triggers
-      mm.add('(max-width: 767px)', () => {
-        ScrollTrigger.create({
-          trigger: el,
-          start: 'top 80%',
-          once: true,
-          onEnter: () => {
-            gsap.from('.leak-char', {
-              yPercent: 120,
-              opacity: 0,
-              duration: 0.6,
-              stagger: { amount: 0.3, from: 'random' },
-              ease: 'expoOut',
-            });
-            stats.forEach((s, i) => {
-              gsap.to(`.leak-counter[data-i="${i}"]`, {
-                innerText: s.value,
-                duration: 1,
-                ease: 'expoOut',
-                snap: { innerText: 1 },
-                delay: 0.2 + i * 0.2,
-                onUpdate() {
-                  const t = this.targets()[0] as HTMLElement;
-                  const v = Number(t.innerText.replace(/[^\d]/g, '')) || 0;
-                  t.innerText = v.toLocaleString('en-AU');
-                },
-              });
-              gsap.to(`.leak-row-${i}`, {
-                opacity: 1,
-                y: 0,
-                duration: 0.6,
-                ease: 'expoOut',
-                delay: 0.2 + i * 0.2,
-              });
-            });
-          },
-        });
-      });
-
-      return () => split.revert();
-    }, el);
-
-    return () => ctx.revert();
-  }, []);
-
+export function RevenueLeak() {
   return (
     <section
       id="revenue-leak"
-      ref={sectionRef}
-      className="relative w-full overflow-hidden bg-bg-primary py-section md:py-0 md:h-screen md:flex md:flex-col md:justify-center"
+      aria-labelledby="revenue-leak-heading"
+      className="relative w-full bg-bg-primary py-section"
     >
-      <div className="max-w-content mx-auto px-6 w-full">
-        <ClipReveal direction="up" duration={0.9}>
-          <span className="section-label block mb-8">02 — The revenue leak</span>
-        </ClipReveal>
+      <div className="max-w-content mx-auto px-6">
+        <span className="section-label block mb-8">02 — The revenue leak</span>
 
         <h2
-          className="leak-headline text-[clamp(2.5rem,8vw,6.5rem)] font-display font-normal leading-[0.95] tracking-tight max-w-5xl"
-          style={{ perspective: '900px' }}
+          id="revenue-leak-heading"
+          className="fluid-display font-display font-normal tracking-tight max-w-5xl"
         >
           Every unanswered ring is a{' '}
-          <span className="leak-accent italic text-accent">
+          <span className="italic text-accent">
             door opening for your competitor.
           </span>
         </h2>
 
         <div className="mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-6">
           {stats.map((s, i) => (
-            <div
-              key={i}
-              className={`leak-row-${i} opacity-0 translate-y-6`}
-            >
+            <div key={i}>
               <div className="flex items-baseline gap-1">
                 {s.prefix && (
                   <span className="text-3xl md:text-5xl font-display font-normal text-accent tabular-nums">
                     {s.prefix}
                   </span>
                 )}
-                <span
-                  className="leak-counter text-5xl md:text-7xl lg:text-8xl font-display font-normal text-accent tabular-nums"
-                  data-i={i}
-                >
-                  0
-                </span>
+                <Counter target={s.value} delay={i * 150} />
                 {s.suffix && (
                   <span className="text-3xl md:text-5xl font-display font-normal text-accent tabular-nums">
                     {s.suffix}

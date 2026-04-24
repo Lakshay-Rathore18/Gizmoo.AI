@@ -4,7 +4,7 @@ import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { MotionProvider } from '@/components/MotionProvider';
 import { Nav } from '@/components/landing/Nav';
-import { CinematicJourney } from '@/components/journey/CinematicJourney';
+import { VideoHero } from '@/components/landing/VideoHero';
 import { About } from '@/components/landing/About';
 import { GlowDivider } from '@/components/GlowDivider';
 
@@ -67,7 +67,7 @@ const ContactOverlay = dynamic(
 /**
  * Scroll narrative — intended arc, top to bottom:
  *
- *   01. HOOK        — CinematicJourney (pinned 7-scene portal)
+ *   01. HOOK        — VideoHero (ambient background video, static copy)
  *   02. CONTEXT     — About (what Gizmoo is, compact)
  *   03. PROBLEM     — RevenueLeak (pinned counters, cobalt accent, only chromatic break)
  *   04. CAPABILITY  — Features (the 6 tile breakdown)
@@ -86,7 +86,7 @@ export default function Page() {
       <main id="main-content" className="relative">
         <Nav onContactOpen={() => setContactOpen(true)} />
 
-        <CinematicJourney onContactOpen={() => setContactOpen(true)} />
+        <VideoHero onContactOpen={() => setContactOpen(true)} />
         <GlowDivider />
 
         <About />

@@ -1,11 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { faqs } from '@/lib/brand';
 
 export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number>(-1);
+  const baseId = useId();
 
   return (
     <section id="faq" className="relative py-section">
@@ -30,7 +31,11 @@ export function FAQ() {
         </motion.h2>
 
         <div className="max-w-3xl mx-auto">
-          {faqs.map((faq, i) => (
+          {faqs.map((faq, i) => {
+            const btnId = `${baseId}-btn-${i}`;
+            const panelId = `${baseId}-panel-${i}`;
+            const expanded = i === openIndex;
+            return (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 15 }}
@@ -40,42 +45,51 @@ export function FAQ() {
               className="border-b border-border-subtle"
             >
               <button
+                id={btnId}
+                type="button"
+                aria-expanded={expanded}
+                aria-controls={panelId}
                 onClick={() => setOpenIndex(i === openIndex ? -1 : i)}
-                className="w-full py-6 flex items-center justify-between text-left group"
+                className="w-full py-6 flex items-center justify-between text-left group min-h-[44px]"
               >
                 <span
                   className={`text-base md:text-lg font-medium transition-colors duration-200 pr-8 ${
-                    i === openIndex ? 'text-text-primary' : 'text-text-secondary group-hover:text-text-primary'
+                    expanded ? 'text-text-primary' : 'text-text-secondary group-hover:text-text-primary'
                   }`}
                 >
                   {faq.q}
                 </span>
                 <motion.span
-                  animate={{ rotate: i === openIndex ? 45 : 0 }}
+                  animate={{ rotate: expanded ? 45 : 0 }}
                   transition={{ duration: 0.2 }}
                   className="text-xl text-text-tertiary shrink-0"
+                  aria-hidden="true"
                 >
                   +
                 </motion.span>
               </button>
 
               <AnimatePresence initial={false}>
-                {i === openIndex && (
+                {expanded && (
                   <motion.div
+                    id={panelId}
+                    role="region"
+                    aria-labelledby={btnId}
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
                     className="overflow-hidden"
                   >
-                    <p className="pb-6 text-text-secondary text-sm md:text-base leading-relaxed pr-12">
+                    <p className="pb-6 text-text-secondary text-sm md:text-base leading-relaxed pr-4 md:pr-12">
                       {faq.a}
                     </p>
                   </motion.div>
                 )}
               </AnimatePresence>
             </motion.div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

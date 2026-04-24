@@ -1,0 +1,71 @@
+# DigitalOcean App Platform spec for gizmoo.me
+#
+# This is a DOCUMENTATION snapshot of the live app spec
+# (app id: 18b832f3-54d7-4e83-bdd8-139a6793036b, name: gizmoo-ai).
+# The running app is managed via the DO dashboard + deploy_on_push from main.
+#
+# To apply changes from this file:
+#   doctl apps update 18b832f3-54d7-4e83-bdd8-139a6793036b --spec .do/app.yaml
+#
+# Secrets (CLERK_SECRET_KEY, SUPABASE_SERVICE_ROLE_KEY) are stored encrypted
+# in DO and NEVER committed. Public keys below are safe to commit.
+
+name: gizmoo-ai
+region: syd
+
+alerts:
+  - rule: DEPLOYMENT_FAILED
+  - rule: DOMAIN_FAILED
+
+services:
+  - name: gizmoo-ai
+    environment_slug: node-js
+    instance_size_slug: apps-s-1vcpu-2gb
+    instance_count: 1
+    http_port: 2999
+
+    source_dir: /
+    github:
+      repo: Lakshay-Rathore18/Gizmoo.AI
+      branch: main
+      deploy_on_push: true
+
+    build_command: npm run build
+    run_command: npm start
+
+    envs:
+      - key: NODE_ENV
+        scope: RUN_AND_BUILD_TIME
+        value: production
+
+      # ── Public (shipped to the browser) ──
+      - key: NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+        scope: RUN_AND_BUILD_TIME
+        value: pk_live_Y2xlcmsuZ2l6bW9vLm1lJA
+      - key: NEXT_PUBLIC_CLERK_SIGN_IN_URL
+        scope: RUN_AND_BUILD_TIME
+        value: /sign-in
+      - key: NEXT_PUBLIC_CLERK_SIGN_UP_URL
+        scope: RUN_AND_BUILD_TIME
+        value: /sign-up
+      - key: NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL
+        scope: RUN_AND_BUILD_TIME
+        value: /
+      - key: NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL
+        scope: RUN_AND_BUILD_TIME
+        value: /
+      - key: NEXT_PUBLIC_SUPABASE_URL
+        scope: RUN_AND_BUILD_TIME
+        value: https://turtclknacgpwnxocubx.supabase.co
+
+      # ── Secret (server only, encrypted in DO) ──
+      - key: CLERK_SECRET_KEY
+        scope: RUN_AND_BUILD_TIME
+        type: SECRET
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        scope: RUN_AND_BUILD_TIME
+        type: SECRET
+
+domains:
+  - domain: gizmoo.me
+    type: PRIMARY

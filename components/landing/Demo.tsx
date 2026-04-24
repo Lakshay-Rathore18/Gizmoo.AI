@@ -52,15 +52,22 @@ export function Demo() {
   const [activeTab, setActiveTab] = useState(0);
   const [visibleMessages, setVisibleMessages] = useState(0);
   const [isTyping, setIsTyping] = useState(false);
+  const [paused, setPaused] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const inView = useInView(sectionRef, { once: false, margin: '-30%' });
 
   const currentConvo = conversations[tabs[activeTab]];
 
-  // Auto-play chat animation
   useEffect(() => {
-    if (!inView) {
-      setVisibleMessages(0);
+    if (!inView || paused) {
+      return;
+    }
+
+    const reduced = typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduced) {
+      setVisibleMessages(currentConvo.length);
       setIsTyping(false);
       return;
     }
@@ -69,22 +76,26 @@ export function Demo() {
     setIsTyping(false);
 
     let msgIndex = 0;
+    const timers: Array<ReturnType<typeof setTimeout>> = [];
+
     const showNext = () => {
       if (msgIndex >= currentConvo.length) return;
       setIsTyping(true);
-      setTimeout(() => {
+      timers.push(setTimeout(() => {
         setIsTyping(false);
         msgIndex++;
         setVisibleMessages(msgIndex);
         if (msgIndex < currentConvo.length) {
-          setTimeout(showNext, 600);
+          timers.push(setTimeout(showNext, 600));
         }
-      }, 800);
+      }, 800));
     };
 
-    const startTimer = setTimeout(showNext, 500);
-    return () => clearTimeout(startTimer);
-  }, [inView, activeTab, currentConvo.length]);
+    timers.push(setTimeout(showNext, 500));
+    return () => {
+      for (const t of timers) clearTimeout(t);
+    };
+  }, [inView, paused, activeTab, currentConvo.length]);
 
   return (
     <section id="demo" ref={sectionRef} className="relative py-section">
@@ -182,8 +193,17 @@ export function Demo() {
 
           {/* Status line */}
           <div className="px-6 py-3 border-t border-border-subtle flex items-center gap-2 text-sm text-text-tertiary">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            Handled in 32s — caller satisfied
+            <span aria-hidden="true" className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span>Handled in 32s — caller satisfied</span>
+            <button
+              type="button"
+              aria-pressed={paused}
+              onClick={() => setPaused((p) => !p)}
+              className="ml-auto min-h-[32px] min-w-[32px] rounded-full border border-border-subtle px-3 py-1 text-[11px] font-mono uppercase tracking-widest hover:text-accent hover:border-accent/60 transition-colors"
+            >
+              {paused ? 'Play' : 'Pause'}
+              <span className="sr-only"> demo autoplay</span>
+            </button>
           </div>
         </motion.div>
 

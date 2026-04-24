@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useState } from 'react';
 import { testimonials } from '@/lib/brand';
 
 function TestimonialCard({ t }: { t: typeof testimonials[number] }) {
@@ -19,55 +19,59 @@ function TestimonialCard({ t }: { t: typeof testimonials[number] }) {
   );
 }
 
+function TestimonialRow({
+  items,
+  reverse,
+  pauseLabel,
+}: {
+  items: (typeof testimonials)[number][];
+  reverse?: boolean;
+  pauseLabel: string;
+}) {
+  const [paused, setPaused] = useState(false);
+  return (
+    <div className="relative mb-6">
+      <div aria-hidden="true" className="pointer-events-none absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-bg-primary to-transparent z-10" />
+      <div aria-hidden="true" className="pointer-events-none absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-bg-primary to-transparent z-10" />
+      <div
+        className="flex animate-marquee"
+        style={{
+          animationDirection: reverse ? 'reverse' : 'normal',
+          animationPlayState: paused ? 'paused' : 'running',
+        }}
+      >
+        {items.map((t, i) => (
+          <TestimonialCard key={`${pauseLabel}-${i}`} t={t} />
+        ))}
+      </div>
+      <button
+        type="button"
+        aria-pressed={paused}
+        onClick={() => setPaused((p) => !p)}
+        className="absolute bottom-2 right-2 z-20 min-h-[32px] min-w-[32px] rounded-full border border-border-subtle bg-bg-secondary/80 backdrop-blur-sm px-3 py-1 text-[11px] font-mono uppercase tracking-widest text-text-secondary hover:text-accent hover:border-accent/60 transition-colors"
+      >
+        {paused ? 'Play' : 'Pause'}
+        <span className="sr-only"> {pauseLabel}</span>
+      </button>
+    </div>
+  );
+}
+
 export function Testimonials() {
-  // Double the items for infinite scroll
   const row1 = [...testimonials.slice(0, 3), ...testimonials.slice(0, 3)];
   const row2 = [...testimonials.slice(3), ...testimonials.slice(3)];
 
   return (
     <section className="relative py-section overflow-hidden">
       <div className="max-w-content mx-auto px-6 mb-12">
-        <motion.span
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="section-label block mb-8"
-        >
-          07 — Testimonials
-        </motion.span>
-
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-display-sm font-display font-bold tracking-tight max-w-2xl"
-        >
+        <span className="section-label block mb-8">07 — Testimonials</span>
+        <h2 className="fluid-h2 font-display font-bold tracking-tight max-w-2xl">
           500+ businesses never miss a call.
-        </motion.h2>
+        </h2>
       </div>
 
-      {/* Row 1 — scrolls left */}
-      <div className="relative mb-6">
-        <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-bg-primary to-transparent z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-bg-primary to-transparent z-10" />
-        <div className="flex animate-marquee hover:[animation-play-state:paused]">
-          {row1.map((t, i) => (
-            <TestimonialCard key={`r1-${i}`} t={t} />
-          ))}
-        </div>
-      </div>
-
-      {/* Row 2 — scrolls right */}
-      <div className="relative">
-        <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-bg-primary to-transparent z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-bg-primary to-transparent z-10" />
-        <div className="flex animate-marquee-reverse hover:[animation-play-state:paused]">
-          {row2.map((t, i) => (
-            <TestimonialCard key={`r2-${i}`} t={t} />
-          ))}
-        </div>
-      </div>
+      <TestimonialRow items={row1} pauseLabel="row 1 testimonials" />
+      <TestimonialRow items={row2} reverse pauseLabel="row 2 testimonials" />
     </section>
   );
 }
