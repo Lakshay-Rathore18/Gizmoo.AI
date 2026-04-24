@@ -18,7 +18,7 @@ const config: Config = {
         text: {
           primary: '#fdfdf9',
           secondary: 'rgba(253,253,249,0.6)',
-          tertiary: 'rgba(253,253,249,0.38)',
+          tertiary: 'rgba(253,253,249,0.62)',
         },
         accent: {
           DEFAULT: '#20e7b7',
