@@ -28,36 +28,42 @@ export const testimonials = [
     name: "Sarah Chen",
     role: "Owner",
     company: "Sydney Plumbing Co.",
+    avatar: "/images/testimonials/sarah-chen.jpg",
   },
   {
     quote: "Patients love that someone always answers. It's like having a full-time receptionist for a fraction of the cost.",
     name: "Dr. James Wright",
     role: "Practice Manager",
     company: "Northside Medical",
+    avatar: "/images/testimonials/james-wright.jpg",
   },
   {
     quote: "I was skeptical about AI, but callers genuinely can't tell the difference. It's incredible.",
     name: "Maria Santos",
     role: "Director",
     company: "Elite Real Estate",
+    avatar: "/images/testimonials/maria-santos.jpg",
   },
   {
     quote: "We went from missing 30% of calls to missing zero. The ROI paid for itself in week one.",
     name: "Tom Baker",
     role: "Owner",
     company: "Baker Electrical",
+    avatar: "/images/testimonials/tom-baker.jpg",
   },
   {
     quote: "The appointment booking is seamless. My calendar is always full now, no more phone tag.",
     name: "Lisa Park",
     role: "Founder",
     company: "Luxe Hair Studio",
+    avatar: "/images/testimonials/lisa-park.jpg",
   },
   {
     quote: "Outbound reminders cut our no-shows by 60%. Gizmoo literally pays for itself.",
     name: "Mike Thompson",
     role: "Operations Manager",
     company: "CoolAir HVAC",
+    avatar: "/images/testimonials/mike-thompson.jpg",
   },
 ] as const;
 

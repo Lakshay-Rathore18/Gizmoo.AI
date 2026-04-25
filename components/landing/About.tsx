@@ -79,6 +79,24 @@ export function About() {
               <span className="block">What is</span>
               <span className="block">Gizmoo AI?</span>
             </h2>
+            <div className="mt-8 relative overflow-hidden rounded-2xl border border-border-subtle aspect-[3/2] hidden lg:block">
+              <img
+                src="/images/sections/about-call.jpg"
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute inset-0"
+                style={{
+                  background:
+                    'linear-gradient(135deg, rgba(7,11,10,0.55) 0%, rgba(7,11,10,0.15) 50%, rgba(32,231,183,0.12) 100%)',
+                }}
+              />
+            </div>
           </div>
 
           <div>

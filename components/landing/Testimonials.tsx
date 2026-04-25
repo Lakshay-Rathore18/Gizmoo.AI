@@ -9,11 +9,23 @@ function TestimonialCard({ t }: { t: typeof testimonials[number] }) {
       <p className="text-text-secondary text-sm md:text-base leading-relaxed mb-6 line-clamp-3">
         &ldquo;{t.quote}&rdquo;
       </p>
-      <div>
-        <p className="font-display font-bold text-text-primary">{t.name}</p>
-        <p className="text-sm text-text-tertiary">
-          {t.role}, {t.company}
-        </p>
+      <div className="flex items-center gap-3">
+        <img
+          src={t.avatar}
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+          width={48}
+          height={48}
+          className="w-12 h-12 rounded-full object-cover border border-border-subtle shrink-0"
+        />
+        <div>
+          <p className="font-display font-bold text-text-primary">{t.name}</p>
+          <p className="text-sm text-text-tertiary">
+            {t.role}, {t.company}
+          </p>
+        </div>
       </div>
     </div>
   );
