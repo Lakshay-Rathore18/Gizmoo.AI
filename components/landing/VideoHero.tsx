@@ -11,9 +11,13 @@ export function VideoHero({ onContactOpen }: { onContactOpen?: () => void }) {
     >
       <BackgroundVideo
         poster="/videos/hero-poster.svg"
+        preload="auto"
         sources={[
-          { src: '/videos/hero.av1.mp4', type: 'video/mp4; codecs=av01.0.05M.08' },
-          { src: '/videos/hero.webm', type: 'video/webm' },
+          // Mobile: small fast H.264 baseline first — universal compat
+          { src: '/videos/hero-mobile.mp4', type: 'video/mp4', media: '(max-width: 767px)' },
+          // Desktop: AV1 (smallest), VP9 webm, then H.264 fallback
+          { src: '/videos/hero.av1.mp4', type: 'video/mp4; codecs=av01.0.05M.08', media: '(min-width: 768px)' },
+          { src: '/videos/hero.webm', type: 'video/webm', media: '(min-width: 768px)' },
           { src: '/videos/hero.mp4', type: 'video/mp4' },
         ]}
         className="absolute inset-0"

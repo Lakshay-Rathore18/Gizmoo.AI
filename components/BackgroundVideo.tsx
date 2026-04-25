@@ -5,8 +5,11 @@ import { useEffect, useRef, useState } from 'react';
 export type BackgroundVideoProps = {
   /** Absolute or public-relative path to poster image (AVIF preferred, <80KB). */
   poster: string;
-  /** Ordered list of video sources. Browser picks first decodable. */
-  sources: Array<{ src: string; type: string }>;
+  /** Ordered list of video sources. Browser picks first decodable.
+   *  Optional `media` lets you target by viewport (e.g. mobile vs desktop). */
+  sources: Array<{ src: string; type: string; media?: string }>;
+  /** preload hint. "auto" for above-fold critical, "metadata" otherwise. */
+  preload?: 'metadata' | 'auto' | 'none';
   /** Optional className for outer wrapper (sizing). */
   className?: string;
   /** Render the scrim above the video for text legibility. Defaults true. */
@@ -33,6 +36,7 @@ export function BackgroundVideo({
   className = '',
   scrim = true,
   pauseOffscreen = true,
+  preload = 'metadata',
 }: BackgroundVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
@@ -78,7 +82,7 @@ export function BackgroundVideo({
           muted
           playsInline
           loop
-          preload="metadata"
+          preload={preload}
           poster={poster}
           tabIndex={-1}
           aria-hidden="true"
@@ -86,7 +90,7 @@ export function BackgroundVideo({
           disableRemotePlayback
         >
           {sources.map((s) => (
-            <source key={s.src} src={s.src} type={s.type} />
+            <source key={s.src} src={s.src} type={s.type} media={s.media} />
           ))}
         </video>
       )}

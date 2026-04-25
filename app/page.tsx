@@ -5,7 +5,6 @@ import dynamic from 'next/dynamic';
 import { MotionProvider } from '@/components/MotionProvider';
 import { Nav } from '@/components/landing/Nav';
 import { VideoHero } from '@/components/landing/VideoHero';
-import { VideoShowcase } from '@/components/landing/VideoShowcase';
 import { About } from '@/components/landing/About';
 import { GlowDivider } from '@/components/GlowDivider';
 
@@ -94,9 +93,6 @@ export default function Page() {
         <GlowDivider />
 
         <RevenueLeak />
-        <GlowDivider />
-
-        <VideoShowcase />
         <GlowDivider />
 
         <Features />
