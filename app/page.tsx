@@ -6,6 +6,7 @@ import { MotionProvider } from '@/components/MotionProvider';
 import { Nav } from '@/components/landing/Nav';
 import { VideoHero } from '@/components/landing/VideoHero';
 import { About } from '@/components/landing/About';
+import { ShowcaseBand } from '@/components/landing/ShowcaseBand';
 import { GlowDivider } from '@/components/GlowDivider';
 
 // Heavy below-the-fold sections — load after hydration, not in the
@@ -92,6 +93,21 @@ export default function Page() {
         <About />
         <GlowDivider />
 
+        <ShowcaseBand
+          slug="capability"
+          eyebrow="02 — Capability"
+          title={(
+            <>
+              <span className="block">Built on the most advanced</span>
+              <span className="block italic text-accent">voice AI on Earth.</span>
+            </>
+          )}
+          body="Real-time conversational intelligence with sub-300ms latency. Natural pauses. Emotional understanding. Most callers never realise they're speaking to AI."
+          align="left"
+          height="tall"
+        />
+        <GlowDivider />
+
         <RevenueLeak />
         <GlowDivider />
 
@@ -99,6 +115,21 @@ export default function Page() {
         <GlowDivider />
 
         <FourAgents />
+        <GlowDivider />
+
+        <ShowcaseBand
+          slug="trades"
+          eyebrow="05 — On the tools"
+          title={(
+            <>
+              <span className="block">Built for Australian</span>
+              <span className="block italic text-accent">trades and small business.</span>
+            </>
+          )}
+          body="Plumbers. Sparkies. HVAC. Builders. Salons. Gizmoo speaks like a local, knows your suburbs, and never lets a job slip while you're under a sink."
+          align="left"
+          height="tall"
+        />
         <GlowDivider />
 
         <Demo />
@@ -116,6 +147,20 @@ export default function Page() {
 
         <FAQ />
         <GlowDivider />
+
+        <ShowcaseBand
+          slug="cta"
+          eyebrow="10 — Ready"
+          title={(
+            <>
+              <span className="block">Never miss</span>
+              <span className="block italic text-accent">another call.</span>
+            </>
+          )}
+          body="Setup in 15 minutes. Forward your number, customise the greeting, go live before lunch."
+          align="center"
+          height="short"
+        />
 
         <div id="cta-footer"><CTASection onContactOpen={() => setContactOpen(true)} /></div>
 
