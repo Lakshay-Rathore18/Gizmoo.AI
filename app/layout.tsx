@@ -1,34 +1,32 @@
 import type { Metadata, Viewport } from 'next';
-import { DM_Sans, Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google';
+import { Almarai, Instrument_Serif, JetBrains_Mono } from 'next/font/google';
 import { ClerkProvider } from '@clerk/nextjs';
 import { dark } from '@clerk/themes';
 import { ScrollProgress } from '@/components/ScrollProgress';
 import { NetworkGuard } from '@/components/NetworkGuard';
+import { Grain } from '@/components/Grain';
 import './globals.css';
 
-const dmSans = DM_Sans({
-  subsets: ['latin'],
+const almarai = Almarai({
+  subsets: ['arabic', 'latin'],
   display: 'swap',
-  variable: '--font-dm-sans',
-  weight: ['300', '400', '500', '700'],
+  variable: '--font-almarai',
+  weight: ['300', '400', '700', '800'],
 });
 
-const inter = Inter({
+const instrumentSerif = Instrument_Serif({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-inter',
-});
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-space-grotesk',
+  variable: '--font-instrument-serif',
+  weight: ['400'],
+  style: ['italic', 'normal'],
 });
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-jetbrains-mono',
+  weight: ['400', '500'],
 });
 
 export const viewport: Viewport = {
@@ -43,7 +41,6 @@ export const metadata: Metadata = {
   description:
     'Gizmoo AI is an Australian AI voice receptionist that answers business calls 24/7, qualifies leads, books appointments into your calendar, and sends SMS confirmations. Built for tradies, clinics, salons, legal, and real estate. Live in 15 minutes.',
   keywords: [
-    // core AEO/GEO — answer-format phrasing
     'what is an AI voice receptionist',
     'best AI receptionist Australia 2026',
     'how much does an AI receptionist cost Australia',
@@ -233,19 +230,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${dmSans.variable} ${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} dark`}
+      className={`${almarai.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} dark`}
     >
       <head>
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#070b0a" />
+        <meta name="theme-color" content="#070707" />
         <meta name="geo.region" content="AU-NSW" />
         <meta name="geo.placename" content="New South Wales, Australia" />
-        {/* Preconnect to critical third parties — start TCP+TLS handshake early */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://clerk.gizmoo.me" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://accounts.gizmoo.me" crossOrigin="anonymous" />
-        {/* DNS prefetch as fallback for older clients / additional Clerk hosts */}
         <link rel="dns-prefetch" href="https://clerk.gizmoo.me" />
         <link rel="dns-prefetch" href="https://accounts.gizmoo.me" />
         <link rel="dns-prefetch" href="https://turtclknacgpwnxocubx.supabase.co" />
@@ -258,7 +253,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="font-sans bg-bg-primary text-text-primary antialiased overflow-x-hidden">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-black focus:px-4 focus:py-2 focus:font-semibold"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-accent focus:text-bg-primary focus:px-4 focus:py-2 focus:font-semibold focus:rounded-full"
         >
           Skip to main content
         </a>
@@ -271,18 +266,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           appearance={{
             baseTheme: dark,
             variables: {
-              colorPrimary: '#20e7b7',
-              colorBackground: '#070b0a',
-              colorInputBackground: '#041819',
-              colorInputText: '#fdfdf9',
-              colorText: '#fdfdf9',
-              colorTextSecondary: 'rgba(253,253,249,0.6)',
-              borderRadius: '8px',
+              colorPrimary: '#DEDBC8',
+              colorBackground: '#070707',
+              colorInputBackground: '#0e0d0b',
+              colorInputText: '#E1E0CC',
+              colorText: '#E1E0CC',
+              colorTextSecondary: 'rgba(225,224,204,0.66)',
+              borderRadius: '12px',
             },
           }}
         >
           <NetworkGuard />
           <ScrollProgress />
+          <Grain />
           <div className="relative z-10">
             {children}
           </div>

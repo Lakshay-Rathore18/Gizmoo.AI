@@ -193,7 +193,7 @@ export function Demo() {
 
           {/* Status line */}
           <div className="px-6 py-3 border-t border-border-subtle flex items-center gap-2 text-sm text-text-tertiary">
-            <span aria-hidden="true" className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span aria-hidden="true" className="w-2 h-2 rounded-full bg-accent motion-safe:animate-cream-pulse" />
             <span>Handled in 32s — caller satisfied</span>
             <button
               type="button"

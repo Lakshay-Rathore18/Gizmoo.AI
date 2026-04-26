@@ -1,5 +1,7 @@
 'use client';
 
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { BackgroundVideo } from '@/components/BackgroundVideo';
 
 export type ShowcaseBandProps = {
@@ -15,9 +17,10 @@ export type ShowcaseBandProps = {
 };
 
 /**
- * Full-bleed cinematic video band. Decorative ambient loop with
- * scrim + headline overlay. Used to break up text-heavy sections
- * and add visual punch through the scroll narrative.
+ * Full-bleed cinematic video band with scroll-linked title parallax.
+ * Title climbs slightly as the band scrolls past the viewport top, body
+ * trails it. Vignette + scrim ensure cream copy remains readable over
+ * any video luminance.
  */
 export function ShowcaseBand({
   slug,
@@ -27,11 +30,21 @@ export function ShowcaseBand({
   align = 'left',
   height = 'tall',
 }: ShowcaseBandProps) {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'end start'],
+  });
+  const titleY = useTransform(scrollYProgress, [0, 1], ['0%', '-30%']);
+  const bodyY = useTransform(scrollYProgress, [0, 1], ['0%', '-18%']);
+  const veil = useTransform(scrollYProgress, [0, 0.5, 1], [0.4, 0.55, 0.7]);
+
   const alignClass = align === 'center' ? 'items-center text-center' : 'items-start text-left';
   const heightClass = height === 'tall' ? 'min-h-[80vh] md:min-h-[88vh]' : 'min-h-[60vh] md:min-h-[70vh]';
 
   return (
     <section
+      ref={ref}
       aria-label={typeof title === 'string' ? title : eyebrow}
       className={`relative w-full ${heightClass} flex overflow-hidden`}
     >
@@ -45,33 +58,47 @@ export function ShowcaseBand({
         className="absolute inset-0"
       />
 
-      {/* Extra readability gradient over the BackgroundVideo's own scrim */}
+      {/* Layer 1: scroll-reactive readability scrim */}
+      <motion.div
+        aria-hidden="true"
+        style={{ opacity: veil }}
+        className="absolute inset-0 z-[5] bg-[rgba(7,7,7,0.5)]"
+      />
+
+      {/* Layer 2: directional readability gradient */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 z-[5]"
+        className="absolute inset-0 z-[6]"
         style={{
           background:
             align === 'center'
-              ? 'radial-gradient(ellipse at center, rgba(7,11,10,0.55) 0%, rgba(7,11,10,0.85) 100%)'
-              : 'linear-gradient(90deg, rgba(7,11,10,0.85) 0%, rgba(7,11,10,0.55) 50%, rgba(7,11,10,0.35) 100%)',
+              ? 'radial-gradient(ellipse at center, rgba(7,7,7,0.30) 0%, rgba(7,7,7,0.85) 100%)'
+              : 'linear-gradient(90deg, rgba(7,7,7,0.85) 0%, rgba(7,7,7,0.55) 50%, rgba(7,7,7,0.18) 100%)',
         }}
       />
 
       <div className={`relative z-10 w-full max-w-content mx-auto px-6 py-24 md:py-32 flex flex-col justify-center ${alignClass}`}>
-        <span className="section-label block mb-6 text-accent">{eyebrow}</span>
-        <h2
-          className="fluid-h2 font-display font-bold tracking-tight max-w-3xl"
-          style={{ textShadow: '0 2px 24px rgba(7,11,10,0.9), 0 1px 2px rgba(7,11,10,0.6)' }}
+        <motion.span
+          style={{ y: bodyY }}
+          className="section-label block mb-7 text-text-secondary"
         >
-          {title}
-        </h2>
+          {eyebrow}
+        </motion.span>
+        <motion.h2
+          style={{ y: titleY }}
+          className="fluid-h2 font-display font-normal tracking-tight max-w-3xl"
+        >
+          <span style={{ textShadow: '0 2px 26px rgba(7,7,7,0.85), 0 1px 2px rgba(7,7,7,0.6)' }}>
+            {title}
+          </span>
+        </motion.h2>
         {body && (
-          <p
-            className="fluid-body mt-6 text-text-secondary max-w-2xl"
-            style={{ textShadow: '0 1px 12px rgba(7,11,10,0.85)' }}
+          <motion.p
+            style={{ y: bodyY }}
+            className="fluid-body mt-7 text-text-secondary max-w-2xl"
           >
-            {body}
-          </p>
+            <span style={{ textShadow: '0 1px 12px rgba(7,7,7,0.85)' }}>{body}</span>
+          </motion.p>
         )}
       </div>
     </section>

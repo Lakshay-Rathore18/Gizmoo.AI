@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState } from 'react';
 
 /**
- * Thin glowing divider. Scale-x reveals once in-view via IntersectionObserver.
- * Honours prefers-reduced-motion.
+ * Editorial cream hairline divider. Scale-x reveals once in-view.
+ * Honours `prefers-reduced-motion` (instant reveal, no transform animation).
  */
 export function GlowDivider() {
   const ref = useRef<HTMLDivElement>(null);
@@ -32,12 +32,14 @@ export function GlowDivider() {
 
   return (
     <div ref={ref} aria-hidden="true" className="relative w-full h-px my-0">
-      <div className="absolute inset-0 bg-white/[0.06]" />
+      <div className="absolute inset-0 bg-[rgba(225,224,204,0.04)]" />
       <div
-        className="absolute inset-0 origin-left transition-transform duration-[900ms] ease-out"
+        className="absolute inset-0 origin-left transition-transform duration-[1100ms] ease-[cubic-bezier(0.22,0.84,0.32,1)]"
         style={{
-          background: 'linear-gradient(90deg, transparent, rgba(32,231,183,0.4), transparent)',
-          boxShadow: '0 0 20px rgba(32,231,183,0.3), 0 0 60px rgba(32,231,183,0.1)',
+          background:
+            'linear-gradient(90deg, transparent 0%, rgba(225,224,204,0.08) 12%, rgba(225,224,204,0.30) 50%, rgba(225,224,204,0.08) 88%, transparent 100%)',
+          boxShadow:
+            '0 0 14px rgba(225,224,204,0.10), 0 0 32px rgba(225,224,204,0.04)',
           transform: visible ? 'scaleX(1)' : 'scaleX(0)',
           opacity: visible ? 1 : 0,
         }}

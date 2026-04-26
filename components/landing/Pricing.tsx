@@ -87,8 +87,14 @@ export function Pricing() {
               One-time setup: $1,200 AUD
             </p>
 
-            <a href={brand.signUp} className="btn-primary w-full text-center mb-8 block">
+            <a
+              href={brand.calLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary w-full text-center mb-8 block"
+            >
               Start 14-Day Free Trial
+              <span className="sr-only"> (opens cal.com booking page in new tab)</span>
             </a>
 
             <ul className="space-y-3">

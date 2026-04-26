@@ -46,10 +46,13 @@ export function CTASection({ onContactOpen }: { onContactOpen?: () => void }) {
         >
           <MagneticCTA radius={120} strength={0.4}>
             <a
-              href={brand.signUp}
+              href={brand.calLink}
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-primary text-base px-8 py-4 inline-block"
             >
               Start Free Trial
+              <span className="sr-only"> (opens cal.com booking page in new tab)</span>
             </a>
           </MagneticCTA>
           <a
